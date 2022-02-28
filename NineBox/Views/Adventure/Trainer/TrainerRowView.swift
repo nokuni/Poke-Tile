@@ -16,7 +16,12 @@ struct TrainerRowView: View {
             Image(adventure.image)
                 .resizable()
                 .centerCropped(radius: 5, alignment: .center)
+                .padding(5)
                 .frame(width: size.width, height: size.height * 0.18)
+                .background(
+                    adventure.debuff.borderColor
+                        .cornerRadius(5)
+                )
                 .overlay(
                     TrainerImageView(size: size, height: 0.18, image: trainer.image)
                 )

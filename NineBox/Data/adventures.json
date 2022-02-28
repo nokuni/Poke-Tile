@@ -1,13 +1,15 @@
 [
     {
         "title": "Forest",
-        "image": "forest",
+        "icon": "forest.icon",
+        "image": "forest.background",
         "type": "Grass Debuff",
         "trainers": ["Erika"],
     },
     {
         "title": "Volcano",
-        "image": "volcano",
+        "icon": "volcano.icon",
+        "image": "volcano.background",
         "type": "Fire Debuff",
         "trainers": ["Blaine"],
     },

@@ -10,6 +10,7 @@ import Foundation
 struct Profile {
     var name: String
     var image: String
+    var theme: Theme = Theme.togepi
 }
 
 extension Profile {

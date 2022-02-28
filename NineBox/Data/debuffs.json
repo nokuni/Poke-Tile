@@ -31,4 +31,12 @@
         "type": "ground",
         "stats": { "top": 0, "trailing": 0, "bottom": 0, "leading": 0 },
     },
+    {
+        "name": "Normal Debuff",
+        "image": "normal",
+        "backgroundImage": "normal",
+        "category": "debuff",
+        "type": "normal",
+        "stats": { "top": 0, "trailing": 0, "bottom": 0, "leading": 0 },
+    },
 ]

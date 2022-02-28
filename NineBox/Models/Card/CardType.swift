@@ -8,7 +8,7 @@
 import SwiftUI
 
 enum CardType: String, Codable, Equatable {
-    case empty, bug, fire, grass, water, ground
+    case empty, bug, fire, grass, normal, water, ground
     
     var color: Color {
         switch self {
@@ -20,6 +20,8 @@ enum CardType: String, Codable, Equatable {
             return .fireBorder
         case .grass:
             return .grassBorder
+        case .normal:
+            return .normalBorder
         case .water:
             return .waterBorder
         case .ground:

@@ -62,6 +62,13 @@ extension Color {
     static let limeGreen = Color(red: 50/255, green: 205/255, blue: 50/255)
     static let lightGreen = Color(red: 144/255, green: 238/255, blue: 144/255)
     static let mediumSeaGreen = Color(red: 60/255, green: 179/255, blue: 113/255)
+    
+    // THEMES
+    static let yellowPikachu = Color(red: 253/255, green: 239/255, blue: 80/255)
+    static let orangeDragonite = Color(red: 244/255, green: 182/255, blue: 109/255)
+    static let bluePoliwag = Color(red: 86/255, green: 115/255, blue: 183/255)
+    static let blueTotodile = Color(red: 103/255, green: 192/255, blue: 204/255)
+    static let beigeTogepi = Color(red: 246/255, green: 246/255, blue: 238/255)
 }
 
 extension Gradient {

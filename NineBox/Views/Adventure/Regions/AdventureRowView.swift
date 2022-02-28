@@ -13,8 +13,14 @@ struct AdventureRowView: View {
     var body: some View {
         Image(adventure.image)
             .resizable()
-            .centerCropped(radius: 10, alignment: .center)
+            .centerCropped(radius: 5, alignment: .center)
+            .padding(5)
             .frame(width: size.width, height: size.height * 0.2)
+            .background(
+                adventure.debuff.borderColor
+                    .cornerRadius(5)
+                    .frame(width: size.width, height: size.height * 0.2)
+            )
             .overlay(
                 AdventureBackgroundView(size: size, title: adventure.title, adventure: adventure)
             )

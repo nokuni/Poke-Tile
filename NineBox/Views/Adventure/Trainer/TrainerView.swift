@@ -14,7 +14,7 @@ struct TrainerView: View {
     var body: some View {
         GeometryReader { geo in
             LazyVStack(alignment: .leading) {
-                NavigationTitleView(size: geo.size, navigationTitle: .trainer)
+                NavigationTitleView(size: geo.size, navigationTitle: NavigationTitleModel(image: adventure.icon, title: adventure.title, color: adventure.debuff.borderColor))
                 TrainerListView(size: geo.size, adventure: adventure)
                 BackButtonView(size: geo.size, dismiss: dismiss)
             }

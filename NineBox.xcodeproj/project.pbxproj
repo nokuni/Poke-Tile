@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E3A3BA327CD328F0018DA36 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3A3BA227CD328F0018DA36 /* Theme.swift */; };
+		2E3A3BA527CD404E0018DA36 /* HomeBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3A3BA427CD404E0018DA36 /* HomeBackgroundView.swift */; };
 		2E42558127BFEC2B009B62EB /* CardGestureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E42558027BFEC2B009B62EB /* CardGestureView.swift */; };
 		2E4A95EF27C7B77100BA498D /* NavigationTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4A95EE27C7B77100BA498D /* NavigationTitleView.swift */; };
 		2E4A95F227C7B8A600BA498D /* NavigationTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4A95F127C7B8A600BA498D /* NavigationTitle.swift */; };
@@ -86,6 +88,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2E3A3BA227CD328F0018DA36 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		2E3A3BA427CD404E0018DA36 /* HomeBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBackgroundView.swift; sourceTree = "<group>"; };
 		2E42558027BFEC2B009B62EB /* CardGestureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardGestureView.swift; sourceTree = "<group>"; };
 		2E4A95EE27C7B77100BA498D /* NavigationTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTitleView.swift; sourceTree = "<group>"; };
 		2E4A95F127C7B8A600BA498D /* NavigationTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTitle.swift; sourceTree = "<group>"; };
@@ -207,6 +211,7 @@
 				2EF5B05C27C3DA5D00A8930C /* GameDifficulty.swift */,
 				2EF5B05E27C3DADB00A8930C /* Trainer.swift */,
 				2ED34E0E27CB71CC00F24251 /* Deck.swift */,
+				2E3A3BA227CD328F0018DA36 /* Theme.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -511,6 +516,7 @@
 				2EFCB95F27C2A7C70044B2E9 /* HomeNavigationLink.swift */,
 				2EA07DAD27C0D8C300AB974B /* HomeView.swift */,
 				2EFCB96127C2A7F80044B2E9 /* HomeItemView.swift */,
+				2E3A3BA427CD404E0018DA36 /* HomeBackgroundView.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -626,6 +632,7 @@
 				2E4E1A0827BEDD94001C8B67 /* Adventure.swift in Sources */,
 				2EFCB95B27C29E0E0044B2E9 /* GameScoreView.swift in Sources */,
 				2E4E1A0027BEDCDD001C8B67 /* ArrayExtension.swift in Sources */,
+				2E3A3BA327CD328F0018DA36 /* Theme.swift in Sources */,
 				2EFCB95D27C2A7330044B2E9 /* SummonsView.swift in Sources */,
 				2EFCB96227C2A7F80044B2E9 /* HomeItemView.swift in Sources */,
 				2EEEA21427BD8605009A1D49 /* Card.swift in Sources */,
@@ -659,6 +666,7 @@
 				2E4E1A1027BEDE4B001C8B67 /* Game.swift in Sources */,
 				2EF5B06A27C41A4900A8930C /* SummonsViewModel.swift in Sources */,
 				2ED34E0F27CB71CC00F24251 /* Deck.swift in Sources */,
+				2E3A3BA527CD404E0018DA36 /* HomeBackgroundView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

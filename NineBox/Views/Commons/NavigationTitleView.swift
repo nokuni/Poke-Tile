@@ -28,6 +28,6 @@ struct NavigationTitleView: View {
 
 struct NavigationTitleView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationTitleView(size: CGSize.screen, navigationTitle: .pokemons)
+        NavigationTitleView(size: CGSize.screen, navigationTitle: .adventure)
     }
 }
