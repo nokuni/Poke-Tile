@@ -1,0 +1,18 @@
+[
+    {
+        "name": "Erika",
+        "image": "erika",
+        "background": "forest",
+        "pokemons": ["Bulbasaur", "Hoppip", "Treecko", "Oddish", "Shroomish", "Chikorita", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 10,
+        "difficulty": "easy"
+    },
+    {
+        "name": "Blaine",
+        "image": "blaine",
+        "background": "volcano",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+]

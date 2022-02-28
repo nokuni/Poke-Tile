@@ -1,0 +1,34 @@
+[
+    {
+        "name": "Bug Debuff",
+        "image": "bug",
+        "backgroundImage": "bug",
+        "category": "debuff",
+        "type": "bug",
+        "stats": { "top": 0, "trailing": 0, "bottom": 0, "leading": 0 },
+    },
+    {
+        "name": "Grass Debuff",
+        "image": "grass",
+        "backgroundImage": "grass",
+        "category": "debuff",
+        "type": "grass",
+        "stats": { "top": 0, "trailing": 0, "bottom": 0, "leading": 0 },
+    },
+    {
+        "name": "Fire Debuff",
+        "image": "fire",
+        "backgroundImage": "fire",
+        "category": "debuff",
+        "type": "fire",
+        "stats": { "top": 0, "trailing": 0, "bottom": 0, "leading": 0 },
+    },
+    {
+        "name": "Ground Debuff",
+        "image": "ground",
+        "backgroundImage": "ground",
+        "category": "debuff",
+        "type": "ground",
+        "stats": { "top": 0, "trailing": 0, "bottom": 0, "leading": 0 },
+    },
+]

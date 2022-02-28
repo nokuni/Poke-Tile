@@ -1,0 +1,14 @@
+[
+    {
+        "title": "Forest",
+        "image": "forest",
+        "type": "Grass Debuff",
+        "trainers": ["Erika"],
+    },
+    {
+        "title": "Volcano",
+        "image": "volcano",
+        "type": "Fire Debuff",
+        "trainers": ["Blaine"],
+    },
+]
