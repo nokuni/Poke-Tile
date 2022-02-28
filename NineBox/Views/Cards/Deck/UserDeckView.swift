@@ -18,7 +18,7 @@ struct UserDeckView: View {
                     NavigationTitleView(size: geo.size, navigationTitle: NavigationTitleModel.decks)
                     ChangeDeckNameButtonView(isShowingNameAlert: $deckVM.isShowingNameAlert, name: $gameVM.user.decks[deckVM.selectedDeckIndex].name, index: deckVM.selectedDeckIndex)
                     UserDeckListView(gameVM: gameVM, selectedIndex: $deckVM.selectedIndex, selectedDeckIndex: $deckVM.selectedDeckIndex, size: geo.size)
-                    UserSetCardListView(size: geo.size, index: $deckVM.selectedIndex, selectedCard: $deckVM.selectedCard, selectedDeck: $gameVM.user.decks[deckVM.selectedDeckIndex], gameVM: gameVM)
+                    UserSetCardListView(size: geo.size, selectedIndex: $deckVM.selectedIndex, selectedCard: $deckVM.selectedCard, selectedDeck: $gameVM.user.decks[deckVM.selectedDeckIndex], gameVM: gameVM)
                         .frame(height: geo.size.height * 0.35)
                     BackButtonView(size: geo.size, dismiss: dismiss)
                 }

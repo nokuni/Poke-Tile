@@ -10,7 +10,7 @@ import SwiftUI
 struct UserSetCardListView: View {
     private let grid = [GridItem](repeating: .init(.flexible(), spacing: 25), count: 4)
     var size: CGSize
-    @Binding var index: Int
+    @Binding var selectedIndex: Int
     @Binding var selectedCard: Card?
     @Binding var selectedDeck: Deck
     @ObservedObject var gameVM: GameViewModel
@@ -18,7 +18,7 @@ struct UserSetCardListView: View {
         ScrollView(showsIndicators: false) {
             LazyVGrid(columns: grid, spacing: 0) {
                 ForEach(gameVM.user.cards) { card in
-                    UserSetCardView(selectedCard: $selectedCard, deck: $selectedDeck, card: card, index: index, size: size)
+                    UserSetCardView(selectedCard: $selectedCard, deck: $selectedDeck, selectedIndex: $selectedIndex, card: card, size: size)
                 }
             }
             .padding()
@@ -34,6 +34,6 @@ struct UserSetCardListView: View {
 
 struct UserSetCardListView_Previews: PreviewProvider {
     static var previews: some View {
-        UserSetCardListView(size: CGSize.screen, index: .constant(0), selectedCard: .constant(Card.empty), selectedDeck: .constant(Deck()), gameVM: GameViewModel())
+        UserSetCardListView(size: CGSize.screen, selectedIndex: .constant(0), selectedCard: .constant(Card.empty), selectedDeck: .constant(Deck()), gameVM: GameViewModel())
     }
 }

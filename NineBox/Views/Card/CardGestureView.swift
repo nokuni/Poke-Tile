@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CardGestureView: View {
     @State var dragAmount: CGSize = .zero
-    @Binding var isShowing: Bool
+    @Binding var isRotating: Bool
     
     var size: CGSize
     var card: Card
@@ -31,13 +31,13 @@ struct CardGestureView: View {
         CardView(card: card, size: size, amount: 4)
             .offset(dragAmount)
             .gesture(gesture)
-            .rotation3DEffect(.degrees(isShowing ? 180 : 0), axis: (x: 0, y: 1, z: 0))
+            .rotation3DEffect(.degrees(isRotating ? 180 : 0), axis: (x: 0, y: 1, z: 0))
             .disabled(!card.isActivated)
     }
 }
 
 struct CardGestureView_Previews: PreviewProvider {
     static var previews: some View {
-        CardGestureView(isShowing: .constant(false), size: CGSize.screen, card: Card.pokemons[0], index: 0)
+        CardGestureView(isRotating: .constant(false), size: CGSize.screen, card: Card.pokemons[0], index: 0)
     }
 }

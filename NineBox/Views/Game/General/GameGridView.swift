@@ -19,11 +19,11 @@ struct GameGridView: View {
     }
     var size: CGSize
     @ObservedObject var gameVM: GameViewModel
-    @Binding var isShowing: [Bool]
+    @Binding var isRotating: [Bool]
     var body: some View {
         LazyVGrid(columns: columns, spacing: 0) {
             ForEach(gameVM.game.board.indices) { index in
-                CardGestureView(isShowing: $isShowing[index], size: size, card: gameVM.game.board[index], index: index, cardDropped: gameVM.cardDropped)
+                CardGestureView(isRotating: $isRotating[index], size: size, card: gameVM.game.board[index], index: index, cardDropped: gameVM.cardDropped)
                     .shadow(color: gameVM.game.board[index].side == .user ? .blue : gameVM.game.board[index].side == .opponent ? .red : .clear, radius: 2)
                     .allowsHitTesting(false)
                     .overlay(overlay(index))
@@ -34,6 +34,6 @@ struct GameGridView: View {
 
 struct GameGridView_Previews: PreviewProvider {
     static var previews: some View {
-        GameGridView(size: CGSize.screen, gameVM: GameViewModel(), isShowing: .constant([Bool](repeating: false, count: 16)))
+        GameGridView(size: CGSize.screen, gameVM: GameViewModel(), isRotating: .constant([Bool](repeating: false, count: 16)))
     }
 }

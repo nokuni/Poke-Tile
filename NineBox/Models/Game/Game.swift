@@ -29,6 +29,11 @@ struct Game {
     var userCardsIndicesOnBoard: [Int] {
         return board.indices.filter { board[$0].side == .user }
     }
+    
+    var trainerCardsIndicesOnBoard: [Int] {
+        return board.indices.filter { board[$0].side == .opponent }
+    }
+    
     func getAdjacentCardIndex(from index: Int) -> (top: Int?, trailing: Int?, bottom: Int?, leading: Int?) {
         let topIndex: Int? = !board.edgeLineIndices(.top, 4, 4).contains(index) ? index - 4 : nil
         let trailingIndex: Int? = !board.edgeLineIndices(.trailing, 4, 4).contains(index) ? index + 1 : nil

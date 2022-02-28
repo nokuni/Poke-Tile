@@ -14,8 +14,8 @@ struct GameView: View {
             GeometryReader { geo in
                 VStack {
                     OpponentHandView(size: geo.size, gameVM: gameVM)
-                    GameGridView(size: geo.size, gameVM: gameVM, isShowing: $gameVM.isShowingCard)
-                    UserHandView(size: geo.size, gameVM: gameVM, isShowing: $gameVM.isShowingHand)
+                    GameGridView(size: geo.size, gameVM: gameVM, isRotating: $gameVM.isRotatingCard)
+                    UserHandView(size: geo.size, gameVM: gameVM)
                     UserInformations(gameVM: gameVM, size: geo.size)
                 }
             }

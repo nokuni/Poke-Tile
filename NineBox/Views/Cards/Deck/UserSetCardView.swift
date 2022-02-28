@@ -10,13 +10,16 @@ import SwiftUI
 struct UserSetCardView: View {
     @Binding var selectedCard: Card?
     @Binding var deck: Deck
+    @Binding var selectedIndex: Int
     var card: Card
-    var index: Int
     var size: CGSize
     var body: some View {
         Button(action: {
             selectedCard = card
-            deck.cards[index] = card
+            deck.cards[selectedIndex] = card
+            if selectedIndex < deck.cards.count - 1 {
+                selectedIndex += 1
+            }
         }) {
             CardView(card: card, size: size, amount: 4)
                 .overlay(
@@ -33,6 +36,6 @@ struct UserSetCardView: View {
 
 struct UserSetCardView_Previews: PreviewProvider {
     static var previews: some View {
-        UserSetCardView(selectedCard: .constant(Card.empty), deck: .constant(Deck()), card: Card.empty, index: 0, size: CGSize.screen)
+        UserSetCardView(selectedCard: .constant(Card.empty), deck: .constant(Deck()), selectedIndex: .constant(0), card: Card.empty, size: CGSize.screen)
     }
 }

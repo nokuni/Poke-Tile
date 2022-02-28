@@ -54,8 +54,7 @@ struct PreBattleView: View {
                 .padding(.vertical)
                 .simultaneousGesture(
                     TapGesture().onEnded { _ in
-                        gameVM.createNewGame(trainer: trainer)
-                        gameVM.game.deck = gameVM.user.decks[deckVM.selectedDeckIndex]
+                        gameVM.createNewGame(trainer: trainer, deck: gameVM.user.decks[deckVM.selectedDeckIndex])
                     }
                 )
                 .disabled(!gameVM.isDeckReady(index: deckVM.selectedDeckIndex))

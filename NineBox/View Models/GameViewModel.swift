@@ -12,16 +12,14 @@ class GameViewModel: ObservableObject {
     @Published var game = Game()
     
     @Published var isShowingTurnAnimation = false
-    @Published var isShowingCard = [Bool](repeating: false, count: 16)
-    @Published var isShowingHand = [Bool](repeating: false, count: 8)
+    @Published var isRotatingCard = [Bool](repeating: false, count: 16)
     
     static var shared = GameViewModel()
     
-    init() {
-        //createNewGame(trainer: game.trainer)
-    }
+    init() { }
     
-    func createNewGame(trainer: Trainer) {
+    func createNewGame(trainer: Trainer, deck: Deck) {
+        game.deck = deck
         game.trainer = trainer
         loadBoard(bonus: addDebuffs)
         loadPlayerHand()
@@ -32,7 +30,6 @@ class GameViewModel: ObservableObject {
     func cardDropped(location: CGPoint, index: Int, card: Card) {
         if let match = game.boardFrames.firstIndex(where: { $0.contains(location) }) {
             dropCard(match: match, index: index, card: card, turn: .opponent)
-            print("User drop card")
         }
     }
     
@@ -40,16 +37,75 @@ class GameViewModel: ObservableObject {
         game.turn = turn
         isShowingTurnAnimation.toggle()
         if game.isGameOver() {
-            
+            if game.isGameWon() { }
+        }
+    }
+    
+    func convertAdjacents(from match: Int, with cardIndex: Int) {
+        let adjacentIndex = game.getAdjacentCardIndex(from: match)
+        
+        if let topIndex = adjacentIndex.top,
+           let deck = game.deck {
+            if deck.cards[cardIndex].stats.top > game.board[topIndex].stats.bottom {
+                if game.board[topIndex].category == .pokemon && game.board[topIndex].side != .user {
+                    rotatingCardAnimation(index: topIndex)
+                    game.board[topIndex].side = .user
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        self.isRotatingCard[topIndex].toggle()
+                    }
+                }
+            }
+        }
+        
+        if let trailingIndex = adjacentIndex.trailing,
+           let deck = game.deck {
+            if deck.cards[cardIndex].stats.trailing > game.board[trailingIndex].stats.leading {
+                if game.board[trailingIndex].category == .pokemon && game.board[trailingIndex].side != .user {
+                    rotatingCardAnimation(index: trailingIndex)
+                    game.board[trailingIndex].side = .user
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        self.isRotatingCard[trailingIndex].toggle()
+                    }
+                }
+            }
+        }
+        
+        if let bottomIndex = adjacentIndex.bottom,
+           let deck = game.deck {
+            if deck.cards[cardIndex].stats.bottom > game.board[bottomIndex].stats.top {
+                if game.board[bottomIndex].category == .pokemon && game.board[bottomIndex].side != .user {
+                    rotatingCardAnimation(index: bottomIndex)
+                    game.board[bottomIndex].side = .user
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        self.isRotatingCard[bottomIndex].toggle()
+                    }
+                }
+            }
+        }
+        
+        if let leadingIndex = adjacentIndex.leading,
+           let deck = game.deck {
+            if deck.cards[cardIndex].stats.leading > game.board[leadingIndex].stats.trailing {
+                if game.board[leadingIndex].category == .pokemon && game.board[leadingIndex].side != .user {
+                    rotatingCardAnimation(index: leadingIndex)
+                    game.board[leadingIndex].side = .user
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        self.isRotatingCard[leadingIndex].toggle()
+                    }
+                }
+            }
         }
     }
     
     func cardAction(match: Int, index: Int, buff: ((Int, Card) -> Void)?) {
-        guard let deck = game.deck else { return }
         buff?(index, game.board[match])
-        game.board[match] = deck.cards[index]
+        convertAdjacents(from: match, with: index)
+        if let deck = game.deck { game.board[match] = deck.cards[index] }
         game.deck?.cards[index].isActivated = false
-        endTurn(toStart: .opponent)
+        //self.endTurn(toStart: .opponent)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.endTurn(toStart: .opponent)
+        }
     }
     
     func dropCard(match: Int, index: Int, card: Card, turn: Turn) {
@@ -70,7 +126,6 @@ class GameViewModel: ObservableObject {
         game.deck?.cards[index].stats.trailing += buffAmount
         game.deck?.cards[index].stats.bottom += buffAmount
         game.deck?.cards[index].stats.leading += buffAmount
-        print("\(deck.cards[index].name) got buffed")
     }
     
     func buffTrainerCard(index: Int, debuff: Card) {
@@ -80,7 +135,6 @@ class GameViewModel: ObservableObject {
         game.trainerCards[index].stats.trailing += buffAmount
         game.trainerCards[index].stats.bottom += buffAmount
         game.trainerCards[index].stats.leading += buffAmount
-        print("\(game.trainerCards[index].name) got buffed")
     }
     
     func buffedCard(card: Card, debuff: Card) -> Card {
@@ -100,7 +154,6 @@ class GameViewModel: ObservableObject {
         bonus(game.trainer)
     }
     
-    // TEMPORARY
     func loadPlayerHand() {
         game.deck?.cards.indices.forEach { game.deck?.cards[$0].side = .user }
     }
@@ -129,47 +182,43 @@ class GameViewModel: ObservableObject {
     
     // MARK: - OPPONENT AI
     
-    // Problem with AI ignoring buffs on user cards on board
-    // Problem with AI replacing pokemon cards directly.
-    
-    
-    func compareCardsStats(userCard: Card, opponentCard: Card) -> ((top: Bool, location: Int), (trailing: Bool, location: Int), (bottom: Bool, location: Int), (leading: Bool, location: Int)) {
-        guard let firstCardIndex = game.board.firstIndex(where: { $0.id == userCard.id }) else { return ((top: false, location: -1), (trailing: false, location: -1), (bottom: false, location: -1), (leading: false, location: -1)) }
+    func compareCardsStats(firstCard: Card, secondCard: Card) -> ((top: Bool, location: Int), (trailing: Bool, location: Int), (bottom: Bool, location: Int), (leading: Bool, location: Int)) {
+        guard let firstCardIndex = game.board.firstIndex(where: { $0.id == firstCard.id }) else { return ((top: false, location: -1), (trailing: false, location: -1), (bottom: false, location: -1), (leading: false, location: -1)) }
         
         let adjacentCardIndex = game.getAdjacentCardIndex(from: firstCardIndex)
         
         var result: ((top: Bool, location: Int), (trailing: Bool, location: Int), (bottom: Bool, location: Int), (leading: Bool, location: Int)) = ((top: false, location: -1), (trailing: false, location: -1), (bottom: false, location: -1), (leading: false, location: -1))
         
-    
+        
         if let topIndex = adjacentCardIndex.top {
-            let buffedTop = buffedCard(card: opponentCard, debuff: game.board[topIndex])
-            result.0.top = buffedTop.stats.bottom > userCard.stats.top
+            let buffedTop = buffedCard(card: secondCard, debuff: game.board[topIndex])
+            result.0.top = buffedTop.stats.bottom > firstCard.stats.top
             result.0.location = topIndex
         }
         
         if let trailingIndex = adjacentCardIndex.trailing {
-            let buffedTrailing = buffedCard(card: opponentCard, debuff: game.board[trailingIndex])
-            result.1.trailing = buffedTrailing.stats.leading > userCard.stats.trailing
+            let buffedTrailing = buffedCard(card: secondCard, debuff: game.board[trailingIndex])
+            result.1.trailing = buffedTrailing.stats.leading > firstCard.stats.trailing
             result.1.location = trailingIndex
         }
         
         if let bottomIndex = adjacentCardIndex.bottom {
-            let buffedBottom = buffedCard(card: opponentCard, debuff: game.board[bottomIndex])
-            result.2.bottom = buffedBottom.stats.top > userCard.stats.bottom
+            let buffedBottom = buffedCard(card: secondCard, debuff: game.board[bottomIndex])
+            result.2.bottom = buffedBottom.stats.top > firstCard.stats.bottom
             result.2.location = bottomIndex
         }
         
         if let leadingIndex = adjacentCardIndex.leading {
-            let buffedLeading = buffedCard(card: opponentCard, debuff: game.board[leadingIndex])
-            result.3.leading = buffedLeading.stats.trailing > userCard.stats.leading
+            let buffedLeading = buffedCard(card: secondCard, debuff: game.board[leadingIndex])
+            result.3.leading = buffedLeading.stats.trailing > firstCard.stats.leading
             result.3.location = leadingIndex
         }
         
         return result
     }
-
-    func convertingMatches(of userCardIndex: Int, with opponentCard: Card) -> [Int] {
-        let cardsComparison = compareCardsStats(userCard: game.board[userCardIndex], opponentCard: opponentCard)
+    
+    func convertingMatches(of firstCardIndex: Int, with secondCard: Card) -> [Int] {
+        let cardsComparison = compareCardsStats(firstCard: game.board[firstCardIndex], secondCard: secondCard)
         
         var result = [Int]()
         
@@ -183,19 +232,18 @@ class GameViewModel: ObservableObject {
     
     func rotatingCardAnimation(index: Int) {
         withAnimation(.linear.repeatCount(2, autoreverses: false)) {
-            isShowingCard[index].toggle()
+            isRotatingCard[index].toggle()
         }
     }
     
     func opponentCardAction(actionIndex: Int, cardIndex: Int, targetIndex: Int?) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             if let targetIndex = targetIndex {
-                self.isShowingCard[targetIndex].toggle()
+                self.isRotatingCard[targetIndex].toggle()
             }
-            self.isShowingCard[actionIndex].toggle()
+            self.isRotatingCard[actionIndex].toggle()
             withAnimation {
                 self.buffTrainerCard(index: cardIndex, debuff: self.game.board[actionIndex])
-                //self.buffCard(from: &self.game.trainer.cards, index: cardIndex, debuff: self.game.board[actionIndex])
                 self.game.board[actionIndex] = self.game.trainerCards[cardIndex]
                 if let targetIndex = targetIndex {
                     self.game.board[targetIndex].side = .opponent
@@ -222,7 +270,6 @@ class GameViewModel: ObservableObject {
                 break
             }
         }
-        print("Weakness Location: \(weaknessLocations) \n user target index: \(userCardIndex ?? -1)")
         return (weaknessLocations, userCardIndex)
     }
     
@@ -242,13 +289,11 @@ class GameViewModel: ObservableObject {
         if let weaknessIndex = userMatchingWeaknesses.locations.randomElement() {
             rotatingCardAnimation(index: weaknessIndex)
             if let targetIndex = userMatchingWeaknesses.index {
-                print("Got a target")
                 rotatingCardAnimation(index: targetIndex)
                 opponentCardAction(actionIndex: weaknessIndex, cardIndex: cardIndex, targetIndex: targetIndex)
             }
         } else {
             if let location = randomLocation {
-                print("No Target")
                 rotatingCardAnimation(index: location)
                 opponentCardAction(actionIndex: location, cardIndex: cardIndex, targetIndex: nil)
             }

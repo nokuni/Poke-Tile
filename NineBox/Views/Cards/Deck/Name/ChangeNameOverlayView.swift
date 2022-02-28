@@ -49,7 +49,7 @@ struct ChangeNameOverlayView: View {
                 }
                 Button(action: {
                     isShowingNameAlert.toggle()
-                    name = name.isEmpty ? "New Deck" : text
+                    name = text.isEmpty ? "New Deck" : text
                 }) {
                     Text("Yes")
                         .foregroundColor(.white)
