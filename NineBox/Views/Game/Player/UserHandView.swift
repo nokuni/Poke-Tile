@@ -18,7 +18,7 @@ struct UserHandView: View {
                 ForEach(deck.cards.indices, id: \.self) { index in
                     CardGestureView(isRotating: .constant(false), size: size, card: deck.cards[index], index: index, cardDropped: gameVM.cardDropped)
                             .brightness(deck.cards[index].isActivated ? 0 : -0.5)
-                            .disabled(gameVM.game.turn == .opponent)
+                            .disabled(gameVM.game.turn == .opponent && !gameVM.isShowingTurnAnimation)
                     }
                 }
             }

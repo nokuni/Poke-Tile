@@ -27,6 +27,9 @@ struct GameView: View {
                         .ignoresSafeArea()
                 }
             }
+            if gameVM.isShowingGameEnding {
+                GameEndingView(resetGame: gameVM.resetGame)
+            }
         }
         .navigationBarHidden(true)
         //.ignoresSafeArea()

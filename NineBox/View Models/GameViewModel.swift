@@ -12,11 +12,17 @@ class GameViewModel: ObservableObject {
     @Published var game = Game()
     
     @Published var isShowingTurnAnimation = false
+    @Published var isShowingGameEnding = false
     @Published var isRotatingCard = [Bool](repeating: false, count: 16)
     
     static var shared = GameViewModel()
     
     init() { }
+    
+    func resetGame() {
+        isShowingGameEnding.toggle()
+        game = Game()
+    }
     
     func createNewGame(trainer: Trainer, deck: Deck) {
         game.deck = deck
@@ -34,10 +40,11 @@ class GameViewModel: ObservableObject {
     }
     
     func endTurn(toStart turn: Turn) {
-        game.turn = turn
-        isShowingTurnAnimation.toggle()
-        if game.isGameOver() {
-            if game.isGameWon() { }
+        if !self.game.isGameOver() { game.turn = turn }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            if !self.game.isGameOver() {
+                self.isShowingTurnAnimation.toggle()
+            } else { self.isShowingGameEnding.toggle() }
         }
     }
     
@@ -102,9 +109,10 @@ class GameViewModel: ObservableObject {
         convertAdjacents(from: match, with: index)
         if let deck = game.deck { game.board[match] = deck.cards[index] }
         game.deck?.cards[index].isActivated = false
-        //self.endTurn(toStart: .opponent)
+        game.turn = .opponent
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.endTurn(toStart: .opponent)
+            if !self.game.isGameOver() { self.isShowingTurnAnimation.toggle() } else { self.isShowingGameEnding.toggle()
+            }
         }
     }
     
@@ -253,7 +261,12 @@ class GameViewModel: ObservableObject {
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 withAnimation {
-                    self.endTurn(toStart: .user)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        if !self.game.isGameOver() {
+                            self.game.turn = .user
+                            self.isShowingTurnAnimation.toggle()
+                        } else { self.isShowingGameEnding.toggle() }
+                    }
                 }
             }
         }

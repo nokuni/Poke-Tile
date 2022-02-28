@@ -33,6 +33,7 @@ struct TurnAnimationView: View {
                     }
                 }
             }
+            .zIndex(2)
             .onAppear {
                 withAnimation {
                     self.isAnimating.toggle()
