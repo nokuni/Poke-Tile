@@ -12,9 +12,10 @@ struct AdventureView: View {
     var body: some View {
         ZStack {
             GeometryReader { geo in
-                LazyVStack(alignment: .leading) {
+                VStack(alignment: .leading) {
                     NavigationTitleView(size: geo.size, navigationTitle: .adventure)
                     AdventureListView(size: geo.size)
+                    Spacer()
                     BackButtonView(size: geo.size, dismiss: dismiss)
                 }
             }
