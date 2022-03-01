@@ -12,3 +12,7 @@ struct User {
     var cards: [Card] = Card.pokemons
     var decks: [Deck] = Deck.placeholders
 }
+
+extension User {
+    static let previewExample = User(profile: Profile(name: "User", image: "blaine"))
+}

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TurnAnimationView: View {
-    @State var isAnimating = false
+    @State private var isAnimating = false
     @Binding var isPresented: Bool
     var trainer: Trainer
     var turn: Turn?
@@ -19,17 +19,7 @@ struct TurnAnimationView: View {
                 Color.black.opacity(0.5)
                 GeometryReader { geo in
                     if isAnimating {
-                        VStack {
-                            Text(turn == .opponent ? "\(trainer.name.uppercased())'S TURN" : "YOUR TURN")
-                                .foregroundColor(.white)
-                                .font(.system(size: 40, weight: .bold, design: .rounded))
-                            Image(turn == .opponent ? trainer.image : "blaine")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: geo.size.width, height: geo.size.height * 0.5)
-                        }
-                        .frame(width: geo.size.width, height: geo.size.height, alignment: .center)
-                        .transition(AnyTransition.asymmetric(insertion: .move(edge: .leading), removal: .move(edge: .trailing)))
+                        AnimatedTurnView(trainer: trainer, turn: turn, size: geo.size)
                     }
                 }
             }

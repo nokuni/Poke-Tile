@@ -86,6 +86,8 @@
 		2EFCB96F27C2C5D10044B2E9 /* TrainerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFCB96E27C2C5D10044B2E9 /* TrainerRowView.swift */; };
 		2EFCB97127C2C6280044B2E9 /* trainers.json in Resources */ = {isa = PBXBuildFile; fileRef = 2EFCB97027C2C6280044B2E9 /* trainers.json */; };
 		2EFCB97327C2D5BB0044B2E9 /* TrainerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFCB97227C2D5BB0044B2E9 /* TrainerListView.swift */; };
+		9637BF5F27CE1F8A00A3FC87 /* GameStartAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637BF5E27CE1F8A00A3FC87 /* GameStartAnimationView.swift */; };
+		9637BF6127CE22FE00A3FC87 /* AnimatedTurnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637BF6027CE22FE00A3FC87 /* AnimatedTurnView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -169,6 +171,8 @@
 		2EFCB96E27C2C5D10044B2E9 /* TrainerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainerRowView.swift; sourceTree = "<group>"; };
 		2EFCB97027C2C6280044B2E9 /* trainers.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = trainers.json; sourceTree = "<group>"; };
 		2EFCB97227C2D5BB0044B2E9 /* TrainerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainerListView.swift; sourceTree = "<group>"; };
+		9637BF5E27CE1F8A00A3FC87 /* GameStartAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStartAnimationView.swift; sourceTree = "<group>"; };
+		9637BF6027CE22FE00A3FC87 /* AnimatedTurnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedTurnView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -445,6 +449,8 @@
 			isa = PBXGroup;
 			children = (
 				2EFCB94E27C2836E0044B2E9 /* TurnAnimationView.swift */,
+				9637BF6027CE22FE00A3FC87 /* AnimatedTurnView.swift */,
+				9637BF5E27CE1F8A00A3FC87 /* GameStartAnimationView.swift */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -633,6 +639,7 @@
 				2E4E1A0A27BEDDC8001C8B67 /* AdventureRowView.swift in Sources */,
 				2ED34E2427CBD9B600F24251 /* DeckViewModel.swift in Sources */,
 				2E4E1A0827BEDD94001C8B67 /* Adventure.swift in Sources */,
+				9637BF6127CE22FE00A3FC87 /* AnimatedTurnView.swift in Sources */,
 				2EFCB95B27C29E0E0044B2E9 /* GameScoreView.swift in Sources */,
 				2E4E1A0027BEDCDD001C8B67 /* ArrayExtension.swift in Sources */,
 				2E3A3BA327CD328F0018DA36 /* Theme.swift in Sources */,
@@ -644,6 +651,7 @@
 				2EA07DBF27C23AE000AB974B /* Stats.swift in Sources */,
 				2EB1662627C65EAD00BCF2D5 /* UserViewModel.swift in Sources */,
 				2EEEA21627BD88A5009A1D49 /* ColorExtension.swift in Sources */,
+				9637BF5F27CE1F8A00A3FC87 /* GameStartAnimationView.swift in Sources */,
 				2E4E1A0427BEDD2C001C8B67 /* CardCategory.swift in Sources */,
 				2ED34E1127CB747C00F24251 /* UserDeckView.swift in Sources */,
 				2EA07DAE27C0D8C300AB974B /* HomeView.swift in Sources */,

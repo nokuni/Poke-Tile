@@ -12,7 +12,7 @@ struct NineBoxApp: App {
     @StateObject var gameVM = GameViewModel()
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            GameStartAnimationView(user: User.previewExample, trainer: Trainer.trainers[0])
                 .environmentObject(gameVM)
         }
     }
