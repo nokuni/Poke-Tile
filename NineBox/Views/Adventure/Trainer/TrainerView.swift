@@ -12,16 +12,19 @@ struct TrainerView: View {
     @EnvironmentObject var gameVM: GameViewModel
     var adventure: Adventure
     var body: some View {
-        GeometryReader { geo in
-            VStack(alignment: .leading) {
-                NavigationTitleView(size: geo.size, navigationTitle: NavigationTitleModel(image: adventure.icon, title: adventure.title, color: adventure.debuff.borderColor))
-                TrainerListView(size: geo.size, adventure: adventure)
-                Spacer()
-                BackButtonView(size: geo.size, dismiss: dismiss)
+        ZStack {
+            Color.white.ignoresSafeArea()
+            GeometryReader { geo in
+                VStack(alignment: .leading) {
+                    NavigationTitleView(size: geo.size, navigationTitle: NavigationTitleModel(image: adventure.icon, title: adventure.title, color: adventure.debuff.borderColor))
+                    TrainerListView(size: geo.size, adventure: adventure)
+                    Spacer()
+                    BackButtonView(size: geo.size, dismiss: dismiss)
+                }
             }
+            .padding()
+            .navigationBarHidden(true)
         }
-        .padding()
-        .navigationBarHidden(true)
     }
 }
 

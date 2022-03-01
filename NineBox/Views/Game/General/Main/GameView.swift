@@ -9,14 +9,18 @@ import SwiftUI
 
 struct GameView: View {
     @EnvironmentObject var gameVM: GameViewModel
+    @State private var isShowingStart = false
+    @State private var isShowingSurrenderModal = false
     var body: some View {
         ZStack {
+            Color.white.ignoresSafeArea()
             GeometryReader { geo in
                 VStack {
                     OpponentHandView(size: geo.size, gameVM: gameVM)
                     GameGridView(size: geo.size, gameVM: gameVM, isRotating: $gameVM.isRotatingCard)
                     UserHandView(size: geo.size, gameVM: gameVM)
                     UserInformations(gameVM: gameVM, size: geo.size)
+                    ModalButtonView(isPresented: $isShowingSurrenderModal, borderColor: .black, backgroundColor: .crimson, textColor: .white, textContent: "SURRENDER", size: geo.size)
                 }
             }
             .padding(30)
@@ -28,11 +32,19 @@ struct GameView: View {
                 }
             }
             if gameVM.isShowingGameEnding {
-                GameEndingView(resetGame: gameVM.resetGame)
+                EndingAnimationView(isPresented: $gameVM.isShowingGameEnding, isShowingStart: $isShowingStart, resetGame: gameVM.resetGame, loadGame: gameVM.loadGame, isGameWon: gameVM.game.isGameWon())
+            }
+            if isShowingStart {
+                if let trainer = gameVM.game.trainer {
+                    GameStartAnimationView(isPresented: $isShowingStart, user: gameVM.user, trainer: trainer)
+                }
+            }
+            if isShowingSurrenderModal {
+                SurrenderModalView(isShowingGameEnding: $gameVM.isShowingGameEnding, isShowingSurrenderModal: $isShowingSurrenderModal)
             }
         }
+        .onAppear { isShowingStart.toggle() }
         .navigationBarHidden(true)
-        //.ignoresSafeArea()
     }
 }
 

@@ -16,7 +16,8 @@ struct ChangeNameOverlayView: View {
     var body: some View {
         VStack(spacing: 20) {
             Text("Give a name to your deck")
-                .font(.system(size: 20, weight: .regular, design: .rounded))
+                .foregroundColor(.black)
+                .font(.system(size: size.width * 0.05, weight: .regular, design: .rounded))
             ZStack {
                 TextField("", text: $text)
                     .placeholder(when: text.isEmpty) {
@@ -35,7 +36,8 @@ struct ChangeNameOverlayView: View {
             .onTapGesture { isFocused = true }
             
             Text("Confirm deck name ?")
-                .font(.system(size: 20, weight: .regular, design: .rounded))
+                .foregroundColor(.black)
+                .font(.system(size: size.width * 0.05, weight: .regular, design: .rounded))
             HStack(spacing: 15) {
                 Button(action: {
                     isShowingNameAlert.toggle()

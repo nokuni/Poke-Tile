@@ -18,8 +18,9 @@ struct ChangeNameAlertModalView: View {
                     .ignoresSafeArea()
                 VStack {
                     RoundedRectangle(cornerRadius: 5)
-                        .foregroundColor(.white)
+                        .stroke(Color.steelBlue, lineWidth: 5)
                         .frame(width: geo.size.width * 0.9, height: geo.size.height * 0.4)
+                        .background(Color.white.cornerRadius(5))
                         .overlay(
                             ChangeNameOverlayView(isShowingNameAlert: $isShowingNameAlert, name: $name, size: geo.size)
                         )

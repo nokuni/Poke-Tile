@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct GameStartAnimationView: View {
-    @State var isAnimating = false
-    //@Binding var isPresented: Bool
+    @State private var isAnimatingImages = false
+    @State private var isAnimatingVersus = false
+    @Binding var isPresented: Bool
     var user: User
     var trainer: Trainer
     var body: some View {
@@ -17,46 +18,28 @@ struct GameStartAnimationView: View {
             Color.black.opacity(0.5).ignoresSafeArea()
             GeometryReader { geo in
                 VStack(spacing: 0) {
-                    if isAnimating {
-                        ZStack {
-                            Image(trainer.background)
-                                .resizable()
-                            Image(trainer.image)
-                                .resizable()
-                                .scaledToFit()
-                                .scaleEffect(0.9)
-                                .frame(width: geo.size.width, height: geo.size.height * 0.5)
-                        }
-                        .transition(AnyTransition.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
-                        .ignoresSafeArea()
+                    if isAnimatingImages {
+                        ImageAnimationView(background: trainer.background, image: trainer.image, size: geo.size, insertionEdge: .top, removalEdge: .top)
                     }
-                    if isAnimating {
-                        ZStack {
-                            Image("volcano.background")
-                                .resizable()
-                            Image(user.profile.image)
-                                .resizable()
-                                .scaledToFit()
-                                .scaleEffect(0.9)
-                                .frame(width: geo.size.width, height: geo.size.height * 0.5)
-                        }
-                        .transition(AnyTransition.asymmetric(insertion: .move(edge: .leading), removal: .move(edge: .trailing)))
-                        .ignoresSafeArea()
+                    if isAnimatingImages {
+                        ImageAnimationView(background: "volcano.background", image: user.profile.image, size: geo.size, insertionEdge: .bottom, removalEdge: .bottom)
                     }
                 }
             }
-            Color.white
-                .opacity(0.01)
-                .onTapGesture {
-                    withAnimation(.spring()) {
-                        isAnimating.toggle()
-                    }
-                }
+            VersusAnimationView(isAnimating: $isAnimatingVersus)
+            ToggableClearView(toggable: $isAnimatingImages)
         }
         .zIndex(2)
         .onAppear {
             withAnimation(.spring()) {
-                self.isAnimating.toggle()
+                isAnimatingImages.toggle()
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                withAnimation {
+                    isAnimatingImages.toggle()
+                    isAnimatingVersus.toggle()
+                    isPresented.toggle()
+                }
             }
         }
     }
@@ -64,6 +47,6 @@ struct GameStartAnimationView: View {
 
 struct GameStartAnimationView_Previews: PreviewProvider {
     static var previews: some View {
-        GameStartAnimationView(user: User.previewExample, trainer: Trainer.trainers[0])
+        GameStartAnimationView(isPresented: .constant(false), user: User.previewExample, trainer: Trainer.trainers[0])
     }
 }

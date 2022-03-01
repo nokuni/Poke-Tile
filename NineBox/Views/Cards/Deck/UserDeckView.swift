@@ -13,6 +13,7 @@ struct UserDeckView: View {
     @StateObject var deckVM = DeckViewModel()
     var body: some View {
         ZStack {
+            Color.white.ignoresSafeArea()
             GeometryReader { geo in
                 VStack(alignment: .leading) {
                     NavigationTitleView(size: geo.size, navigationTitle: NavigationTitleModel.decks)

@@ -20,8 +20,16 @@ class GameViewModel: ObservableObject {
     init() { }
     
     func resetGame() {
-        isShowingGameEnding.toggle()
         game = Game()
+        isShowingGameEnding.toggle()
+    }
+    
+    func loadGame() {
+        isShowingGameEnding.toggle()
+        game.turn = .user
+        loadBoard(bonus: addDebuffs)
+        loadPlayerHand()
+        loadOpponentHand()
     }
     
     func createNewGame(trainer: Trainer, deck: Deck) {
@@ -44,7 +52,10 @@ class GameViewModel: ObservableObject {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             if !self.game.isGameOver() {
                 self.isShowingTurnAnimation.toggle()
-            } else { self.isShowingGameEnding.toggle() }
+            } else {
+                
+                self.isShowingGameEnding.toggle()
+            }
         }
     }
     
@@ -164,6 +175,7 @@ class GameViewModel: ObservableObject {
     
     func loadPlayerHand() {
         game.deck?.cards.indices.forEach { game.deck?.cards[$0].side = .user }
+        game.deck?.cards.indices.forEach { game.deck?.cards[$0].isActivated = true }
     }
     
     func loadOpponentHand() {

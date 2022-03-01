@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Theme: Identifiable {
+struct Theme: Identifiable, Hashable {
     var id = UUID()
     let image: String
     let color: Color

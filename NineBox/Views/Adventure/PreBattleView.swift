@@ -17,54 +17,57 @@ struct PreBattleView: View {
         return try! Trainer.get(trainerName)
     }
     var body: some View {
-        GeometryReader { geo in
-            VStack(alignment: .leading) {
-                NavigationTitleView(size: geo.size, navigationTitle: NavigationTitleModel.preBattle)
-                TrainerRowView(size: geo.size, adventure: adventure, trainer: trainer)
-                Text(gameVM.user.decks[deckVM.selectedDeckIndex].name)
-                    .foregroundColor(.white)
-                    .font(.system(size: 20, weight: .regular, design: .rounded))
-                    .padding(10)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .background(
-                        Color.steelBlue
-                            .cornerRadius(5)
-                    )
-                UserPreBattleDeckListView(gameVM: gameVM, selectedDeckIndex: $deckVM.selectedDeckIndex, size: geo.size)
-                
-                Spacer()
-                
-                if !gameVM.isDeckReady(index: deckVM.selectedDeckIndex) {
-                    Text("Your deck needs 8 cards")
-                        .foregroundColor(.red)
-                }
-                NavigationLink(destination: GameView()) {
-                    Text("START BATTLE")
-                        .foregroundColor(.black)
-                        .font(.system(size: geo.size.width * 0.05, weight: .bold, design: .rounded))
+        ZStack {
+            Color.white.ignoresSafeArea()
+            GeometryReader { geo in
+                VStack(alignment: .leading) {
+                    NavigationTitleView(size: geo.size, navigationTitle: NavigationTitleModel.preBattle)
+                    TrainerRowView(size: geo.size, adventure: adventure, trainer: trainer)
+                    Text(gameVM.user.decks[deckVM.selectedDeckIndex].name)
+                        .foregroundColor(.white)
+                        .font(.system(size: 20, weight: .regular, design: .rounded))
                         .padding(10)
-                        .frame(maxWidth: .infinity)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                         .background(
-                            RoundedRectangle(cornerRadius: 5)
-                                .foregroundColor(!gameVM.isDeckReady(index: deckVM.selectedDeckIndex) ? . gray : .yellow)
+                            Color.steelBlue
                                 .cornerRadius(5)
-                                .shadow(color: .black, radius: 0, x: 3, y: 3)
                         )
-                }
-                .padding(.vertical)
-                .simultaneousGesture(
-                    TapGesture().onEnded { _ in
-                        gameVM.createNewGame(trainer: trainer, deck: gameVM.user.decks[deckVM.selectedDeckIndex])
+                    UserPreBattleDeckListView(gameVM: gameVM, selectedDeckIndex: $deckVM.selectedDeckIndex, size: geo.size)
+                    
+                    Spacer()
+                    
+                    if !gameVM.isDeckReady(index: deckVM.selectedDeckIndex) {
+                        Text("Your deck needs 8 cards")
+                            .foregroundColor(.red)
                     }
-                )
-                .disabled(!gameVM.isDeckReady(index: deckVM.selectedDeckIndex))
-                
-                BackButtonView(size: geo.size, dismiss: dismiss)
+                    NavigationLink(destination: GameView()) {
+                        Text("START BATTLE")
+                            .foregroundColor(.black)
+                            .font(.system(size: geo.size.width * 0.05, weight: .bold, design: .rounded))
+                            .padding(10)
+                            .frame(maxWidth: .infinity)
+                            .background(
+                                RoundedRectangle(cornerRadius: 5)
+                                    .foregroundColor(!gameVM.isDeckReady(index: deckVM.selectedDeckIndex) ? . gray : .yellow)
+                                    .cornerRadius(5)
+                                    .shadow(color: .black, radius: 0, x: 3, y: 3)
+                            )
+                    }
+                    .padding(.vertical)
+                    .simultaneousGesture(
+                        TapGesture().onEnded { _ in
+                            gameVM.createNewGame(trainer: trainer, deck: gameVM.user.decks[deckVM.selectedDeckIndex])
+                        }
+                    )
+                    .disabled(!gameVM.isDeckReady(index: deckVM.selectedDeckIndex))
+                    
+                    BackButtonView(size: geo.size, dismiss: dismiss)
+                }
             }
+            .padding()
+            .navigationBarHidden(true)
+            .navigationBarBackButtonHidden(true)
         }
-        .padding()
-        .navigationBarHidden(true)
-        .navigationBarBackButtonHidden(true)
     }
 }
 
