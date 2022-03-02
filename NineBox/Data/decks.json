@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Grass Starter",
+        "pokemons": ["Bulbasaur", "Exeggcute", "Meowth", "Ivysaur", "Tangela", "Abra", "Oddish", "Lickitung"],
+        "background": "forest.background"
+    },
+    {
+        "name": "Fire Starter",
+        "pokemons": ["Charmander", "Ponyta", "Meowth", "Charmeleon", "Magmar", "Machop", "Growlithe", "Rattata"],
+        "background": "volcano.background"
+    },
+    {
+        "name": "Water Starter",
+        "pokemons": ["Squirtle", "Staryu", "Eevee", "Wartortle", "Lapras", "Pikachu", "Otaria", "Psyduck"],
+        "background": "sea.background"
+    },
+]

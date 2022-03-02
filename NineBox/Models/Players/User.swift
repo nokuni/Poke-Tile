@@ -10,7 +10,7 @@ import Foundation
 struct User {
     var profile: Profile
     var cards: [Card] = Card.pokemons
-    var decks: [Deck] = Deck.placeholders
+    var decks: [Deck] = Deck.all
 }
 
 extension User {

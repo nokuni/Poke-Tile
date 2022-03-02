@@ -6,6 +6,8 @@
         "category": "debuff",
         "type": "bug",
         "stats": { "top": 0, "trailing": 0, "bottom": 0, "leading": 0 },
+        "rarity": "none",
+        "cost": 0
     },
     {
         "name": "Grass Debuff",
@@ -14,6 +16,8 @@
         "category": "debuff",
         "type": "grass",
         "stats": { "top": 0, "trailing": 0, "bottom": 0, "leading": 0 },
+        "rarity": "none",
+        "cost": 0
     },
     {
         "name": "Fire Debuff",
@@ -22,6 +26,8 @@
         "category": "debuff",
         "type": "fire",
         "stats": { "top": 0, "trailing": 0, "bottom": 0, "leading": 0 },
+        "rarity": "none",
+        "cost": 0
     },
     {
         "name": "Ground Debuff",
@@ -30,6 +36,8 @@
         "category": "debuff",
         "type": "ground",
         "stats": { "top": 0, "trailing": 0, "bottom": 0, "leading": 0 },
+        "rarity": "none",
+        "cost": 0
     },
     {
         "name": "Normal Debuff",
@@ -38,6 +46,8 @@
         "category": "debuff",
         "type": "normal",
         "stats": { "top": 0, "trailing": 0, "bottom": 0, "leading": 0 },
+        "rarity": "none",
+        "cost": 0
     },
     {
         "name": "Water Debuff",
@@ -46,6 +56,8 @@
         "category": "debuff",
         "type": "water",
         "stats": { "top": 0, "trailing": 0, "bottom": 0, "leading": 0 },
+        "rarity": "none",
+        "cost": 0
     },
     {
         "name": "Ghost Debuff",
@@ -54,6 +66,8 @@
         "category": "debuff",
         "type": "ghost",
         "stats": { "top": 0, "trailing": 0, "bottom": 0, "leading": 0 },
+        "rarity": "none",
+        "cost": 0
     },
     {
         "name": "Dark Debuff",
@@ -62,6 +76,8 @@
         "category": "debuff",
         "type": "dark",
         "stats": { "top": 0, "trailing": 0, "bottom": 0, "leading": 0 },
+        "rarity": "none",
+        "cost": 0
     },
     {
         "name": "Dragon Debuff",
@@ -70,6 +86,8 @@
         "category": "debuff",
         "type": "dragon",
         "stats": { "top": 0, "trailing": 0, "bottom": 0, "leading": 0 },
+        "rarity": "none",
+        "cost": 0
     },
     {
         "name": "Electric Debuff",
@@ -78,6 +96,8 @@
         "category": "debuff",
         "type": "electric",
         "stats": { "top": 0, "trailing": 0, "bottom": 0, "leading": 0 },
+        "rarity": "none",
+        "cost": 0
     },
     {
         "name": "Fairy Debuff",
@@ -86,6 +106,8 @@
         "category": "debuff",
         "type": "fairy",
         "stats": { "top": 0, "trailing": 0, "bottom": 0, "leading": 0 },
+        "rarity": "none",
+        "cost": 0
     },
     {
         "name": "Fighting Debuff",
@@ -94,6 +116,8 @@
         "category": "debuff",
         "type": "fighting",
         "stats": { "top": 0, "trailing": 0, "bottom": 0, "leading": 0 },
+        "rarity": "none",
+        "cost": 0
     },
     {
         "name": "Flying Debuff",
@@ -102,6 +126,8 @@
         "category": "debuff",
         "type": "flying",
         "stats": { "top": 0, "trailing": 0, "bottom": 0, "leading": 0 },
+        "rarity": "none",
+        "cost": 0
     },
     {
         "name": "Ice Debuff",
@@ -110,6 +136,8 @@
         "category": "debuff",
         "type": "ice",
         "stats": { "top": 0, "trailing": 0, "bottom": 0, "leading": 0 },
+        "rarity": "none",
+        "cost": 0
     },
     {
         "name": "Poison Debuff",
@@ -118,6 +146,8 @@
         "category": "debuff",
         "type": "poison",
         "stats": { "top": 0, "trailing": 0, "bottom": 0, "leading": 0 },
+        "rarity": "none",
+        "cost": 0
     },
     {
         "name": "Psychic Debuff",
@@ -126,6 +156,8 @@
         "category": "debuff",
         "type": "psychic",
         "stats": { "top": 0, "trailing": 0, "bottom": 0, "leading": 0 },
+        "rarity": "none",
+        "cost": 0
     },
     {
         "name": "Rock Debuff",
@@ -134,6 +166,8 @@
         "category": "debuff",
         "type": "rock",
         "stats": { "top": 0, "trailing": 0, "bottom": 0, "leading": 0 },
+        "rarity": "none",
+        "cost": 0
     },
     {
         "name": "Steel Debuff",
@@ -142,5 +176,7 @@
         "category": "debuff",
         "type": "steel",
         "stats": { "top": 0, "trailing": 0, "bottom": 0, "leading": 0 },
+        "rarity": "none",
+        "cost": 0
     },
 ]

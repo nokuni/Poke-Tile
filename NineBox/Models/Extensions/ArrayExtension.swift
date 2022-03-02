@@ -9,6 +9,11 @@ import Foundation
 
 extension Array {
     
+    func uniqued() -> [Element] where Element: Hashable {
+        var seen = Set<Element>()
+        return filter { seen.insert($0).inserted }
+    }
+    
     func removedNull(from array: [Int?]) -> [Int] {
         var array = array
         array.indices.forEach {

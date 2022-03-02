@@ -11,6 +11,7 @@ struct Game {
     var trainer: Trainer? = nil
     var trainerCards = [Card]()
     var deck: Deck? = nil
+    var userCards = [Card]()
     var board = [Card]()
     var boardFrames = [CGRect](repeating: .zero, count: 16)
     var turn: Turn? = nil

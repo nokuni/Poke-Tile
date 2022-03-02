@@ -7,11 +7,20 @@
 
 import Foundation
 
-struct Deck {
-    var name: String = "New Deck"
-    var cards: [Card] = Array(repeating: Card.slot, count: 8)
+struct Deck: Codable {
+    var name: String
+    var pokemons: [String]
+    var background: String
+    
+    var cards: [Card] {
+        return pokemons.map { try! Card.getPokemon(name: $0) }
+    }
+    
+    var types: [String] {
+        return cards.map { $0.backgroundImage }.uniqued()
+    }
 }
 
 extension Deck {
-    static let placeholders = Array(repeating: Deck(), count: 10)
+    static let all: [Deck] = try! Bundle.main.decode("decks.json")
 }

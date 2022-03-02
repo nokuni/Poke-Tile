@@ -35,6 +35,8 @@
 		2E642B6827CE8623006A2083 /* LongButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E642B6727CE8623006A2083 /* LongButtonView.swift */; };
 		2E642B6A27CE8885006A2083 /* EndingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E642B6927CE8885006A2083 /* EndingAnimationView.swift */; };
 		2E9676ED27CF4CA200DC50C6 /* ModalButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9676EC27CF4CA200DC50C6 /* ModalButtonView.swift */; };
+		2E9676EF27CFC40100DC50C6 /* decks.json in Resources */ = {isa = PBXBuildFile; fileRef = 2E9676EE27CFC40100DC50C6 /* decks.json */; };
+		2E9676F127CFFE0100DC50C6 /* UserDeckCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9676F027CFFE0100DC50C6 /* UserDeckCreationView.swift */; };
 		2E99A7B127C7D1060073DE8A /* TrainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E99A7B027C7D1060073DE8A /* TrainerView.swift */; };
 		2EA07DAE27C0D8C300AB974B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA07DAD27C0D8C300AB974B /* HomeView.swift */; };
 		2EA07DB427C0ED2E00AB974B /* OpponentHandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA07DB327C0ED2E00AB974B /* OpponentHandView.swift */; };
@@ -127,6 +129,8 @@
 		2E642B6727CE8623006A2083 /* LongButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongButtonView.swift; sourceTree = "<group>"; };
 		2E642B6927CE8885006A2083 /* EndingAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndingAnimationView.swift; sourceTree = "<group>"; };
 		2E9676EC27CF4CA200DC50C6 /* ModalButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalButtonView.swift; sourceTree = "<group>"; };
+		2E9676EE27CFC40100DC50C6 /* decks.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = decks.json; sourceTree = "<group>"; };
+		2E9676F027CFFE0100DC50C6 /* UserDeckCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDeckCreationView.swift; sourceTree = "<group>"; };
 		2E99A7B027C7D1060073DE8A /* TrainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainerView.swift; sourceTree = "<group>"; };
 		2EA07DAD27C0D8C300AB974B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		2EA07DB327C0ED2E00AB974B /* OpponentHandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpponentHandView.swift; sourceTree = "<group>"; };
@@ -360,6 +364,7 @@
 				2EFCB94627C24E5C0044B2E9 /* debuffs.json */,
 				2EFCB94827C250A60044B2E9 /* adventures.json */,
 				2EFCB97027C2C6280044B2E9 /* trainers.json */,
+				2E9676EE27CFC40100DC50C6 /* decks.json */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -400,6 +405,7 @@
 				2ED34E1027CB747C00F24251 /* UserDeckView.swift */,
 				2ED34E1827CBA3DE00F24251 /* UserDeckSlotView.swift */,
 				2ED34E1E27CBD72200F24251 /* Name */,
+				2E9676F027CFFE0100DC50C6 /* UserDeckCreationView.swift */,
 			);
 			path = Deck;
 			sourceTree = "<group>";
@@ -631,6 +637,7 @@
 				2EA07DC627C23B7400AB974B /* pokemons.json in Resources */,
 				2EEEA20927BD8126009A1D49 /* Preview Assets.xcassets in Resources */,
 				2EEEA20627BD8126009A1D49 /* Assets.xcassets in Resources */,
+				2E9676EF27CFC40100DC50C6 /* decks.json in Resources */,
 				2EFCB94727C24E5C0044B2E9 /* debuffs.json in Resources */,
 				2EFCB94927C250A60044B2E9 /* adventures.json in Resources */,
 				2EFCB97127C2C6280044B2E9 /* trainers.json in Resources */,
@@ -675,6 +682,7 @@
 				2E4E1A0227BEDD10001C8B67 /* CardType.swift in Sources */,
 				2EFCB97327C2D5BB0044B2E9 /* TrainerListView.swift in Sources */,
 				2EF5B05D27C3DA5D00A8930C /* GameDifficulty.swift in Sources */,
+				2E9676F127CFFE0100DC50C6 /* UserDeckCreationView.swift in Sources */,
 				2EFCB94D27C282110044B2E9 /* Turn.swift in Sources */,
 				2EF5B06827C41A3D00A8930C /* SettingsViewModel.swift in Sources */,
 				2E4E1A0A27BEDDC8001C8B67 /* AdventureRowView.swift in Sources */,

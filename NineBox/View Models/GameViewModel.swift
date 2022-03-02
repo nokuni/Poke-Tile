@@ -119,7 +119,8 @@ class GameViewModel: ObservableObject {
         buff?(index, game.board[match])
         convertAdjacents(from: match, with: index)
         if let deck = game.deck { game.board[match] = deck.cards[index] }
-        game.deck?.cards[index].isActivated = false
+        game.userCards[index].isActivated = false
+        //game.deck?.cards[index].isActivated = false
         game.turn = .opponent
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             if !self.game.isGameOver() { self.isShowingTurnAnimation.toggle() } else { self.isShowingGameEnding.toggle()
@@ -141,10 +142,14 @@ class GameViewModel: ObservableObject {
         guard let debuffAmount = debuff.debuffAmount else { return }
         guard let deck = game.deck else { return }
         let buffAmount = deck.cards[index].type == debuff.type ? debuffAmount : -debuffAmount
-        game.deck?.cards[index].stats.top += buffAmount
-        game.deck?.cards[index].stats.trailing += buffAmount
-        game.deck?.cards[index].stats.bottom += buffAmount
-        game.deck?.cards[index].stats.leading += buffAmount
+        game.userCards[index].stats.top += buffAmount
+        game.userCards[index].stats.trailing += buffAmount
+        game.userCards[index].stats.bottom += buffAmount
+        game.userCards[index].stats.leading += buffAmount
+//        game.deck?.cards[index].stats.top += buffAmount
+//        game.deck?.cards[index].stats.trailing += buffAmount
+//        game.deck?.cards[index].stats.bottom += buffAmount
+//        game.deck?.cards[index].stats.leading += buffAmount
     }
     
     func buffTrainerCard(index: Int, debuff: Card) {
@@ -174,8 +179,9 @@ class GameViewModel: ObservableObject {
     }
     
     func loadPlayerHand() {
-        game.deck?.cards.indices.forEach { game.deck?.cards[$0].side = .user }
-        game.deck?.cards.indices.forEach { game.deck?.cards[$0].isActivated = true }
+        if let deck = game.deck { game.userCards = deck.cards }
+        game.userCards.indices.forEach { game.userCards[$0].side = .user }
+        game.userCards.indices.forEach { game.userCards[$0].isActivated = true }
     }
     
     func loadOpponentHand() {

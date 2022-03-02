@@ -119,9 +119,9 @@
         "trainers": ["Brock", "Roxanne", "Roark", "Grant", "Olivia", "Gordie"],
     },
     {
-        "title": "Magnetic Field",
-        "icon": "magneticField.icon",
-        "image": "magneticField.background",
+        "title": "Quarry",
+        "icon": "quarry.icon",
+        "image": "quarry.background",
         "type": "Steel Debuff",
         "trainers": ["Jasmine", "Steven", "Byron", "Colress", "Wikstrom", "Molayne", "Chairman Rose", "Peony"],
     },

@@ -14,23 +14,59 @@ struct UserDeckListView: View {
     @Binding var selectedDeckIndex: Int
     var size: CGSize
     var body: some View {
-        TabView(selection: $selectedDeckIndex) {
+        ScrollView(showsIndicators: false) {
             ForEach(gameVM.user.decks.indices) { deckIndex in
-                LazyVGrid(columns: grid, spacing: 0) {
-                    ForEach(gameVM.user.decks[deckIndex].cards.indices) { index in
-                        UserDeckSlotView(selectedIndex: $selectedIndex, card: gameVM.user.decks[deckIndex].cards[index], index: index, size: size)
-                    }
-                }
-                .tag(deckIndex)
+                UserDeckRowView(deck: gameVM.user.decks[deckIndex], size: size)
             }
         }
-        .tabViewStyle(.page(indexDisplayMode: .never))
-        .frame(width: size.width, height: size.height * 0.25)
     }
 }
 
 struct UserDeckListView_Previews: PreviewProvider {
     static var previews: some View {
         UserDeckListView(gameVM: GameViewModel(), selectedIndex: .constant(0), selectedDeckIndex: .constant(0), size: CGSize.screen)
+    }
+}
+
+struct UserDeckRowView: View {
+    private let grid = [GridItem](repeating: .init(.flexible(), spacing: 0), count: 4)
+    var deck: Deck
+    var size: CGSize
+    var body: some View {
+        VStack {
+            NavigationLink(destination: EmptyView()) {
+                LazyVGrid(columns: grid, spacing: 0) {
+                    ForEach(deck.cards.indices) { index in
+                        CardView(card: deck.cards[index], size: size, amount: 4)
+                    }
+                }
+                .padding(.top, 25)
+                .padding(5)
+                .background(
+                    ZStack {
+                        Image(deck.background)
+                            .resizable()
+                            .centerCropped(radius: 5, alignment: .center)
+                        HStack {
+                            Text(deck.name)
+                                .foregroundColor(.black)
+                                .font(.system(size: size.width * 0.05, weight: .bold, design: .rounded))
+                            ForEach(deck.types, id: \.self) { type in
+                                Image(type)
+                                    .resizable()
+                                    .frame(width: size.width * 0.05, height: size.width * 0.05)
+                            }
+                        }
+                        .frame(maxWidth: .infinity)
+                        .background(
+                            Color.white.cornerRadius(5)
+                        )
+                        .padding(.horizontal, 8)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+                        .padding(.top, 5)
+                    }
+                )
+            }
+        }
     }
 }
