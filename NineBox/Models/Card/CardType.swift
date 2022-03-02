@@ -8,7 +8,7 @@
 import SwiftUI
 
 enum CardType: String, Codable, Equatable {
-    case empty, bug, dark, dragon, fire, ghost, grass, normal, water, ground
+    case empty, bug, dark, dragon, electric, fairy, fighting, fire, flying, ghost, grass, ground, ice, normal, poison, psychic, rock, steel, water
     
     var color: Color {
         switch self {
@@ -20,18 +20,36 @@ enum CardType: String, Codable, Equatable {
             return .darkBorder
         case .dragon:
             return .dragonBorder
+        case .electric:
+            return .electricBorder
+        case .fairy:
+            return .fairyBorder
+        case .fighting:
+            return .fightingBorder
         case .fire:
             return .fireBorder
+        case .flying:
+            return .flyingBorder
         case .ghost:
             return .ghostBorder
         case .grass:
             return .grassBorder
-        case .normal:
-            return .normalBorder
-        case .water:
-            return .waterBorder
         case .ground:
             return .groundBorder
+        case .ice:
+            return .iceBorder
+        case .normal:
+            return .normalBorder
+        case .poison:
+            return .poisonBorder
+        case .psychic:
+            return .psychicBorder
+        case .rock:
+            return .rockBorder
+        case .steel:
+            return .steelBorder
+        case .water:
+            return .waterBorder
         }
     }
 }

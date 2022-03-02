@@ -463,4 +463,476 @@
         "bonusAmount": 5,
         "difficulty": "hard"
     },
+    {
+        "name": "Lt. Surge",
+        "image": "ltSurge",
+        "background": "powerPlant.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Wattson",
+        "image": "wattson",
+        "background": "powerPlant.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Volkner",
+        "image": "volkner",
+        "background": "powerPlant.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Elesa",
+        "image": "elesa",
+        "background": "powerPlant.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Clemont",
+        "image": "clemont",
+        "background": "powerPlant.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Sophocles",
+        "image": "sophocles",
+        "background": "powerPlant.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Valerie",
+        "image": "valerie",
+        "background": "fairyland.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Mina",
+        "image": "mina",
+        "background": "fairyland.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Lillie",
+        "image": "lillie",
+        "background": "fairyland.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Opal",
+        "image": "opal",
+        "background": "fairyland.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Bede",
+        "image": "bede",
+        "background": "fairyland.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Bruno",
+        "image": "bruno",
+        "background": "dojo.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Chuck",
+        "image": "chuck",
+        "background": "dojo.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Brawly",
+        "image": "brawly",
+        "background": "dojo.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Maylene",
+        "image": "maylene",
+        "background": "dojo.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Marshal",
+        "image": "marshal",
+        "background": "dojo.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Korrina",
+        "image": "korrina",
+        "background": "dojo.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Hala",
+        "image": "hala",
+        "background": "dojo.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Bea",
+        "image": "bea",
+        "background": "dojo.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Bea",
+        "image": "bea",
+        "background": "dojo.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Falkner",
+        "image": "falkner",
+        "background": "thePeak.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Winona",
+        "image": "winona",
+        "background": "thePeak.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Skyla",
+        "image": "skyla",
+        "background": "thePeak.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Kahili",
+        "image": "kahili",
+        "background": "thePeak.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Lorelei",
+        "image": "lorelei",
+        "background": "floe.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Pryce",
+        "image": "pryce",
+        "background": "floe.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Glacia",
+        "image": "glacia",
+        "background": "floe.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Candice",
+        "image": "candice",
+        "background": "floe.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Brycen",
+        "image": "brycen",
+        "background": "floe.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Zinzolin",
+        "image": "zinzolin",
+        "background": "floe.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Wulfric",
+        "image": "wulfric",
+        "background": "floe.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Melony",
+        "image": "melony",
+        "background": "floe.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Koga",
+        "image": "koga",
+        "background": "swamp.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Janine",
+        "image": "janine",
+        "background": "swamp.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Roxie",
+        "image": "roxie",
+        "background": "swamp.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Plumeria",
+        "image": "plumeria",
+        "background": "swamp.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Klara",
+        "image": "klara",
+        "background": "swamp.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Sabrina",
+        "image": "sabrina",
+        "background": "ruins.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Will",
+        "image": "will",
+        "background": "ruins.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Tate & Liza",
+        "image": "tate&liza",
+        "background": "ruins.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Lucian",
+        "image": "lucian",
+        "background": "ruins.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Caitlin",
+        "image": "caitlin",
+        "background": "ruins.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Olympia",
+        "image": "olympia",
+        "background": "ruins.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Faba",
+        "image": "faba",
+        "background": "ruins.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Avery",
+        "image": "avery",
+        "background": "ruins.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Brock",
+        "image": "brock",
+        "background": "mountain.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Roxanne",
+        "image": "roxanne",
+        "background": "mountain.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Roark",
+        "image": "roark",
+        "background": "mountain.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Grant",
+        "image": "grant",
+        "background": "mountain.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Olivia",
+        "image": "olivia",
+        "background": "mountain.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Gordie",
+        "image": "gordie",
+        "background": "mountain.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Jasmine",
+        "image": "jasmine",
+        "background": "magneticField.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Steven",
+        "image": "steven",
+        "background": "magneticField.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Byron",
+        "image": "byron",
+        "background": "magneticField.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Colress",
+        "image": "colress",
+        "background": "magneticField.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Wikstrom",
+        "image": "wikstrom",
+        "background": "magneticField.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Molayne",
+        "image": "molayne",
+        "background": "magneticField.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Chairman Rose",
+        "image": "chairmanRose",
+        "background": "magneticField.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
+    {
+        "name": "Peony",
+        "image": "peony",
+        "background": "magneticField.background",
+        "pokemons": ["Bulbasaur", "Caterpie", "Weedle", "Oddish", "Paras", "Venonat", "Bellsprout", "Exeggcute"],
+        "bonusAmount": 5,
+        "difficulty": "hard"
+    },
 ]
