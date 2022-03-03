@@ -98,6 +98,7 @@
 		2EFCB97327C2D5BB0044B2E9 /* TrainerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFCB97227C2D5BB0044B2E9 /* TrainerListView.swift */; };
 		9637BF5F27CE1F8A00A3FC87 /* GameStartAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637BF5E27CE1F8A00A3FC87 /* GameStartAnimationView.swift */; };
 		9637BF6127CE22FE00A3FC87 /* AnimatedTurnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637BF6027CE22FE00A3FC87 /* AnimatedTurnView.swift */; };
+		96493DD927D0D4510032FDE8 /* UserDeckPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96493DD827D0D4510032FDE8 /* UserDeckPlaceholderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -193,6 +194,7 @@
 		2EFCB97227C2D5BB0044B2E9 /* TrainerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainerListView.swift; sourceTree = "<group>"; };
 		9637BF5E27CE1F8A00A3FC87 /* GameStartAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStartAnimationView.swift; sourceTree = "<group>"; };
 		9637BF6027CE22FE00A3FC87 /* AnimatedTurnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedTurnView.swift; sourceTree = "<group>"; };
+		96493DD827D0D4510032FDE8 /* UserDeckPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDeckPlaceholderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -400,12 +402,10 @@
 			isa = PBXGroup;
 			children = (
 				2ED34E0C27CB6C4E00F24251 /* UserDeckListView.swift */,
-				2ED34E1227CB81DA00F24251 /* UserSetCardListView.swift */,
-				2ED34E1627CB94AD00F24251 /* UserSetCardView.swift */,
+				96493DD727D0D1A90032FDE8 /* Creation */,
 				2ED34E1027CB747C00F24251 /* UserDeckView.swift */,
 				2ED34E1827CBA3DE00F24251 /* UserDeckSlotView.swift */,
 				2ED34E1E27CBD72200F24251 /* Name */,
-				2E9676F027CFFE0100DC50C6 /* UserDeckCreationView.swift */,
 			);
 			path = Deck;
 			sourceTree = "<group>";
@@ -576,6 +576,17 @@
 			path = General;
 			sourceTree = "<group>";
 		};
+		96493DD727D0D1A90032FDE8 /* Creation */ = {
+			isa = PBXGroup;
+			children = (
+				2ED34E1627CB94AD00F24251 /* UserSetCardView.swift */,
+				2ED34E1227CB81DA00F24251 /* UserSetCardListView.swift */,
+				2E9676F027CFFE0100DC50C6 /* UserDeckCreationView.swift */,
+				96493DD827D0D4510032FDE8 /* UserDeckPlaceholderView.swift */,
+			);
+			path = Creation;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -658,6 +669,7 @@
 				2E42558127BFEC2B009B62EB /* CardGestureView.swift in Sources */,
 				2EFCB94F27C2836E0044B2E9 /* TurnAnimationView.swift in Sources */,
 				2EA07DB627C0F18B00AB974B /* CGSizeExtension.swift in Sources */,
+				96493DD927D0D4510032FDE8 /* UserDeckPlaceholderView.swift in Sources */,
 				2E4E1A0C27BEDE06001C8B67 /* CardBackgroundView.swift in Sources */,
 				2E4A95F627C7BFDF00BA498D /* AdventureView.swift in Sources */,
 				2ED34E0727CB654A00F24251 /* User.swift in Sources */,

@@ -17,10 +17,10 @@ struct UserDeckView: View {
             GeometryReader { geo in
                 VStack(alignment: .leading) {
                     NavigationTitleView(size: geo.size, navigationTitle: NavigationTitleModel.decks)
-                    //ChangeDeckNameButtonView(isShowingNameAlert: $deckVM.isShowingNameAlert, name: $gameVM.user.decks[deckVM.selectedDeckIndex].name, index: deckVM.selectedDeckIndex)
+                    NavigationLink(destination: UserDeckCreationView(gameVM: gameVM, deckVM: deckVM, size: geo.size)) {
+                        LongButtonView(text: "Create New Deck", textColor: .white, backgroundColor: .limeGreen, borderColor: .black)
+                    }
                     UserDeckListView(gameVM: gameVM, selectedIndex: $deckVM.selectedIndex, selectedDeckIndex: $deckVM.selectedDeckIndex, size: geo.size)
-                    /*UserSetCardListView(size: geo.size, selectedIndex: $deckVM.selectedIndex, selectedCard: $deckVM.selectedCard, selectedDeck: $gameVM.user.decks[deckVM.selectedDeckIndex], gameVM: gameVM)
-                        .frame(height: geo.size.height * 0.35)*/
                     Spacer()
                     BackButtonView(size: geo.size, dismiss: dismiss)
                 }

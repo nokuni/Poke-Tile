@@ -12,13 +12,13 @@ struct UserSetCardListView: View {
     var size: CGSize
     @Binding var selectedIndex: Int
     @Binding var selectedCard: Card?
-    @Binding var selectedDeck: Deck
+    @Binding var cards: [Card]
     @ObservedObject var gameVM: GameViewModel
     var body: some View {
         ScrollView(showsIndicators: false) {
             LazyVGrid(columns: grid, spacing: 0) {
                 ForEach(gameVM.user.cards) { card in
-//                    UserSetCardView(selectedCard: $selectedCard, cards: $selectedDeck, selectedIndex: $selectedIndex, card: card, size: size)
+                    UserSetCardView(selectedCard: $selectedCard, cards: $cards, selectedIndex: $selectedIndex, card: card, size: size)
                 }
             }
             .padding()
@@ -34,6 +34,6 @@ struct UserSetCardListView: View {
 
 struct UserSetCardListView_Previews: PreviewProvider {
     static var previews: some View {
-        UserSetCardListView(size: CGSize.screen, selectedIndex: .constant(0), selectedCard: .constant(Card.empty), selectedDeck: .constant(Deck.all[0]), gameVM: GameViewModel())
+        UserSetCardListView(size: CGSize.screen, selectedIndex: .constant(0), selectedCard: .constant(Card.empty), cards: .constant(Card.placeholders), gameVM: GameViewModel())
     }
 }

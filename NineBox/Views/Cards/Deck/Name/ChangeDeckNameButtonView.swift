@@ -10,7 +10,6 @@ import SwiftUI
 struct ChangeDeckNameButtonView: View {
     @Binding var isShowingNameAlert: Bool
     @Binding var name: String
-    var index: Int
     var body: some View {
         Button(action: {
             isShowingNameAlert.toggle()
@@ -36,6 +35,6 @@ struct ChangeDeckNameButtonView: View {
 
 struct ChangeDeckNameButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        ChangeDeckNameButtonView(isShowingNameAlert: .constant(false), name: .constant("Deck"), index: 0)
+        ChangeDeckNameButtonView(isShowingNameAlert: .constant(false), name: .constant("Deck"))
     }
 }

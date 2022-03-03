@@ -15,8 +15,8 @@ struct UserDeckListView: View {
     var size: CGSize
     var body: some View {
         ScrollView(showsIndicators: false) {
-            ForEach(gameVM.user.decks.indices) { deckIndex in
-                UserDeckRowView(deck: gameVM.user.decks[deckIndex], size: size)
+            ForEach(gameVM.user.decks) { deck in
+                UserDeckRowView(deck: deck, size: size)
             }
         }
     }
