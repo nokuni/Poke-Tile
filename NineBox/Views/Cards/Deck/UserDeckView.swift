@@ -25,7 +25,6 @@ struct UserDeckView: View {
         }
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
-        .ignoresSafeArea(.keyboard)
     }
 }
 

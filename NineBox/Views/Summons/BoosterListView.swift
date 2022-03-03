@@ -10,11 +10,14 @@ import SwiftUI
 struct BoosterListView: View {
     @ObservedObject var gameVM: GameViewModel
     var size: CGSize
+    @Binding var selectedBooster: Booster?
     var body: some View {
         ScrollView {
             VStack {
-                ForEach(gameVM.user.boosters.indices) { index in
-                    BoosterRowView(booster: gameVM.user.boosters[index], gameVM: gameVM, size: size)
+                if !gameVM.user.boosters.isEmpty {
+                    ForEach(gameVM.user.boosters.indices) { index in
+                        BoosterRowView(booster: gameVM.user.boosters[index], gameVM: gameVM, size: size, selectedBooster: $selectedBooster)
+                    }
                 }
             }
         }
@@ -23,6 +26,6 @@ struct BoosterListView: View {
 
 struct BoosterListView_Previews: PreviewProvider {
     static var previews: some View {
-        BoosterListView(gameVM: GameViewModel(), size: CGSize.screen)
+        BoosterListView(gameVM: GameViewModel(), size: CGSize.screen, selectedBooster: .constant(nil))
     }
 }

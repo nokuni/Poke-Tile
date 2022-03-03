@@ -12,6 +12,10 @@ struct Booster: Codable, Equatable {
     var cardPool: [String]
     var background: String
     var type: CardType
+    
+    var cards: [Card] {
+        return cardPool.map { try! Card.getPokemon(name: $0) }
+    }
 }
 
 extension Booster {
