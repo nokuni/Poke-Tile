@@ -69,7 +69,7 @@ struct EndingMenuView: View {
                             loadGame?()
                             isShowingStart.toggle()
                         }) {
-                            LongButtonView(text: "Retry", textColor: .white, backgroundColor: .steelBlue, borderColor: .black)
+                            LongButtonView(text: "Retry", textColor: .white, textSize: 0.05, backgroundColor: .steelBlue, borderColor: .black)
                         }
                     }
                     
@@ -77,7 +77,7 @@ struct EndingMenuView: View {
                         resetGame?()
                         dismiss?()
                     }) {
-                        LongButtonView(text: "Quit", textColor: .white, backgroundColor: .steelBlue, borderColor: .black)
+                        LongButtonView(text: "Quit", textColor: .white, textSize: 0.05, backgroundColor: .steelBlue, borderColor: .black)
                     }
                 }
                     .padding(.horizontal)

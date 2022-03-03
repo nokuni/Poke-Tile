@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Grass Starter",
+        "cardPool": ["Bulbasaur", "Exeggcute", "Meowth", "Ivysaur", "Tangela", "Abra", "Oddish", "Lickitung"],
+        "background": "forest.background",
+        "type": "grass"
+    },
+    {
+        "name": "Fire Starter",
+        "cardPool": ["Charmander", "Ponyta", "Meowth", "Charmeleon", "Magmar", "Machop", "Growlithe", "Rattata"],
+        "background": "volcano.background",
+        "type": "fire"
+    },
+    {
+        "name": "Water Starter",
+        "cardPool": ["Squirtle", "Staryu", "Eevee", "Wartortle", "Lapras", "Pikachu", "Otaria", "Psyduck"],
+        "background": "sea.background",
+        "type": "water"
+    },
+]

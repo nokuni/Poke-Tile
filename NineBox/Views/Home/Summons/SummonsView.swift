@@ -8,13 +8,22 @@
 import SwiftUI
 
 struct SummonsView: View {
+    @ObservedObject var gameVM: GameViewModel
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        GeometryReader { geo in
+            VStack(alignment: .leading) {
+                NavigationTitleView(size: geo.size, navigationTitle: NavigationTitleModel.summons)
+                    .padding(.leading)
+                BoosterListView(gameVM: gameVM, size: geo.size)
+            }
+        }
+        .navigationBarHidden(true)
+        .navigationBarBackButtonHidden(true)
     }
 }
 
 struct SummonsView_Previews: PreviewProvider {
     static var previews: some View {
-        SummonsView()
+        SummonsView(gameVM: GameViewModel())
     }
 }

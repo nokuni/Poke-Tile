@@ -70,7 +70,7 @@ struct UserInformations: View {
         ImageCroppedView(image: "volcano.background")
             .frame(width: size.width, height: size.height * 0.1)
             .overlay(
-                TrainerImageView(size: size, height: 0.1, image: "blaine")
+                TrainerImageView(size: size, height: 0.1, image: gameVM.user.profile.image)
             )
             .overlay(
                 PlayerPoints(size: size, points: gameVM.game.userPoints, isUser: true)

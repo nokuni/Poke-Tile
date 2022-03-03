@@ -5,10 +5,14 @@
 //  Created by Yann Christophe Maertens on 17/02/2022.
 //
 
+// Lock/Unlock deck for prebuild
+// Deck playable only if the user has all cards.
+// Search in decks view
+
 import SwiftUI
 
 class GameViewModel: ObservableObject {
-    @Published var user = User(profile: Profile(name: "Nokuni", image: "blaine"))
+    @Published var user = User(profile: Profile(name: "Nokuni", image: "userboy"))
     @Published var game = Game()
     
     @Published var isShowingTurnAnimation = false
@@ -118,7 +122,7 @@ class GameViewModel: ObservableObject {
     func cardAction(match: Int, index: Int, buff: ((Int, Card) -> Void)?) {
         buff?(index, game.board[match])
         convertAdjacents(from: match, with: index)
-        if let deck = game.deck { game.board[match] = deck.cards[index] }
+        game.board[match] = game.userCards[index]
         game.userCards[index].isActivated = false
         //game.deck?.cards[index].isActivated = false
         game.turn = .opponent

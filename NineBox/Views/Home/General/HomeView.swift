@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject var gameVM: GameViewModel
     @State var isShowingModalTheme = false
+    @State var isShowingStarterModal = true
     var body: some View {
         NavigationView {
             ZStack {
@@ -20,7 +21,7 @@ struct HomeView: View {
                         Spacer()
                         HStack(spacing: 0) {
                             HomeNavigationLink(size: geo.size, item: HomeItem.summons, theme: gameVM.user.profile.theme) {
-                                SummonsView()
+                                SummonsView(gameVM: gameVM)
                             }
                             HomeNavigationLink(size: geo.size, item: HomeItem.adventures, theme: gameVM.user.profile.theme) {
                                 AdventureView()
@@ -40,6 +41,10 @@ struct HomeView: View {
                 if isShowingModalTheme {
                     ThemeModalView(isShowingModalTheme: $isShowingModalTheme, theme: $gameVM.user.profile.theme)
                 }
+                if isShowingStarterModal {
+                    StarterDecksModalView(gameVM: gameVM, isShowingStarterModal: $isShowingStarterModal)
+                }
+                
             }
             .navigationBarHidden(true)
         }

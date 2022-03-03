@@ -15,6 +15,7 @@ struct NavigationTitleModel {
 
 extension NavigationTitleModel {
     static let adventure = NavigationTitleModel(image: "map", title: "Adventure", color: .mediumSeaGreen)
+    static let summons = NavigationTitleModel(image: "decks", title: "Summons", color: .poisonBorder)
     static let trainer = NavigationTitleModel(image: "trainer", title: "Trainers", color: .mediumSeaGreen)
     static let decks = NavigationTitleModel(image: "decks", title: "Decks", color: .orangeDragonite)
     static let preBattle = NavigationTitleModel(image: "battle", title: "Battle Preparation", color: .crimson)

@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct TestView: View {
-    @State var pageIndex = 0
-    
+    @StateObject var gameVM = GameViewModel()
     var body: some View {
         VStack {
-            Text("current page = \(pageIndex) ")
-            TabView(selection: $pageIndex) {
-                Text("First").tag(0)
-                Text("Second").tag(1)
-                Text("Third").tag(2)
+            ForEach(gameVM.user.decks[2].cards) { card in
+                if gameVM.user.cards.contains(where: { $0.name == card.name }) {
+                    Text(card.name)
+                }
             }
-            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+            ForEach(gameVM.user.cards) { card in
+                Text(card.name)
+            }
         }
     }
 }

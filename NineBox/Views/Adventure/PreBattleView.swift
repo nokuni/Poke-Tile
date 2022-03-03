@@ -23,15 +23,6 @@ struct PreBattleView: View {
                 VStack(alignment: .leading) {
                     NavigationTitleView(size: geo.size, navigationTitle: NavigationTitleModel.preBattle)
                     TrainerRowView(size: geo.size, adventure: adventure, trainer: trainer)
-                    Text(gameVM.user.decks[deckVM.selectedDeckIndex].name)
-                        .foregroundColor(.white)
-                        .font(.system(size: 20, weight: .regular, design: .rounded))
-                        .padding(10)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .background(
-                            Color.steelBlue
-                                .cornerRadius(5)
-                        )
                     UserPreBattleDeckListView(gameVM: gameVM, selectedDeckIndex: $deckVM.selectedDeckIndex, size: geo.size)
                     
                     Spacer()
@@ -96,15 +87,15 @@ struct UserPreBattleDeckListView: View {
     var body: some View {
         TabView(selection: $selectedDeckIndex) {
             ForEach(gameVM.user.decks.indices) { deckIndex in
-                LazyVGrid(columns: grid, spacing: 0) {
-                    ForEach(gameVM.user.decks[deckIndex].cards.indices) { index in
-                        UserPreBattleDeckSlotView(gameVM: gameVM, card: gameVM.user.decks[deckIndex].cards[index], size: size)
-                    }
-                }
-                .tag(deckIndex)
+                UserDeckRowView(gameVM: gameVM, deck: gameVM.user.decks[deckIndex], size: size)
+                    .tag(deckIndex)
             }
         }
         .tabViewStyle(.page(indexDisplayMode: .never))
-        .frame(width: size.width, height: size.height * 0.25)
     }
+}
+
+class DeckViewModel: ObservableObject {
+    @Published var selectedDeckIndex = 0
+    @Published var selectedIndex = 0
 }

@@ -14,12 +14,10 @@ struct UserHandView: View {
     var body: some View {
         VStack {
             LazyVGrid(columns: grid, spacing: 0) {
-                if let deck = gameVM.game.deck {
-                ForEach(deck.cards.indices, id: \.self) { index in
-                    CardGestureView(isRotating: .constant(false), size: size, card: deck.cards[index], index: index, cardDropped: gameVM.cardDropped)
-                            .brightness(deck.cards[index].isActivated ? 0 : -0.5)
-                            .disabled(gameVM.game.turn == .opponent && !gameVM.isShowingTurnAnimation)
-                    }
+                ForEach(gameVM.game.userCards.indices, id: \.self) { index in
+                    CardGestureView(isRotating: .constant(false), size: size, card: gameVM.game.userCards[index], index: index, cardDropped: gameVM.cardDropped)
+                        .brightness(gameVM.game.userCards[index].isActivated ? 0 : -0.5)
+                        .disabled(gameVM.game.turn == .opponent && !gameVM.isShowingTurnAnimation)
                 }
             }
         }

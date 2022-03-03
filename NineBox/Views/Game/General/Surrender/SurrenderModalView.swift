@@ -32,13 +32,13 @@ struct SurrenderModalView: View {
                                     Button(action: {
                                         isShowingSurrenderModal.toggle()
                                     }) {
-                                    LongButtonView(text: "No", textColor: .white, backgroundColor: .steelBlue, borderColor: .black)
+                                        LongButtonView(text: "No", textColor: .white, textSize: 0.05, backgroundColor: .steelBlue, borderColor: .black)
                                     }
                                     Button(action: {
                                         isShowingSurrenderModal.toggle()
                                         isShowingGameEnding.toggle()
                                     }) {
-                                    LongButtonView(text: "Yes", textColor: .white, backgroundColor: .crimson, borderColor: .black)
+                                        LongButtonView(text: "Yes", textColor: .white, textSize: 0.05, backgroundColor: .crimson, borderColor: .black)
                                     }
                                 }
                                 .padding(.horizontal)
