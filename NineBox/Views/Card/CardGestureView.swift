@@ -16,6 +16,7 @@ struct CardGestureView: View {
     var index: Int
     
     var cardDropped: ((CGPoint, Int, Card) -> Void)?
+    var isCardInDeck: ((Card) -> Bool)?
     
     var gesture: some Gesture {
         DragGesture(coordinateSpace: .global)
@@ -28,7 +29,7 @@ struct CardGestureView: View {
             }
     }
     var body: some View {
-        CardView(card: card, size: size, amount: 4)
+        CardView(card: card, size: size, amount: 4, isCardInDeck: isCardInDeck)
             .offset(dragAmount)
             .gesture(gesture)
             .rotation3DEffect(.degrees(isRotating ? 180 : 0), axis: (x: 0, y: 1, z: 0))

@@ -14,24 +14,18 @@ struct SummonsView: View {
     @State var selectedBooster: Booster? = nil
     var body: some View {
         ZStack {
+            Color.white.ignoresSafeArea()
             GeometryReader { geo in
                 VStack(alignment: .leading) {
                     NavigationTitleView(size: geo.size, navigationTitle: NavigationTitleModel.summons)
-                        .padding(.leading)
                     BoosterListView(gameVM: gameVM, size: geo.size, selectedBooster: $selectedBooster)
                     BackButtonView(size: geo.size, dismiss: dismiss)
-                        .padding(.leading)
                 }
             }
-            
-            if gameVM.user.boosters.isEmpty {
-                Text("No boosters")
-                    .foregroundColor(Color(UIColor.systemGray4))
-                    .font(.system(size: CGSize.screen.width * 0.1, weight: .bold, design: .rounded))
-            }
+            .padding()
             
             if let selectedBooster = selectedBooster {
-                CardSummonAnimationView(cards: selectedBooster.cards, size: CGSize.screen, selectedBooster: $selectedBooster)
+                CardSummonAnimationView(cards: selectedBooster.cards, size: CGSize.screen, selectedBooster: $selectedBooster, isCardInDeck: gameVM.isCardInDeck)
             }
         }
         .navigationBarHidden(true)

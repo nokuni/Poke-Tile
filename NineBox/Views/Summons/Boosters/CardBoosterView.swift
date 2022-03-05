@@ -11,14 +11,10 @@ struct CardBoosterView: View {
     var booster: Booster
     var size: CGSize
     var body: some View {
-        RoundedRectangle(cornerRadius: 5)
-            .stroke(booster.type.color, lineWidth: 5)
+        Image(booster.background)
+            .resizable()
+            .centerCropped(radius: 5, alignment: .center)
             .frame(maxWidth: size.width, maxHeight: size.width)
-            .background(
-                Image(booster.background)
-                    .resizable()
-                    .centerCropped(radius: 5, alignment: .center)
-            )
             .overlay(
                 CardBoosterOverlay(booster: booster)
             )

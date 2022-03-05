@@ -17,7 +17,7 @@ struct OpponentHandView: View {
                 .centerCropped(radius: 5, alignment: .center)
                 .frame(width: size.width, height: size.height * 0.1)
                 .overlay(
-                    TrainerImageView(size: size, height: 0.1, image: trainer.image)
+                    TrainerImageView(size: size, height: 0.1, image: trainer.image, isUnlocked: true)
                 )
                 .overlay(
                     OpponentInformations(gameVM: gameVM, size: size)
@@ -70,7 +70,7 @@ struct UserInformations: View {
         ImageCroppedView(image: "volcano.background")
             .frame(width: size.width, height: size.height * 0.1)
             .overlay(
-                TrainerImageView(size: size, height: 0.1, image: gameVM.user.profile.image)
+                TrainerImageView(size: size, height: 0.1, image: gameVM.user.profile.image, isUnlocked: true)
             )
             .overlay(
                 PlayerPoints(size: size, points: gameVM.game.userPoints, isUser: true)

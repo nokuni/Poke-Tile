@@ -24,13 +24,13 @@ struct HomeView: View {
                                 SummonsView(gameVM: gameVM)
                             }
                             HomeNavigationLink(size: geo.size, item: HomeItem.adventures, theme: gameVM.user.profile.theme) {
-                                AdventureView()
+                                AdventureView(gameVM: gameVM)
                             }
                             HomeNavigationLink(size: geo.size, item: HomeItem.decks, theme: gameVM.user.profile.theme) {
                                 UserDeckView(gameVM: gameVM)
                             }
                             HomeNavigationLink(size: geo.size, item: HomeItem.shop, theme: gameVM.user.profile.theme) {
-                                EmptyView()
+                               UserCardsView(gameVM: gameVM)
                             }
                             HomeNavigationLink(size: geo.size, item: HomeItem.settings, theme: gameVM.user.profile.theme) {
                                 EmptyView()

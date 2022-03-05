@@ -18,6 +18,7 @@ extension NavigationTitleModel {
     static let summons = NavigationTitleModel(image: "decks", title: "Summons", color: .poisonBorder)
     static let trainer = NavigationTitleModel(image: "trainer", title: "Trainers", color: .mediumSeaGreen)
     static let decks = NavigationTitleModel(image: "decks", title: "Decks", color: .orangeDragonite)
+    static let cards = NavigationTitleModel(image: "decks", title: "Cards", color: .fairyBorder)
     static let preBattle = NavigationTitleModel(image: "battle", title: "Battle Preparation", color: .crimson)
     static let deckCreation = NavigationTitleModel(image: "decks", title: "Deck Creation", color: .limeGreen)
 }

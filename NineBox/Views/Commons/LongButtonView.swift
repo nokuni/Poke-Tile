@@ -17,7 +17,7 @@ struct LongButtonView: View {
         Text(text)
             .foregroundColor(textColor)
             .font(.system(size: CGSize.screen.width * textSize, weight: .semibold, design: .rounded))
-            .padding()
+            .padding(10)
             .frame(maxWidth: .infinity)
             .background(
                 RoundedRectangle(cornerRadius: 5)

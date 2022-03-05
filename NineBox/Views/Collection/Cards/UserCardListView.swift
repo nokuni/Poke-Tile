@@ -11,10 +11,14 @@ struct UserCardListView: View {
     var size: CGSize
     @ObservedObject var gameVM: GameViewModel
     private let grid = [GridItem](repeating: .init(.flexible(), spacing: 25), count: 4)
+    
+    var sortedCards: [Card] {
+        gameVM.user.cards.sorted(by: { $0.image < $1.image })
+    }
     var body: some View {
         ScrollView(showsIndicators: false) {
             LazyVGrid(columns: grid, spacing: 0) {
-                ForEach(gameVM.user.cards) { card in
+                ForEach(sortedCards) { card in
                     CardView(card: card, size: size, amount: 4)
                 }
             }

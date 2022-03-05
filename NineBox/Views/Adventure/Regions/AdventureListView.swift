@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct AdventureListView: View {
+    var adventures: [Adventure]
     var size: CGSize
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             LazyVStack(alignment: .leading) {
-                ForEach(Adventure.adventures) { adventure in
+                ForEach(adventures) { adventure in
                     NavigationLink(destination: TrainerView(adventure: adventure)) {
                         AdventureRowView(size: size, adventure: adventure)
                     }
@@ -29,6 +30,6 @@ struct AdventureListView: View {
 
 struct AdventureListView_Previews: PreviewProvider {
     static var previews: some View {
-        AdventureListView(size: CGSize.screen)
+        AdventureListView(adventures: [], size: CGSize.screen)
     }
 }

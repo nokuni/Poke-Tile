@@ -41,7 +41,6 @@ struct BoosterRowView: View {
                 .background(Color.crimson.cornerRadius(5))
             }
         }
-        .padding()
     }
 }
 

@@ -11,7 +11,12 @@
 
 import SwiftUI
 
+enum DeckFilters: String, CaseIterable {
+    case all, playable
+}
+
 class GameViewModel: ObservableObject {
+    @Published var trainers = [Trainer]()
     @Published var user = User(profile: Profile(name: "Nokuni", image: "userboy"))
     @Published var game = Game()
     
@@ -21,7 +26,28 @@ class GameViewModel: ObservableObject {
     
     static var shared = GameViewModel()
     
-    init() { }
+    init() {
+        
+    }
+    
+    func unlockedTrainers(from adventure: Adventure) -> [Trainer] {
+        var realTrainers = adventure.realTrainers
+        realTrainers[0].isUnlocked = true
+        return realTrainers
+    }
+    
+    func filteredDecks(filter: DeckFilters) -> [Deck] {
+        switch filter {
+        case .all:
+            return user.decks
+        case .playable:
+            return user.decks.filter { isDeckPlayable(deck: $0) }
+        }
+    }
+    
+    func isCardInDeck(_ card: Card) -> Bool {
+        user.cards.contains(where: { $0.name == card.name })
+    }
     
     func resetGame() {
         game = Game()
@@ -206,8 +232,12 @@ class GameViewModel: ObservableObject {
         }
     }
     
-    func isDeckReady(index: Int) -> Bool {
-        user.decks[index].cards.allSatisfy({ $0.category == .pokemon })
+    func isDeckPlayable(deck: Deck) -> Bool {
+        var boolArray = [Bool]()
+        for card in deck.cards {
+            if isCardInDeck(card) { boolArray.append(true) } else { boolArray.append(false) }
+        }
+        return boolArray.allSatisfy({ $0 == true })
     }
     
     // MARK: - OPPONENT AI
@@ -261,7 +291,7 @@ class GameViewModel: ObservableObject {
     }
     
     func rotatingCardAnimation(index: Int) {
-        withAnimation(.linear.repeatCount(2, autoreverses: false)) {
+        withAnimation(.linear.repeatCount(1, autoreverses: false)) {
             isRotatingCard[index].toggle()
         }
     }

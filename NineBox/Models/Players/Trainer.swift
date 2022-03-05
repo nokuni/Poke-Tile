@@ -15,6 +15,7 @@ struct Trainer: Codable, Identifiable {
     var pokemons: [String]
     let bonusAmount: Int
     let difficulty: GameDifficulty
+    var isUnlocked: Bool = false
     
     enum CodingKeys: String, CodingKey {
         case name, image, background, pokemons, bonusAmount, difficulty

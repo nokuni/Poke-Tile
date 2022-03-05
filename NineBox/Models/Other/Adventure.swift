@@ -23,6 +23,10 @@ struct Adventure: Codable, Identifiable {
         let debuff = try! Card.getDebuff(name: type)
         return debuff
     }
+    
+    var realTrainers: [Trainer] {
+        return trainers.map { try! Trainer.get($0) }
+    }
 }
 
 extension Adventure {

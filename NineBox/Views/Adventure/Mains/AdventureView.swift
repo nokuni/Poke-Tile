@@ -9,13 +9,14 @@ import SwiftUI
 
 struct AdventureView: View {
     @Environment(\.dismiss) private var dismiss
+    @ObservedObject var gameVM: GameViewModel
     var body: some View {
         ZStack {
             Color.white.ignoresSafeArea()
             GeometryReader { geo in
                 VStack(alignment: .leading) {
                     NavigationTitleView(size: geo.size, navigationTitle: .adventure)
-                    AdventureListView(size: geo.size)
+                    AdventureListView(adventures: Adventure.adventures, size: geo.size)
                     Spacer()
                     BackButtonView(size: geo.size, dismiss: dismiss)
                 }
@@ -28,6 +29,6 @@ struct AdventureView: View {
 
 struct AdventureView_Previews: PreviewProvider {
     static var previews: some View {
-        AdventureView()
+        AdventureView(gameVM: GameViewModel())
     }
 }

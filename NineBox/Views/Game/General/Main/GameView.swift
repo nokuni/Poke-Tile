@@ -27,18 +27,21 @@ struct GameView: View {
             
             if gameVM.isShowingTurnAnimation {
                 if let trainer = gameVM.game.trainer {
-                    TurnAnimationView(isPresented: $gameVM.isShowingTurnAnimation, trainer: trainer, turn: gameVM.game.turn, opponentPlays: gameVM.opponentPlays)
+                    TurnAnimationView(isPresented: $gameVM.isShowingTurnAnimation, user: gameVM.user, trainer: trainer, turn: gameVM.game.turn, opponentPlays: gameVM.opponentPlays)
                         .ignoresSafeArea()
                 }
             }
+            
             if gameVM.isShowingGameEnding {
                 EndingAnimationView(isPresented: $gameVM.isShowingGameEnding, isShowingStart: $isShowingStart, resetGame: gameVM.resetGame, loadGame: gameVM.loadGame, isGameWon: gameVM.game.isGameWon())
             }
+            
             if isShowingStart {
                 if let trainer = gameVM.game.trainer {
                     GameStartAnimationView(isPresented: $isShowingStart, user: gameVM.user, trainer: trainer)
                 }
             }
+            
             if isShowingSurrenderModal {
                 SurrenderModalView(isShowingGameEnding: $gameVM.isShowingGameEnding, isShowingSurrenderModal: $isShowingSurrenderModal)
             }

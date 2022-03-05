@@ -10,6 +10,7 @@ import SwiftUI
 struct TurnAnimationView: View {
     @State private var isAnimating = false
     @Binding var isPresented: Bool
+    var user: User
     var trainer: Trainer
     var turn: Turn?
     var opponentPlays: (() -> Void)?
@@ -19,7 +20,7 @@ struct TurnAnimationView: View {
                 Color.black.opacity(0.5)
                 GeometryReader { geo in
                     if isAnimating {
-                        AnimatedTurnView(trainer: trainer, turn: turn, size: geo.size)
+                        AnimatedTurnView(user: user, trainer: trainer, turn: turn, size: geo.size)
                     }
                 }
             }
@@ -45,6 +46,6 @@ struct TurnAnimationView: View {
 
 struct TurnAnimationView_Previews: PreviewProvider {
     static var previews: some View {
-        TurnAnimationView(isPresented: .constant(false), trainer: Trainer.trainers[0], turn: .opponent)
+        TurnAnimationView(isPresented: .constant(false), user: User.previewExample, trainer: Trainer.trainers[0], turn: .opponent)
     }
 }

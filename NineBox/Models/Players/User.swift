@@ -7,9 +7,10 @@
 
 import Foundation
 
-struct User {
+struct User: Identifiable {
+    var id = UUID()
     var profile: Profile
-    var cards: [Card] = Card.pokemons.filter { $0.type == .water }
+    var cards = [Card]()
     var decks: [Deck] = Deck.all
     var boosters = [Booster]()
 }

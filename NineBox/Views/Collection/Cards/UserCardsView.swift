@@ -1,23 +1,22 @@
 //
-//  UserDeckView.swift
+//  UserCardsView.swift
 //  NineBox
 //
-//  Created by Yann Christophe Maertens on 27/02/2022.
+//  Created by Yann Christophe Maertens on 23/02/2022.
 //
 
 import SwiftUI
 
-struct UserDeckView: View {
+struct UserCardsView: View {
     @Environment(\.dismiss) private var dismiss
     @ObservedObject var gameVM: GameViewModel
+    private let grid = [GridItem](repeating: .init(.flexible(), spacing: 25), count: 4)
     var body: some View {
         ZStack {
-            Color.white.ignoresSafeArea()
             GeometryReader { geo in
                 VStack(alignment: .leading) {
-                    NavigationTitleView(size: geo.size, navigationTitle: NavigationTitleModel.decks)
-                    UserDeckListView(gameVM: gameVM, size: geo.size)
-                    Spacer()
+                    NavigationTitleView(size: geo.size, navigationTitle: .cards)
+                    UserCardListView(size: geo.size, gameVM: gameVM)
                     BackButtonView(size: geo.size, dismiss: dismiss)
                 }
             }
@@ -28,8 +27,8 @@ struct UserDeckView: View {
     }
 }
 
-struct UserDeckView_Previews: PreviewProvider {
+struct UserCardsView_Previews: PreviewProvider {
     static var previews: some View {
-        UserDeckView(gameVM: GameViewModel())
+        UserCardsView(gameVM: GameViewModel())
     }
 }
