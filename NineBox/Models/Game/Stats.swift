@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Stats: Codable, Equatable {
+struct Stats: Codable, Equatable, Hashable {
     var top: Int
     var trailing: Int
     var bottom: Int

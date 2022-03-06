@@ -17,6 +17,7 @@ struct CardGestureView: View {
     
     var cardDropped: ((CGPoint, Int, Card) -> Void)?
     var isCardInDeck: ((Card) -> Bool)?
+    var isCardPokemon: ((Card) -> Bool)?
     
     var gesture: some Gesture {
         DragGesture(coordinateSpace: .global)
@@ -33,6 +34,7 @@ struct CardGestureView: View {
             .offset(dragAmount)
             .gesture(gesture)
             .rotation3DEffect(.degrees(isRotating ? 180 : 0), axis: (x: 0, y: 1, z: 0))
+            .zIndex(dragAmount == .zero ? 0 : 1)
             .disabled(!card.isActivated)
     }
 }

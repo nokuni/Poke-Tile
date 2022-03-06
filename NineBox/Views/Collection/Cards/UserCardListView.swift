@@ -11,15 +11,11 @@ struct UserCardListView: View {
     var size: CGSize
     @ObservedObject var gameVM: GameViewModel
     private let grid = [GridItem](repeating: .init(.flexible(), spacing: 25), count: 4)
-    
-    var sortedCards: [Card] {
-        gameVM.user.cards.sorted(by: { $0.image < $1.image })
-    }
     var body: some View {
         ScrollView(showsIndicators: false) {
             LazyVGrid(columns: grid, spacing: 0) {
-                ForEach(sortedCards) { card in
-                    CardView(card: card, size: size, amount: 4)
+                ForEach(gameVM.user.cards) { card in
+                    CardView(card: card, size: size, amount: 4, isCardPokemon: gameVM.isCardPokemon)
                 }
             }
             .padding()
@@ -36,5 +32,19 @@ struct UserCardListView: View {
 struct UserCardListView_Previews: PreviewProvider {
     static var previews: some View {
         UserCardListView(size: CGSize.screen, gameVM: GameViewModel())
+    }
+}
+
+extension Array where Element: Hashable {
+    func removingDuplicates() -> [Element] {
+        var addedDict = [Element: Bool]()
+
+        return filter {
+            addedDict.updateValue(true, forKey: $0) == nil
+        }
+    }
+
+    mutating func removeDuplicates() {
+        self = self.removingDuplicates()
     }
 }

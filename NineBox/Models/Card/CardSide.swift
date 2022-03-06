@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum CardSide: String, Codable {
+enum CardSide: String, Codable, Hashable {
     case user, opponent
     
     var color: Color {

@@ -20,6 +20,16 @@
          "cost": 11
      },
      {
+         "name": "Venusaur",
+         "image": "003",
+         "backgroundImage": "grass",
+         "category": "pokemon",
+         "type": "grass",
+         "stats": { "top": 3, "trailing": 8, "bottom": 3, "leading": 3 },
+         "rarity": "legendary",
+         "cost": 17
+     },
+     {
          "name": "Charmander",
          "image": "004",
          "backgroundImage": "fire",
@@ -90,6 +100,26 @@
          "cost": 2
      },
      {
+         "name": "Gloom",
+         "image": "044",
+         "backgroundImage": "grass",
+         "category": "pokemon",
+         "type": "grass",
+         "stats": { "top": 3, "trailing": 1, "bottom": 2, "leading": 1 },
+         "rarity": "uncommon",
+         "cost": 7
+     },
+     {
+         "name": "Vileplume",
+         "image": "045",
+         "backgroundImage": "grass",
+         "category": "pokemon",
+         "type": "grass",
+         "stats": { "top": 5, "trailing": 3, "bottom": 2, "leading": 3 },
+         "rarity": "epic",
+         "cost": 13
+     },
+     {
          "name": "Meowth",
          "image": "052",
          "backgroundImage": "normal",
@@ -140,6 +170,36 @@
          "cost": 3
      },
      {
+         "name": "Bellsprout",
+         "image": "069",
+         "backgroundImage": "grass",
+         "category": "pokemon",
+         "type": "grass",
+         "stats": { "top": 2, "trailing": 1, "bottom": -2, "leading": 1 },
+         "rarity": "common",
+         "cost": 2
+     },
+     {
+         "name": "Weepinbell",
+         "image": "070",
+         "backgroundImage": "grass",
+         "category": "pokemon",
+         "type": "grass",
+         "stats": { "top": 4, "trailing": 2, "bottom": 0, "leading": 2 },
+         "rarity": "uncommon",
+         "cost": 8
+     },
+     {
+         "name": "Victreebel",
+         "image": "071",
+         "backgroundImage": "grass",
+         "category": "pokemon",
+         "type": "grass",
+         "stats": { "top": 6, "trailing": 4, "bottom": 1, "leading": 4 },
+         "rarity": "epic",
+         "cost": 15
+     },
+     {
          "name": "Ponyta",
          "image": "077",
          "backgroundImage": "fire",
@@ -150,6 +210,16 @@
          "cost": 6
      },
      {
+         "name": "Slowpoke",
+         "image": "079",
+         "backgroundImage": "psychic",
+         "category": "pokemon",
+         "type": "psychic",
+         "stats": { "top": -1, "trailing": 2, "bottom": 2, "leading": 2 },
+         "rarity": "uncommon",
+         "cost": 5
+     },
+     {
          "name": "Otaria",
          "image": "086",
          "backgroundImage": "water",
@@ -158,6 +228,16 @@
          "stats": { "top": 2, "trailing": 2, "bottom": 2, "leading": 0 },
          "rarity": "uncommon",
          "cost": 6
+     },
+     {
+         "name": "Drowzee",
+         "image": "096",
+         "backgroundImage": "psychic",
+         "category": "pokemon",
+         "type": "psychic",
+         "stats": { "top": 3, "trailing": 3, "bottom": -2, "leading": 3 },
+         "rarity": "uncommon",
+         "cost": 7
      },
      {
          "name": "Exeggcute",

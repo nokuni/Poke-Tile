@@ -17,6 +17,6 @@ extension HomeItem {
     static let summons = HomeItem(icon: "pokeball2", title: "Summons")
     static let adventures = HomeItem(icon: "map", title: "Adventure")
     static let decks = HomeItem(icon: "decks", title: "Decks")
-    static let shop = HomeItem(icon: "shop", title: "Shop")
+    static let cards = HomeItem(icon: "cards", title: "Cards")
     static let settings = HomeItem(icon: "settings", title: "Settings")
 }

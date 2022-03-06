@@ -11,19 +11,16 @@ struct TrainerListView: View {
     @EnvironmentObject var gameVM: GameViewModel
     var size: CGSize
     var adventure: Adventure
-    
-    var trainers: [Trainer] {
-        gameVM.unlockedTrainers(from: adventure)
-    }
+    var trainers: [Trainer]
     var body: some View {
         ScrollView(showsIndicators: false) {
             LazyVStack(alignment: .leading) {
-                ForEach(trainers.indices) { index in
-                    NavigationLink(destination: PreBattleView(gameVM: gameVM, adventure: adventure, trainer: trainers[index])) {
-                        TrainerRowView(size: size, adventure: adventure, trainer: trainers[index])
+                ForEach(trainers) { trainer in
+                    NavigationLink(destination: PreBattleView(adventure: adventure, trainer: trainer)) {
+                        TrainerRowView(size: size, adventure: adventure, trainer: trainer)
                             .overlay(
                                 ZStack {
-                                    if !trainers[index].isUnlocked {
+                                    if !trainer.isUnlocked {
                                         RoundedRectangle(cornerRadius: 5)
                                             .foregroundColor(.black.opacity(0.5))
                                         Image(systemName: "lock.fill")
@@ -33,7 +30,7 @@ struct TrainerListView: View {
                                 }
                             )
                     }
-                    .disabled(!trainers[index].isUnlocked)
+                    .disabled(!trainer.isUnlocked)
                 }
             }
         }
@@ -42,6 +39,6 @@ struct TrainerListView: View {
 
 struct TrainerListView_Previews: PreviewProvider {
     static var previews: some View {
-        TrainerListView(size: CGSize.screen, adventure: Adventure.adventures[0])
+        TrainerListView(size: CGSize.screen, adventure: Adventure.adventures[0], trainers: [])
     }
 }

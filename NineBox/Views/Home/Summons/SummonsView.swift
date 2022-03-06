@@ -12,20 +12,22 @@ struct SummonsView: View {
     @ObservedObject var gameVM: GameViewModel
     @State var isShowingSummons = false
     @State var selectedBooster: Booster? = nil
+    @State var cards = [Card]()
+    @State var previousCardCollection = [Card]()
     var body: some View {
         ZStack {
             Color.white.ignoresSafeArea()
             GeometryReader { geo in
                 VStack(alignment: .leading) {
                     NavigationTitleView(size: geo.size, navigationTitle: NavigationTitleModel.summons)
-                    BoosterListView(gameVM: gameVM, size: geo.size, selectedBooster: $selectedBooster)
+                    BoosterListView(gameVM: gameVM, size: geo.size, selectedBooster: $selectedBooster, cards: $cards, previousCardCollection: $previousCardCollection)
                     BackButtonView(size: geo.size, dismiss: dismiss)
                 }
             }
             .padding()
             
-            if let selectedBooster = selectedBooster {
-                CardSummonAnimationView(cards: selectedBooster.cards, size: CGSize.screen, selectedBooster: $selectedBooster, isCardInDeck: gameVM.isCardInDeck)
+            if selectedBooster != nil {
+                CardSummonAnimationView(cards: cards, previousCardCollection: previousCardCollection, size: CGSize.screen, selectedBooster: $selectedBooster, isCardInDeck: gameVM.isCardInDeck, isCardDuplicate: gameVM.isCardDuplicate)
             }
         }
         .navigationBarHidden(true)

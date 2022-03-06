@@ -29,7 +29,7 @@ struct HomeView: View {
                             HomeNavigationLink(size: geo.size, item: HomeItem.decks, theme: gameVM.user.profile.theme) {
                                 UserDeckView(gameVM: gameVM)
                             }
-                            HomeNavigationLink(size: geo.size, item: HomeItem.shop, theme: gameVM.user.profile.theme) {
+                            HomeNavigationLink(size: geo.size, item: HomeItem.cards, theme: gameVM.user.profile.theme) {
                                UserCardsView(gameVM: gameVM)
                             }
                             HomeNavigationLink(size: geo.size, item: HomeItem.settings, theme: gameVM.user.profile.theme) {

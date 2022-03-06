@@ -17,13 +17,16 @@ struct TrainerView: View {
             GeometryReader { geo in
                 VStack(alignment: .leading) {
                     NavigationTitleView(size: geo.size, navigationTitle: NavigationTitleModel(image: adventure.icon, title: adventure.title, color: adventure.debuff.borderColor))
-                    TrainerListView(size: geo.size, adventure: adventure)
+                    TrainerListView(size: geo.size, adventure: adventure, trainers: gameVM.trainers)
                     Spacer()
                     BackButtonView(size: geo.size, dismiss: dismiss)
                 }
             }
             .padding()
             .navigationBarHidden(true)
+        }
+        .onAppear {
+            gameVM.showTrainers(from: adventure)
         }
     }
 }

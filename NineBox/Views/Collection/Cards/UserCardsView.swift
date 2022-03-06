@@ -13,6 +13,7 @@ struct UserCardsView: View {
     private let grid = [GridItem](repeating: .init(.flexible(), spacing: 25), count: 4)
     var body: some View {
         ZStack {
+            Color.white.ignoresSafeArea()
             GeometryReader { geo in
                 VStack(alignment: .leading) {
                     NavigationTitleView(size: geo.size, navigationTitle: .cards)

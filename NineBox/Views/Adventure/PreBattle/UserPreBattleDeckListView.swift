@@ -13,6 +13,7 @@ struct UserPreBattleDeckListView: View {
     @Binding var selectedDeckIndex: Int
     var size: CGSize
     var isCardInDeck: ((Card) -> Bool)?
+    var isCardPokemon: ((Card) -> Bool)?
     var body: some View {
         TabView(selection: $selectedDeckIndex) {
             ForEach(decks.indices) { deckIndex in
@@ -21,7 +22,7 @@ struct UserPreBattleDeckListView: View {
                         .tag(deckIndex)
                     LazyVGrid(columns: grid, spacing: 0) {
                         ForEach(decks[deckIndex].cards.indices) { index in
-                            CardView(card: decks[deckIndex].cards[index], size: size, amount: 4, isCardInDeck: isCardInDeck)
+                            CardView(card: decks[deckIndex].cards[index], size: size, amount: 4, isCardInDeck: isCardInDeck, isCardPokemon: isCardPokemon)
                         }
                     }
                 }

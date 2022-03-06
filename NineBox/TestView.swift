@@ -8,16 +8,24 @@
 import SwiftUI
 
 struct TestView: View {
-    @StateObject var gameVM = GameViewModel()
+    @State var isShowing = false
     var body: some View {
-        VStack {
-            ForEach(gameVM.user.decks[2].cards) { card in
-                if gameVM.user.cards.contains(where: { $0.name == card.name }) {
-                    Text(card.name)
+        ScrollView {
+            VStack {
+                ForEach(0..<10, id: \.self) { _ in
+                    ZStack {
+                        if isShowing {
+                            RoundedRectangle(cornerRadius: 5)
+                                .frame(width: CGSize.screen.width, height: CGSize.screen.height * 0.1)
+                        }
+                    }
+                    .transition(.opacity)
                 }
             }
-            ForEach(gameVM.user.cards) { card in
-                Text(card.name)
+        }
+        .onAppear {
+            withAnimation(.linear) {
+                isShowing.toggle()
             }
         }
     }

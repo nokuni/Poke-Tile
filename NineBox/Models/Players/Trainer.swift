@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Trainer: Codable, Identifiable {
+struct Trainer: Codable, Identifiable, Equatable {
     var id = UUID()
     let name: String
     let image: String
@@ -15,10 +15,15 @@ struct Trainer: Codable, Identifiable {
     var pokemons: [String]
     let bonusAmount: Int
     let difficulty: GameDifficulty
+    let reward: String
     var isUnlocked: Bool = false
     
     enum CodingKeys: String, CodingKey {
-        case name, image, background, pokemons, bonusAmount, difficulty
+        case name, image, background, pokemons, bonusAmount, difficulty, reward
+    }
+    
+    var booster: Booster {
+        return try! Trainer.get(reward)
     }
     
     var cards: [Card] {
@@ -34,6 +39,7 @@ struct Trainer: Codable, Identifiable {
 extension Trainer {
     enum TrainerError: Error {
         case noTrainer
+        case noBooster
     }
     static let trainers: [Trainer] = try! Bundle.main.decode("trainers.json")
     
@@ -43,5 +49,13 @@ extension Trainer {
             throw TrainerError.noTrainer
         }
         return trainer
+    }
+    
+    static func get(_ name: String) throws -> Booster {
+        let boosters: [Booster] = try! Bundle.main.decode("boosters.json")
+        guard let booster = boosters.first(where: { $0.name == name }) else {
+            throw TrainerError.noBooster
+        }
+        return booster
     }
 }

@@ -17,4 +17,10 @@
         "background": "sea.background",
         "type": "water"
     },
+    {
+        "name": "Little Clearing",
+        "cardPool": ["Bulbasaur", "Oddish", "Bellsprout", "Exeggcute", "Meowth", "Tangela", "Abra", "Lickitung", "Rattata", "Eevee", "Slowpoke", "Drowzee"],
+        "background": "forest.background",
+        "type": "grass"
+    },
 ]

@@ -5,7 +5,8 @@
         "background": "forest.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 3,
-        "difficulty": "easy"
+        "difficulty": "easy",
+        "reward": "Little Clearing"
     },
     {
         "name": "Gardenia",
@@ -13,7 +14,8 @@
         "background": "forest.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 3,
-        "difficulty": "easy"
+        "difficulty": "easy",
+        "reward": "Little Clearing"
     },
     {
         "name": "Cilan",
@@ -21,7 +23,8 @@
         "background": "forest.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 3,
-        "difficulty": "normal"
+        "difficulty": "normal",
+        "reward": "Little Clearing"
     },
     {
         "name": "Ramos",
@@ -29,7 +32,8 @@
         "background": "forest.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 3,
-        "difficulty": "normal"
+        "difficulty": "normal",
+        "reward": "Little Clearing"
     },
     {
         "name": "Mallow",
@@ -37,7 +41,8 @@
         "background": "forest.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 3,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Milo",
@@ -45,7 +50,8 @@
         "background": "forest.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 3,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Blaine",
@@ -53,7 +59,8 @@
         "background": "volcano.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Flannery",
@@ -61,7 +68,8 @@
         "background": "volcano.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Flint",
@@ -69,7 +77,8 @@
         "background": "volcano.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Chili",
@@ -77,7 +86,8 @@
         "background": "volcano.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Malva",
@@ -85,7 +95,8 @@
         "background": "volcano.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Kiawe",
@@ -93,7 +104,8 @@
         "background": "volcano.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Kabu",
@@ -101,7 +113,8 @@
         "background": "volcano.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Whitney",
@@ -109,7 +122,8 @@
         "background": "castle.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "easy"
+        "difficulty": "easy",
+        "reward": "Little Clearing"
     },
     {
         "name": "Norman",
@@ -117,7 +131,8 @@
         "background": "castle.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "normal"
+        "difficulty": "normal",
+        "reward": "Little Clearing"
     },
     {
         "name": "Lenora",
@@ -125,7 +140,8 @@
         "background": "castle.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Cheren",
@@ -133,7 +149,8 @@
         "background": "castle.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Ilima",
@@ -141,7 +158,8 @@
         "background": "castle.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Bugsy",
@@ -149,7 +167,8 @@
         "background": "jungle.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Aaron",
@@ -157,7 +176,8 @@
         "background": "jungle.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Burgh",
@@ -165,7 +185,8 @@
         "background": "jungle.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Viola",
@@ -173,7 +194,8 @@
         "background": "jungle.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Guzma",
@@ -181,7 +203,8 @@
         "background": "jungle.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Misty",
@@ -189,7 +212,8 @@
         "background": "sea.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Wallace",
@@ -197,7 +221,8 @@
         "background": "sea.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Juan",
@@ -205,7 +230,8 @@
         "background": "sea.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Crasher Wake",
@@ -213,7 +239,8 @@
         "background": "sea.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Cress",
@@ -221,7 +248,8 @@
         "background": "sea.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Marlon",
@@ -229,7 +257,8 @@
         "background": "sea.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Siebold",
@@ -237,7 +266,8 @@
         "background": "sea.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Lana",
@@ -245,7 +275,8 @@
         "background": "sea.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Nessa",
@@ -253,7 +284,8 @@
         "background": "sea.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Giovanni",
@@ -261,7 +293,8 @@
         "background": "desert.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Bertha",
@@ -269,7 +302,8 @@
         "background": "desert.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Clay",
@@ -277,7 +311,8 @@
         "background": "desert.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Hapu",
@@ -285,7 +320,8 @@
         "background": "desert.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Agatha",
@@ -293,7 +329,8 @@
         "background": "mansion.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Morty",
@@ -301,7 +338,8 @@
         "background": "mansion.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Phoebe",
@@ -309,7 +347,8 @@
         "background": "mansion.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Fantina",
@@ -317,7 +356,8 @@
         "background": "mansion.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Shauntal",
@@ -325,7 +365,8 @@
         "background": "mansion.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Acerola",
@@ -333,7 +374,8 @@
         "background": "mansion.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Allister",
@@ -341,7 +383,8 @@
         "background": "mansion.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Karen",
@@ -349,7 +392,8 @@
         "background": "midnight.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Sidney",
@@ -357,7 +401,8 @@
         "background": "midnight.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Grimsley",
@@ -365,7 +410,8 @@
         "background": "midnight.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Nanu",
@@ -373,7 +419,8 @@
         "background": "midnight.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Marnie",
@@ -381,7 +428,8 @@
         "background": "midnight.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Piers",
@@ -389,7 +437,8 @@
         "background": "midnight.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Lance",
@@ -397,7 +446,8 @@
         "background": "lair.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Clair",
@@ -405,7 +455,8 @@
         "background": "lair.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Drake",
@@ -413,7 +464,8 @@
         "background": "lair.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Drayden",
@@ -421,7 +473,8 @@
         "background": "lair.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Iris",
@@ -429,7 +482,8 @@
         "background": "lair.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Drasna",
@@ -437,7 +491,8 @@
         "background": "lair.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Zinnia",
@@ -445,7 +500,8 @@
         "background": "lair.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Ryuki",
@@ -453,7 +509,8 @@
         "background": "lair.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Raihan",
@@ -461,7 +518,8 @@
         "background": "lair.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Lt. Surge",
@@ -469,7 +527,8 @@
         "background": "powerPlant.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Wattson",
@@ -477,7 +536,8 @@
         "background": "powerPlant.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Volkner",
@@ -485,7 +545,8 @@
         "background": "powerPlant.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Elesa",
@@ -493,7 +554,8 @@
         "background": "powerPlant.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Clemont",
@@ -501,7 +563,8 @@
         "background": "powerPlant.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Sophocles",
@@ -509,7 +572,8 @@
         "background": "powerPlant.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Valerie",
@@ -517,7 +581,8 @@
         "background": "fairyland.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Mina",
@@ -525,7 +590,8 @@
         "background": "fairyland.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Lillie",
@@ -533,7 +599,8 @@
         "background": "fairyland.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Opal",
@@ -541,7 +608,8 @@
         "background": "fairyland.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Bede",
@@ -549,7 +617,8 @@
         "background": "fairyland.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Bruno",
@@ -557,7 +626,8 @@
         "background": "dojo.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Chuck",
@@ -565,7 +635,8 @@
         "background": "dojo.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Brawly",
@@ -573,7 +644,8 @@
         "background": "dojo.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Maylene",
@@ -581,7 +653,8 @@
         "background": "dojo.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Marshal",
@@ -589,7 +662,8 @@
         "background": "dojo.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Korrina",
@@ -597,7 +671,8 @@
         "background": "dojo.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Hala",
@@ -605,7 +680,8 @@
         "background": "dojo.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Bea",
@@ -613,7 +689,8 @@
         "background": "dojo.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Bea",
@@ -621,7 +698,8 @@
         "background": "dojo.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Falkner",
@@ -629,7 +707,8 @@
         "background": "thePeak.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Winona",
@@ -637,7 +716,8 @@
         "background": "thePeak.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Skyla",
@@ -645,7 +725,8 @@
         "background": "thePeak.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Kahili",
@@ -653,7 +734,8 @@
         "background": "thePeak.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Lorelei",
@@ -661,7 +743,8 @@
         "background": "floe.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Pryce",
@@ -669,7 +752,8 @@
         "background": "floe.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Glacia",
@@ -677,7 +761,8 @@
         "background": "floe.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Candice",
@@ -685,7 +770,8 @@
         "background": "floe.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Brycen",
@@ -693,7 +779,8 @@
         "background": "floe.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Zinzolin",
@@ -701,7 +788,8 @@
         "background": "floe.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Wulfric",
@@ -709,7 +797,8 @@
         "background": "floe.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Melony",
@@ -717,7 +806,8 @@
         "background": "floe.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Koga",
@@ -725,7 +815,8 @@
         "background": "swamp.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Janine",
@@ -733,7 +824,8 @@
         "background": "swamp.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Roxie",
@@ -741,7 +833,8 @@
         "background": "swamp.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Plumeria",
@@ -749,7 +842,8 @@
         "background": "swamp.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Klara",
@@ -757,7 +851,8 @@
         "background": "swamp.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Sabrina",
@@ -765,7 +860,8 @@
         "background": "ruins.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Will",
@@ -773,7 +869,8 @@
         "background": "ruins.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Tate & Liza",
@@ -781,7 +878,8 @@
         "background": "ruins.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Lucian",
@@ -789,7 +887,8 @@
         "background": "ruins.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Caitlin",
@@ -797,7 +896,8 @@
         "background": "ruins.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Olympia",
@@ -805,7 +905,8 @@
         "background": "ruins.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Faba",
@@ -813,7 +914,8 @@
         "background": "ruins.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Avery",
@@ -821,7 +923,8 @@
         "background": "ruins.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Brock",
@@ -829,7 +932,8 @@
         "background": "mountain.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Roxanne",
@@ -837,7 +941,8 @@
         "background": "mountain.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Roark",
@@ -845,7 +950,8 @@
         "background": "mountain.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Grant",
@@ -853,7 +959,8 @@
         "background": "mountain.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Olivia",
@@ -861,7 +968,8 @@
         "background": "mountain.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Gordie",
@@ -869,7 +977,8 @@
         "background": "mountain.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Jasmine",
@@ -877,7 +986,8 @@
         "background": "quarry.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Steven",
@@ -885,7 +995,8 @@
         "background": "quarry.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Byron",
@@ -893,7 +1004,8 @@
         "background": "quarry.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Colress",
@@ -901,7 +1013,8 @@
         "background": "quarry.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Wikstrom",
@@ -909,7 +1022,8 @@
         "background": "quarry.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Molayne",
@@ -917,7 +1031,8 @@
         "background": "quarry.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Chairman Rose",
@@ -925,7 +1040,8 @@
         "background": "quarry.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
     {
         "name": "Peony",
@@ -933,6 +1049,7 @@
         "background": "quarry.background",
         "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 5,
-        "difficulty": "hard"
+        "difficulty": "hard",
+        "reward": "Little Clearing"
     },
 ]

@@ -33,7 +33,9 @@ struct GameView: View {
             }
             
             if gameVM.isShowingGameEnding {
-                EndingAnimationView(isPresented: $gameVM.isShowingGameEnding, isShowingStart: $isShowingStart, resetGame: gameVM.resetGame, loadGame: gameVM.loadGame, isGameWon: gameVM.game.isGameWon())
+                if let trainer = gameVM.game.trainer {
+                    EndingAnimationView(booster: trainer.booster, isPresented: $gameVM.isShowingGameEnding, isShowingStart: $isShowingStart, resetGame: gameVM.resetGame, loadGame: gameVM.loadGame, isGameWon: gameVM.game.isGameWon())
+                }
             }
             
             if isShowingStart {

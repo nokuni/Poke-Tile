@@ -26,22 +26,55 @@ class GameViewModel: ObservableObject {
     
     static var shared = GameViewModel()
     
-    init() {
-        
+    init() { }
+    
+    func isCardPokemon(card: Card) -> Bool {
+        return card.category == .pokemon
+    }
+
+    func isCardDuplicate(_ card: Card, from cards: [Card]) -> Bool {
+        cards.contains { $0.name == card.name }
     }
     
-    func unlockedTrainers(from adventure: Adventure) -> [Trainer] {
-        var realTrainers = adventure.realTrainers
-        realTrainers[0].isUnlocked = true
-        return realTrainers
+    func addCardsToCollection(cards: [Card]) {
+        let newCards = cards.filter { card in
+            !user.cards.contains { card.name == $0.name }
+        }
+        let duplicates = cards.filter { card in
+            user.cards.contains { card.name == $0.name }
+        }
+        
+        var indices = [Int]()
+        for index in user.cards.indices {
+            if duplicates.contains(where: { $0.name == user.cards[index].name }) {
+                indices.append(index)
+            }
+        }
+        
+        for index in indices {
+            user.cards[index].powerProgress += 0.01
+        }
+        
+        user.cards.append(contentsOf: newCards)
+    }
+    
+    func removeBooster(_ booster: Booster) {
+        guard let index = user.boosters.firstIndex(of: booster) else { return }
+        user.boosters.remove(at: index)
+    }
+    
+    func showTrainers(from adventure: Adventure) {
+        trainers = adventure.realTrainers
+        guard !trainers.isEmpty else { return }
+        trainers[0].isUnlocked = true
     }
     
     func filteredDecks(filter: DeckFilters) -> [Deck] {
         switch filter {
         case .all:
-            return user.decks
+            return Deck.all
         case .playable:
-            return user.decks.filter { isDeckPlayable(deck: $0) }
+            return Deck.all.filter { isDeckPlayable(deck: $0) }
         }
     }
     
@@ -98,7 +131,7 @@ class GameViewModel: ObservableObject {
                 if game.board[topIndex].category == .pokemon && game.board[topIndex].side != .user {
                     rotatingCardAnimation(index: topIndex)
                     game.board[topIndex].side = .user
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.38) {
                         self.isRotatingCard[topIndex].toggle()
                     }
                 }
@@ -111,7 +144,7 @@ class GameViewModel: ObservableObject {
                 if game.board[trailingIndex].category == .pokemon && game.board[trailingIndex].side != .user {
                     rotatingCardAnimation(index: trailingIndex)
                     game.board[trailingIndex].side = .user
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.38) {
                         self.isRotatingCard[trailingIndex].toggle()
                     }
                 }
@@ -124,7 +157,7 @@ class GameViewModel: ObservableObject {
                 if game.board[bottomIndex].category == .pokemon && game.board[bottomIndex].side != .user {
                     rotatingCardAnimation(index: bottomIndex)
                     game.board[bottomIndex].side = .user
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.38) {
                         self.isRotatingCard[bottomIndex].toggle()
                     }
                 }
@@ -137,7 +170,7 @@ class GameViewModel: ObservableObject {
                 if game.board[leadingIndex].category == .pokemon && game.board[leadingIndex].side != .user {
                     rotatingCardAnimation(index: leadingIndex)
                     game.board[leadingIndex].side = .user
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.38) {
                         self.isRotatingCard[leadingIndex].toggle()
                     }
                 }
@@ -153,7 +186,10 @@ class GameViewModel: ObservableObject {
         //game.deck?.cards[index].isActivated = false
         game.turn = .opponent
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            if !self.game.isGameOver() { self.isShowingTurnAnimation.toggle() } else { self.isShowingGameEnding.toggle()
+            if !self.game.isGameOver() {
+                self.isShowingTurnAnimation.toggle()
+            } else {
+                self.isShowingGameEnding.toggle()
             }
         }
     }
@@ -176,10 +212,10 @@ class GameViewModel: ObservableObject {
         game.userCards[index].stats.trailing += buffAmount
         game.userCards[index].stats.bottom += buffAmount
         game.userCards[index].stats.leading += buffAmount
-//        game.deck?.cards[index].stats.top += buffAmount
-//        game.deck?.cards[index].stats.trailing += buffAmount
-//        game.deck?.cards[index].stats.bottom += buffAmount
-//        game.deck?.cards[index].stats.leading += buffAmount
+        //        game.deck?.cards[index].stats.top += buffAmount
+        //        game.deck?.cards[index].stats.trailing += buffAmount
+        //        game.deck?.cards[index].stats.bottom += buffAmount
+        //        game.deck?.cards[index].stats.leading += buffAmount
     }
     
     func buffTrainerCard(index: Int, debuff: Card) {
@@ -291,17 +327,20 @@ class GameViewModel: ObservableObject {
     }
     
     func rotatingCardAnimation(index: Int) {
-        withAnimation(.linear.repeatCount(1, autoreverses: false)) {
+        withAnimation(.linear.repeatCount(2, autoreverses: false)) {
             isRotatingCard[index].toggle()
         }
     }
     
     func opponentCardAction(actionIndex: Int, cardIndex: Int, targetIndex: Int?) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.38) {
+            
             if let targetIndex = targetIndex {
                 self.isRotatingCard[targetIndex].toggle()
             }
+            
             self.isRotatingCard[actionIndex].toggle()
+            
             withAnimation {
                 self.buffTrainerCard(index: cardIndex, debuff: self.game.board[actionIndex])
                 self.game.board[actionIndex] = self.game.trainerCards[cardIndex]
@@ -311,13 +350,18 @@ class GameViewModel: ObservableObject {
                 self.game.trainerCards[cardIndex].isActivated = false
             }
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.88) {
                 withAnimation {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         if !self.game.isGameOver() {
                             self.game.turn = .user
                             self.isShowingTurnAnimation.toggle()
-                        } else { self.isShowingGameEnding.toggle() }
+                        } else {
+                            if let trainer = self.game.trainer {
+                                self.user.boosters.append(trainer.booster)
+                            }
+                            self.isShowingGameEnding.toggle()
+                        }
                     }
                 }
             }

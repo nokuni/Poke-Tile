@@ -16,7 +16,7 @@ struct AdventureView: View {
             GeometryReader { geo in
                 VStack(alignment: .leading) {
                     NavigationTitleView(size: geo.size, navigationTitle: .adventure)
-                    AdventureListView(adventures: Adventure.adventures, size: geo.size)
+                        AdventureListView(adventures: Adventure.adventures, size: geo.size)
                     Spacer()
                     BackButtonView(size: geo.size, dismiss: dismiss)
                 }

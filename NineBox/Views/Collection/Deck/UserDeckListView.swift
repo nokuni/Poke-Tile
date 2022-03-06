@@ -9,7 +9,6 @@ import SwiftUI
 
 struct UserDeckListView: View {
     private let grid = [GridItem](repeating: .init(.flexible(), spacing: 0), count: 4)
-    var cardCollection: [Card]
     var decks: [Deck]
     var size: CGSize
     var isCardInDeck: ((Card) -> Bool)?
@@ -17,7 +16,7 @@ struct UserDeckListView: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             ForEach(decks) { deck in
-                NavigationLink(destination: UserDeckDetailView(cardCollection: cardCollection, deck: deck, size: size, isCardInDeck: isCardInDeck)) {
+                NavigationLink(destination: UserDeckDetailView(deck: deck, size: size, isCardInDeck: isCardInDeck)) {
                     UserDeckRowView(deck: deck, size: size)
                         .overlay(
                             ZStack {
@@ -35,6 +34,6 @@ struct UserDeckListView: View {
 
 struct UserDeckListView_Previews: PreviewProvider {
     static var previews: some View {
-        UserDeckListView(cardCollection: [], decks: [], size: CGSize.screen)
+        UserDeckListView(decks: [], size: CGSize.screen)
     }
 }

@@ -28,6 +28,7 @@ struct ModalButtonView: View {
                         .font(.system(size: size.width * 0.05, weight: .semibold, design: .rounded))
                 )
         }
+        .zIndex(-1)
     }
 }
 

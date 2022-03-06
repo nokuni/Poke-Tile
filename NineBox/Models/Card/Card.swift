@@ -8,11 +8,28 @@
 import Foundation
 import SwiftUI
 
-enum CardRarity: String, Codable {
+enum CardRarity: String, Codable, Hashable {
     case none, common, uncommon, rare, epic, legendary
+    
+    var rate: Int {
+        switch self {
+        case .none:
+            return 0
+        case .common:
+            return 40
+        case .uncommon:
+            return 30
+        case .rare:
+            return 20
+        case .epic:
+            return 10
+        case .legendary:
+            return 5
+        }
+    }
 }
 
-struct Card: Equatable, Codable, Identifiable {
+struct Card: Equatable, Codable, Identifiable, Hashable {
     var id = UUID()
     let name: String
     var image: String
@@ -22,6 +39,7 @@ struct Card: Equatable, Codable, Identifiable {
     var stats: Stats
     var rarity: CardRarity
     var cost: Int
+    var powerProgress: Double = 0.0
     var debuffAmount: Int? = nil
     var isActivated: Bool = true
     var side: CardSide? = nil

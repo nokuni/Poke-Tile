@@ -7,6 +7,6 @@
 
 import Foundation
 
-enum CardCategory: String, Codable, Equatable {
+enum CardCategory: String, Codable, Equatable, Hashable {
     case pokemon, debuff, empty
 }

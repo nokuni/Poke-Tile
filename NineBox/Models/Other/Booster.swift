@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Booster: Codable, Equatable {
+struct Booster: Codable, Equatable, Hashable {
     var name: String
     var cardPool: [String]
     var background: String

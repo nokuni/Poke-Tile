@@ -11,7 +11,7 @@ struct User: Identifiable {
     var id = UUID()
     var profile: Profile
     var cards = [Card]()
-    var decks: [Deck] = Deck.all
+    var decks = [Deck]()
     var boosters = [Booster]()
 }
 

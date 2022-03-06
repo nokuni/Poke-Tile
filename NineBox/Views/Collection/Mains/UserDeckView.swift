@@ -18,7 +18,7 @@ struct UserDeckView: View {
                 VStack(alignment: .leading) {
                     NavigationTitleView(size: geo.size, navigationTitle: NavigationTitleModel.decks)
                     UserDeckFilterView(selectedFilter: $filter)
-                    UserDeckListView(cardCollection: gameVM.user.cards, decks: gameVM.filteredDecks(filter: filter), size: geo.size, isCardInDeck: gameVM.isCardInDeck, isDeckPlayable: gameVM.isDeckPlayable)
+                    UserDeckListView(decks: gameVM.user.decks, size: geo.size, isCardInDeck: gameVM.isCardInDeck, isDeckPlayable: gameVM.isDeckPlayable)
                     Spacer()
                     BackButtonView(size: geo.size, dismiss: dismiss)
                 }
@@ -27,6 +27,12 @@ struct UserDeckView: View {
         }
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
+        .onAppear {
+            gameVM.user.decks = gameVM.filteredDecks(filter: filter)
+        }
+        .onChange(of: filter, perform: { newValue in
+            gameVM.user.decks = gameVM.filteredDecks(filter: newValue)
+        })
     }
 }
 

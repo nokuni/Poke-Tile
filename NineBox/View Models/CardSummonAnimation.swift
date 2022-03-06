@@ -23,6 +23,7 @@ class CardSummonAnimation: ObservableObject {
         if index < cards.count {
             withAnimation(.linear.repeatCount(1, autoreverses: false)) {
                 cards[index] = randomCards[index]
+                
                 rotatings[index].toggle()
                 index += 1
             }

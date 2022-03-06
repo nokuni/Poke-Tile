@@ -27,6 +27,7 @@
 		2E4E1A1427BEDE9D001C8B67 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4E1A1327BEDE9D001C8B67 /* CardView.swift */; };
 		2E4E1A1627BEE3B2001C8B67 /* UserHandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4E1A1527BEE3B2001C8B67 /* UserHandView.swift */; };
 		2E4E1A1A27BEF797001C8B67 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4E1A1927BEF797001C8B67 /* StatsView.swift */; };
+		2E5B46D627D52E6900A220C9 /* ProgressBarOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E5B46D527D52E6900A220C9 /* ProgressBarOverlayView.swift */; };
 		2E642B5627CE5460006A2083 /* ToggableClearView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E642B5527CE5460006A2083 /* ToggableClearView.swift */; };
 		2E642B5827CE5497006A2083 /* ImageAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E642B5727CE5497006A2083 /* ImageAnimationView.swift */; };
 		2E642B5A27CE569F006A2083 /* VersusAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E642B5927CE569F006A2083 /* VersusAnimationView.swift */; };
@@ -136,6 +137,7 @@
 		2E4E1A1327BEDE9D001C8B67 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		2E4E1A1527BEE3B2001C8B67 /* UserHandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHandView.swift; sourceTree = "<group>"; };
 		2E4E1A1927BEF797001C8B67 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
+		2E5B46D527D52E6900A220C9 /* ProgressBarOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarOverlayView.swift; sourceTree = "<group>"; };
 		2E642B5527CE5460006A2083 /* ToggableClearView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggableClearView.swift; sourceTree = "<group>"; };
 		2E642B5727CE5497006A2083 /* ImageAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAnimationView.swift; sourceTree = "<group>"; };
 		2E642B5927CE569F006A2083 /* VersusAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersusAnimationView.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				2E4E1A1927BEF797001C8B67 /* StatsView.swift */,
 				2EA07DC227C23B2500AB974B /* StatSquareView.swift */,
 				2E4E1A1327BEDE9D001C8B67 /* CardView.swift */,
+				2E5B46D527D52E6900A220C9 /* ProgressBarOverlayView.swift */,
 			);
 			path = Card;
 			sourceTree = "<group>";
@@ -867,6 +870,7 @@
 				2EFCB95927C29C100044B2E9 /* ProfileView.swift in Sources */,
 				2EFCB95327C29B840044B2E9 /* OpponentCardListView.swift in Sources */,
 				2ED7AA2327D38A58008FA2C5 /* StartBattleButtonView.swift in Sources */,
+				2E5B46D627D52E6900A220C9 /* ProgressBarOverlayView.swift in Sources */,
 				2ED34E0927CB689500F24251 /* Profile.swift in Sources */,
 				2ED7AA2127D38A24008FA2C5 /* DeckViewModel.swift in Sources */,
 				2E4E1A1A27BEF797001C8B67 /* StatsView.swift in Sources */,
@@ -1019,8 +1023,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1048,8 +1053,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

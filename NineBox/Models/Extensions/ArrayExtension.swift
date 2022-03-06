@@ -77,6 +77,17 @@ extension Array {
     }
 }
 
+extension Array where Element == Array<String> {
+    func twoDimensionalIndices() -> [[Int]] {
+        guard !self.isEmpty else { return [[]] }
+        guard let count = self.first?.count else { return [[]] }
+        let joined = self.joined().map { String($0) }
+        let joinedIndices = joined.indices.map { Int($0) }
+        let result = joinedIndices.chunked(into: count)
+        return result
+    }
+}
+
 enum GridEdge {
     case top, bottom, trailing, leading
 }

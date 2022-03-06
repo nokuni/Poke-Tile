@@ -15,16 +15,20 @@ struct BoosterRowView: View {
         gameVM.user.boosters.filter { $0.name == booster.name }.count
     }
     @Binding var selectedBooster: Booster?
+    @Binding var cards: [Card]
+    @Binding var previousCardCollection: [Card]
     var body: some View {
         HStack {
             CardBoosterView(booster: booster, size: size)
                 .frame(height: size.height * 0.2)
             Button(action: {
                 selectedBooster = booster
-                if let index = gameVM.user.boosters.firstIndex(of: booster) {
-                    gameVM.user.boosters.remove(at: index)
-                }
-                gameVM.user.cards.append(contentsOf: booster.cards)
+                guard let selectedBooster = selectedBooster else { return }
+                gameVM.removeBooster(booster)
+                let randomCards = selectedBooster.cards.differentRandomElements(amount: 8)
+                cards = randomCards
+                previousCardCollection = gameVM.user.cards
+                gameVM.addCardsToCollection(cards: cards)
             }) {
                 VStack {
                     Text("Open")
@@ -46,6 +50,6 @@ struct BoosterRowView: View {
 
 struct BoosterRowView_Previews: PreviewProvider {
     static var previews: some View {
-        BoosterRowView(booster: Booster.all[0], gameVM: GameViewModel(), size: CGSize.screen, selectedBooster: .constant(nil))
+        BoosterRowView(booster: Booster.all[0], gameVM: GameViewModel(), size: CGSize.screen, selectedBooster: .constant(nil), cards: .constant([]), previousCardCollection: .constant([]))
     }
 }
