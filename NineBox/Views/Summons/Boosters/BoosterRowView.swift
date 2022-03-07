@@ -9,10 +9,10 @@ import SwiftUI
 
 struct BoosterRowView: View {
     var booster: Booster
-    @ObservedObject var gameVM: GameViewModel
+    @ObservedObject var userVM: UserViewModel
     var size: CGSize
     var boosterAmount: Int {
-        gameVM.user.boosters.filter { $0.name == booster.name }.count
+        userVM.user.boosters.filter { $0.name == booster.name }.count
     }
     @Binding var selectedBooster: Booster?
     @Binding var cards: [Card]
@@ -24,11 +24,11 @@ struct BoosterRowView: View {
             Button(action: {
                 selectedBooster = booster
                 guard let selectedBooster = selectedBooster else { return }
-                gameVM.removeBooster(booster)
+                userVM.removeBooster(booster)
                 let randomCards = selectedBooster.cards.differentRandomElements(amount: 8)
                 cards = randomCards
-                previousCardCollection = gameVM.user.cards
-                gameVM.addCardsToCollection(cards: cards)
+                previousCardCollection = userVM.user.cards
+                userVM.addCardsToCollection(cards: cards)
             }) {
                 VStack {
                     Text("Open")
@@ -50,6 +50,6 @@ struct BoosterRowView: View {
 
 struct BoosterRowView_Previews: PreviewProvider {
     static var previews: some View {
-        BoosterRowView(booster: Booster.all[0], gameVM: GameViewModel(), size: CGSize.screen, selectedBooster: .constant(nil), cards: .constant([]), previousCardCollection: .constant([]))
+        BoosterRowView(booster: Booster.all[0], userVM: UserViewModel(), size: CGSize.screen, selectedBooster: .constant(nil), cards: .constant([]), previousCardCollection: .constant([]))
     }
 }

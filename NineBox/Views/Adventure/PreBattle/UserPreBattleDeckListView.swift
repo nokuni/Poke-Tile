@@ -9,20 +9,19 @@ import SwiftUI
 
 struct UserPreBattleDeckListView: View {
     private let grid = [GridItem](repeating: .init(.flexible(), spacing: 0), count: 4)
-    var decks: [Deck]
+    @ObservedObject var userVM: UserViewModel
     @Binding var selectedDeckIndex: Int
     var size: CGSize
     var isCardInDeck: ((Card) -> Bool)?
-    var isCardPokemon: ((Card) -> Bool)?
     var body: some View {
         TabView(selection: $selectedDeckIndex) {
-            ForEach(decks.indices) { deckIndex in
+            ForEach(userVM.filteredDecks(filter: .playable)) { deck in
                 VStack {
-                    UserDeckRowView(deck: decks[deckIndex], size: size)
-                        .tag(deckIndex)
+                    UserDeckRowView(deck: deck, size: size)
+                        .tag(userVM.user.decks.firstIndex(where: { $0.name == deck.name }))
                     LazyVGrid(columns: grid, spacing: 0) {
-                        ForEach(decks[deckIndex].cards.indices) { index in
-                            CardView(card: decks[deckIndex].cards[index], size: size, amount: 4, isCardInDeck: isCardInDeck, isCardPokemon: isCardPokemon)
+                        ForEach(deck.cards) { card in
+                            CardView(card: card, size: size, amount: 4, isCardInDeck: isCardInDeck)
                         }
                     }
                 }
@@ -34,6 +33,6 @@ struct UserPreBattleDeckListView: View {
 
 struct UserPreBattleDeckListView_Previews: PreviewProvider {
     static var previews: some View {
-        UserPreBattleDeckListView(decks: [], selectedDeckIndex: .constant(0), size: CGSize.screen)
+        UserPreBattleDeckListView(userVM: UserViewModel(), selectedDeckIndex: .constant(0), size: CGSize.screen)
     }
 }

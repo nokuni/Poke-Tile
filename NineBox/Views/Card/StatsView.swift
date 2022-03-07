@@ -14,9 +14,7 @@ struct StatsView: View {
         GeometryReader { geo in
             LazyVGrid(columns: grid, spacing: 0) {
                 ForEach(0..<9) { index in
-                    if card.category == .pokemon {
-                        StatSquareView(size: geo.size, index: index, card: card)
-                    }
+                    StatSquareView(size: geo.size, index: index, card: card)
                 }
             }
         }

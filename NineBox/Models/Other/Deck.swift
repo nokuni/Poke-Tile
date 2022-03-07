@@ -35,3 +35,7 @@ extension Deck {
     static let empty = Deck(name: "New Deck", pokemons: Card.placeholders.map { $0.name }, background: "forest")
     static let all: [Deck] = try! Bundle.main.decode("decks.json")
 }
+
+enum DeckFilters: String, CaseIterable {
+    case all, playable
+}

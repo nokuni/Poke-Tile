@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct TrainerListView: View {
-    @EnvironmentObject var gameVM: GameViewModel
     var size: CGSize
     var adventure: Adventure
     var trainers: [Trainer]

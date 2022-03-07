@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// Manage the card summon animation
+
 class CardSummonAnimation: ObservableObject {
     @Published var rotatings = Array(repeating: true, count: 8)
     @Published var cards: [Card] = Array(repeating: Card.empty, count: 8)

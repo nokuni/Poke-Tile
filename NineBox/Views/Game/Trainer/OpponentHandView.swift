@@ -64,13 +64,14 @@ struct OpponentInformations: View {
 }
 
 struct UserInformations: View {
+    @ObservedObject var userVM: UserViewModel
     @ObservedObject var gameVM: GameViewModel
     var size: CGSize
     var body: some View {
         ImageCroppedView(image: "volcano.background")
             .frame(width: size.width, height: size.height * 0.1)
             .overlay(
-                TrainerImageView(size: size, height: 0.1, image: gameVM.user.profile.image, isUnlocked: true)
+                TrainerImageView(size: size, height: 0.1, image: userVM.user.profile.image, isUnlocked: true)
             )
             .overlay(
                 PlayerPoints(size: size, points: gameVM.game.userPoints, isUser: true)

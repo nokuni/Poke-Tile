@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StarterDecksModalView: View {
     @State var selectedBooster: Booster? = nil
-    @ObservedObject var gameVM: GameViewModel
+    @ObservedObject var userVM: UserViewModel
     @Binding var isShowingStarterModal: Bool
     var body: some View {
         ZStack {
@@ -28,7 +28,7 @@ struct StarterDecksModalView: View {
 
 struct StarterDecksModalView_Previews: PreviewProvider {
     static var previews: some View {
-        StarterDecksModalView(gameVM: GameViewModel(), isShowingStarterModal: .constant(false))
+        StarterDecksModalView(userVM: UserViewModel(), isShowingStarterModal: .constant(false))
     }
 }
 
@@ -50,7 +50,7 @@ extension StarterDecksModalView {
     var ChooseBoosterButton: some View {
         Button(action: {
             if let selectedBooster = selectedBooster {
-                gameVM.user.boosters.append(selectedBooster)
+                userVM.user.boosters.append(selectedBooster)
             }
             isShowingStarterModal.toggle()
         }) {

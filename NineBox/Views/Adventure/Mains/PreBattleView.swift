@@ -10,7 +10,9 @@ import SwiftUI
 struct PreBattleView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var gameVM: GameViewModel
-    @StateObject var deckVM = DeckViewModel()
+    @EnvironmentObject var userVM: UserViewModel
+    @State var selectedDeckIndex = 0
+    @State var selectedIndex = 0
     var adventure: Adventure
     var trainer: Trainer
     var body: some View {
@@ -20,8 +22,8 @@ struct PreBattleView: View {
                 VStack(alignment: .leading) {
                     NavigationTitleView(size: geo.size, navigationTitle: NavigationTitleModel.preBattle)
                     TrainerRowView(size: geo.size, adventure: adventure, trainer: trainer)
-                    if !gameVM.filteredDecks(filter: .playable).isEmpty {
-                        UserPreBattleDeckListView(decks: gameVM.filteredDecks(filter: .playable), selectedDeckIndex: $deckVM.selectedDeckIndex, size: geo.size, isCardInDeck: gameVM.isCardInDeck, isCardPokemon: gameVM.isCardPokemon)
+                    if !userVM.filteredDecks(filter: .playable).isEmpty {
+                        UserPreBattleDeckListView(userVM: userVM, selectedDeckIndex: $selectedDeckIndex, size: geo.size, isCardInDeck: userVM.isCardInDeck)
                         
                         NavigationLink(destination: GameView()) {
                             StartBattleButtonView(trainer: trainer, size: geo.size)
@@ -29,7 +31,7 @@ struct PreBattleView: View {
                         .padding(.vertical)
                         .simultaneousGesture(
                             TapGesture().onEnded { _ in
-                                gameVM.createNewGame(trainer: trainer, deck: gameVM.filteredDecks(filter: .playable)[deckVM.selectedDeckIndex])
+                                gameVM.createNewGame(trainer: trainer, deck: userVM.filteredDecks(filter: .playable)[selectedDeckIndex])
                             }
                         )
                     } else {

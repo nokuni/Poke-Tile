@@ -48,6 +48,7 @@ extension Color {
     
     // RED
     static let crimson = Color(red: 220/255, green: 20/255, blue: 60/255)
+    static let darkRed = Color(red: 139/255, green: 0/255, blue: 0/255)
     
     // BLUE
     static let deepSky = Color(red: 0/255, green: 191/255, blue: 255/255)
@@ -62,6 +63,7 @@ extension Color {
     static let limeGreen = Color(red: 50/255, green: 205/255, blue: 50/255)
     static let lightGreen = Color(red: 144/255, green: 238/255, blue: 144/255)
     static let mediumSeaGreen = Color(red: 60/255, green: 179/255, blue: 113/255)
+    static let darkGreen = Color(red: 0/255, green: 100/255, blue: 0/255)
     
     // THEMES
     static let yellowPikachu = Color(red: 253/255, green: 239/255, blue: 80/255)

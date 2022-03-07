@@ -9,40 +9,41 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var gameVM: GameViewModel
+    @EnvironmentObject var userVM: UserViewModel
     @State var isShowingModalTheme = false
     @State var isShowingStarterModal = true
     var body: some View {
         NavigationView {
             ZStack {
-                HomeBackgroundView(theme: gameVM.user.profile.theme)
+                HomeBackgroundView(theme: userVM.user.profile.theme)
                 GeometryReader { geo in
                     VStack {
                         ThemeButtonView(isShowingModalTheme: $isShowingModalTheme, size: geo.size)
                         Spacer()
                         HStack(spacing: 0) {
-                            HomeNavigationLink(size: geo.size, item: HomeItem.summons, theme: gameVM.user.profile.theme) {
-                                SummonsView(gameVM: gameVM)
+                            HomeNavigationLink(size: geo.size, item: HomeItem.summons, theme: userVM.user.profile.theme) {
+                                SummonsView(userVM: userVM)
                             }
-                            HomeNavigationLink(size: geo.size, item: HomeItem.adventures, theme: gameVM.user.profile.theme) {
-                                AdventureView(gameVM: gameVM)
+                            HomeNavigationLink(size: geo.size, item: HomeItem.adventures, theme: userVM.user.profile.theme) {
+                                AdventureView()
                             }
-                            HomeNavigationLink(size: geo.size, item: HomeItem.decks, theme: gameVM.user.profile.theme) {
-                                UserDeckView(gameVM: gameVM)
+                            HomeNavigationLink(size: geo.size, item: HomeItem.decks, theme: userVM.user.profile.theme) {
+                                UserDeckView(userVM: userVM)
                             }
-                            HomeNavigationLink(size: geo.size, item: HomeItem.cards, theme: gameVM.user.profile.theme) {
-                               UserCardsView(gameVM: gameVM)
+                            HomeNavigationLink(size: geo.size, item: HomeItem.cards, theme: userVM.user.profile.theme) {
+                               UserCardsView(userVM: userVM)
                             }
-                            HomeNavigationLink(size: geo.size, item: HomeItem.settings, theme: gameVM.user.profile.theme) {
+                            HomeNavigationLink(size: geo.size, item: HomeItem.settings, theme: userVM.user.profile.theme) {
                                 EmptyView()
                             }
                         }
                     }
                 }
                 if isShowingModalTheme {
-                    ThemeModalView(isShowingModalTheme: $isShowingModalTheme, theme: $gameVM.user.profile.theme)
+                    ThemeModalView(isShowingModalTheme: $isShowingModalTheme, theme: $userVM.user.profile.theme)
                 }
                 if isShowingStarterModal {
-                    StarterDecksModalView(gameVM: gameVM, isShowingStarterModal: $isShowingStarterModal)
+                    StarterDecksModalView(userVM: userVM, isShowingStarterModal: $isShowingStarterModal)
                 }
                 
             }

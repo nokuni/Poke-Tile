@@ -12,10 +12,10 @@ struct CardView: View {
     var size: CGSize
     var amount: CGFloat
     var isCardInDeck: ((Card) -> Bool)?
-    var isCardPokemon: ((Card) -> Bool)?
     var body: some View {
         RoundedRectangle(cornerRadius: 5)
             .stroke(card.borderColor, lineWidth: 2)
+            .shadow(color: card.side == .user ? .blue : card.side == .opponent ? .red : .clear, radius: 3)
             .background(
                 CardBackgroundView(card: card, isCardInDeck: isCardInDeck)
                     .clipped()
@@ -24,17 +24,6 @@ struct CardView: View {
             .frame(width: size.width * (1/amount), height: size.width * (1/amount))
             .overlay(StatsOverlayView(card: card, amount: amount, size: size, isCardInDeck: isCardInDeck))
             .overlay(TypeOverlayView(card: card, amount: amount, size: size))
-            .overlay(
-                ZStack {
-                    if let isCardPokemon = isCardPokemon {
-                        if isCardPokemon(card) {
-                            ProgressBarOverlayView(progressValue: card.powerProgress)
-                                .frame(width: size.width * (0.65/amount), height: size.width * (0.1/amount), alignment: .topLeading)
-                                .frame(width: size.width * (0.85/amount), height: size.width * (0.8/amount), alignment: .bottomLeading)
-                        }
-                    }
-                }
-            )
     }
 }
 
@@ -54,12 +43,14 @@ struct StatsOverlayView: View {
             if !(isCardInDeck?(card) ?? true) {
                 EmptyView()
             } else {
-                ZStack {
-                    StatsView(card: card)
-                        .frame(width: size.width * (1/amount), height: size.width * (1/amount), alignment: .topLeading)
+                if card.isPokemon {
+                    ZStack {
+                        StatsView(card: card)
+                            .frame(width: size.width * (1/amount), height: size.width * (1/amount), alignment: .topLeading)
+                    }
+                    .scaleEffect(0.5)
+                    .frame(width: size.width * (1.42/amount), height: size.width * (1.42/amount), alignment: .topLeading)
                 }
-                .scaleEffect(0.5)
-                .frame(width: size.width * (1.42/amount), height: size.width * (1.42/amount), alignment: .topLeading)
             }
         }
     }
@@ -71,7 +62,7 @@ struct TypeOverlayView: View {
     var size: CGSize
     var body: some View {
         ZStack {
-            if card.category == .pokemon {
+            if card.isPokemon {
                 ZStack {
                     Image(card.backgroundImage)
                         .resizable()

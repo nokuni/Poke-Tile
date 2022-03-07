@@ -25,6 +25,25 @@ struct StatSquareView: View {
             return 0
         }
     }
+    private var staticCard: Card {
+        return try! Card.getPokemon(name: card.name)
+    }
+    
+    private var staticStat: Int {
+        switch true {
+        case index == 1:
+            return staticCard.stats.top
+        case index == 3:
+            return staticCard.stats.leading
+        case index == 5:
+            return staticCard.stats.trailing
+        case index == 7:
+            return staticCard.stats.bottom
+        default:
+            return 0
+        }
+    }
+    
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 5)
@@ -33,11 +52,10 @@ struct StatSquareView: View {
                 .background(
                     Color.white
                         .cornerRadius(5)
-                        .opacity(0.8))
+                        .opacity(0.9))
             Text("\(stat)")
-                .foregroundColor(.black)
+                .foregroundColor(stat == staticStat ? .black : stat > staticStat ? .darkGreen : .darkRed)
                 .font(.system(size: size.width * 0.25, weight: .bold, design: .rounded))
-                //.brightness(-0.2)
         }
         .opacity(!index.isMultiple(of: 2) ? 1 : 0)
     }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct UserDeckView: View {
     @Environment(\.dismiss) private var dismiss
-    @ObservedObject var gameVM: GameViewModel
+    @ObservedObject var userVM: UserViewModel
     @State var filter: DeckFilters = .playable
     var body: some View {
         ZStack {
@@ -18,7 +18,7 @@ struct UserDeckView: View {
                 VStack(alignment: .leading) {
                     NavigationTitleView(size: geo.size, navigationTitle: NavigationTitleModel.decks)
                     UserDeckFilterView(selectedFilter: $filter)
-                    UserDeckListView(decks: gameVM.user.decks, size: geo.size, isCardInDeck: gameVM.isCardInDeck, isDeckPlayable: gameVM.isDeckPlayable)
+                    UserDeckListView(decks: userVM.user.decks, size: geo.size, isCardInDeck: userVM.isCardInDeck, isDeckPlayable: userVM.isDeckPlayable)
                     Spacer()
                     BackButtonView(size: geo.size, dismiss: dismiss)
                 }
@@ -28,16 +28,16 @@ struct UserDeckView: View {
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
         .onAppear {
-            gameVM.user.decks = gameVM.filteredDecks(filter: filter)
+            userVM.user.decks = userVM.filteredDecks(filter: filter)
         }
         .onChange(of: filter, perform: { newValue in
-            gameVM.user.decks = gameVM.filteredDecks(filter: newValue)
+            userVM.user.decks = userVM.filteredDecks(filter: newValue)
         })
     }
 }
 
 struct UserDeckView_Previews: PreviewProvider {
     static var previews: some View {
-        UserDeckView(gameVM: GameViewModel())
+        UserDeckView(userVM: UserViewModel())
     }
 }

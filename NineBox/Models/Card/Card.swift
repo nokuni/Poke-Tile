@@ -39,8 +39,7 @@ struct Card: Equatable, Codable, Identifiable, Hashable {
     var stats: Stats
     var rarity: CardRarity
     var cost: Int
-    var powerProgress: Double = 0.0
-    var debuffAmount: Int? = nil
+    var debuffs = [String]()
     var isActivated: Bool = true
     var side: CardSide? = nil
     
@@ -51,6 +50,15 @@ struct Card: Equatable, Codable, Identifiable, Hashable {
     var borderColor: Color {
         if let side = side { return side.color } else { return type.color }
     }
+    
+    var isPokemon: Bool { category == .pokemon }
+    var isUserSide: Bool { side == .user }
+    var isDebuff: Bool { category == .debuff }
+    var isAvailable: Bool { category == .empty }
+    
+    func isDuplicate(from cards: [Card]) -> Bool {
+        cards.contains { $0.name == name }
+    }
 }
 
 extension Card {
@@ -59,8 +67,8 @@ extension Card {
         case noDebuffFound
     }
     
-    static let slot = Card(name: "Slot", image: "add", backgroundImage: "spiral", category: .empty, type: .empty, stats: .init(top: 0, trailing: 0, bottom: 0, leading: 0), rarity: .common, cost: 0, debuffAmount: nil)
-    static let empty = Card(name: "Empty", image: "pokeball", backgroundImage: "spiral", category: .empty, type: .empty, stats: .init(top: 0, trailing: 0, bottom: 0, leading: 0), rarity: .common, cost: 0, debuffAmount: nil)
+    static let slot = Card(name: "Slot", image: "add", backgroundImage: "spiral", category: .empty, type: .empty, stats: .init(top: 0, trailing: 0, bottom: 0, leading: 0), rarity: .common, cost: 0, debuffs: [])
+    static let empty = Card(name: "Empty", image: "pokeball", backgroundImage: "spiral", category: .empty, type: .empty, stats: .init(top: 0, trailing: 0, bottom: 0, leading: 0), rarity: .common, cost: 0, debuffs: [])
     static let placeholders = Array(repeating: Card.empty, count: 8)
     
     static let debuffs: [Card] = try! Bundle.main.decode("debuffs.json")

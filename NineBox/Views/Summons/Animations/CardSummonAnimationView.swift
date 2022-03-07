@@ -15,7 +15,6 @@ struct CardSummonAnimationView: View {
     var size: CGSize
     @Binding var selectedBooster: Booster?
     var isCardInDeck: ((Card) -> Bool)?
-    var isCardDuplicate: ((Card, [Card]) -> Bool)?
     var body: some View {
         ZStack {
             Color.white.ignoresSafeArea()
@@ -25,10 +24,11 @@ struct CardSummonAnimationView: View {
                 LazyVGrid(columns: grid, spacing: 0) {
                     ForEach(cardAnimation.cards.indices) { index in
                         CardGestureView(isRotating: $cardAnimation.rotatings[index], size: size, card: cardAnimation.cards[index], index: index, isCardInDeck: isCardInDeck)
+                            .allowsHitTesting(false)
                             .overlay(
-                                CardSummonedOverlayView(isRotating: cardAnimation.rotatings[index], card: cardAnimation.cards[index], previousCardCollection: previousCardCollection, size: size, isCardDuplicate: isCardDuplicate)
+                                CardSummonedOverlayView(isRotating: cardAnimation.rotatings[index], card: cardAnimation.cards[index], previousCardCollection: previousCardCollection, size: size)
                             )
-                            .shadow(color: isCardDuplicate!(cardAnimation.cards[index], previousCardCollection) ? .clear : .yellow, radius: 5)
+                            .shadow(color: cards[index].isDuplicate(from: previousCardCollection) ? .clear : .yellow, radius: 5)
                     }
                 }
                 
@@ -61,12 +61,11 @@ struct CardSummonedOverlayView: View {
     var card: Card
     var previousCardCollection: [Card]
     var size: CGSize
-    var isCardDuplicate: ((Card, [Card]) -> Bool)?
     var body: some View {
         ZStack {
             if isRotating == false {
-                Text(isCardDuplicate!(card, previousCardCollection) ? "Duplicate" : "New card")
-                    .foregroundColor(isCardDuplicate!(card, previousCardCollection) ? .white : .yellow)
+                Text(card.isDuplicate(from: previousCardCollection) ? "Duplicate" : "New card")
+                    .foregroundColor(card.isDuplicate(from: previousCardCollection) ? .white : .yellow)
                     .font(.system(size: size.width * 0.03, weight: .bold, design: .rounded))
                     .frame(width: size.width * 0.2, height: size.height * 0.05, alignment: .bottom)
                     .shadow(color: .black, radius: 0, x: 1, y: 1)

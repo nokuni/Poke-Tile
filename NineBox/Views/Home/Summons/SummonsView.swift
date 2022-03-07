@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SummonsView: View {
     @Environment(\.dismiss) private var dismiss
-    @ObservedObject var gameVM: GameViewModel
+    @ObservedObject var userVM: UserViewModel
     @State var isShowingSummons = false
     @State var selectedBooster: Booster? = nil
     @State var cards = [Card]()
@@ -20,14 +20,14 @@ struct SummonsView: View {
             GeometryReader { geo in
                 VStack(alignment: .leading) {
                     NavigationTitleView(size: geo.size, navigationTitle: NavigationTitleModel.summons)
-                    BoosterListView(gameVM: gameVM, size: geo.size, selectedBooster: $selectedBooster, cards: $cards, previousCardCollection: $previousCardCollection)
+                    BoosterListView(userVM: userVM, size: geo.size, selectedBooster: $selectedBooster, cards: $cards, previousCardCollection: $previousCardCollection)
                     BackButtonView(size: geo.size, dismiss: dismiss)
                 }
             }
             .padding()
             
             if selectedBooster != nil {
-                CardSummonAnimationView(cards: cards, previousCardCollection: previousCardCollection, size: CGSize.screen, selectedBooster: $selectedBooster, isCardInDeck: gameVM.isCardInDeck, isCardDuplicate: gameVM.isCardDuplicate)
+                CardSummonAnimationView(cards: cards, previousCardCollection: previousCardCollection, size: CGSize.screen, selectedBooster: $selectedBooster, isCardInDeck: userVM.isCardInDeck)
             }
         }
         .navigationBarHidden(true)
@@ -37,6 +37,6 @@ struct SummonsView: View {
 
 struct SummonsView_Previews: PreviewProvider {
     static var previews: some View {
-        SummonsView(gameVM: GameViewModel())
+        SummonsView(userVM: UserViewModel())
     }
 }

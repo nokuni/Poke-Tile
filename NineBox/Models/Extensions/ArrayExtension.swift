@@ -9,11 +9,13 @@ import Foundation
 
 extension Array {
     
+    // return array of unique elements
     func uniqued() -> [Element] where Element: Hashable {
         var seen = Set<Element>()
         return filter { seen.insert($0).inserted }
     }
     
+    // replace nil values by -1 from an Int array and return it.
     func removedNull(from array: [Int?]) -> [Int] {
         var array = array
         array.indices.forEach {
@@ -22,6 +24,7 @@ extension Array {
         return array.compactMap { $0 }
     }
     
+    // return the index of the maximum value
     func maxIndex() -> Int? where Element: Comparable {
         guard let highest = self.max() else { return nil }
         guard let index = self.firstIndex(where: { $0 == highest }) else { return nil }
@@ -44,6 +47,11 @@ extension Array {
         return result
     }
     
+    // return the edge indices from a grid.
+    // example: trailing indices
+    // [x, x, 2]
+    // [x, x, 5]
+    // [x, x, 8]
     func edgeLineIndices(_ edge: GridEdge, _ rowSize: Int, _ columnSize: Int) -> [Int] {
         let indices = self.indices.map { $0 }
         switch edge {
@@ -62,6 +70,7 @@ extension Array {
         }
     }
     
+    // return an array of different random elements.
     func differentRandomElements(amount: Int) -> [Element] where Element: Equatable {
         guard !self.isEmpty else { return [] }
         guard self.count >= amount else { return [] }

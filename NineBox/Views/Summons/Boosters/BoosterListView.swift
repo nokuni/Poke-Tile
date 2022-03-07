@@ -8,20 +8,20 @@
 import SwiftUI
 
 struct BoosterListView: View {
-    @ObservedObject var gameVM: GameViewModel
+    @ObservedObject var userVM: UserViewModel
     var size: CGSize
     @Binding var selectedBooster: Booster?
     @Binding var cards: [Card]
     @Binding var previousCardCollection: [Card]
     var boosters: [Booster] {
-        return gameVM.user.boosters.uniqued()
+        return userVM.user.boosters.uniqued()
     }
     var body: some View {
         ScrollView {
             VStack {
-                if !gameVM.user.boosters.isEmpty {
+                if !userVM.user.boosters.isEmpty {
                     ForEach(boosters.indices, id: \.self) { index in
-                        BoosterRowView(booster: gameVM.user.boosters[index], gameVM: gameVM, size: size, selectedBooster: $selectedBooster , cards: $cards, previousCardCollection: $previousCardCollection)
+                        BoosterRowView(booster: userVM.user.boosters[index], userVM: userVM, size: size, selectedBooster: $selectedBooster , cards: $cards, previousCardCollection: $previousCardCollection)
                     }
                 }
             }
@@ -31,6 +31,6 @@ struct BoosterListView: View {
 
 struct BoosterListView_Previews: PreviewProvider {
     static var previews: some View {
-        BoosterListView(gameVM: GameViewModel(), size: CGSize.screen, selectedBooster: .constant(nil), cards: .constant([]), previousCardCollection: .constant([]))
+        BoosterListView(userVM: UserViewModel(), size: CGSize.screen, selectedBooster: .constant(nil), cards: .constant([]), previousCardCollection: .constant([]))
     }
 }

@@ -10,6 +10,7 @@ import SwiftUI
 struct TrainerView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var gameVM: GameViewModel
+    @EnvironmentObject var adventureVM: AdventureViewModel
     var adventure: Adventure
     var body: some View {
         ZStack {
@@ -17,7 +18,7 @@ struct TrainerView: View {
             GeometryReader { geo in
                 VStack(alignment: .leading) {
                     NavigationTitleView(size: geo.size, navigationTitle: NavigationTitleModel(image: adventure.icon, title: adventure.title, color: adventure.debuff.borderColor))
-                    TrainerListView(size: geo.size, adventure: adventure, trainers: gameVM.trainers)
+                    TrainerListView(size: geo.size, adventure: adventure, trainers: adventureVM.trainers)
                     Spacer()
                     BackButtonView(size: geo.size, dismiss: dismiss)
                 }
@@ -26,7 +27,7 @@ struct TrainerView: View {
             .navigationBarHidden(true)
         }
         .onAppear {
-            gameVM.showTrainers(from: adventure)
+            adventureVM.showTrainers(from: adventure)
         }
     }
 }

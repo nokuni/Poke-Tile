@@ -9,7 +9,6 @@ import SwiftUI
 
 struct AdventureView: View {
     @Environment(\.dismiss) private var dismiss
-    @ObservedObject var gameVM: GameViewModel
     var body: some View {
         ZStack {
             Color.white.ignoresSafeArea()
@@ -29,6 +28,6 @@ struct AdventureView: View {
 
 struct AdventureView_Previews: PreviewProvider {
     static var previews: some View {
-        AdventureView(gameVM: GameViewModel())
+        AdventureView()
     }
 }

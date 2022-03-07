@@ -15,23 +15,25 @@ struct CardBackgroundView: View {
         GeometryReader { geo in
             ZStack(alignment: .topLeading) {
                 card.type.color
-                    .brightness(0.5)
+                    .cornerRadius(5)
+                    .brightness(0.2)
                     //.opacity(0.3)
                 Image(card.backgroundImage)
                     .resizable()
                     .scaledToFill()
+                    .cornerRadius(5)
                     .opacity(0.3)
                 if card.category == .pokemon {
                     Image(card.image)
                         .resizable()
                         .renderingMode(!(isCardInDeck?(card) ?? true) ? .template : .none)
-                        .centerCropped(radius: 10, alignment: .center)
+                        .centerCropped(radius: 5, alignment: .center)
                         .foregroundColor(.black)
                         .frame(width: geo.size.width * 1.3, height: geo.size.height * 1.3)
                 }
-                if let debuffAmount = card.debuffAmount {
+                if !card.debuffs.isEmpty {
                     LazyVGrid(columns: columns) {
-                        ForEach(0..<debuffAmount) { _ in
+                        ForEach(card.debuffs.indices, id: \.self) { index in
                             Image(card.image)
                                 .resizable()
                                 .scaledToFit()

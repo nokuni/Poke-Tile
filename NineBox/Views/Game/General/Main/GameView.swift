@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct GameView: View {
+    @EnvironmentObject var userVM: UserViewModel
     @EnvironmentObject var gameVM: GameViewModel
     @State private var isShowingStart = false
     @State private var isShowingSurrenderModal = false
@@ -19,7 +20,7 @@ struct GameView: View {
                     OpponentHandView(size: geo.size, gameVM: gameVM)
                     GameGridView(size: geo.size, gameVM: gameVM, isRotating: $gameVM.isRotatingCard)
                     UserHandView(size: geo.size, gameVM: gameVM)
-                    UserInformations(gameVM: gameVM, size: geo.size)
+                    UserInformations(userVM: userVM, gameVM: gameVM, size: geo.size)
                     ModalButtonView(isPresented: $isShowingSurrenderModal, borderColor: .black, backgroundColor: .crimson, textColor: .white, textContent: "SURRENDER", size: geo.size)
                 }
             }
@@ -27,7 +28,7 @@ struct GameView: View {
             
             if gameVM.isShowingTurnAnimation {
                 if let trainer = gameVM.game.trainer {
-                    TurnAnimationView(isPresented: $gameVM.isShowingTurnAnimation, user: gameVM.user, trainer: trainer, turn: gameVM.game.turn, opponentPlays: gameVM.opponentPlays)
+                    TurnAnimationView(isPresented: $gameVM.isShowingTurnAnimation, user: userVM.user, trainer: trainer, turn: gameVM.game.turn, opponentPlays: gameVM.opponentPlays)
                         .ignoresSafeArea()
                 }
             }
@@ -40,7 +41,7 @@ struct GameView: View {
             
             if isShowingStart {
                 if let trainer = gameVM.game.trainer {
-                    GameStartAnimationView(isPresented: $isShowingStart, user: gameVM.user, trainer: trainer)
+                    GameStartAnimationView(isPresented: $isShowingStart, user: userVM.user, trainer: trainer)
                 }
             }
             
