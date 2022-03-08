@@ -10,15 +10,16 @@ import SwiftUI
 struct UserPreBattleDeckListView: View {
     private let grid = [GridItem](repeating: .init(.flexible(), spacing: 0), count: 4)
     @ObservedObject var userVM: UserViewModel
+    @State var decks = [Deck]()
     @Binding var selectedDeckIndex: Int
     var size: CGSize
     var isCardInDeck: ((Card) -> Bool)?
     var body: some View {
         TabView(selection: $selectedDeckIndex) {
-            ForEach(userVM.filteredDecks(filter: .playable)) { deck in
+            ForEach(decks) { deck in
                 VStack {
                     UserDeckRowView(deck: deck, size: size)
-                        .tag(userVM.user.decks.firstIndex(where: { $0.name == deck.name }))
+                        .tag(decks.firstIndex(where: { $0.name == deck.name }))
                     LazyVGrid(columns: grid, spacing: 0) {
                         ForEach(deck.cards) { card in
                             CardView(card: card, size: size, amount: 4, isCardInDeck: isCardInDeck)
@@ -28,6 +29,9 @@ struct UserPreBattleDeckListView: View {
             }
         }
         .tabViewStyle(.page(indexDisplayMode: .never))
+        .onAppear {
+            decks = userVM.filteredDecks(filter: .playable)
+        }
     }
 }
 
