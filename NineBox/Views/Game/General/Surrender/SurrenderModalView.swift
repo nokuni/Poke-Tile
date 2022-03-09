@@ -22,27 +22,7 @@ struct SurrenderModalView: View {
                         .frame(width: geo.size.width * 0.9, height: geo.size.height * 0.4)
                         .background(Color.white.cornerRadius(5))
                         .overlay(
-                            VStack {
-                                Text("Do you really want to surrender this battle ?")
-                                    .foregroundColor(.black)
-                                    .font(.system(size: CGSize.screen.width * 0.07, weight: .semibold, design: .rounded))
-                                    .multilineTextAlignment(.center)
-                                    .padding(.vertical)
-                                HStack(spacing: 20) {
-                                    Button(action: {
-                                        isShowingSurrenderModal.toggle()
-                                    }) {
-                                        LongButtonView(text: "No", textColor: .white, textSize: 0.05, backgroundColor: .steelBlue, borderColor: .black)
-                                    }
-                                    Button(action: {
-                                        isShowingSurrenderModal.toggle()
-                                        isShowingGameEnding.toggle()
-                                    }) {
-                                        LongButtonView(text: "Yes", textColor: .white, textSize: 0.05, backgroundColor: .crimson, borderColor: .black)
-                                    }
-                                }
-                                .padding(.horizontal)
-                            }
+                            SurrenderModalOverlayView(isShowingSurrenderModal: $isShowingSurrenderModal, isShowingGameEnding: $isShowingGameEnding)
                         )
                     Spacer()
                 }
@@ -55,5 +35,33 @@ struct SurrenderModalView: View {
 struct SurrenderModalView_Previews: PreviewProvider {
     static var previews: some View {
         SurrenderModalView(isShowingGameEnding: .constant(false), isShowingSurrenderModal: .constant(false))
+    }
+}
+
+struct SurrenderModalOverlayView: View {
+    @Binding var isShowingSurrenderModal: Bool
+    @Binding var isShowingGameEnding: Bool
+    var body: some View {
+        VStack {
+            Text("Do you really want to surrender this battle ?")
+                .foregroundColor(.black)
+                .font(.system(size: CGSize.screen.width * 0.07, weight: .semibold, design: .rounded))
+                .multilineTextAlignment(.center)
+                .padding(.vertical)
+            HStack(spacing: 20) {
+                Button(action: {
+                    isShowingSurrenderModal.toggle()
+                }) {
+                    ActionButtonView(text: "NO", textColor: .white, color: .steelBlue, size: CGSize.screen)
+                }
+                Button(action: {
+                    isShowingSurrenderModal.toggle()
+                    isShowingGameEnding.toggle()
+                }) {
+                    ActionButtonView(text: "YES", textColor: .white, color: .crimson, size: CGSize.screen)
+                }
+            }
+            .padding(.horizontal)
+        }
     }
 }

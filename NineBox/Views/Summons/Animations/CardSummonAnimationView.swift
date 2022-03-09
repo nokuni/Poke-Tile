@@ -36,7 +36,8 @@ struct CardSummonAnimationView: View {
                 Button(action: {
                     selectedBooster = nil
                 }) {
-                    LongButtonView(text: "Close", textColor: .white, textSize: 0.05, backgroundColor: !cardAnimationVM.isAnimationFinished ? .gray : .steelBlue, borderColor: .black)
+                    ActionButtonView(text: "CLOSE", textColor: .white, color: .steelBlue, size: CGSize.screen)
+                    //LongButtonView(text: "Close", textColor: .white, textSize: 0.05, backgroundColor: !cardAnimationVM.isAnimationFinished ? .gray : .steelBlue, borderColor: .black)
                 }
                 .disabled(!cardAnimationVM.isAnimationFinished)
             }

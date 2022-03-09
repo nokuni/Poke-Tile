@@ -377,11 +377,11 @@ class GameViewModel: ObservableObject, Powers {
                             self.game.turn = .user
                             self.isShowingTurnAnimation.toggle()
                         } else {
-                            if self.game.isGameWon {
+                            /*if self.game.isGameWon {
                                 if let trainer = self.game.trainer {
                                     UserViewModel.shared.user.boosters.append(trainer.booster)
                                 }
-                            }
+                            }*/
                             self.isShowingGameEnding.toggle()
                         }
                     }

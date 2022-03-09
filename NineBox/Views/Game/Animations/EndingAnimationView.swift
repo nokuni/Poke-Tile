@@ -14,6 +14,7 @@ struct EndingAnimationView: View {
     var booster: Booster
     @Binding var isPresented: Bool
     @Binding var isShowingStart: Bool
+    @ObservedObject var userVM: UserViewModel
     @ObservedObject var gameVM: GameViewModel
     @ObservedObject var adventureVM: AdventureViewModel
     var body: some View {
@@ -37,11 +38,12 @@ struct EndingAnimationView: View {
         }
         .onAppear {
             withAnimation(.spring()) {
-//                if gameVM.game.isGameWon {
-//                    if let trainer = gameVM.game.trainer {
-//                        adventureVM.unlockNextTrainer(from: trainer)
-//                    }
-//                }
+                if gameVM.game.isGameWon {
+                    if let trainer = gameVM.game.trainer {
+                        adventureVM.unlockNextTrainer(from: trainer)
+                        userVM.user.boosters.append(trainer.booster)
+                    }
+                }
                 isAnimating.toggle()
             }
         }
@@ -50,7 +52,7 @@ struct EndingAnimationView: View {
 
 struct EndingAnimationView_Previews: PreviewProvider {
     static var previews: some View {
-        EndingAnimationView(booster: Booster.all[0], isPresented: .constant(false), isShowingStart: .constant(false), gameVM: GameViewModel(), adventureVM: AdventureViewModel())
+        EndingAnimationView(booster: Booster.all[0], isPresented: .constant(false), isShowingStart: .constant(false), userVM: UserViewModel(), gameVM: GameViewModel(), adventureVM: AdventureViewModel())
     }
 }
 
@@ -82,7 +84,8 @@ struct EndingMenuView: View {
                             gameVM.loadGame()
                             isShowingStart.toggle()
                         }) {
-                            LongButtonView(text: "Retry", textColor: .white, textSize: 0.05, backgroundColor: .crimson, borderColor: .black)
+                            ActionButtonView(text: "RETRY", textColor: .white, color: .steelBlue, size: CGSize.screen)
+                            //LongButtonView(text: "RETRY", textColor: .white, textSize: 0.05, backgroundColor: .crimson, borderColor: .black)
                         }
                     }
                     
@@ -90,7 +93,8 @@ struct EndingMenuView: View {
                         gameVM.resetGame()
                         dismiss?()
                     }) {
-                        LongButtonView(text: gameVM.game.isGameWon ? "OK" : "QUIT", textColor: .black, textSize: 0.05, backgroundColor: .paleGoldenRod, borderColor: .black)
+                        ActionButtonView(text: gameVM.game.isGameWon ? "OK" : "QUIT", textColor: .white, color: .crimson, size: CGSize.screen)
+                        //LongButtonView(text: gameVM.game.isGameWon ? "OK" : "QUIT", textColor: .black, textSize: 0.05, backgroundColor: .paleGoldenRod, borderColor: .black)
                     }
                 }
                     .padding(.horizontal)

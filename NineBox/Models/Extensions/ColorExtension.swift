@@ -46,7 +46,15 @@ extension Color {
     static let waterBorder = Color(red: 77/255, green: 144/255, blue: 213/255)
     //static let waterBackground = Color(red: 0/255, green: 0/255, blue: 0/255)
     
+    // ORANGE
+    static let darkOrange = Color(red: 255/255, green: 140/255, blue: 0/255)
+    
+    // YELLOW
     static let paleGoldenRod = Color(red: 238/255, green: 232/255, blue: 170/255)
+    static let stilDeGrain = Color(red: 250/255, green: 218/255, blue: 94/255)
+    static let jonquil = Color(red: 244/255, green: 202/255, blue: 22/255)
+    static let safetyYellow = Color(red: 238/255, green: 210/255, blue: 2/255)
+    static let mikadoYellow = Color(red: 255/255, green: 196/255, blue: 12/255)
     
     // RED
     static let crimson = Color(red: 220/255, green: 20/255, blue: 60/255)

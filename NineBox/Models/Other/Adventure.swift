@@ -13,19 +13,16 @@ struct Adventure: Codable, Identifiable {
     let icon: String
     let image: String
     let type: String
-    let trainers: [String]
+    let trainerNames: [String]
+    var trainers = [Trainer]()
     
     enum CodingKeys: String, CodingKey {
-        case title, icon, image, type, trainers
+        case title, icon, image, type, trainerNames
     }
     
     var debuff: Card {
         let debuff = try! Card.getDebuff(name: type)
         return debuff
-    }
-    
-    var realTrainers: [Trainer] {
-        return trainers.map { try! Trainer.get($0) }
     }
 }
 

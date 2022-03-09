@@ -83,7 +83,7 @@
 		2ED7AA1727D38877008FA2C5 /* CardSummonAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED7AA1627D38877008FA2C5 /* CardSummonAnimation.swift */; };
 		2ED7AA1B27D3895D008FA2C5 /* UserCardInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED7AA1A27D3895D008FA2C5 /* UserCardInformationView.swift */; };
 		2ED7AA1F27D389F3008FA2C5 /* UserPreBattleDeckListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED7AA1E27D389F3008FA2C5 /* UserPreBattleDeckListView.swift */; };
-		2ED7AA2327D38A58008FA2C5 /* StartBattleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED7AA2227D38A58008FA2C5 /* StartBattleButtonView.swift */; };
+		2ED7AA2327D38A58008FA2C5 /* ActionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED7AA2227D38A58008FA2C5 /* ActionButtonView.swift */; };
 		2ED7AA2627D39322008FA2C5 /* UserDeckFilterButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED7AA2527D39322008FA2C5 /* UserDeckFilterButtonView.swift */; };
 		2EEEA20227BD8124009A1D49 /* NineBoxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEEA20127BD8124009A1D49 /* NineBoxApp.swift */; };
 		2EEEA20427BD8124009A1D49 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEEA20327BD8124009A1D49 /* GameView.swift */; };
@@ -195,7 +195,7 @@
 		2ED7AA1627D38877008FA2C5 /* CardSummonAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSummonAnimation.swift; sourceTree = "<group>"; };
 		2ED7AA1A27D3895D008FA2C5 /* UserCardInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardInformationView.swift; sourceTree = "<group>"; };
 		2ED7AA1E27D389F3008FA2C5 /* UserPreBattleDeckListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreBattleDeckListView.swift; sourceTree = "<group>"; };
-		2ED7AA2227D38A58008FA2C5 /* StartBattleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartBattleButtonView.swift; sourceTree = "<group>"; };
+		2ED7AA2227D38A58008FA2C5 /* ActionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButtonView.swift; sourceTree = "<group>"; };
 		2ED7AA2527D39322008FA2C5 /* UserDeckFilterButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDeckFilterButtonView.swift; sourceTree = "<group>"; };
 		2EEEA1FE27BD8124009A1D49 /* NineBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NineBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EEEA20127BD8124009A1D49 /* NineBoxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NineBoxApp.swift; sourceTree = "<group>"; };
@@ -291,6 +291,7 @@
 		2E4A95ED27C7B76100BA498D /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				2ED7AA2227D38A58008FA2C5 /* ActionButtonView.swift */,
 				2E4A95EE27C7B77100BA498D /* NavigationTitleView.swift */,
 				2E4A95F327C7B98C00BA498D /* BackButtonView.swift */,
 				2E642B5527CE5460006A2083 /* ToggableClearView.swift */,
@@ -547,7 +548,6 @@
 			isa = PBXGroup;
 			children = (
 				2ED7AA1E27D389F3008FA2C5 /* UserPreBattleDeckListView.swift */,
-				2ED7AA2227D38A58008FA2C5 /* StartBattleButtonView.swift */,
 			);
 			path = PreBattle;
 			sourceTree = "<group>";
@@ -878,7 +878,7 @@
 				2EA07DC327C23B2500AB974B /* StatSquareView.swift in Sources */,
 				2EFCB95927C29C100044B2E9 /* ProfileView.swift in Sources */,
 				2EFCB95327C29B840044B2E9 /* OpponentCardListView.swift in Sources */,
-				2ED7AA2327D38A58008FA2C5 /* StartBattleButtonView.swift in Sources */,
+				2ED7AA2327D38A58008FA2C5 /* ActionButtonView.swift in Sources */,
 				2E5B46D627D52E6900A220C9 /* ProgressBarOverlayView.swift in Sources */,
 				2ED34E0927CB689500F24251 /* Profile.swift in Sources */,
 				2E4E1A1A27BEF797001C8B67 /* StatsView.swift in Sources */,

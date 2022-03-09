@@ -24,7 +24,7 @@ struct Trainer: Codable, Identifiable, Equatable {
     }
     
     var booster: Booster {
-        return try! Trainer.get(reward)
+        return try! Trainer.getBooster(reward)
     }
     
     var cards: [Card] {
@@ -44,7 +44,7 @@ extension Trainer {
     }
     static let trainers: [Trainer] = try! Bundle.main.decode("trainers.json")
     
-    static func get(_ name: String) throws -> Trainer {
+    static func getTrainer(_ name: String) throws -> Trainer {
         let trainers: [Trainer] = try! Bundle.main.decode("trainers.json")
         guard let trainer = trainers.first(where: { $0.name == name }) else {
             throw TrainerError.noTrainer
@@ -52,7 +52,7 @@ extension Trainer {
         return trainer
     }
     
-    static func get(_ name: String) throws -> Booster {
+    static func getBooster(_ name: String) throws -> Booster {
         let boosters: [Booster] = try! Bundle.main.decode("boosters.json")
         guard let booster = boosters.first(where: { $0.name == name }) else {
             throw TrainerError.noBooster

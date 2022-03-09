@@ -9,10 +9,17 @@ import SwiftUI
 
 struct TestView: View {
     @State var isAnimating = false
+    
     var body: some View {
-        RoundedRectangle(cornerRadius: 5)
-            .stroke(Color.black, style: StrokeStyle(lineWidth: 2, dash: [30]))
-            .frame(width: 300, height: 100)
+        GeometryReader { geo in
+            ScrollView {
+                ForEach(0..<10) { _ in
+                    RoundedRectangle(cornerRadius: 5)
+                        .frame(width: geo.size.width * 0.5, height: geo.size.height * 0.2)
+                        .frame(width: geo.size.width, height: geo.size.height * 0.2, alignment: .trailing)
+                }
+            }
+        }
     }
 }
 

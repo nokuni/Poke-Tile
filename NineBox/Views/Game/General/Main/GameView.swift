@@ -22,7 +22,12 @@ struct GameView: View {
                     GameGridView(size: geo.size, gameVM: gameVM, isRotating: $gameVM.isRotatingCard)
                     UserHandView(size: geo.size, gameVM: gameVM)
                     UserInformations(userVM: userVM, gameVM: gameVM, size: geo.size)
-                    ModalButtonView(isPresented: $isShowingSurrenderModal, borderColor: .black, backgroundColor: .crimson, textColor: .white, textContent: "SURRENDER", size: geo.size)
+                    Button(action: {
+                        isShowingSurrenderModal.toggle()
+                    }) {
+                        ActionButtonView(text: "SURRENDER", textColor: .white, color: .crimson, size: geo.size)
+                    }
+                    //ModalButtonView(isPresented: $isShowingSurrenderModal, borderColor: .black, backgroundColor: .crimson, textColor: .white, textContent: "SURRENDER", size: geo.size)
                 }
             }
             .padding(30)
@@ -36,7 +41,7 @@ struct GameView: View {
             
             if gameVM.isShowingGameEnding {
                 if let trainer = gameVM.game.trainer {
-                    EndingAnimationView(booster: trainer.booster, isPresented: $gameVM.isShowingGameEnding, isShowingStart: $isShowingStart, gameVM: gameVM, adventureVM: adventureVM)
+                    EndingAnimationView(booster: trainer.booster, isPresented: $gameVM.isShowingGameEnding, isShowingStart: $isShowingStart, userVM: userVM, gameVM: gameVM, adventureVM: adventureVM)
                 }
             }
             

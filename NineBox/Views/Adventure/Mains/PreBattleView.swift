@@ -27,7 +27,7 @@ struct PreBattleView: View {
                         UserPreBattleDeckListView(decks: decks, selectedDeckIndex: $selectedDeckIndex, size: geo.size, isPossessing: userVM.isPossessing)
                         
                         NavigationLink(destination: GameView()) {
-                            StartBattleButtonView(size: geo.size)
+                            ActionButtonView(text: "START BATTLE", textColor: .white, color: .steelBlue, size: geo.size)
                         }
                         .padding(.vertical)
                         .simultaneousGesture(
