@@ -172,6 +172,7 @@ class GameViewModel: ObservableObject, Powers {
         if let topIndex = adjacentIndex.top {
             if game.userCards[cardIndex].stats.top > game.board[topIndex].stats.bottom {
                 if game.board[topIndex].isPokemon && !game.board[topIndex].isUserSide {
+                    simpleSuccess()
                     rotatingCardAnimation(index: topIndex)
                     game.board[topIndex].side = .user
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -184,6 +185,7 @@ class GameViewModel: ObservableObject, Powers {
         if let trailingIndex = adjacentIndex.trailing {
             if game.userCards[cardIndex].stats.trailing > game.board[trailingIndex].stats.leading {
                 if game.board[trailingIndex].isPokemon && !game.board[trailingIndex].isUserSide {
+                    simpleSuccess()
                     rotatingCardAnimation(index: trailingIndex)
                     game.board[trailingIndex].side = .user
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -196,6 +198,7 @@ class GameViewModel: ObservableObject, Powers {
         if let bottomIndex = adjacentIndex.bottom {
             if game.userCards[cardIndex].stats.bottom > game.board[bottomIndex].stats.top {
                 if game.board[bottomIndex].isPokemon && !game.board[bottomIndex].isUserSide {
+                    simpleSuccess()
                     rotatingCardAnimation(index: bottomIndex)
                     game.board[bottomIndex].side = .user
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -208,6 +211,7 @@ class GameViewModel: ObservableObject, Powers {
         if let leadingIndex = adjacentIndex.leading {
             if game.userCards[cardIndex].stats.leading > game.board[leadingIndex].stats.trailing {
                 if game.board[leadingIndex].isPokemon && !game.board[leadingIndex].isUserSide {
+                    simpleSuccess()
                     rotatingCardAnimation(index: leadingIndex)
                     game.board[leadingIndex].side = .user
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {

@@ -7,6 +7,16 @@
 
 import SwiftUI
 
+func simpleSuccess() {
+    let generator = UINotificationFeedbackGenerator()
+    generator.notificationOccurred(.success)
+}
+
+func simpleError() {
+    let generator = UINotificationFeedbackGenerator()
+    generator.notificationOccurred(.warning)
+}
+
 struct CardGestureView: View {
     @State var dragAmount: CGSize = .zero
     @Binding var isRotating: Bool
@@ -14,6 +24,7 @@ struct CardGestureView: View {
     var size: CGSize
     var card: Card
     var index: Int
+    var amount: CGFloat
     
     var cardDropped: ((CGPoint, Int, Card) -> Void)?
     var isCardInDeck: ((Card) -> Bool)?
@@ -30,7 +41,7 @@ struct CardGestureView: View {
             }
     }
     var body: some View {
-        CardView(card: card, size: size, amount: 4, isPossessing: isPossessing)
+        CardView(card: card, size: size, amount: amount, isPossessing: isPossessing)
             .offset(dragAmount)
             .gesture(gesture)
             .rotation3DEffect(.degrees(isRotating ? 180 : 0), axis: (x: 0, y: 1, z: 0))
@@ -41,6 +52,6 @@ struct CardGestureView: View {
 
 struct CardGestureView_Previews: PreviewProvider {
     static var previews: some View {
-        CardGestureView(isRotating: .constant(false), size: CGSize.screen, card: Card.pokemons[0], index: 0)
+        CardGestureView(isRotating: .constant(false), size: CGSize.screen, card: Card.pokemons[0], index: 0, amount: 4)
     }
 }

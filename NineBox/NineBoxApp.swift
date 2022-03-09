@@ -18,6 +18,7 @@ struct NineBoxApp: App {
                 .environmentObject(gameVM)
                 .environmentObject(userVM)
                 .environmentObject(adventureVM)
+                .statusBar(hidden: true)
         }
     }
 }

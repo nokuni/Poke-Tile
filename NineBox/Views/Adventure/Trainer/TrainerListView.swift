@@ -16,7 +16,7 @@ struct TrainerListView: View {
             LazyVStack(alignment: .leading) {
                 ForEach(trainers) { trainer in
                     NavigationLink(destination: PreBattleView(adventure: adventure, trainer: trainer)) {
-                        TrainerRowView(size: size, adventure: adventure, trainer: trainer)
+                        TrainerRowView(size: size, adventure: adventure, image: trainer.image, isUnlocked: trainer.isUnlocked, hasBeenCleared: trainer.hasBeenCleared)
                             .overlay(
                                 ZStack {
                                     if !trainer.isUnlocked {

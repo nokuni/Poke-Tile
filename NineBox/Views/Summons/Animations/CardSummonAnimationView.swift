@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CardSummonAnimationView: View {
-    private let grid = [GridItem](repeating: .init(.flexible()), count: 4)
+    private let grid = [GridItem](repeating: .init(.flexible(), spacing: 0), count: 4)
     @StateObject var cardAnimationVM = CardAnimationViewModel()
     var cards: [Card]
     var previousCardCollection: [Card]
@@ -22,7 +22,7 @@ struct CardSummonAnimationView: View {
                 Spacer()
                 LazyVGrid(columns: grid, spacing: 0) {
                     ForEach(cardAnimationVM.cardPlaceholders.indices) { index in
-                        CardGestureView(isRotating: $cardAnimationVM.rotatingCardPlaceholders[index], size: size, card: cardAnimationVM.cardPlaceholders[index], index: index, isCardInDeck: isCardInDeck)
+                        CardGestureView(isRotating: $cardAnimationVM.rotatingCardPlaceholders[index], size: size, card: cardAnimationVM.cardPlaceholders[index], index: index, amount: 4.5, isCardInDeck: isCardInDeck)
                             .allowsHitTesting(false)
                             .overlay(
                                 CardSummonedOverlayView(isRotating: cardAnimationVM.rotatingCardPlaceholders[index], card: cardAnimationVM.cardPlaceholders[index], previousCardCollection: previousCardCollection, size: size)

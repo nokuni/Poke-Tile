@@ -10,7 +10,9 @@ import SwiftUI
 struct TrainerRowView: View {
     var size: CGSize
     var adventure: Adventure
-    var trainer: Trainer
+    var image: String
+    var isUnlocked: Bool
+    var hasBeenCleared: Bool
     var body: some View {
         ZStack {
             Image(adventure.image)
@@ -23,7 +25,7 @@ struct TrainerRowView: View {
                         .cornerRadius(5)
                 )
                 .overlay(
-                    TrainerImageView(size: size, height: 0.18, image: trainer.image, isUnlocked: trainer.isUnlocked, hasBeenCleared: trainer.hasBeenCleared)
+                    TrainerImageView(size: size, height: 0.18, image: image, isUnlocked: isUnlocked, hasBeenCleared: hasBeenCleared)
                 )
         }
     }
@@ -31,6 +33,6 @@ struct TrainerRowView: View {
 
 struct TrainerRowView_Previews: PreviewProvider {
     static var previews: some View {
-        TrainerRowView(size: CGSize.screen, adventure: Adventure.adventures[0], trainer: Trainer.trainers[0])
+        TrainerRowView(size: CGSize.screen, adventure: Adventure.adventures[0], image: "", isUnlocked: false, hasBeenCleared: false)
     }
 }

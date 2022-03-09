@@ -22,7 +22,7 @@ struct PreBattleView: View {
             GeometryReader { geo in
                 VStack(alignment: .leading) {
                     NavigationTitleView(size: geo.size, navigationTitle: NavigationTitleModel.preBattle)
-                    TrainerRowView(size: geo.size, adventure: adventure, trainer: trainer)
+                    TrainerRowView(size: geo.size, adventure: adventure, image: trainer.image, isUnlocked: trainer.isUnlocked, hasBeenCleared: false)
                     if !userVM.filteredDecks(filter: .playable).isEmpty {
                         UserPreBattleDeckListView(decks: decks, selectedDeckIndex: $selectedDeckIndex, size: geo.size, isPossessing: userVM.isPossessing)
                         
