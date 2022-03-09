@@ -8,26 +8,11 @@
 import SwiftUI
 
 struct TestView: View {
-    @State var isShowing = false
+    @State var isAnimating = false
     var body: some View {
-        ScrollView {
-            VStack {
-                ForEach(0..<10, id: \.self) { _ in
-                    ZStack {
-                        if isShowing {
-                            RoundedRectangle(cornerRadius: 5)
-                                .frame(width: CGSize.screen.width, height: CGSize.screen.height * 0.1)
-                        }
-                    }
-                    .transition(.opacity)
-                }
-            }
-        }
-        .onAppear {
-            withAnimation(.linear) {
-                isShowing.toggle()
-            }
-        }
+        RoundedRectangle(cornerRadius: 5)
+            .stroke(Color.black, style: StrokeStyle(lineWidth: 2, dash: [30]))
+            .frame(width: 300, height: 100)
     }
 }
 

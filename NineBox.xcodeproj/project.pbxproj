@@ -37,6 +37,7 @@
 		2E642B6A27CE8885006A2083 /* EndingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E642B6927CE8885006A2083 /* EndingAnimationView.swift */; };
 		2E849BC527D653BB001CE665 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E849BC427D653BB001CE665 /* UserViewModel.swift */; };
 		2E849BC827D654C6001CE665 /* AdventureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E849BC727D654C6001CE665 /* AdventureViewModel.swift */; };
+		2E849BCA27D7BF28001CE665 /* CardSummonedOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E849BC927D7BF28001CE665 /* CardSummonedOverlayView.swift */; };
 		2E8E794227D288DD00A185C9 /* UserDeckFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8E794127D288DD00A185C9 /* UserDeckFilterView.swift */; };
 		2E8E794427D2BBB800A185C9 /* UserDeckDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8E794327D2BBB800A185C9 /* UserDeckDetailView.swift */; };
 		2E9676ED27CF4CA200DC50C6 /* ModalButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9676EC27CF4CA200DC50C6 /* ModalButtonView.swift */; };
@@ -148,6 +149,7 @@
 		2E642B6927CE8885006A2083 /* EndingAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndingAnimationView.swift; sourceTree = "<group>"; };
 		2E849BC427D653BB001CE665 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		2E849BC727D654C6001CE665 /* AdventureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdventureViewModel.swift; sourceTree = "<group>"; };
+		2E849BC927D7BF28001CE665 /* CardSummonedOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSummonedOverlayView.swift; sourceTree = "<group>"; };
 		2E8E794127D288DD00A185C9 /* UserDeckFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDeckFilterView.swift; sourceTree = "<group>"; };
 		2E8E794327D2BBB800A185C9 /* UserDeckDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDeckDetailView.swift; sourceTree = "<group>"; };
 		2E9676EC27CF4CA200DC50C6 /* ModalButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalButtonView.swift; sourceTree = "<group>"; };
@@ -498,6 +500,7 @@
 			isa = PBXGroup;
 			children = (
 				2EB39B5327D14F7E00C02AB0 /* CardSummonAnimationView.swift */,
+				2E849BC927D7BF28001CE665 /* CardSummonedOverlayView.swift */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -828,6 +831,7 @@
 				2E4E1A0227BEDD10001C8B67 /* CardType.swift in Sources */,
 				2EFCB97327C2D5BB0044B2E9 /* TrainerListView.swift in Sources */,
 				2EF5B05D27C3DA5D00A8930C /* GameDifficulty.swift in Sources */,
+				2E849BCA27D7BF28001CE665 /* CardSummonedOverlayView.swift in Sources */,
 				2E9676F127CFFE0100DC50C6 /* UserDeckCreationView.swift in Sources */,
 				2EFCB94D27C282110044B2E9 /* Turn.swift in Sources */,
 				2E4E1A0A27BEDDC8001C8B67 /* AdventureRowView.swift in Sources */,

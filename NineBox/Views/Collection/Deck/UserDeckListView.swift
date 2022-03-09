@@ -11,12 +11,12 @@ struct UserDeckListView: View {
     private let grid = [GridItem](repeating: .init(.flexible(), spacing: 0), count: 4)
     var decks: [Deck]
     var size: CGSize
-    var isCardInDeck: ((Card) -> Bool)?
+    var isPossessing: ((Card) -> Bool)?
     var isDeckPlayable: ((Deck) -> Bool)?
     var body: some View {
         ScrollView(showsIndicators: false) {
             ForEach(decks) { deck in
-                NavigationLink(destination: UserDeckDetailView(deck: deck, size: size, isCardInDeck: isCardInDeck)) {
+                NavigationLink(destination: UserDeckDetailView(deck: deck, size: size, isPossessing: isPossessing)) {
                     UserDeckRowView(deck: deck, size: size)
                         .overlay(
                             ZStack {

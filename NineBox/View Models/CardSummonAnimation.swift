@@ -9,24 +9,48 @@ import SwiftUI
 
 // Manage the card summon animation
 
-class CardSummonAnimation: ObservableObject {
-    @Published var rotatings = Array(repeating: true, count: 8)
-    @Published var cards: [Card] = Array(repeating: Card.empty, count: 8)
-    @Published var randomCards = [Card]()
+class CardAnimationViewModel: ObservableObject {
+    
+    @Published var rotatingCardPlaceholders = Array(repeating: true, count: 8)
+    @Published var rotatingBoardCards = Array(repeating: true, count: 16)
+    
+    @Published var cardPlaceholders = Card.placeholders
+    @Published var boardCardPlaceholders = Card.emptyBoard
+    
+    @Published var cardsSummoned = [Card]()
+    
     @Published var index = 0
     var timer: Timer?
     
-    func startAnimation() {
+    func startSummonAnimation() {
         timer?.invalidate()
-        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: animateCard)
+        timer = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true, block: animateCard)
+    }
+    
+    func startBoardAnimation() {
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: animateBoardCard)
     }
     
     func animateCard(timer: Timer) {
-        if index < cards.count {
+        if index < cardPlaceholders.count {
             withAnimation(.linear.repeatCount(1, autoreverses: false)) {
-                cards[index] = randomCards[index]
+                cardPlaceholders[index] = cardsSummoned[index]
                 
-                rotatings[index].toggle()
+                rotatingCardPlaceholders[index].toggle()
+                index += 1
+            }
+        } else {
+            timer.invalidate()
+        }
+    }
+    
+    func animateBoardCard(timer: Timer) {
+        if index < boardCardPlaceholders.count {
+            withAnimation(.linear.repeatCount(1, autoreverses: false)) {
+                boardCardPlaceholders[index] = cardsSummoned[index]
+                
+                rotatingBoardCards[index].toggle()
                 index += 1
             }
         } else {
@@ -36,13 +60,13 @@ class CardSummonAnimation: ObservableObject {
     
     func stopAnimation() {
         timer?.invalidate()
-        rotatings.indices.forEach {
-            rotatings[$0] = false
+        rotatingCardPlaceholders.indices.forEach {
+            rotatingCardPlaceholders[$0] = false
         }
-        cards = randomCards
+        cardPlaceholders = cardsSummoned
     }
     
     var isAnimationFinished: Bool {
-        rotatings.allSatisfy({ $0 == false })
+        rotatingCardPlaceholders.allSatisfy({ $0 == false })
     }
 }

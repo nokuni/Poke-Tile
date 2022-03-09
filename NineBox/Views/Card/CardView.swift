@@ -11,18 +11,18 @@ struct CardView: View {
     var card: Card
     var size: CGSize
     var amount: CGFloat
-    var isCardInDeck: ((Card) -> Bool)?
+    var isPossessing: ((Card) -> Bool)?
     var body: some View {
         RoundedRectangle(cornerRadius: 5)
-            .stroke(card.borderColor, lineWidth: 2)
+            .stroke(card.borderColor, lineWidth: 3)
             .shadow(color: card.side == .user ? .blue : card.side == .opponent ? .red : .clear, radius: 3)
             .background(
-                CardBackgroundView(card: card, isCardInDeck: isCardInDeck)
+                CardBackgroundView(card: card, isPossessing: isPossessing)
                     .clipped()
             )
             .padding(5)
             .frame(width: size.width * (1/amount), height: size.width * (1/amount))
-            .overlay(StatsOverlayView(card: card, amount: amount, size: size, isCardInDeck: isCardInDeck))
+            .overlay(StatsOverlayView(card: card, amount: amount, size: size, isPossessing: isPossessing))
             .overlay(TypeOverlayView(card: card, amount: amount, size: size))
     }
 }
@@ -37,10 +37,10 @@ struct StatsOverlayView: View {
     var card: Card
     var amount: CGFloat
     var size: CGSize
-    var isCardInDeck: ((Card) -> Bool)?
+    var isPossessing: ((Card) -> Bool)?
     var body: some View {
         ZStack {
-            if !(isCardInDeck?(card) ?? true) {
+            if !(isPossessing?(card) ?? true) {
                 EmptyView()
             } else {
                 if card.isPokemon {

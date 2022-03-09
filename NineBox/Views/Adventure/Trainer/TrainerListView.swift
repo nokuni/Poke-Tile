@@ -10,7 +10,10 @@ import SwiftUI
 struct TrainerListView: View {
     var size: CGSize
     var adventure: Adventure
-    var trainers: [Trainer]
+    var trainerNames: [String]
+    var trainers: [Trainer] {
+        trainerNames.map { try! Trainer.get($0) }
+    }
     var body: some View {
         ScrollView(showsIndicators: false) {
             LazyVStack(alignment: .leading) {
@@ -38,6 +41,6 @@ struct TrainerListView: View {
 
 struct TrainerListView_Previews: PreviewProvider {
     static var previews: some View {
-        TrainerListView(size: CGSize.screen, adventure: Adventure.adventures[0], trainers: [])
+        TrainerListView(size: CGSize.screen, adventure: Adventure.adventures[0], trainerNames: [])
     }
 }

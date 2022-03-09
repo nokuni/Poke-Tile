@@ -10,13 +10,13 @@ import SwiftUI
 struct CardBackgroundView: View {
     private let columns = [GridItem](repeating: .init(.flexible()), count: 2)
     var card: Card
-    var isCardInDeck: ((Card) -> Bool)?
+    var isPossessing: ((Card) -> Bool)?
     var body: some View {
         GeometryReader { geo in
             ZStack(alignment: .topLeading) {
                 card.type.color
                     .cornerRadius(5)
-                    .brightness(0.2)
+                    .brightness(0.4)
                     //.opacity(0.3)
                 Image(card.backgroundImage)
                     .resizable()
@@ -26,7 +26,7 @@ struct CardBackgroundView: View {
                 if card.category == .pokemon {
                     Image(card.image)
                         .resizable()
-                        .renderingMode(!(isCardInDeck?(card) ?? true) ? .template : .none)
+                        .renderingMode(!(isPossessing?(card) ?? true) ? .template : .none)
                         .centerCropped(radius: 5, alignment: .center)
                         .foregroundColor(.black)
                         .frame(width: geo.size.width * 1.3, height: geo.size.height * 1.3)

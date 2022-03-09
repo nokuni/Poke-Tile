@@ -10,6 +10,7 @@ import SwiftUI
 struct GameView: View {
     @EnvironmentObject var userVM: UserViewModel
     @EnvironmentObject var gameVM: GameViewModel
+    @EnvironmentObject var adventureVM: AdventureViewModel
     @State private var isShowingStart = false
     @State private var isShowingSurrenderModal = false
     var body: some View {
@@ -35,7 +36,7 @@ struct GameView: View {
             
             if gameVM.isShowingGameEnding {
                 if let trainer = gameVM.game.trainer {
-                    EndingAnimationView(booster: trainer.booster, isPresented: $gameVM.isShowingGameEnding, isShowingStart: $isShowingStart, resetGame: gameVM.resetGame, loadGame: gameVM.loadGame, isGameWon: gameVM.game.isGameWon())
+                    EndingAnimationView(booster: trainer.booster, isPresented: $gameVM.isShowingGameEnding, isShowingStart: $isShowingStart, gameVM: gameVM, adventureVM: adventureVM)
                 }
             }
             

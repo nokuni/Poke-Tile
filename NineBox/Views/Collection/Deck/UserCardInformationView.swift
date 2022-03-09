@@ -10,9 +10,9 @@ import SwiftUI
 struct UserCardInformationView: View {
     var card: Card
     var size: CGSize
-    var isCardInDeck: ((Card) -> Bool)?
+    var isPossessing: ((Card) -> Bool)?
     var body: some View {
-        CardView(card: card, size: size, amount: 1, isCardInDeck: isCardInDeck)
+        CardView(card: card, size: size, amount: 1, isPossessing: isPossessing)
     }
 }
 

@@ -18,7 +18,7 @@ struct UserDeckView: View {
                 VStack(alignment: .leading) {
                     NavigationTitleView(size: geo.size, navigationTitle: NavigationTitleModel.decks)
                     UserDeckFilterView(selectedFilter: $filter)
-                    UserDeckListView(decks: userVM.user.decks, size: geo.size, isCardInDeck: userVM.isCardInDeck, isDeckPlayable: userVM.isDeckPlayable)
+                    UserDeckListView(decks: userVM.user.decks, size: geo.size, isPossessing: userVM.isPossessing, isDeckPlayable: userVM.isDeckPlayable)
                     Spacer()
                     BackButtonView(size: geo.size, dismiss: dismiss)
                 }

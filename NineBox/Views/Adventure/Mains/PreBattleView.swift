@@ -13,6 +13,7 @@ struct PreBattleView: View {
     @EnvironmentObject var userVM: UserViewModel
     @State var selectedDeckIndex = 0
     @State var selectedIndex = 0
+    @State var decks = [Deck]()
     var adventure: Adventure
     var trainer: Trainer
     var body: some View {
@@ -23,10 +24,10 @@ struct PreBattleView: View {
                     NavigationTitleView(size: geo.size, navigationTitle: NavigationTitleModel.preBattle)
                     TrainerRowView(size: geo.size, adventure: adventure, trainer: trainer)
                     if !userVM.filteredDecks(filter: .playable).isEmpty {
-                        UserPreBattleDeckListView(userVM: userVM, selectedDeckIndex: $selectedDeckIndex, size: geo.size, isCardInDeck: userVM.isCardInDeck)
+                        UserPreBattleDeckListView(decks: decks, selectedDeckIndex: $selectedDeckIndex, size: geo.size, isPossessing: userVM.isPossessing)
                         
                         NavigationLink(destination: GameView()) {
-                            StartBattleButtonView(trainer: trainer, size: geo.size)
+                            StartBattleButtonView(size: geo.size)
                         }
                         .padding(.vertical)
                         .simultaneousGesture(
@@ -34,7 +35,8 @@ struct PreBattleView: View {
                                 gameVM.createNewGame(trainer: trainer, deck: userVM.filteredDecks(filter: .playable)[selectedDeckIndex])
                             }
                         )
-                    } else {
+                    }
+                    else {
                         Text("You have no playable decks right now")
                             .foregroundColor(.gray)
                             .font(.system(size: geo.size.width * 0.08, weight: .bold, design: .rounded))
@@ -50,6 +52,8 @@ struct PreBattleView: View {
         }
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
+        .onAppear { decks = userVM.filteredDecks(filter: .playable) }
+        .onDisappear { decks.removeAll() }
     }
 }
 

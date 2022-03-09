@@ -26,14 +26,14 @@ class UserViewModel: ObservableObject {
         user.boosters.remove(at: index)
     }
     
-    func isCardInDeck(_ card: Card) -> Bool {
+    func isPossessing(_ card: Card) -> Bool {
         user.cards.contains(where: { $0.name == card.name })
     }
     
     func isDeckPlayable(deck: Deck) -> Bool {
         var boolArray = [Bool]()
         for card in deck.cards {
-            if isCardInDeck(card) { boolArray.append(true) } else { boolArray.append(false) }
+            if isPossessing(card) { boolArray.append(true) } else { boolArray.append(false) }
         }
         return boolArray.allSatisfy({ $0 == true })
     }

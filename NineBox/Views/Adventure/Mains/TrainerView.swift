@@ -18,7 +18,7 @@ struct TrainerView: View {
             GeometryReader { geo in
                 VStack(alignment: .leading) {
                     NavigationTitleView(size: geo.size, navigationTitle: NavigationTitleModel(image: adventure.icon, title: adventure.title, color: adventure.debuff.borderColor))
-                    TrainerListView(size: geo.size, adventure: adventure, trainers: adventureVM.trainers)
+                    TrainerListView(size: geo.size, adventure: adventure, trainerNames: adventure.trainers)
                     Spacer()
                     BackButtonView(size: geo.size, dismiss: dismiss)
                 }
@@ -27,7 +27,7 @@ struct TrainerView: View {
             .navigationBarHidden(true)
         }
         .onAppear {
-            adventureVM.showTrainers(from: adventure)
+            //adventureVM.showTrainers(from: adventure)
         }
     }
 }

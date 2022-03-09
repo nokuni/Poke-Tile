@@ -14,7 +14,7 @@ struct UserDeckDetailView: View {
     @State var selectedCard: Card? = nil
     var deck: Deck
     var size: CGSize
-    var isCardInDeck: ((Card) -> Bool)?
+    var isPossessing: ((Card) -> Bool)?
     var body: some View {
         ZStack {
             Color.white.ignoresSafeArea()
@@ -24,7 +24,7 @@ struct UserDeckDetailView: View {
                 
                 LazyVGrid(columns: grid, spacing: 0) {
                     ForEach(cards) { card in
-                        CardView(card: card, size: size, amount: 4, isCardInDeck: isCardInDeck)
+                        CardView(card: card, size: size, amount: 4, isPossessing: isPossessing)
                             .onTapGesture {
                                 selectedCard = card
                             }
@@ -35,7 +35,7 @@ struct UserDeckDetailView: View {
                     }
                 }
                 if let selectedCard = selectedCard {
-                    UserCardInformationView(card: selectedCard, size: size, isCardInDeck: isCardInDeck)
+                    UserCardInformationView(card: selectedCard, size: size, isPossessing: isPossessing)
                 }
                 
                 Spacer()

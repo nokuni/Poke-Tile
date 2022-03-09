@@ -59,6 +59,17 @@ struct Card: Equatable, Codable, Identifiable, Hashable {
     func isDuplicate(from cards: [Card]) -> Bool {
         cards.contains { $0.name == name }
     }
+    
+    func buffed(with debuff: Card) -> Card {
+        var card = self
+        let count = debuff.debuffs.count
+        let buffAmount = card.type == debuff.type ? count : -count
+        card.stats.top += buffAmount
+        card.stats.trailing += buffAmount
+        card.stats.bottom += buffAmount
+        card.stats.leading += buffAmount
+        return card
+    }
 }
 
 extension Card {
@@ -68,8 +79,11 @@ extension Card {
     }
     
     static let slot = Card(name: "Slot", image: "add", backgroundImage: "spiral", category: .empty, type: .empty, stats: .init(top: 0, trailing: 0, bottom: 0, leading: 0), rarity: .common, cost: 0, debuffs: [])
-    static let empty = Card(name: "Empty", image: "pokeball", backgroundImage: "spiral", category: .empty, type: .empty, stats: .init(top: 0, trailing: 0, bottom: 0, leading: 0), rarity: .common, cost: 0, debuffs: [])
+    static let empty = Card(name: "Empty", image: "pokeball", backgroundImage: "spiral", category: .empty, type: .empty, stats: .init(top: 0, trailing: 0, bottom: 0, leading: 0), rarity: .none, cost: 0, debuffs: [])
+    static let invisible = Card(name: "Invisible", image: "invisible", backgroundImage: "invisible", category: .empty, type: .empty, stats: .init(top: 0, trailing: 0, bottom: 0, leading: 0), rarity: .none, cost: 0)
+    
     static let placeholders = Array(repeating: Card.empty, count: 8)
+    static let emptyBoard = Array(repeating: Card.invisible, count: 16)
     
     static let debuffs: [Card] = try! Bundle.main.decode("debuffs.json")
     static let pokemons: [Card] = try! Bundle.main.decode("pokemons.json")

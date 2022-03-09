@@ -43,11 +43,7 @@ struct Game {
         return (topIndex, trailingIndex, bottomIndex, leadingIndex)
     }
     
-    func isGameWon() -> Bool {
-        return userPoints > opponentPoints
-    }
+    var isGameWon: Bool { userPoints > opponentPoints }
     
-    func isGameOver() -> Bool {
-        return board.allSatisfy { $0.category == .pokemon }
-    }
+    var isGameOver: Bool { board.allSatisfy { $0.category == .pokemon } }
 }

@@ -14,30 +14,34 @@ struct EndingAnimationView: View {
     var booster: Booster
     @Binding var isPresented: Bool
     @Binding var isShowingStart: Bool
-    var resetGame: (() -> Void)?
-    var loadGame: (() -> Void)?
-    var isGameWon: Bool
+    @ObservedObject var gameVM: GameViewModel
+    @ObservedObject var adventureVM: AdventureViewModel
     var body: some View {
         ZStack {
             Rectangle()
-                .foregroundColor(isGameWon ? .blue : .crimson)
+                .foregroundColor(gameVM.game.isGameWon ? .blue : .crimson)
                 .opacity(0.7)
                 .ignoresSafeArea()
             VStack {
                 if isAnimating {
                     ZStack {
-                        Image(isGameWon ? "win" : "loose")
+                        Image(gameVM.game.isGameWon ? "win" : "loose")
                             .resizable()
                             .scaledToFit()
-                            .scaleEffect(isGameWon ? 0.7 : 1)
+                            .scaleEffect(gameVM.game.isGameWon ? 0.7 : 1)
                     }
                     .transition(.move(edge: .top))
                 }
-                EndingMenuView(isGameWon: isGameWon, resetGame: resetGame, loadGame: loadGame, dismiss: dismiss, booster: booster, isShowingStart: $isShowingStart)
+                EndingMenuView(gameVM: gameVM, dismiss: dismiss, booster: booster, isShowingStart: $isShowingStart)
             }
         }
         .onAppear {
             withAnimation(.spring()) {
+//                if gameVM.game.isGameWon {
+//                    if let trainer = gameVM.game.trainer {
+//                        adventureVM.unlockNextTrainer(from: trainer)
+//                    }
+//                }
                 isAnimating.toggle()
             }
         }
@@ -46,14 +50,12 @@ struct EndingAnimationView: View {
 
 struct EndingAnimationView_Previews: PreviewProvider {
     static var previews: some View {
-        EndingAnimationView(booster: Booster.all[0], isPresented: .constant(false), isShowingStart: .constant(false), isGameWon: true)
+        EndingAnimationView(booster: Booster.all[0], isPresented: .constant(false), isShowingStart: .constant(false), gameVM: GameViewModel(), adventureVM: AdventureViewModel())
     }
 }
 
 struct EndingMenuView: View {
-    var isGameWon: Bool
-    var resetGame: (() -> Void)?
-    var loadGame: (() -> Void)?
+    @ObservedObject var gameVM: GameViewModel
     var dismiss: DismissAction?
     var booster: Booster
     @Binding var isShowingStart: Bool
@@ -63,7 +65,7 @@ struct EndingMenuView: View {
             .background(Color.white)
             .overlay(
                 VStack {
-                    if isGameWon {
+                    if gameVM.game.isGameWon {
                         Text("You obtained a booster !")
                             .foregroundColor(.black)
                             .font(.system(size: CGSize.screen.width * 0.05, weight: .bold, design: .rounded))
@@ -71,34 +73,24 @@ struct EndingMenuView: View {
                             .frame(height: CGSize.screen.height * 0.1)
                     }
                     
-                    Text(isGameWon ? "WIN" : "GAME OVER")
+                    Text(gameVM.game.isGameWon ? "WIN" : "GAME OVER")
                         .foregroundColor(.black)
                         .font(.system(size: CGSize.screen.width * 0.1, weight: .bold, design: .rounded))
-                    if !isGameWon {
+                    
+                    if !gameVM.game.isGameWon {
                         Button(action: {
-                            loadGame?()
+                            gameVM.loadGame()
                             isShowingStart.toggle()
                         }) {
                             LongButtonView(text: "Retry", textColor: .white, textSize: 0.05, backgroundColor: .crimson, borderColor: .black)
                         }
                     }
                     
-                    // TEMPORARY (WIP)
-                    if isGameWon {
-                        Button(action: {
-                            loadGame?()
-                            isShowingStart.toggle()
-                        }) {
-                            LongButtonView(text: "Next (WIP)", textColor: .white, textSize: 0.05, backgroundColor: .gray, borderColor: .black)
-                        }
-                        .disabled(true)
-                    }
-                    
                     Button(action: {
-                        resetGame?()
+                        gameVM.resetGame()
                         dismiss?()
                     }) {
-                        LongButtonView(text: "Quit", textColor: .white, textSize: 0.05, backgroundColor: .steelBlue, borderColor: .black)
+                        LongButtonView(text: gameVM.game.isGameWon ? "OK" : "QUIT", textColor: .black, textSize: 0.05, backgroundColor: .paleGoldenRod, borderColor: .black)
                     }
                 }
                     .padding(.horizontal)

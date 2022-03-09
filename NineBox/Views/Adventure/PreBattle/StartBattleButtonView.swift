@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct StartBattleButtonView: View {
-    var trainer: Trainer
     var size: CGSize
     var body: some View {
             Text("START BATTLE")
@@ -27,6 +26,6 @@ struct StartBattleButtonView: View {
 
 struct StartBattleButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        StartBattleButtonView(trainer: Trainer.trainers[0], size: CGSize.screen)
+        StartBattleButtonView(size: CGSize.screen)
     }
 }

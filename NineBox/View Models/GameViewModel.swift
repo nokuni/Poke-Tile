@@ -15,7 +15,7 @@
 
 import SwiftUI
 
-class GameViewModel: ObservableObject {
+class GameViewModel: ObservableObject, Powers {
     @Published var game = Game()
     
     @Published var isShowingTurnAnimation = false
@@ -39,6 +39,7 @@ class GameViewModel: ObservableObject {
         loadOpponentHand()
     }
     
+    // Apply the type action of a card
     func typeAction(of index: Int, on match: Int, card: Card) {
         switch card.type {
         case .empty:
@@ -98,20 +99,18 @@ class GameViewModel: ObservableObject {
             }
         }
     }
-    
     func grassAction(edgeIndex: Int, card: Card) {
         guard card.type == .grass else { return }
         var grassDebuff = try! Card.getDebuff(type: .grass)
         grassDebuff.debuffs.append("grass")
         if game.board[edgeIndex].isAvailable {
-            game.board[edgeIndex] = grassDebuff
+            withAnimation { game.board[edgeIndex] = grassDebuff }
         } else if game.board[edgeIndex].isDebuff && game.board[edgeIndex].type == .grass {
             if game.board[edgeIndex].debuffs.count < 4 {
-                game.board[edgeIndex].debuffs.append("grass")
+                withAnimation { game.board[edgeIndex].debuffs.append("grass") }
             }
         }
     }
-    
     func fireAction(edgeIndex: Int, card: Card) {
         guard card.type == .fire else { return }
         if game.board[edgeIndex].isDebuff && game.board[edgeIndex].type != .fire {
@@ -156,9 +155,9 @@ class GameViewModel: ObservableObject {
     }
     
     func endTurn(toStart turn: Turn) {
-        if !self.game.isGameOver() { game.turn = turn }
+        if !self.game.isGameOver { game.turn = turn }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            if !self.game.isGameOver() {
+            if !self.game.isGameOver {
                 self.isShowingTurnAnimation.toggle()
             } else {
                 
@@ -227,7 +226,7 @@ class GameViewModel: ObservableObject {
         game.userCards[index].isActivated = false
         game.turn = .opponent
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            if !self.game.isGameOver() {
+            if !self.game.isGameOver {
                 self.isShowingTurnAnimation.toggle()
             } else {
                 self.isShowingGameEnding.toggle()
@@ -247,8 +246,7 @@ class GameViewModel: ObservableObject {
     
     func buffUserCard(index: Int, debuff: Card) {
         let count = debuff.debuffs.count
-        guard let deck = game.deck else { return }
-        let buffAmount = deck.cards[index].type == debuff.type ? count : -count
+        let buffAmount = game.userCards[index].type == debuff.type ? count : -count
         game.userCards[index].stats.top += buffAmount
         game.userCards[index].stats.trailing += buffAmount
         game.userCards[index].stats.bottom += buffAmount
@@ -262,18 +260,6 @@ class GameViewModel: ObservableObject {
         game.trainerCards[index].stats.trailing += buffAmount
         game.trainerCards[index].stats.bottom += buffAmount
         game.trainerCards[index].stats.leading += buffAmount
-    }
-    
-    func buffedCard(card: Card, debuff: Card) -> Card {
-        var card = card
-        let count = debuff.debuffs.count
-        let buffAmount = card.type == debuff.type ? count : -count
-        card.stats.top += buffAmount
-        card.stats.trailing += buffAmount
-        card.stats.bottom += buffAmount
-        card.stats.leading += buffAmount
-        
-        return card
     }
     
     func loadBoard(bonus: ((Trainer?) -> Void)) {
@@ -293,6 +279,7 @@ class GameViewModel: ObservableObject {
         game.trainerCards.indices.forEach { game.trainerCards[$0].side = .opponent }
     }
     
+    // Futur changes of making it not random
     func addDebuffs(trainer: Trainer?) {
         guard let trainer = trainer else { return }
         let types = Set(trainer.cards.map { $0.type })
@@ -319,25 +306,25 @@ class GameViewModel: ObservableObject {
         
         
         if let topIndex = adjacentCardIndex.top {
-            let buffedTop = buffedCard(card: secondCard, debuff: game.board[topIndex])
+            let buffedTop = secondCard.buffed(with: game.board[topIndex])
             result.0.top = buffedTop.stats.bottom > firstCard.stats.top
             result.0.location = topIndex
         }
         
         if let trailingIndex = adjacentCardIndex.trailing {
-            let buffedTrailing = buffedCard(card: secondCard, debuff: game.board[trailingIndex])
+            let buffedTrailing = secondCard.buffed(with: game.board[trailingIndex])
             result.1.trailing = buffedTrailing.stats.leading > firstCard.stats.trailing
             result.1.location = trailingIndex
         }
         
         if let bottomIndex = adjacentCardIndex.bottom {
-            let buffedBottom = buffedCard(card: secondCard, debuff: game.board[bottomIndex])
+            let buffedBottom = secondCard.buffed(with: game.board[bottomIndex])
             result.2.bottom = buffedBottom.stats.top > firstCard.stats.bottom
             result.2.location = bottomIndex
         }
         
         if let leadingIndex = adjacentCardIndex.leading {
-            let buffedLeading = buffedCard(card: secondCard, debuff: game.board[leadingIndex])
+            let buffedLeading = secondCard.buffed(with: game.board[leadingIndex])
             result.3.leading = buffedLeading.stats.trailing > firstCard.stats.leading
             result.3.location = leadingIndex
         }
@@ -386,13 +373,14 @@ class GameViewModel: ObservableObject {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 withAnimation {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        if !self.game.isGameOver() {
+                        if !self.game.isGameOver {
                             self.game.turn = .user
                             self.isShowingTurnAnimation.toggle()
                         } else {
-                            if let trainer = self.game.trainer {
-                                UserViewModel.shared.user.boosters.append(trainer.booster)
-                                //self.user.boosters.append(trainer.booster)
+                            if self.game.isGameWon {
+                                if let trainer = self.game.trainer {
+                                    UserViewModel.shared.user.boosters.append(trainer.booster)
+                                }
                             }
                             self.isShowingGameEnding.toggle()
                         }
@@ -442,4 +430,10 @@ class GameViewModel: ObservableObject {
             }
         }
     }
+}
+
+protocol Powers {
+    func normalAction(of index: Int, on match: Int, card: Card)
+    func grassAction(edgeIndex: Int, card: Card)
+    func fireAction(edgeIndex: Int, card: Card)
 }

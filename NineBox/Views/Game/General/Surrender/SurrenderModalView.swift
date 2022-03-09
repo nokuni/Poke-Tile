@@ -25,7 +25,7 @@ struct SurrenderModalView: View {
                             VStack {
                                 Text("Do you really want to surrender this battle ?")
                                     .foregroundColor(.black)
-                                    .font(.system(size: CGSize.screen.width * 0.06, weight: .regular, design: .rounded))
+                                    .font(.system(size: CGSize.screen.width * 0.07, weight: .semibold, design: .rounded))
                                     .multilineTextAlignment(.center)
                                     .padding(.vertical)
                                 HStack(spacing: 20) {

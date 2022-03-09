@@ -27,7 +27,7 @@ struct SummonsView: View {
             .padding()
             
             if selectedBooster != nil {
-                CardSummonAnimationView(cards: cards, previousCardCollection: previousCardCollection, size: CGSize.screen, selectedBooster: $selectedBooster, isCardInDeck: userVM.isCardInDeck)
+                CardSummonAnimationView(cards: cards, previousCardCollection: previousCardCollection, size: CGSize.screen, selectedBooster: $selectedBooster, isCardInDeck: userVM.isPossessing)
             }
         }
         .navigationBarHidden(true)

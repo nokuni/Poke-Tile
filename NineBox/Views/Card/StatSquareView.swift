@@ -50,12 +50,14 @@ struct StatSquareView: View {
                 .stroke(Color.white)
                 .frame(width: size.width * (1/3), height: size.width * (1/3))
                 .background(
-                    Color.white
-                        .cornerRadius(5)
+                   RoundedRectangle(cornerRadius: 5)
+                    .foregroundColor(.white)
+                        //.foregroundColor(stat == staticStat ? .white : stat > staticStat ? .paleGreen : .lightSalmon)
                         .opacity(0.9))
             Text("\(stat)")
-                .foregroundColor(stat == staticStat ? .black : stat > staticStat ? .darkGreen : .darkRed)
-                .font(.system(size: size.width * 0.25, weight: .bold, design: .rounded))
+                .foregroundColor(.black)
+                //.foregroundColor(stat == staticStat ? .black : stat > staticStat ? .white : .white)
+                .font(.system(size: size.width * 0.3, weight: .bold, design: .rounded))
         }
         .opacity(!index.isMultiple(of: 2) ? 1 : 0)
     }
