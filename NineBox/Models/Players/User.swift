@@ -12,7 +12,7 @@ struct User: Identifiable {
     var profile: Profile
     var cards = [Card]()
     var decks = [Deck]()
-    var boosters = [Booster]()
+    //var boosters = [Booster]()
 }
 
 extension User {

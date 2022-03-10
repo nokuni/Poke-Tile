@@ -1,25 +1,25 @@
 [
     {
         "name": "Grass Starter",
-        "cardPool": ["Bulbasaur", "Exeggcute", "Meowth", "Ivysaur", "Tangela", "Abra", "Oddish", "Lickitung"],
+        "cardPool": ["Tangela", "Exeggcute", "Ivysaur", "Bulbasaur", "Oddish", "Gastly", "Haunter", "Shuppet"],
         "background": "forest.background",
         "type": "grass"
     },
     {
         "name": "Fire Starter",
-        "cardPool": ["Charmander", "Ponyta", "Meowth", "Charmeleon", "Magmar", "Machop", "Growlithe", "Rattata"],
+        "cardPool": ["Magmar", "Ponyta", "Charmeleon", "Charmander", "Meowth", "Lickitung", "Rattata", "Eevee"],
         "background": "volcano.background",
         "type": "fire"
     },
     {
         "name": "Water Starter",
-        "cardPool": ["Squirtle", "Staryu", "Eevee", "Wartortle", "Lapras", "Pikachu", "Otaria", "Psyduck"],
+        "cardPool": ["Lapras", "Staryu", "Wartortle", "Squirtle", "Pancham", "Timburr", "Makuhita", "Mankey"],
         "background": "sea.background",
         "type": "water"
     },
     {
         "name": "Little Clearing",
-        "cardPool": ["Bulbasaur", "Oddish", "Bellsprout", "Exeggcute", "Meowth", "Tangela", "Abra", "Lickitung", "Rattata", "Eevee", "Slowpoke", "Drowzee"],
+        "cardPool": ["Bellsprout", "Chikorita", "Hoppip", "Sunkern", "Treecko", "Seedot","Shroomish", "Turtwig"],
         "background": "forest.background",
         "type": "grass"
     },

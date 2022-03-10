@@ -1,17 +1,17 @@
 [
     {
         "name": "Grass Starter",
-        "pokemons": ["Bulbasaur", "Exeggcute", "Meowth", "Ivysaur", "Tangela", "Abra", "Oddish", "Lickitung"],
+        "pokemons": ["Tangela", "Exeggcute", "Ivysaur", "Bulbasaur", "Oddish", "Gastly", "Haunter", "Shuppet"],
         "background": "forest.background"
     },
     {
         "name": "Fire Starter",
-        "pokemons": ["Charmander", "Ponyta", "Meowth", "Charmeleon", "Magmar", "Machop", "Growlithe", "Rattata"],
+        "pokemons": ["Magmar", "Ponyta", "Charmeleon", "Charmander", "Meowth", "Lickitung", "Rattata", "Eevee"],
         "background": "volcano.background"
     },
     {
         "name": "Water Starter",
-        "pokemons": ["Squirtle", "Staryu", "Eevee", "Wartortle", "Lapras", "Pikachu", "Otaria", "Psyduck"],
+        "pokemons": ["Lapras", "Staryu", "Wartortle", "Squirtle", "Pancham", "Timburr", "Makuhita", "Mankey"],
         "background": "sea.background"
     },
 ]

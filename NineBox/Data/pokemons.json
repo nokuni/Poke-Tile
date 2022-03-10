@@ -140,6 +140,16 @@
          "cost": 6
      },
      {
+         "name": "Mankey",
+         "image": "056",
+         "backgroundImage": "fighting",
+         "category": "pokemon",
+         "type": "fighting",
+         "stats": { "top": 1, "trailing": 2, "bottom": 0, "leading": 2 },
+         "rarity": "uncommon",
+         "cost": 5
+     },
+     {
          "name": "Growlithe",
          "image": "058",
          "backgroundImage": "fire",
@@ -165,7 +175,7 @@
          "backgroundImage": "fighting",
          "category": "pokemon",
          "type": "fighting",
-         "stats": { "top": 3, "trailing": 0, "bottom": 0, "leading": 0 },
+         "stats": { "top": -2, "trailing": 4, "bottom": -3, "leading": 4 },
          "rarity": "common",
          "cost": 3
      },
@@ -228,6 +238,26 @@
          "stats": { "top": 2, "trailing": 2, "bottom": 2, "leading": 0 },
          "rarity": "uncommon",
          "cost": 6
+     },
+     {
+         "name": "Gastly",
+         "image": "092",
+         "backgroundImage": "ghost",
+         "category": "pokemon",
+         "type": "ghost",
+         "stats": { "top": 1, "trailing": 0, "bottom": 1, "leading": 0 },
+         "rarity": "common",
+         "cost": 2
+     },
+     {
+         "name": "Haunter",
+         "image": "093",
+         "backgroundImage": "ghost",
+         "category": "pokemon",
+         "type": "ghost",
+         "stats": { "top": 2, "trailing": 2, "bottom": 4, "leading": 2 },
+         "rarity": "rare",
+         "cost": 10
      },
      {
          "name": "Drowzee",
@@ -308,5 +338,115 @@
          "stats": { "top": 1, "trailing": 0, "bottom": 3, "leading": 0 },
          "rarity": "common",
          "cost": 4
+     },
+     {
+         "name": "Chikorita",
+         "image": "152",
+         "backgroundImage": "grass",
+         "category": "pokemon",
+         "type": "grass",
+         "stats": { "top": 0, "trailing": 2, "bottom": 2, "leading": 1 },
+         "rarity": "common",
+         "cost": 5
+     },
+     {
+         "name": "Hoppip",
+         "image": "187",
+         "backgroundImage": "grass",
+         "category": "pokemon",
+         "type": "grass",
+         "stats": { "top": 0, "trailing": 1, "bottom": 1, "leading": 1 },
+         "rarity": "common",
+         "cost": 3
+     },
+     {
+         "name": "Sunkern",
+         "image": "191",
+         "backgroundImage": "grass",
+         "category": "pokemon",
+         "type": "grass",
+         "stats": { "top": 1, "trailing": 1, "bottom": 1, "leading": 1 },
+         "rarity": "common",
+         "cost": 4
+     },
+     {
+         "name": "Treecko",
+         "image": "252",
+         "backgroundImage": "grass",
+         "category": "pokemon",
+         "type": "grass",
+         "stats": { "top": 0, "trailing": 2, "bottom": 0, "leading": 2 },
+         "rarity": "common",
+         "cost": 5
+     },
+     {
+         "name": "Seedot",
+         "image": "273",
+         "backgroundImage": "grass",
+         "category": "pokemon",
+         "type": "grass",
+         "stats": { "top": 0, "trailing": -1, "bottom": 2, "leading": 1 },
+         "rarity": "common",
+         "cost": 2
+     },
+     {
+         "name": "Shroomish",
+         "image": "285",
+         "backgroundImage": "grass",
+         "category": "pokemon",
+         "type": "grass",
+         "stats": { "top": 1, "trailing": 0, "bottom": 1, "leading": 1 },
+         "rarity": "common",
+         "cost": 3
+     },
+     {
+         "name": "Makuhita",
+         "image": "296",
+         "backgroundImage": "fighting",
+         "category": "pokemon",
+         "type": "fighting",
+         "stats": { "top": 2, "trailing": 2, "bottom": -2, "leading": 2 },
+         "rarity": "uncommon",
+         "cost": 4
+     },
+     {
+         "name": "Shuppet",
+         "image": "353",
+         "backgroundImage": "ghost",
+         "category": "pokemon",
+         "type": "ghost",
+         "stats": { "top": 1, "trailing": 1, "bottom": 1, "leading": 1 },
+         "rarity": "uncommon",
+         "cost": 4
+     },
+     {
+         "name": "Turtwig",
+         "image": "387",
+         "backgroundImage": "grass",
+         "category": "pokemon",
+         "type": "grass",
+         "stats": { "top": -2, "trailing": 2, "bottom": 3, "leading": 2 },
+         "rarity": "uncommon",
+         "cost": 5
+     },
+     {
+         "name": "Timburr",
+         "image": "532",
+         "backgroundImage": "fighting",
+         "category": "pokemon",
+         "type": "fighting",
+         "stats": { "top": -1, "trailing": 3, "bottom": -2, "leading": 3 },
+         "rarity": "uncommon",
+         "cost": 5
+     },
+     {
+         "name": "Pancham",
+         "image": "674",
+         "backgroundImage": "fighting",
+         "category": "pokemon",
+         "type": "fighting",
+         "stats": { "top": -1, "trailing": 2, "bottom": 2, "leading": 2 },
+         "rarity": "uncommon",
+         "cost": 5
      },
 ]

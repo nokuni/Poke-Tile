@@ -50,7 +50,7 @@ extension StarterDecksModalView {
     var ChooseBoosterButton: some View {
         Button(action: {
             if let selectedBooster = selectedBooster {
-                userVM.user.boosters.append(selectedBooster)
+                userVM.addCardsToCollection(selectedBooster.cards)
             }
             isShowingStarterModal.toggle()
         }) {

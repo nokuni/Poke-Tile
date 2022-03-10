@@ -14,17 +14,14 @@ class UserViewModel: ObservableObject {
     
     static let shared = UserViewModel()
     
-    func addCardsToCollection(cards: [Card]) {
-        let newCards = cards.filter { card in
-            !user.cards.contains { card.name == $0.name }
-        }
-        user.cards.append(contentsOf: newCards)
+    func addCardsToCollection(_ cards: [Card]) {
+        user.cards.append(contentsOf: cards)
     }
     
-    func removeBooster(_ booster: Booster) {
-        guard let index = user.boosters.firstIndex(of: booster) else { return }
-        user.boosters.remove(at: index)
-    }
+//    func removeBooster(_ booster: Booster) {
+//        guard let index = user.boosters.firstIndex(of: booster) else { return }
+//        user.boosters.remove(at: index)
+//    }
     
     func isPossessing(_ card: Card) -> Bool {
         user.cards.contains(where: { $0.name == card.name })

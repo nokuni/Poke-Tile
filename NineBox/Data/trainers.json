@@ -3,7 +3,7 @@
         "name": "Erika",
         "image": "erika",
         "background": "forest.background",
-        "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
+        "pokemons": ["Tangela", "Exeggcute", "Ivysaur", "Bulbasaur", "Oddish", "Gastly", "Haunter", "Shuppet"],
         "bonusAmount": 3,
         "difficulty": "easy",
         "reward": "Little Clearing"
@@ -57,7 +57,7 @@
         "name": "Blaine",
         "image": "blaine",
         "background": "volcano.background",
-        "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
+        "pokemons": ["Magmar", "Ponyta", "Charmeleon", "Charmander", "Meowth", "Lickitung", "Rattata", "Eevee"],
         "bonusAmount": 5,
         "difficulty": "hard",
         "reward": "Little Clearing"
@@ -210,7 +210,7 @@
         "name": "Misty",
         "image": "misty",
         "background": "sea.background",
-        "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
+        "pokemons": ["Lapras", "Staryu", "Wartortle", "Squirtle", "Pancham", "Timburr", "Makuhita", "Mankey"],
         "bonusAmount": 5,
         "difficulty": "hard",
         "reward": "Little Clearing"

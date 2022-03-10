@@ -21,17 +21,19 @@ struct HomeView: View {
                         ThemeButtonView(isShowingModalTheme: $isShowingModalTheme, size: geo.size)
                         Spacer()
                         HStack(spacing: 0) {
-                            HomeNavigationLink(size: geo.size, item: HomeItem.summons, theme: userVM.user.profile.theme) {
-                                SummonsView(userVM: userVM)
-                            }
-                            HomeNavigationLink(size: geo.size, item: HomeItem.adventures, theme: userVM.user.profile.theme) {
-                                AdventureView()
-                            }
                             HomeNavigationLink(size: geo.size, item: HomeItem.decks, theme: userVM.user.profile.theme) {
                                 UserDeckView(userVM: userVM)
                             }
                             HomeNavigationLink(size: geo.size, item: HomeItem.cards, theme: userVM.user.profile.theme) {
-                               UserCardsView(userVM: userVM)
+                                UserCardsView(userVM: userVM)
+                            }
+                            
+                            HomeNavigationLink(size: geo.size, item: HomeItem.adventures, theme: userVM.user.profile.theme) {
+                                AdventureView()
+                            }
+                            
+                            HomeNavigationLink(size: geo.size, item: HomeItem.achievements, theme: userVM.user.profile.theme) {
+                                EmptyView()
                             }
                             HomeNavigationLink(size: geo.size, item: HomeItem.settings, theme: userVM.user.profile.theme) {
                                 EmptyView()

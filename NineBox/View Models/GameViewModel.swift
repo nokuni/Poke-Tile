@@ -79,7 +79,7 @@ class GameViewModel: ObservableObject, Powers {
         case .steel:
             ()
         case .water:
-            ()
+            actionOnAdjacents(on: match, card: card)
         }
     }
     
@@ -117,6 +117,23 @@ class GameViewModel: ObservableObject, Powers {
             game.board[edgeIndex] = Card.empty
         }
     }
+    func waterAction(edgeIndex: Int, card: Card) {
+        guard card.type == .water else { return }
+        guard let index = Card.pokemons.firstIndex(where: { $0.name == game.board[edgeIndex].name }) else { return }
+        print(index)
+        if game.board[edgeIndex].isPokemon && game.board[edgeIndex].side == .user {
+            if game.board[edgeIndex].stats.top < 0 { game.board[edgeIndex].stats.top = 0 }
+            if game.board[edgeIndex].stats.trailing < 0 { game.board[edgeIndex].stats.trailing = 0 }
+            if game.board[edgeIndex].stats.bottom < 0 { game.board[edgeIndex].stats.bottom = 0 }
+            if game.board[edgeIndex].stats.leading < 0 { game.board[edgeIndex].stats.leading = 0 }
+        }
+        if game.board[edgeIndex].isPokemon && game.board[edgeIndex].side == .opponent {
+            if game.board[edgeIndex].stats.top > Card.pokemons[index].stats.top { game.board[edgeIndex].stats.top = Card.pokemons[index].stats.top }
+            if game.board[edgeIndex].stats.trailing > Card.pokemons[index].stats.trailing { game.board[edgeIndex].stats.trailing = Card.pokemons[index].stats.trailing }
+            if game.board[edgeIndex].stats.bottom > Card.pokemons[index].stats.bottom { game.board[edgeIndex].stats.bottom = Card.pokemons[index].stats.bottom }
+            if game.board[edgeIndex].stats.leading > Card.pokemons[index].stats.leading { game.board[edgeIndex].stats.leading = Card.pokemons[index].stats.leading }
+        }
+    }
     
     func actionOnAdjacents(on match: Int, card: Card) {
         let adjacentIndex = game.getAdjacentCardIndex(from: match)
@@ -124,18 +141,22 @@ class GameViewModel: ObservableObject, Powers {
         if let topIndex = adjacentIndex.top {
             grassAction(edgeIndex: topIndex, card: card)
             fireAction(edgeIndex: topIndex, card: card)
+            waterAction(edgeIndex: topIndex, card: card)
         }
         if let trailingIndex = adjacentIndex.trailing {
             grassAction(edgeIndex: trailingIndex, card: card)
             fireAction(edgeIndex: trailingIndex, card: card)
+            waterAction(edgeIndex: trailingIndex, card: card)
         }
         if let bottomIndex = adjacentIndex.bottom {
             grassAction(edgeIndex: bottomIndex, card: card)
             fireAction(edgeIndex: bottomIndex, card: card)
+            waterAction(edgeIndex: bottomIndex, card: card)
         }
         if let leadingIndex = adjacentIndex.leading {
             grassAction(edgeIndex: leadingIndex, card: card)
             fireAction(edgeIndex: leadingIndex, card: card)
+            waterAction(edgeIndex: leadingIndex, card: card)
         }
     }
     
@@ -251,10 +272,18 @@ class GameViewModel: ObservableObject, Powers {
     func buffUserCard(index: Int, debuff: Card) {
         let count = debuff.debuffs.count
         let buffAmount = game.userCards[index].type == debuff.type ? count : -count
-        game.userCards[index].stats.top += buffAmount
-        game.userCards[index].stats.trailing += buffAmount
-        game.userCards[index].stats.bottom += buffAmount
-        game.userCards[index].stats.leading += buffAmount
+        let invertedBuffAmount = game.userCards[index].type != debuff.type ? count : -count
+        if game.userCards[index].type == .ghost {
+            game.userCards[index].stats.top += invertedBuffAmount
+            game.userCards[index].stats.trailing += invertedBuffAmount
+            game.userCards[index].stats.bottom += invertedBuffAmount
+            game.userCards[index].stats.leading += invertedBuffAmount
+        } else {
+            game.userCards[index].stats.top += buffAmount
+            game.userCards[index].stats.trailing += buffAmount
+            game.userCards[index].stats.bottom += buffAmount
+            game.userCards[index].stats.leading += buffAmount
+        }
     }
     
     func buffTrainerCard(index: Int, debuff: Card) {

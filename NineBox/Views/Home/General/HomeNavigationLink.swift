@@ -28,6 +28,6 @@ struct HomeNavigationLink<V: View>: View {
 }
 struct HomeNavigationLink_Previews: PreviewProvider {
     static var previews: some View {
-        HomeNavigationLink(size: CGSize.screen, item: HomeItem.summons, theme: Theme.pikachu, view: { EmptyView() })
+        HomeNavigationLink(size: CGSize.screen, item: HomeItem.cards, theme: Theme.pikachu, view: { EmptyView() })
     }
 }

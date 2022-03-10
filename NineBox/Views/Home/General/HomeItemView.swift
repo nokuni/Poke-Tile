@@ -42,6 +42,6 @@ struct HomeItemView: View {
 
 struct HomeItemView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeItemView(size: CGSize.screen, item: HomeItem.summons, theme: Theme.pikachu)
+        HomeItemView(size: CGSize.screen, item: HomeItem.cards, theme: Theme.pikachu)
     }
 }
