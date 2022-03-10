@@ -15,7 +15,7 @@
 
 import SwiftUI
 
-class GameViewModel: ObservableObject, Powers {
+class GameViewModel: ObservableObject {
     @Published var game = Game()
     
     @Published var isShowingTurnAnimation = false
@@ -26,11 +26,19 @@ class GameViewModel: ObservableObject, Powers {
     
     init() { }
     
+    // MARK: - CORE
+    func createNewGame(trainer: Trainer, deck: Deck) {
+        game.deck = deck
+        game.trainer = trainer
+        loadBoard(bonus: addDebuffs)
+        loadPlayerHand()
+        loadOpponentHand()
+        print("Game created")
+    }
     func resetGame() {
         game = Game()
         isShowingGameEnding.toggle()
     }
-    
     func loadGame() {
         isShowingGameEnding.toggle()
         game.turn = .user
@@ -38,49 +46,114 @@ class GameViewModel: ObservableObject, Powers {
         loadPlayerHand()
         loadOpponentHand()
     }
+    func loadBoard(bonus: ((Trainer?) -> Void)) {
+        game.board = Array(repeating: Card.empty, count: 16)
+        //bonus(game.trainer)
+    }
+    func loadPlayerHand() {
+        if let deck = game.deck { game.userCards = deck.cards }
+        game.userCards.indices.forEach { game.userCards[$0].side = .user }
+        game.userCards.indices.forEach { game.userCards[$0].isActivated = true }
+    }
+    func loadOpponentHand() {
+        guard let trainer = game.trainer else { return }
+        game.trainerCards = trainer.cards
+        game.trainerCards.indices.forEach { game.trainerCards[$0].side = .opponent }
+    }
     
+    // MARK: - CARD ACTIONS
+    
+    // Legendary special actions
     func grassLegendaryActions(name: String, edgeIndex: Int, match: Int) {
         var grassDebuff = try! Card.getDebuff(type: .grass)
-        grassDebuff.debuffs.append("grass")
         
         switch name {
+        case "Venusaur":
+            fillBoard(with: grassDebuff)
         case "Vileplume":
-            let grassDebuffLocations = Array(game.board.indices).getAdjacentLinesIndices(from: match)
-            for location in grassDebuffLocations {
-                if game.board[location].isAvailable {
-                    withAnimation { game.board[location] = grassDebuff }
-                }
-            }
+            fillLines(with: grassDebuff, on: match)
         case "Torterra":
-            grassDebuff.debuffs = Array(repeating: "grass", count: 4)
+            grassDebuff.debuffs = Array(repeating: "grass", count: 2)
             if game.board[edgeIndex].isAvailable {
                 withAnimation { game.board[edgeIndex] = grassDebuff }
             }
         case "Serperior":
-            for index in game.boardIndices {
-                if game.board[index].isDebuff {
-                    game.board[index] = grassDebuff
-                }
-            }
-        case "Victreebel":
-            ()
+            convertAll(debuff: grassDebuff)
         case "Tsareena":
-            for index in game.boardIndices {
-                if game.board[index].isDebuff {
-                    game.board[index] = grassDebuff
-                }
-            }
+            ()
         case "Appletun":
+            ()
+        default: ()
+        }
+    }
+    func fireLegendaryActions(name: String, edgeIndex: Int, match: Int) {
+        let fireDebuff = try! Card.getDebuff(type: .fire)
+        switch name {
+        case "Charizard":
             for index in game.boardIndices {
-                if game.board[index].isDebuff {
-                    game.board[index] = grassDebuff
+                if game.board[index].isDebuff && game.board[index].type != .fire {
+                    game.board[index] = fireDebuff
                 }
             }
         default: ()
         }
     }
+    func waterLegendaryActions(name: String, edgeIndex: Int, match: Int) {
+        switch name {
+        case "Blastoise":
+            for index in game.boardIndices { resetCardStats(index: index, on: match) }
+        default: ()
+        }
+    }
     
-    // Apply the type action of a card
+    // Type actions
+    func normalAction(of index: Int, on match: Int, card: Card) {
+        guard card.type == .normal else { return }
+        buffOnEmptyCard(of: index, on: match, card: card)
+    }
+    func grassAction(edgeIndex: Int, on match: Int, card: Card) {
+        guard card.type == .grass else { return }
+        let grassDebuff = try! Card.getDebuff(type: .grass)
+        grassLegendaryActions(name: card.name, edgeIndex: edgeIndex, match: match)
+        if game.board[edgeIndex].isAvailable {
+            withAnimation { game.board[edgeIndex] = grassDebuff }
+        } else if game.board[edgeIndex].isDebuff && game.board[edgeIndex].type == .grass {
+            if game.board[edgeIndex].debuffs.count < 4 {
+                withAnimation { game.board[edgeIndex].debuffs.append("grass") }
+            }
+        }
+    }
+    func fireAction(edgeIndex: Int, on match: Int, card: Card) {
+        guard card.type == .fire else { return }
+        let fireDebuff = try! Card.getDebuff(type: .fire)
+        //fireDebuff.debuffs.append("fire")
+        fireLegendaryActions(name: card.name, edgeIndex: edgeIndex, match: match)
+        if game.board[edgeIndex].isDebuff && game.board[edgeIndex].type != .fire {
+            game.board[edgeIndex] = fireDebuff
+        }
+    }
+    func waterAction(edgeIndex: Int, on match: Int, card: Card) {
+        guard card.type == .water else { return }
+        waterLegendaryActions(name: card.name, edgeIndex: edgeIndex, match: match)
+        resetCardStats(index: edgeIndex, on: match)
+    }
+    func fightingAction(edgeIndex: Int, with cardIndex: Int) {
+        if game.userCards[cardIndex].type == .fighting {
+            game.board[edgeIndex].stats.top += 1
+            game.board[edgeIndex].stats.trailing += 1
+            game.board[edgeIndex].stats.bottom += 1
+            game.board[edgeIndex].stats.leading += 1
+        }
+    }
+    func fightingActionForOpponent(edgeIndex: Int, with cardIndex: Int) {
+        if game.trainerCards[cardIndex].type == .fighting {
+            game.board[edgeIndex].stats.top += 1
+            game.board[edgeIndex].stats.trailing += 1
+            game.board[edgeIndex].stats.bottom += 1
+            game.board[edgeIndex].stats.leading += 1
+        }
+    }
+    
     func typeAction(of index: Int, on match: Int, card: Card) {
         switch card.type {
         case .empty:
@@ -124,9 +197,60 @@ class GameViewModel: ObservableObject, Powers {
         }
     }
     
-    func normalAction(of index: Int, on match: Int, card: Card) {
-        guard card.type == .normal else { return }
-        if game.board[match].isAvailable {
+    // Various actions
+    func fillBoard(with debuff: Card) {
+        for index in game.boardIndices {
+            if game.board[index].isAvailable {
+                withAnimation { game.board[index] = debuff }
+            }
+        }
+    }
+    func fillLines(with debuff: Card, on match: Int) {
+        let debuffLocations = Array(game.board.indices).getAdjacentLinesIndices(from: match)
+        for location in debuffLocations {
+            if game.board[location].isAvailable {
+                withAnimation { game.board[location] = debuff }
+            } else if game.board[location].isDebuff && game.board[location].type == .grass {
+                if game.board[location].debuffs.count < 4 {
+                    withAnimation { game.board[location].debuffs.append("grass") }
+                }
+            }
+        }
+    }
+    func resetCardStats(index: Int, on match: Int) {
+        guard let dataIndex = Card.pokemons.firstIndex(where: { $0.name == game.board[index].name }) else { return }
+        if game.board[match].side == .user {
+            if game.board[index].isPokemon && game.board[index].side == .user {
+                if game.board[index].stats.top < 0 { game.board[index].stats.top = abs(game.board[index].stats.top) }
+                if game.board[index].stats.trailing < 0 { game.board[index].stats.trailing = abs(game.board[index].stats.trailing) }
+                if game.board[index].stats.bottom < 0 { game.board[index].stats.bottom = abs(game.board[index].stats.bottom) }
+                if game.board[index].stats.leading < 0 { game.board[index].stats.leading = abs(game.board[index].stats.leading) }
+            }
+            if game.board[index].isPokemon && game.board[index].side == .opponent {
+                if game.board[index].stats.top > Card.pokemons[dataIndex].stats.top { game.board[index].stats.top = Card.pokemons[dataIndex].stats.top }
+                if game.board[index].stats.trailing > Card.pokemons[dataIndex].stats.trailing { game.board[index].stats.trailing = Card.pokemons[dataIndex].stats.trailing }
+                if game.board[index].stats.bottom > Card.pokemons[dataIndex].stats.bottom { game.board[index].stats.bottom = Card.pokemons[dataIndex].stats.bottom }
+                if game.board[index].stats.leading > Card.pokemons[dataIndex].stats.leading { game.board[index].stats.leading = Card.pokemons[dataIndex].stats.leading }
+            }
+        }
+        if game.board[match].side == .opponent {
+            if game.board[index].isPokemon && game.board[index].side == .opponent {
+                if game.board[index].stats.top < 0 { game.board[index].stats.top = abs(game.board[index].stats.top) }
+                if game.board[index].stats.trailing < 0 { game.board[index].stats.trailing = abs(game.board[index].stats.trailing) }
+                if game.board[index].stats.bottom < 0 { game.board[index].stats.bottom = abs(game.board[index].stats.bottom) }
+                if game.board[index].stats.leading < 0 { game.board[index].stats.leading = abs(game.board[index].stats.leading) }
+            }
+            if game.board[index].isPokemon && game.board[index].side == .user {
+                if game.board[index].stats.top > Card.pokemons[dataIndex].stats.top { game.board[index].stats.top = Card.pokemons[dataIndex].stats.top }
+                if game.board[index].stats.trailing > Card.pokemons[dataIndex].stats.trailing { game.board[index].stats.trailing = Card.pokemons[dataIndex].stats.trailing }
+                if game.board[index].stats.bottom > Card.pokemons[dataIndex].stats.bottom { game.board[index].stats.bottom = Card.pokemons[dataIndex].stats.bottom }
+                if game.board[index].stats.leading > Card.pokemons[dataIndex].stats.leading { game.board[index].stats.leading = Card.pokemons[dataIndex].stats.leading }
+            }
+        }
+    }
+    func buffOnEmptyCard(of index: Int, on match: Int, card: Card) {
+        let isEmptyDebuff = game.board[match].isDebuff && game.board[match].debuffs.isEmpty
+        if game.board[match].isAvailable || isEmptyDebuff {
             if card.side == .user {
                 game.userCards[index].stats.top += 1
                 game.userCards[index].stats.trailing += 1
@@ -140,101 +264,37 @@ class GameViewModel: ObservableObject, Powers {
             }
         }
     }
-    func grassAction(edgeIndex: Int, on match: Int, card: Card) {
-        guard card.type == .grass else { return }
-        var grassDebuff = try! Card.getDebuff(type: .grass)
-        grassDebuff.debuffs.append("grass")
-        grassLegendaryActions(name: card.name, edgeIndex: edgeIndex, match: match)
-        if game.board[edgeIndex].isAvailable {
-            withAnimation { game.board[edgeIndex] = grassDebuff }
-        } else if game.board[edgeIndex].isDebuff && game.board[edgeIndex].type == .grass {
-            if game.board[edgeIndex].debuffs.count < 4 {
-                withAnimation { game.board[edgeIndex].debuffs.append("grass") }
+    func convertAll(debuff: Card) {
+        for index in game.boardIndices {
+            if game.board[index].isDebuff {
+                game.board[index] = debuff
             }
         }
     }
-    func fireAction(edgeIndex: Int, card: Card) {
-        guard card.type == .fire else { return }
-        if game.board[edgeIndex].isDebuff && game.board[edgeIndex].type != .fire {
-            game.board[edgeIndex] = Card.empty
-        }
-    }
-    func waterAction(edgeIndex: Int, card: Card) {
-        guard card.type == .water else { return }
-        guard let index = Card.pokemons.firstIndex(where: { $0.name == game.board[edgeIndex].name }) else { return }
-        print(index)
-        if game.board[edgeIndex].isPokemon && game.board[edgeIndex].side == .user {
-            if game.board[edgeIndex].stats.top < 0 { game.board[edgeIndex].stats.top = 0 }
-            if game.board[edgeIndex].stats.trailing < 0 { game.board[edgeIndex].stats.trailing = 0 }
-            if game.board[edgeIndex].stats.bottom < 0 { game.board[edgeIndex].stats.bottom = 0 }
-            if game.board[edgeIndex].stats.leading < 0 { game.board[edgeIndex].stats.leading = 0 }
-        }
-        if game.board[edgeIndex].isPokemon && game.board[edgeIndex].side == .opponent {
-            if game.board[edgeIndex].stats.top > Card.pokemons[index].stats.top { game.board[edgeIndex].stats.top = Card.pokemons[index].stats.top }
-            if game.board[edgeIndex].stats.trailing > Card.pokemons[index].stats.trailing { game.board[edgeIndex].stats.trailing = Card.pokemons[index].stats.trailing }
-            if game.board[edgeIndex].stats.bottom > Card.pokemons[index].stats.bottom { game.board[edgeIndex].stats.bottom = Card.pokemons[index].stats.bottom }
-            if game.board[edgeIndex].stats.leading > Card.pokemons[index].stats.leading { game.board[edgeIndex].stats.leading = Card.pokemons[index].stats.leading }
-        }
-    }
-    
     func actionOnAdjacents(on match: Int, card: Card) {
         let adjacentIndex = game.getAdjacentCardIndex(from: match)
         
         if let topIndex = adjacentIndex.top {
             grassAction(edgeIndex: topIndex, on: match, card: card)
-            fireAction(edgeIndex: topIndex, card: card)
-            waterAction(edgeIndex: topIndex, card: card)
+            fireAction(edgeIndex: topIndex, on: match, card: card)
+            waterAction(edgeIndex: topIndex, on: match, card: card)
         }
         if let trailingIndex = adjacentIndex.trailing {
             grassAction(edgeIndex: trailingIndex, on: match, card: card)
-            fireAction(edgeIndex: trailingIndex, card: card)
-            waterAction(edgeIndex: trailingIndex, card: card)
+            fireAction(edgeIndex: trailingIndex, on: match, card: card)
+            waterAction(edgeIndex: trailingIndex, on: match, card: card)
         }
         if let bottomIndex = adjacentIndex.bottom {
             grassAction(edgeIndex: bottomIndex, on: match, card: card)
-            fireAction(edgeIndex: bottomIndex, card: card)
-            waterAction(edgeIndex: bottomIndex, card: card)
+            fireAction(edgeIndex: bottomIndex, on: match, card: card)
+            waterAction(edgeIndex: bottomIndex, on: match, card: card)
         }
         if let leadingIndex = adjacentIndex.leading {
             grassAction(edgeIndex: leadingIndex, on: match, card: card)
-            fireAction(edgeIndex: leadingIndex, card: card)
-            waterAction(edgeIndex: leadingIndex, card: card)
+            fireAction(edgeIndex: leadingIndex, on: match, card: card)
+            waterAction(edgeIndex: leadingIndex, on: match, card: card)
         }
     }
-    
-    func createNewGame(trainer: Trainer, deck: Deck) {
-        game.deck = deck
-        game.trainer = trainer
-        loadBoard(bonus: addDebuffs)
-        loadPlayerHand()
-        loadOpponentHand()
-        print("Game created")
-    }
-    
-    func cardDropped(location: CGPoint, index: Int, card: Card) {
-        if let match = game.boardFrames.firstIndex(where: { $0.contains(location) }) {
-            dropCard(match: match, index: index, card: card, turn: .opponent)
-        }
-    }
-    
-    /*func endTurn(toStart turn: Turn) {
-        if !self.game.isGameOver { game.turn = turn }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            if !self.game.isGameOver {
-                self.isShowingTurnAnimation.toggle()
-            } else {
-                
-                self.isShowingGameEnding.toggle()
-            }
-        }
-    }*/
-    
-    func endOfTurnsActions() {
-        guard let victreebelLocationOnBoard = game.boardIndices.first(where: { game.board[$0].name == "Victreebel" }) else { return }
-        guard let victreebelLocationOnHand = game.userCards.firstIndex(where: { $0.name == "Victreebel"}) else { return }
-        convertAdjacents(from: victreebelLocationOnBoard, with: victreebelLocationOnHand)
-    }
-    
     func convertAdjacents(from match: Int, with cardIndex: Int) {
         let adjacentIndex = game.getAdjacentCardIndex(from: match)
         
@@ -244,6 +304,7 @@ class GameViewModel: ObservableObject, Powers {
                     simpleSuccess()
                     rotatingCardAnimation(index: topIndex)
                     game.board[topIndex].side = .user
+                    fightingAction(edgeIndex: topIndex, with: cardIndex)
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         self.isRotatingCard[topIndex].toggle()
                     }
@@ -257,6 +318,7 @@ class GameViewModel: ObservableObject, Powers {
                     simpleSuccess()
                     rotatingCardAnimation(index: trailingIndex)
                     game.board[trailingIndex].side = .user
+                    fightingAction(edgeIndex: trailingIndex, with: cardIndex)
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         self.isRotatingCard[trailingIndex].toggle()
                     }
@@ -270,6 +332,7 @@ class GameViewModel: ObservableObject, Powers {
                     simpleSuccess()
                     rotatingCardAnimation(index: bottomIndex)
                     game.board[bottomIndex].side = .user
+                    fightingAction(edgeIndex: bottomIndex, with: cardIndex)
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         self.isRotatingCard[bottomIndex].toggle()
                     }
@@ -283,6 +346,7 @@ class GameViewModel: ObservableObject, Powers {
                     simpleSuccess()
                     rotatingCardAnimation(index: leadingIndex)
                     game.board[leadingIndex].side = .user
+                    fightingAction(edgeIndex: leadingIndex, with: cardIndex)
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         self.isRotatingCard[leadingIndex].toggle()
                     }
@@ -290,7 +354,88 @@ class GameViewModel: ObservableObject, Powers {
             }
         }
     }
+    func convertAdjacentsForOpponent(from match: Int, with cardIndex: Int) {
+        let adjacentIndex = game.getAdjacentCardIndex(from: match)
+        
+        if let topIndex = adjacentIndex.top {
+            if game.trainerCards[cardIndex].stats.top > game.board[topIndex].stats.bottom {
+                if game.board[topIndex].isPokemon && game.board[topIndex].isUserSide {
+                    rotatingCardAnimation(index: topIndex)
+                    game.board[topIndex].side = .opponent
+                    fightingActionForOpponent(edgeIndex: topIndex, with: cardIndex)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        self.isRotatingCard[topIndex].toggle()
+                    }
+                }
+            }
+        }
+        
+        if let trailingIndex = adjacentIndex.trailing {
+            if game.trainerCards[cardIndex].stats.trailing > game.board[trailingIndex].stats.leading {
+                if game.board[trailingIndex].isPokemon && game.board[trailingIndex].isUserSide {
+                    rotatingCardAnimation(index: trailingIndex)
+                    game.board[trailingIndex].side = .opponent
+                    fightingActionForOpponent(edgeIndex: trailingIndex, with: cardIndex)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        self.isRotatingCard[trailingIndex].toggle()
+                    }
+                }
+            }
+        }
+        
+        if let bottomIndex = adjacentIndex.bottom {
+            if game.trainerCards[cardIndex].stats.bottom > game.board[bottomIndex].stats.top {
+                if game.board[bottomIndex].isPokemon && game.board[bottomIndex].isUserSide {
+                    rotatingCardAnimation(index: bottomIndex)
+                    game.board[bottomIndex].side = .opponent
+                    fightingActionForOpponent(edgeIndex: bottomIndex, with: cardIndex)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        self.isRotatingCard[bottomIndex].toggle()
+                    }
+                }
+            }
+        }
+        
+        if let leadingIndex = adjacentIndex.leading {
+            if game.trainerCards[cardIndex].stats.leading > game.board[leadingIndex].stats.trailing {
+                if game.board[leadingIndex].isPokemon && game.board[leadingIndex].isUserSide {
+                    rotatingCardAnimation(index: leadingIndex)
+                    game.board[leadingIndex].side = .opponent
+                    fightingActionForOpponent(edgeIndex: leadingIndex, with: cardIndex)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        self.isRotatingCard[leadingIndex].toggle()
+                    }
+                }
+            }
+        }
+    }
+    func endOfTurnConvertAdjacents() {
+        if let cardLocationOnBoard = game.boardIndices.first(where: { game.board[$0].name == "Victreebel" && game.board[$0].side == .user }),
+           let cardLocationOnHand = game.userCards.firstIndex(where: { $0.name == "Victreebel" }) {
+            convertAdjacents(from: cardLocationOnBoard, with: cardLocationOnHand)
+        }
+        
+        if let cardLocationOnBoard = game.boardIndices.first(where: { game.board[$0].name == "Victreebel" && game.board[$0].side == .opponent }),
+           let cardLocationOnHand = game.trainerCards.firstIndex(where: { $0.name == "Victreebel" }) {
+            convertAdjacentsForOpponent(from: cardLocationOnBoard, with: cardLocationOnHand)
+        }
+    }
     
+    // Card gesture
+    func dropCard(match: Int, index: Int, card: Card, turn: Turn) {
+        switch game.board[match].category {
+        case .pokemon: return
+        case .debuff:
+            cardAction(match: match, index: index, buff: buffUserCard)
+        case .empty:
+            cardAction(match: match, index: index, buff: nil)
+        }
+    }
+    func cardDropped(location: CGPoint, index: Int, card: Card) {
+        if let match = game.boardFrames.firstIndex(where: { $0.contains(location) }) {
+            dropCard(match: match, index: index, card: card, turn: .opponent)
+        }
+    }
     func cardAction(match: Int, index: Int, buff: ((Int, Card) -> Void)?) {
         buff?(index, game.board[match])
         typeAction(of: index, on: match, card: game.userCards[index])
@@ -304,16 +449,6 @@ class GameViewModel: ObservableObject, Powers {
             } else {
                 self.isShowingGameEnding.toggle()
             }
-        }
-    }
-    
-    func dropCard(match: Int, index: Int, card: Card, turn: Turn) {
-        switch game.board[match].category {
-        case .pokemon: return
-        case .debuff:
-            cardAction(match: match, index: index, buff: buffUserCard)
-        case .empty:
-            cardAction(match: match, index: index, buff: nil)
         }
     }
     
@@ -333,7 +468,6 @@ class GameViewModel: ObservableObject, Powers {
             game.userCards[index].stats.leading += buffAmount
         }
     }
-    
     func buffTrainerCard(index: Int, debuff: Card) {
         let count = debuff.debuffs.count
         let buffAmount = game.trainerCards[index].type == debuff.type ? count : -count
@@ -341,23 +475,6 @@ class GameViewModel: ObservableObject, Powers {
         game.trainerCards[index].stats.trailing += buffAmount
         game.trainerCards[index].stats.bottom += buffAmount
         game.trainerCards[index].stats.leading += buffAmount
-    }
-    
-    func loadBoard(bonus: ((Trainer?) -> Void)) {
-        game.board = Array(repeating: Card.empty, count: 16)
-        bonus(game.trainer)
-    }
-    
-    func loadPlayerHand() {
-        if let deck = game.deck { game.userCards = deck.cards }
-        game.userCards.indices.forEach { game.userCards[$0].side = .user }
-        game.userCards.indices.forEach { game.userCards[$0].isActivated = true }
-    }
-    
-    func loadOpponentHand() {
-        guard let trainer = game.trainer else { return }
-        game.trainerCards = trainer.cards
-        game.trainerCards.indices.forEach { game.trainerCards[$0].side = .opponent }
     }
     
     // Futur changes of making it not random
@@ -449,7 +566,7 @@ class GameViewModel: ObservableObject, Powers {
                     self.game.board[targetIndex].side = .opponent
                 }
                 self.game.trainerCards[cardIndex].isActivated = false
-                self.endOfTurnsActions()
+                self.endOfTurnConvertAdjacents()
             }
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -507,10 +624,4 @@ class GameViewModel: ObservableObject, Powers {
             }
         }
     }
-}
-
-protocol Powers {
-    func normalAction(of index: Int, on match: Int, card: Card)
-    func grassAction(edgeIndex: Int, on match: Int, card: Card)
-    func fireAction(edgeIndex: Int, card: Card)
 }

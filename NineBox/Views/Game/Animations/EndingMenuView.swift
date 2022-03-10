@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct EndingMenuView: View {
+    @StateObject var cardAnimationVM = CardAnimationViewModel()
     @ObservedObject var gameVM: GameViewModel
     var dismiss: DismissAction?
     var booster: Booster
@@ -23,7 +24,7 @@ struct EndingMenuView: View {
                         .font(.system(size: gameVM.game.isGameWon ? CGSize.screen.width * 0.1 : CGSize.screen.width * 0.15, weight: .bold, design: .rounded))
                     
                     if gameVM.game.isGameWon {
-                        CardSummonAnimationView(cards: booster.cards, size: CGSize.screen)
+                        CardSummonAnimationView(cardAnimationVM: cardAnimationVM, cards: booster.cards, size: CGSize.screen)
                         Text("New cards !")
                             .foregroundColor(.black)
                             .font(.system(size: CGSize.screen.width * 0.04, weight: .bold, design: .rounded))
@@ -42,8 +43,9 @@ struct EndingMenuView: View {
                         gameVM.resetGame()
                         dismiss?()
                     }) {
-                        ActionButtonView(text: gameVM.game.isGameWon ? "OK" : "QUIT", textColor: .white, color: .crimson, size: CGSize.screen)
+                        ActionButtonView(text: gameVM.game.isGameWon ? "OK" : "QUIT", textColor: .white, color: cardAnimationVM.isAnimationFinished ? .crimson : .gray, size: CGSize.screen)
                     }
+                    .disabled(!cardAnimationVM.isAnimationFinished)
                 }
                     .padding(.horizontal)
             )

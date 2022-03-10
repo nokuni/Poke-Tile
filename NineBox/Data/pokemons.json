@@ -5,9 +5,9 @@
          "backgroundImage": "grass",
          "category": "pokemon",
          "type": "grass",
-         "stats": { "top": 1, "trailing": 2, "bottom": 1, "leading": 1 },
+         "stats": { "top": 1, "trailing": 1, "bottom": 1, "leading": 1 },
          "rarity": "common",
-         "cost": 5
+         "cost": 4
      },
      {
          "name": "Ivysaur",
@@ -15,9 +15,9 @@
          "backgroundImage": "grass",
          "category": "pokemon",
          "type": "grass",
-         "stats": { "top": 2, "trailing": 5, "bottom": 2, "leading": 2 },
+         "stats": { "top": 3, "trailing": 3, "bottom": 3, "leading": 3 },
          "rarity": "rare",
-         "cost": 11
+         "cost": 12
      },
      {
          "name": "Venusaur",
@@ -25,9 +25,9 @@
          "backgroundImage": "grass",
          "category": "pokemon",
          "type": "grass",
-         "stats": { "top": 3, "trailing": 8, "bottom": 3, "leading": 3 },
+         "stats": { "top": 4, "trailing": 4, "bottom": 4, "leading": 4 },
          "rarity": "legendary",
-         "cost": 17
+         "cost": 16
      },
      {
          "name": "Charmander",
@@ -35,9 +35,9 @@
          "backgroundImage": "fire",
          "category": "pokemon",
          "type": "fire",
-         "stats": { "top": 2, "trailing": 1, "bottom": 1, "leading": 1 },
+         "stats": { "top": 1, "trailing": 1, "bottom": 1, "leading": 1 },
          "rarity": "common",
-         "cost": 5
+         "cost": 4
      },
      {
          "name": "Charmeleon",
@@ -45,9 +45,19 @@
          "backgroundImage": "fire",
          "category": "pokemon",
          "type": "fire",
-         "stats": { "top": 5, "trailing": 2, "bottom": 2, "leading": 2 },
+         "stats": { "top": 4, "trailing": 2, "bottom": 4, "leading": 2 },
          "rarity": "rare",
-         "cost": 11
+         "cost": 12
+     },
+     {
+         "name": "Charizard",
+         "image": "006",
+         "backgroundImage": "fire",
+         "category": "pokemon",
+         "type": "fire",
+         "stats": { "top": 5, "trailing": 3, "bottom": 5, "leading": 3 },
+         "rarity": "legendary",
+         "cost": 16
      },
      {
          "name": "Squirtle",
@@ -55,9 +65,9 @@
          "backgroundImage": "water",
          "category": "pokemon",
          "type": "water",
-         "stats": { "top": 1, "trailing": 1, "bottom": 2, "leading": 1 },
+         "stats": { "top": 1, "trailing": 1, "bottom": 1, "leading": 1 },
          "rarity": "common",
-         "cost": 5
+         "cost": 4
      },
      {
          "name": "Wartortle",
@@ -65,9 +75,19 @@
          "backgroundImage": "water",
          "category": "pokemon",
          "type": "water",
-         "stats": { "top": 2, "trailing": 2, "bottom": 5, "leading": 2 },
+         "stats": { "top": 2, "trailing": 2, "bottom": 6, "leading": 2 },
          "rarity": "rare",
-         "cost": 11
+         "cost": 12
+     },
+     {
+         "name": "Blastoise",
+         "image": "009",
+         "backgroundImage": "water",
+         "category": "pokemon",
+         "type": "water",
+         "stats": { "top": 3, "trailing": 3, "bottom": 7, "leading": 3 },
+         "rarity": "legendary",
+         "cost": 16
      },
      {
          "name": "Rattata",
@@ -75,9 +95,9 @@
          "backgroundImage": "normal",
          "category": "pokemon",
          "type": "normal",
-         "stats": { "top": 2, "trailing": 0, "bottom": 0, "leading": 0 },
+         "stats": { "top": 1, "trailing": 0, "bottom": 0, "leading": 0 },
          "rarity": "common",
-         "cost": 2
+         "cost": 1
      },
      {
          "name": "Pikachu",
@@ -88,6 +108,16 @@
          "stats": { "top": 0, "trailing": 1, "bottom": 0, "leading": 1 },
          "rarity": "common",
          "cost": 2
+     },
+     {
+         "name": "Vulpix",
+         "image": "037",
+         "backgroundImage": "fire",
+         "category": "pokemon",
+         "type": "fire",
+         "stats": { "top": 0, "trailing": 0, "bottom": 3, "leading": 1 },
+         "rarity": "common",
+         "cost": 4
      },
      {
          "name": "Oddish",
@@ -125,9 +155,9 @@
          "backgroundImage": "normal",
          "category": "pokemon",
          "type": "normal",
-         "stats": { "top": 1, "trailing": 1, "bottom": 0, "leading": 1 },
+         "stats": { "top": 0, "trailing": 1, "bottom": 0, "leading": 0 },
          "rarity": "common",
-         "cost": 3
+         "cost": 1
      },
      {
          "name": "Psyduck",
@@ -135,9 +165,9 @@
          "backgroundImage": "water",
          "category": "pokemon",
          "type": "water",
-         "stats": { "top": 0, "trailing": 2, "bottom": 2, "leading": 2 },
+         "stats": { "top": -5, "trailing": 3, "bottom": 3, "leading": 3 },
          "rarity": "uncommon",
-         "cost": 6
+         "cost": 4
      },
      {
          "name": "Mankey",
@@ -145,9 +175,9 @@
          "backgroundImage": "fighting",
          "category": "pokemon",
          "type": "fighting",
-         "stats": { "top": 1, "trailing": 2, "bottom": 0, "leading": 2 },
+         "stats": { "top": 2, "trailing": -1, "bottom": 1, "leading": -1 },
          "rarity": "uncommon",
-         "cost": 5
+         "cost": 1
      },
      {
          "name": "Growlithe",
@@ -155,9 +185,9 @@
          "backgroundImage": "fire",
          "category": "pokemon",
          "type": "fire",
-         "stats": { "top": 3, "trailing": 1, "bottom": 1, "leading": 1 },
-         "rarity": "uncommon",
-         "cost": 6
+         "stats": { "top": 3, "trailing": 1, "bottom": 0, "leading": 0 },
+         "rarity": "common",
+         "cost": 4
      },
      {
          "name": "Abra",
@@ -175,9 +205,19 @@
          "backgroundImage": "fighting",
          "category": "pokemon",
          "type": "fighting",
-         "stats": { "top": -2, "trailing": 4, "bottom": -3, "leading": 4 },
+         "stats": { "top": -1, "trailing": 4, "bottom": -1, "leading": -1 },
          "rarity": "common",
-         "cost": 3
+         "cost": 1
+     },
+     {
+         "name": "Machoke",
+         "image": "067",
+         "backgroundImage": "fighting",
+         "category": "pokemon",
+         "type": "fighting",
+         "stats": { "top": -1, "trailing": 11, "bottom": -1, "leading": -1 },
+         "rarity": "common",
+         "cost": 8
      },
      {
          "name": "Bellsprout",
@@ -230,6 +270,26 @@
          "cost": 5
      },
      {
+         "name": "Magnemite",
+         "image": "081",
+         "backgroundImage": "steel",
+         "category": "pokemon",
+         "type": "steel",
+         "stats": { "top": 0, "trailing": 1, "bottom": 1, "leading": 1 },
+         "rarity": "common",
+         "cost": 3
+     },
+     {
+         "name": "Magneton",
+         "image": "082",
+         "backgroundImage": "steel",
+         "category": "pokemon",
+         "type": "steel",
+         "stats": { "top": 2, "trailing": 3, "bottom": 2, "leading": 3 },
+         "rarity": "rare",
+         "cost": 10
+     },
+     {
          "name": "Otaria",
          "image": "086",
          "backgroundImage": "water",
@@ -255,9 +315,9 @@
          "backgroundImage": "ghost",
          "category": "pokemon",
          "type": "ghost",
-         "stats": { "top": 2, "trailing": 2, "bottom": 4, "leading": 2 },
-         "rarity": "rare",
-         "cost": 10
+         "stats": { "top": 2, "trailing": 0, "bottom": 4, "leading": 2 },
+         "rarity": "uncommon",
+         "cost": 8
      },
      {
          "name": "Drowzee",
@@ -275,9 +335,9 @@
          "backgroundImage": "grass",
          "category": "pokemon",
          "type": "grass",
-         "stats": { "top": 2, "trailing": 2, "bottom": 2, "leading": 3 },
-         "rarity": "uncommon",
-         "cost": 7
+         "stats": { "top": 1, "trailing": 1, "bottom": 1, "leading": 1 },
+         "rarity": "common",
+         "cost": 4
      },
      {
          "name": "Lickitung",
@@ -285,7 +345,7 @@
          "backgroundImage": "normal",
          "category": "pokemon",
          "type": "normal",
-         "stats": { "top": 2, "trailing": 2, "bottom": 2, "leading": 2 },
+         "stats": { "top": 1, "trailing": 3, "bottom": 1, "leading": 3 },
          "rarity": "rare",
          "cost": 8
      },
@@ -305,7 +365,7 @@
          "backgroundImage": "water",
          "category": "pokemon",
          "type": "water",
-         "stats": { "top": 1, "trailing": 1, "bottom": 1, "leading": 1 },
+         "stats": { "top": -3, "trailing": 5, "bottom": -3, "leading": 5 },
          "rarity": "common",
          "cost": 4
      },
@@ -340,6 +400,16 @@
          "cost": 4
      },
      {
+         "name": "Flareon",
+         "image": "136",
+         "backgroundImage": "fire",
+         "category": "pokemon",
+         "type": "fire",
+         "stats": { "top": 2, "trailing": 3, "bottom": 2, "leading": 3 },
+         "rarity": "rare",
+         "cost": 8
+     },
+     {
          "name": "Chikorita",
          "image": "152",
          "backgroundImage": "grass",
@@ -355,9 +425,9 @@
          "backgroundImage": "grass",
          "category": "pokemon",
          "type": "grass",
-         "stats": { "top": 0, "trailing": 1, "bottom": 1, "leading": 1 },
+         "stats": { "top": 0, "trailing": 0, "bottom": 0, "leading": 1 },
          "rarity": "common",
-         "cost": 3
+         "cost": 1
      },
      {
          "name": "Sunkern",
@@ -365,9 +435,9 @@
          "backgroundImage": "grass",
          "category": "pokemon",
          "type": "grass",
-         "stats": { "top": 1, "trailing": 1, "bottom": 1, "leading": 1 },
+         "stats": { "top": 1, "trailing": 1, "bottom": 0, "leading": 1 },
          "rarity": "common",
-         "cost": 4
+         "cost": 3
      },
      {
          "name": "Treecko",
@@ -420,14 +490,34 @@
          "cost": 4
      },
      {
+         "name": "Beldum",
+         "image": "374",
+         "backgroundImage": "steel",
+         "category": "pokemon",
+         "type": "steel",
+         "stats": { "top": 2, "trailing": 0, "bottom": 2, "leading": 1 },
+         "rarity": "uncommon",
+         "cost": 5
+     },
+     {
          "name": "Turtwig",
          "image": "387",
          "backgroundImage": "grass",
          "category": "pokemon",
          "type": "grass",
-         "stats": { "top": -2, "trailing": 2, "bottom": 3, "leading": 2 },
+         "stats": { "top": 1, "trailing": 0, "bottom": 2, "leading": 0 },
          "rarity": "uncommon",
-         "cost": 5
+         "cost": 3
+     },
+     {
+         "name": "Grotle",
+         "image": "388",
+         "backgroundImage": "grass",
+         "category": "pokemon",
+         "type": "grass",
+         "stats": { "top": 2, "trailing": 2, "bottom": 3, "leading": 2 },
+         "rarity": "rare",
+         "cost": 9
      },
      {
          "name": "Torterra",
@@ -435,9 +525,59 @@
          "backgroundImage": "grass",
          "category": "pokemon",
          "type": "grass",
-         "stats": { "top": 1, "trailing": 5, "bottom": 6, "leading": 5 },
+         "stats": { "top": 4, "trailing": 4, "bottom": 4, "leading": 4 },
          "rarity": "legendary",
-         "cost": 17
+         "cost": 16
+     },
+     {
+         "name": "Budew",
+         "image": "406",
+         "backgroundImage": "grass",
+         "category": "pokemon",
+         "type": "grass",
+         "stats": { "top": 1, "trailing": 0, "bottom": 0, "leading": 0 },
+         "rarity": "common",
+         "cost": 1
+     },
+     {
+         "name": "Cherubi",
+         "image": "420",
+         "backgroundImage": "grass",
+         "category": "pokemon",
+         "type": "grass",
+         "stats": { "top": -1, "trailing": -1, "bottom": 4, "leading": -1 },
+         "rarity": "common",
+         "cost": 1
+     },
+     {
+         "name": "Cherrim",
+         "image": "421",
+         "backgroundImage": "grass",
+         "category": "pokemon",
+         "type": "grass",
+         "stats": { "top": 0, "trailing": 0, "bottom": 8, "leading": 0 },
+         "rarity": "rare",
+         "cost": 8
+     },
+     {
+         "name": "Carnivine",
+         "image": "455",
+         "backgroundImage": "grass",
+         "category": "pokemon",
+         "type": "grass",
+         "stats": { "top": 2, "trailing": 4, "bottom": 1, "leading": 4 },
+         "rarity": "rare",
+         "cost": 11
+     },
+     {
+         "name": "Leafeon",
+         "image": "470",
+         "backgroundImage": "grass",
+         "category": "pokemon",
+         "type": "grass",
+         "stats": { "top": 1, "trailing": 2, "bottom": 2, "leading": 4 },
+         "rarity": "rare",
+         "cost": 9
      },
      {
          "name": "Serperior",

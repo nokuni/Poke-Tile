@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CardSummonAnimationView: View {
     private let grid = [GridItem](repeating: .init(.flexible(), spacing: 0), count: 4)
-    @StateObject var cardAnimationVM = CardAnimationViewModel()
+    @ObservedObject var cardAnimationVM: CardAnimationViewModel
     var cards: [Card]
     var size: CGSize
     var isCardInDeck: ((Card) -> Bool)?
@@ -29,6 +29,6 @@ struct CardSummonAnimationView: View {
 
 struct CardSummonAnimationView_Previews: PreviewProvider {
     static var previews: some View {
-        CardSummonAnimationView(cards: Card.pokemons, size: CGSize.screen)
+        CardSummonAnimationView(cardAnimationVM: CardAnimationViewModel(), cards: Card.pokemons, size: CGSize.screen)
     }
 }

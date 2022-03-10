@@ -1,17 +1,22 @@
 [
     {
         "name": "Grass Starter",
-        "pokemons": ["Victreebel", "Exeggcute", "Ivysaur", "Bulbasaur", "Oddish", "Gastly", "Haunter", "Shuppet"],
+        "pokemons": ["Venusaur", "Ivysaur", "Haunter", "Bulbasaur", "Exeggcute", "Oddish", "Bellsprout", "Gastly"],
         "background": "forest.background"
     },
     {
         "name": "Fire Starter",
-        "pokemons": ["Magmar", "Ponyta", "Charmeleon", "Charmander", "Meowth", "Lickitung", "Rattata", "Eevee"],
+        "pokemons": ["Charizard", "Charmeleon", "Lickitung", "Charmander", "Growlithe", "Vulpix", "Rattata", "Meowth"],
         "background": "volcano.background"
     },
     {
         "name": "Water Starter",
-        "pokemons": ["Lapras", "Staryu", "Wartortle", "Squirtle", "Pancham", "Timburr", "Makuhita", "Mankey"],
+        "pokemons": ["Blastoise", "Wartortle", "Machoke", "Squirtle", "Staryu", "Psyduck", "Mankey", "Machop"],
         "background": "sea.background"
+    },
+    {
+        "name": "Impassive Nature",
+        "pokemons": ["Torterra", "Grotle", "Magneton", "Turtwig", "Sunkern", "Hoppip", "Beldum", "Magnemite"],
+        "background": "quarry.background"
     },
 ]

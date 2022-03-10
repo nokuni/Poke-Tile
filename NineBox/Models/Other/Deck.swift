@@ -34,6 +34,7 @@ struct Deck: Codable, Identifiable {
 extension Deck {
     static let empty = Deck(name: "New Deck", pokemons: Card.placeholders.map { $0.name }, background: "forest")
     static let all: [Deck] = try! Bundle.main.decode("decks.json")
+    static let trainerDecks = Trainer.trainers.map { Deck(name: "\($0.name)'s Deck", pokemons: $0.pokemons, background: $0.background) }
 }
 
 enum DeckFilters: String, CaseIterable {

@@ -57,7 +57,7 @@ struct StatSquareView: View {
             Text("\(stat)")
                 .foregroundColor(.black)
                 //.foregroundColor(stat == staticStat ? .black : stat > staticStat ? .white : .white)
-                .font(.system(size: size.width * 0.3, weight: .bold, design: .rounded))
+                .font(.system(size: size.width * 0.2, weight: .bold, design: .rounded))
         }
         .opacity(!index.isMultiple(of: 2) ? 1 : 0)
     }

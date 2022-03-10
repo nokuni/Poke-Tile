@@ -1,19 +1,19 @@
 [
     {
         "name": "Grass Starter",
-        "cardPool": ["Victreebel", "Exeggcute", "Ivysaur", "Bulbasaur", "Oddish", "Gastly", "Haunter", "Shuppet"],
+        "cardPool": ["Venusaur", "Ivysaur", "Haunter", "Bulbasaur", "Exeggcute", "Oddish", "Bellsprout", "Gastly"],
         "background": "forest.background",
         "type": "grass"
     },
     {
         "name": "Fire Starter",
-        "cardPool": ["Magmar", "Ponyta", "Charmeleon", "Charmander", "Meowth", "Lickitung", "Rattata", "Eevee"],
+        "cardPool": ["Charizard", "Charmeleon", "Lickitung", "Charmander", "Growlithe", "Vulpix", "Rattata", "Meowth"],
         "background": "volcano.background",
         "type": "fire"
     },
     {
         "name": "Water Starter",
-        "cardPool": ["Lapras", "Staryu", "Wartortle", "Squirtle", "Pancham", "Timburr", "Makuhita", "Mankey"],
+        "cardPool": ["Blastoise", "Wartortle", "Machoke", "Squirtle", "Staryu", "Psyduck", "Mankey", "Machop"],
         "background": "sea.background",
         "type": "water"
     },

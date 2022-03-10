@@ -12,6 +12,8 @@ import SwiftUI
 class UserViewModel: ObservableObject {
     @Published var user = User(profile: Profile(name: "Nokuni", image: "userboy"))
     
+    init() { }
+    
     static let shared = UserViewModel()
     
     func addCardsToCollection(_ cards: [Card]) {
@@ -33,7 +35,7 @@ class UserViewModel: ObservableObject {
     func filteredDecks(filter: DeckFilters) -> [Deck] {
         switch filter {
         case .all:
-            return Deck.all
+            return Deck.all + Deck.trainerDecks
         case .playable:
             return Deck.all.filter { isDeckPlayable(deck: $0) }
         }

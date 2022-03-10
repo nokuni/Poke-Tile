@@ -24,12 +24,13 @@ struct CardView: View {
             .frame(width: size.width * (1/amount), height: size.width * (1/amount))
             .overlay(StatsOverlayView(card: card, amount: amount, size: size, isPossessing: isPossessing))
             .overlay(TypeOverlayView(card: card, amount: amount, size: size))
+            .overlay(LegendaryOverlayView(card: card, amount: amount, size: size))
     }
 }
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        CardView(card: Card.pokemons[0], size: CGSize.screen, amount: 4)
+        CardView(card: Card.pokemons[2], size: CGSize.screen, amount: 4)
     }
 }
 
@@ -70,6 +71,26 @@ struct TypeOverlayView: View {
                 }
                 .scaleEffect(0.5)
                 .frame(width: size.width * (1.1/amount), height: size.width * (1.1/amount), alignment: .bottomTrailing)
+            }
+        }
+    }
+}
+
+struct LegendaryOverlayView: View {
+    var card: Card
+    var amount: CGFloat
+    var size: CGSize
+    var body: some View {
+        ZStack {
+            if card.isPokemon && card.rarity == .legendary {
+                ZStack {
+                    Image("legendary")
+                        .resizable()
+                        .frame(width: size.width * (0.4/amount), height: size.width * (0.4/amount), alignment: .topLeading)
+                        .background(Circle().foregroundColor(.white))
+                }
+                .scaleEffect(0.5)
+                .frame(width: size.width * (1.1/amount), height: size.width * (1.1/amount), alignment: .topTrailing)
             }
         }
     }
