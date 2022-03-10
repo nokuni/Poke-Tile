@@ -116,7 +116,7 @@
          "category": "pokemon",
          "type": "grass",
          "stats": { "top": 5, "trailing": 3, "bottom": 2, "leading": 3 },
-         "rarity": "epic",
+         "rarity": "legendary",
          "cost": 13
      },
      {
@@ -205,9 +205,9 @@
          "backgroundImage": "grass",
          "category": "pokemon",
          "type": "grass",
-         "stats": { "top": 6, "trailing": 4, "bottom": 1, "leading": 4 },
-         "rarity": "epic",
-         "cost": 15
+         "stats": { "top": 4, "trailing": 4, "bottom": 4, "leading": 4 },
+         "rarity": "legendary",
+         "cost": 16
      },
      {
          "name": "Ponyta",
@@ -430,6 +430,26 @@
          "cost": 5
      },
      {
+         "name": "Torterra",
+         "image": "389",
+         "backgroundImage": "grass",
+         "category": "pokemon",
+         "type": "grass",
+         "stats": { "top": 1, "trailing": 5, "bottom": 6, "leading": 5 },
+         "rarity": "legendary",
+         "cost": 17
+     },
+     {
+         "name": "Serperior",
+         "image": "497",
+         "backgroundImage": "grass",
+         "category": "pokemon",
+         "type": "grass",
+         "stats": { "top": 3, "trailing": 6, "bottom": 6, "leading": 3 },
+         "rarity": "legendary",
+         "cost": 18
+     },
+     {
          "name": "Timburr",
          "image": "532",
          "backgroundImage": "fighting",
@@ -448,5 +468,25 @@
          "stats": { "top": -1, "trailing": 2, "bottom": 2, "leading": 2 },
          "rarity": "uncommon",
          "cost": 5
+     },
+     {
+         "name": "Tsareena",
+         "image": "763",
+         "backgroundImage": "grass",
+         "category": "pokemon",
+         "type": "grass",
+         "stats": { "top": 7, "trailing": 0, "bottom": 1, "leading": 7 },
+         "rarity": "uncommon",
+         "cost": 15
+     },
+     {
+         "name": "Appletun",
+         "image": "842",
+         "backgroundImage": "grass",
+         "category": "pokemon",
+         "type": "grass",
+         "stats": { "top": 5, "trailing": 5, "bottom": 5, "leading": 5 },
+         "rarity": "uncommon",
+         "cost": 20
      },
 ]

@@ -97,6 +97,23 @@ extension Array where Element == Array<String> {
     }
 }
 
+extension Array where Element == Int {
+    func getAdjacentLinesIndices(from index: Int) -> [Int] {
+        var result = [Int]()
+        
+        let rows = self.chunked(into: 4)
+        let columns = self.columnsIndices(size: 4)
+        
+        guard let rowIndex = rows.firstIndex(where: { $0.contains(index) }) else { return [] }
+        guard let columnIndex = columns.firstIndex(where: { $0.contains(index) }) else { return [] }
+        let row = rows[rowIndex].filter { $0 != index }
+        let column = columns[columnIndex].filter { $0 != index }
+        result.append(contentsOf: row)
+        result.append(contentsOf: column)
+        return result
+    }
+}
+
 enum GridEdge {
     case top, bottom, trailing, leading
 }

@@ -1,7 +1,7 @@
 [
     {
         "name": "Grass Starter",
-        "cardPool": ["Tangela", "Exeggcute", "Ivysaur", "Bulbasaur", "Oddish", "Gastly", "Haunter", "Shuppet"],
+        "cardPool": ["Victreebel", "Exeggcute", "Ivysaur", "Bulbasaur", "Oddish", "Gastly", "Haunter", "Shuppet"],
         "background": "forest.background",
         "type": "grass"
     },

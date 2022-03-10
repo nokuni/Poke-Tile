@@ -112,6 +112,7 @@
 		9637BF5F27CE1F8A00A3FC87 /* GameStartAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637BF5E27CE1F8A00A3FC87 /* GameStartAnimationView.swift */; };
 		9637BF6127CE22FE00A3FC87 /* AnimatedTurnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637BF6027CE22FE00A3FC87 /* AnimatedTurnView.swift */; };
 		96493DD927D0D4510032FDE8 /* UserDeckPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96493DD827D0D4510032FDE8 /* UserDeckPlaceholderView.swift */; };
+		96C8F15627DA0CC300FA1FF0 /* Powers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C8F15527DA0CC300FA1FF0 /* Powers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -221,6 +222,7 @@
 		9637BF5E27CE1F8A00A3FC87 /* GameStartAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStartAnimationView.swift; sourceTree = "<group>"; };
 		9637BF6027CE22FE00A3FC87 /* AnimatedTurnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedTurnView.swift; sourceTree = "<group>"; };
 		96493DD827D0D4510032FDE8 /* UserDeckPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDeckPlaceholderView.swift; sourceTree = "<group>"; };
+		96C8F15527DA0CC300FA1FF0 /* Powers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Powers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -265,6 +267,7 @@
 				2ED34E0E27CB71CC00F24251 /* Deck.swift */,
 				2E3A3BA227CD328F0018DA36 /* Theme.swift */,
 				2E98C0A127D115E700286879 /* Booster.swift */,
+				96C8F15527DA0CC300FA1FF0 /* Powers.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -807,6 +810,7 @@
 				2ED34E1D27CBC27200F24251 /* ViewExtension.swift in Sources */,
 				2EB1662827C6633700BCF2D5 /* UserCardsView.swift in Sources */,
 				2E99A7B127C7D1060073DE8A /* TrainerView.swift in Sources */,
+				96C8F15627DA0CC300FA1FF0 /* Powers.swift in Sources */,
 				2E4E1A0227BEDD10001C8B67 /* CardType.swift in Sources */,
 				2EFCB97327C2D5BB0044B2E9 /* TrainerListView.swift in Sources */,
 				2EF5B05D27C3DA5D00A8930C /* GameDifficulty.swift in Sources */,

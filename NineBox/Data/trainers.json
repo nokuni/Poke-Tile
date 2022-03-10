@@ -3,7 +3,7 @@
         "name": "Erika",
         "image": "erika",
         "background": "forest.background",
-        "pokemons": ["Tangela", "Exeggcute", "Ivysaur", "Bulbasaur", "Oddish", "Gastly", "Haunter", "Shuppet"],
+        "pokemons": ["Vileplume", "Exeggcute", "Ivysaur", "Bulbasaur", "Oddish", "Gastly", "Haunter", "Shuppet"],
         "bonusAmount": 3,
         "difficulty": "easy",
         "reward": "Little Clearing"
@@ -12,7 +12,7 @@
         "name": "Gardenia",
         "image": "gardenia",
         "background": "forest.background",
-        "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
+        "pokemons": ["Torterra", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 3,
         "difficulty": "easy",
         "reward": "Little Clearing"
@@ -21,7 +21,7 @@
         "name": "Cilan",
         "image": "cilan",
         "background": "forest.background",
-        "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
+        "pokemons": ["Serperior", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 3,
         "difficulty": "normal",
         "reward": "Little Clearing"
@@ -30,7 +30,7 @@
         "name": "Ramos",
         "image": "ramos",
         "background": "forest.background",
-        "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
+        "pokemons": ["Victreebel", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 3,
         "difficulty": "normal",
         "reward": "Little Clearing"
@@ -39,7 +39,7 @@
         "name": "Mallow",
         "image": "mallow",
         "background": "forest.background",
-        "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
+        "pokemons": ["Tsareena", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 3,
         "difficulty": "hard",
         "reward": "Little Clearing"
@@ -48,7 +48,7 @@
         "name": "Milo",
         "image": "milo",
         "background": "forest.background",
-        "pokemons": ["Bulbasaur", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
+        "pokemons": ["Appletun", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
         "bonusAmount": 3,
         "difficulty": "hard",
         "reward": "Little Clearing"

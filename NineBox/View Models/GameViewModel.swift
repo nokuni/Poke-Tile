@@ -39,6 +39,47 @@ class GameViewModel: ObservableObject, Powers {
         loadOpponentHand()
     }
     
+    func grassLegendaryActions(name: String, edgeIndex: Int, match: Int) {
+        var grassDebuff = try! Card.getDebuff(type: .grass)
+        grassDebuff.debuffs.append("grass")
+        
+        switch name {
+        case "Vileplume":
+            let grassDebuffLocations = Array(game.board.indices).getAdjacentLinesIndices(from: match)
+            for location in grassDebuffLocations {
+                if game.board[location].isAvailable {
+                    withAnimation { game.board[location] = grassDebuff }
+                }
+            }
+        case "Torterra":
+            grassDebuff.debuffs = Array(repeating: "grass", count: 4)
+            if game.board[edgeIndex].isAvailable {
+                withAnimation { game.board[edgeIndex] = grassDebuff }
+            }
+        case "Serperior":
+            for index in game.boardIndices {
+                if game.board[index].isDebuff {
+                    game.board[index] = grassDebuff
+                }
+            }
+        case "Victreebel":
+            ()
+        case "Tsareena":
+            for index in game.boardIndices {
+                if game.board[index].isDebuff {
+                    game.board[index] = grassDebuff
+                }
+            }
+        case "Appletun":
+            for index in game.boardIndices {
+                if game.board[index].isDebuff {
+                    game.board[index] = grassDebuff
+                }
+            }
+        default: ()
+        }
+    }
+    
     // Apply the type action of a card
     func typeAction(of index: Int, on match: Int, card: Card) {
         switch card.type {
@@ -99,10 +140,11 @@ class GameViewModel: ObservableObject, Powers {
             }
         }
     }
-    func grassAction(edgeIndex: Int, card: Card) {
+    func grassAction(edgeIndex: Int, on match: Int, card: Card) {
         guard card.type == .grass else { return }
         var grassDebuff = try! Card.getDebuff(type: .grass)
         grassDebuff.debuffs.append("grass")
+        grassLegendaryActions(name: card.name, edgeIndex: edgeIndex, match: match)
         if game.board[edgeIndex].isAvailable {
             withAnimation { game.board[edgeIndex] = grassDebuff }
         } else if game.board[edgeIndex].isDebuff && game.board[edgeIndex].type == .grass {
@@ -139,22 +181,22 @@ class GameViewModel: ObservableObject, Powers {
         let adjacentIndex = game.getAdjacentCardIndex(from: match)
         
         if let topIndex = adjacentIndex.top {
-            grassAction(edgeIndex: topIndex, card: card)
+            grassAction(edgeIndex: topIndex, on: match, card: card)
             fireAction(edgeIndex: topIndex, card: card)
             waterAction(edgeIndex: topIndex, card: card)
         }
         if let trailingIndex = adjacentIndex.trailing {
-            grassAction(edgeIndex: trailingIndex, card: card)
+            grassAction(edgeIndex: trailingIndex, on: match, card: card)
             fireAction(edgeIndex: trailingIndex, card: card)
             waterAction(edgeIndex: trailingIndex, card: card)
         }
         if let bottomIndex = adjacentIndex.bottom {
-            grassAction(edgeIndex: bottomIndex, card: card)
+            grassAction(edgeIndex: bottomIndex, on: match, card: card)
             fireAction(edgeIndex: bottomIndex, card: card)
             waterAction(edgeIndex: bottomIndex, card: card)
         }
         if let leadingIndex = adjacentIndex.leading {
-            grassAction(edgeIndex: leadingIndex, card: card)
+            grassAction(edgeIndex: leadingIndex, on: match, card: card)
             fireAction(edgeIndex: leadingIndex, card: card)
             waterAction(edgeIndex: leadingIndex, card: card)
         }
@@ -175,7 +217,7 @@ class GameViewModel: ObservableObject, Powers {
         }
     }
     
-    func endTurn(toStart turn: Turn) {
+    /*func endTurn(toStart turn: Turn) {
         if !self.game.isGameOver { game.turn = turn }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             if !self.game.isGameOver {
@@ -185,6 +227,12 @@ class GameViewModel: ObservableObject, Powers {
                 self.isShowingGameEnding.toggle()
             }
         }
+    }*/
+    
+    func endOfTurnsActions() {
+        guard let victreebelLocationOnBoard = game.boardIndices.first(where: { game.board[$0].name == "Victreebel" }) else { return }
+        guard let victreebelLocationOnHand = game.userCards.firstIndex(where: { $0.name == "Victreebel"}) else { return }
+        convertAdjacents(from: victreebelLocationOnBoard, with: victreebelLocationOnHand)
     }
     
     func convertAdjacents(from match: Int, with cardIndex: Int) {
@@ -401,6 +449,7 @@ class GameViewModel: ObservableObject, Powers {
                     self.game.board[targetIndex].side = .opponent
                 }
                 self.game.trainerCards[cardIndex].isActivated = false
+                self.endOfTurnsActions()
             }
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -410,11 +459,6 @@ class GameViewModel: ObservableObject, Powers {
                             self.game.turn = .user
                             self.isShowingTurnAnimation.toggle()
                         } else {
-                            /*if self.game.isGameWon {
-                                if let trainer = self.game.trainer {
-                                    UserViewModel.shared.user.boosters.append(trainer.booster)
-                                }
-                            }*/
                             self.isShowingGameEnding.toggle()
                         }
                     }
@@ -467,6 +511,6 @@ class GameViewModel: ObservableObject, Powers {
 
 protocol Powers {
     func normalAction(of index: Int, on match: Int, card: Card)
-    func grassAction(edgeIndex: Int, card: Card)
+    func grassAction(edgeIndex: Int, on match: Int, card: Card)
     func fireAction(edgeIndex: Int, card: Card)
 }

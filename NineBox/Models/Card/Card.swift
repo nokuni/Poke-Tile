@@ -59,7 +59,6 @@ struct Card: Equatable, Codable, Identifiable, Hashable {
     func isDuplicate(from cards: [Card]) -> Bool {
         cards.contains { $0.name == name }
     }
-    
     func buffed(with debuff: Card) -> Card {
         var card = self
         let count = debuff.debuffs.count

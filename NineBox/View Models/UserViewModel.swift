@@ -18,11 +18,6 @@ class UserViewModel: ObservableObject {
         user.cards.append(contentsOf: cards)
     }
     
-//    func removeBooster(_ booster: Booster) {
-//        guard let index = user.boosters.firstIndex(of: booster) else { return }
-//        user.boosters.remove(at: index)
-//    }
-    
     func isPossessing(_ card: Card) -> Bool {
         user.cards.contains(where: { $0.name == card.name })
     }

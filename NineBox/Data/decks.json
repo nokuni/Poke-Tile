@@ -1,7 +1,7 @@
 [
     {
         "name": "Grass Starter",
-        "pokemons": ["Tangela", "Exeggcute", "Ivysaur", "Bulbasaur", "Oddish", "Gastly", "Haunter", "Shuppet"],
+        "pokemons": ["Victreebel", "Exeggcute", "Ivysaur", "Bulbasaur", "Oddish", "Gastly", "Haunter", "Shuppet"],
         "background": "forest.background"
     },
     {
