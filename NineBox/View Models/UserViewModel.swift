@@ -35,7 +35,7 @@ class UserViewModel: ObservableObject {
     func filteredDecks(filter: DeckFilters) -> [Deck] {
         switch filter {
         case .all:
-            return Deck.all + Deck.trainerDecks
+            return Deck.all
         case .playable:
             return Deck.all.filter { isDeckPlayable(deck: $0) }
         }

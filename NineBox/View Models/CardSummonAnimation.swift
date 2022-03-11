@@ -66,7 +66,11 @@ class CardAnimationViewModel: ObservableObject {
         cardPlaceholders = cardsSummoned
     }
     
-    var isAnimationFinished: Bool {
-        rotatingCardPlaceholders.allSatisfy({ $0 == false })
+    func isAnimationFinished(isCleared: Bool?) -> Bool {
+        if isCleared ?? false {
+            return true
+        } else {
+            return rotatingCardPlaceholders.allSatisfy({ $0 == false })
+        }
     }
 }

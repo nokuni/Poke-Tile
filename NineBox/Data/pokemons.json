@@ -160,6 +160,16 @@
          "cost": 1
      },
      {
+         "name": "Persian",
+         "image": "053",
+         "backgroundImage": "normal",
+         "category": "pokemon",
+         "type": "normal",
+         "stats": { "top": 2, "trailing": 3, "bottom": 2, "leading": 2 },
+         "rarity": "rare",
+         "cost": 9
+     },
+     {
          "name": "Psyduck",
          "image": "054",
          "backgroundImage": "water",
@@ -420,6 +430,16 @@
          "cost": 5
      },
      {
+         "name": "Bayleef",
+         "image": "153",
+         "backgroundImage": "grass",
+         "category": "pokemon",
+         "type": "grass",
+         "stats": { "top": 1, "trailing": 3, "bottom": 3, "leading": 2 },
+         "rarity": "common",
+         "cost": 9
+     },
+     {
          "name": "Hoppip",
          "image": "187",
          "backgroundImage": "grass",
@@ -428,6 +448,16 @@
          "stats": { "top": 0, "trailing": 0, "bottom": 0, "leading": 1 },
          "rarity": "common",
          "cost": 1
+     },
+     {
+         "name": "Aipom",
+         "image": "190",
+         "backgroundImage": "normal",
+         "category": "pokemon",
+         "type": "normal",
+         "stats": { "top": 0, "trailing": 3, "bottom": 0, "leading": 1 },
+         "rarity": "common",
+         "cost": 4
      },
      {
          "name": "Sunkern",
@@ -478,6 +508,16 @@
          "stats": { "top": 2, "trailing": 2, "bottom": -2, "leading": 2 },
          "rarity": "uncommon",
          "cost": 4
+     },
+     {
+         "name": "Lileep",
+         "image": "345",
+         "backgroundImage": "grass",
+         "category": "pokemon",
+         "type": "grass",
+         "stats": { "top": 3, "trailing": 1, "bottom": -1, "leading": 3 },
+         "rarity": "uncommon",
+         "cost": 6
      },
      {
          "name": "Shuppet",

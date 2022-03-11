@@ -19,4 +19,9 @@
         "pokemons": ["Torterra", "Grotle", "Magneton", "Turtwig", "Sunkern", "Hoppip", "Beldum", "Magnemite"],
         "background": "quarry.background"
     },
+    {
+        "name": "Peaceful Walk",
+        "pokemons": ["Vileplume", "Bayleef", "Persian", "Aipom", "Lileep", "Shroomish", "Meowth", "Eevee"],
+        "background": "castle.background"
+    },
 ]

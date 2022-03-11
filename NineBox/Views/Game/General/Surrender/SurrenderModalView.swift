@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SurrenderModalView: View {
+    @ObservedObject var gameVM: GameViewModel
     @Binding var isShowingGameEnding: Bool
     @Binding var isShowingSurrenderModal: Bool
     var body: some View {
@@ -22,7 +23,7 @@ struct SurrenderModalView: View {
                         .frame(width: geo.size.width * 0.9, height: geo.size.height * 0.4)
                         .background(Color.white.cornerRadius(5))
                         .overlay(
-                            SurrenderModalOverlayView(isShowingSurrenderModal: $isShowingSurrenderModal, isShowingGameEnding: $isShowingGameEnding)
+                            SurrenderModalOverlayView(gameVM: gameVM, isShowingSurrenderModal: $isShowingSurrenderModal, isShowingGameEnding: $isShowingGameEnding)
                         )
                     Spacer()
                 }
@@ -34,11 +35,12 @@ struct SurrenderModalView: View {
 
 struct SurrenderModalView_Previews: PreviewProvider {
     static var previews: some View {
-        SurrenderModalView(isShowingGameEnding: .constant(false), isShowingSurrenderModal: .constant(false))
+        SurrenderModalView(gameVM: GameViewModel(), isShowingGameEnding: .constant(false), isShowingSurrenderModal: .constant(false))
     }
 }
 
 struct SurrenderModalOverlayView: View {
+    @ObservedObject var gameVM: GameViewModel
     @Binding var isShowingSurrenderModal: Bool
     @Binding var isShowingGameEnding: Bool
     var body: some View {
@@ -55,6 +57,9 @@ struct SurrenderModalOverlayView: View {
                     ActionButtonView(text: "NO", textColor: .white, color: .steelBlue, size: CGSize.screen)
                 }
                 Button(action: {
+                    gameVM.game.boardIndices.forEach {
+                        gameVM.game.board[$0].side = .opponent
+                    }
                     isShowingSurrenderModal.toggle()
                     isShowingGameEnding.toggle()
                 }) {

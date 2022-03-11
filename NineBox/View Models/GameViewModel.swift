@@ -98,10 +98,10 @@ class GameViewModel: ObservableObject {
         default: ()
         }
     }
-    func waterLegendaryActions(name: String, edgeIndex: Int, match: Int) {
+    func waterLegendaryActions(name: String, edgeIndex: Int, match: Int, card: Card) {
         switch name {
         case "Blastoise":
-            for index in game.boardIndices { resetCardStats(index: index, on: match) }
+            for index in game.boardIndices { resetCardStats(index: index, on: match, card: card) }
         default: ()
         }
     }
@@ -134,8 +134,8 @@ class GameViewModel: ObservableObject {
     }
     func waterAction(edgeIndex: Int, on match: Int, card: Card) {
         guard card.type == .water else { return }
-        waterLegendaryActions(name: card.name, edgeIndex: edgeIndex, match: match)
-        resetCardStats(index: edgeIndex, on: match)
+        waterLegendaryActions(name: card.name, edgeIndex: edgeIndex, match: match, card: card)
+        resetCardStats(index: edgeIndex, on: match, card: card)
     }
     func fightingAction(edgeIndex: Int, with cardIndex: Int) {
         if game.userCards[cardIndex].type == .fighting {
@@ -210,16 +210,12 @@ class GameViewModel: ObservableObject {
         for location in debuffLocations {
             if game.board[location].isAvailable {
                 withAnimation { game.board[location] = debuff }
-            } else if game.board[location].isDebuff && game.board[location].type == .grass {
-                if game.board[location].debuffs.count < 4 {
-                    withAnimation { game.board[location].debuffs.append("grass") }
-                }
             }
         }
     }
-    func resetCardStats(index: Int, on match: Int) {
+    func resetCardStats(index: Int, on match: Int, card: Card) {
         guard let dataIndex = Card.pokemons.firstIndex(where: { $0.name == game.board[index].name }) else { return }
-        if game.board[match].side == .user {
+        if card.side == .user {
             if game.board[index].isPokemon && game.board[index].side == .user {
                 if game.board[index].stats.top < 0 { game.board[index].stats.top = abs(game.board[index].stats.top) }
                 if game.board[index].stats.trailing < 0 { game.board[index].stats.trailing = abs(game.board[index].stats.trailing) }
@@ -233,7 +229,7 @@ class GameViewModel: ObservableObject {
                 if game.board[index].stats.leading > Card.pokemons[dataIndex].stats.leading { game.board[index].stats.leading = Card.pokemons[dataIndex].stats.leading }
             }
         }
-        if game.board[match].side == .opponent {
+        if card.side == .opponent {
             if game.board[index].isPokemon && game.board[index].side == .opponent {
                 if game.board[index].stats.top < 0 { game.board[index].stats.top = abs(game.board[index].stats.top) }
                 if game.board[index].stats.trailing < 0 { game.board[index].stats.trailing = abs(game.board[index].stats.trailing) }

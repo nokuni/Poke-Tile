@@ -19,7 +19,7 @@
     },
     {
         "name": "Little Clearing",
-        "cardPool": ["Bellsprout", "Chikorita", "Hoppip", "Sunkern", "Treecko", "Seedot","Shroomish", "Turtwig"],
+        "cardPool": ["Vileplume", "Chikorita", "Hoppip", "Sunkern", "Treecko", "Seedot","Shroomish", "Turtwig"],
         "background": "forest.background",
         "type": "grass"
     },

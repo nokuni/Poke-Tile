@@ -41,7 +41,9 @@ struct EndingAnimationView: View {
                 if gameVM.game.isGameWon {
                     if let trainer = gameVM.game.trainer {
                         adventureVM.unlockNextTrainer(from: trainer)
-                        userVM.addCardsToCollection(trainer.booster.cards)
+                        if !trainer.hasBeenCleared {
+                            userVM.addCardsToCollection(trainer.booster.cards)
+                        }
                     }
                 }
                 isAnimating.toggle()
