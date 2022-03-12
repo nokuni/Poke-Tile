@@ -150,6 +150,16 @@
          "cost": 13
      },
      {
+         "name": "Paras",
+         "image": "046",
+         "backgroundImage": "grass",
+         "category": "pokemon",
+         "type": "grass",
+         "stats": { "top": 0, "trailing": 1, "bottom": 0, "leading": 1 },
+         "rarity": "common",
+         "cost": 2
+     },
+     {
          "name": "Meowth",
          "image": "052",
          "backgroundImage": "normal",

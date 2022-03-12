@@ -16,6 +16,7 @@ struct UserCardListView: View {
             LazyVGrid(columns: grid, spacing: 0) {
                 ForEach(userVM.user.cards) { card in
                     CardView(card: card, size: size, amount: 4)
+                        .accessibilityLabel(card.name)
                 }
             }
             .padding()

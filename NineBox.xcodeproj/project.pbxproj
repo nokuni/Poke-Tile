@@ -36,6 +36,13 @@
 		2E642B6127CE835F006A2083 /* SurrenderModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E642B6027CE835F006A2083 /* SurrenderModalView.swift */; };
 		2E642B6827CE8623006A2083 /* LongButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E642B6727CE8623006A2083 /* LongButtonView.swift */; };
 		2E642B6A27CE8885006A2083 /* EndingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E642B6927CE8885006A2083 /* EndingAnimationView.swift */; };
+		2E7BF0E727DCE7E0007D7717 /* MissionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7BF0E627DCE7E0007D7717 /* MissionsView.swift */; };
+		2E7BF0E927DCEA42007D7717 /* MissionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7BF0E827DCEA42007D7717 /* MissionListView.swift */; };
+		2E7BF0EB27DCEA94007D7717 /* MissionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7BF0EA27DCEA94007D7717 /* MissionRowView.swift */; };
+		2E7BF0ED27DCEBB0007D7717 /* Missions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7BF0EC27DCEBB0007D7717 /* Missions.swift */; };
+		2E7BF0F027DD0AF8007D7717 /* MissionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7BF0EF27DD0AF8007D7717 /* MissionViewModel.swift */; };
+		2E7BF0F227DD0D76007D7717 /* missions.json in Resources */ = {isa = PBXBuildFile; fileRef = 2E7BF0F127DD0D76007D7717 /* missions.json */; };
+		2E7BF0F427DD2B29007D7717 /* MissionRewardAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7BF0F327DD2B29007D7717 /* MissionRewardAnimationView.swift */; };
 		2E849BC527D653BB001CE665 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E849BC427D653BB001CE665 /* UserViewModel.swift */; };
 		2E849BC827D654C6001CE665 /* AdventureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E849BC727D654C6001CE665 /* AdventureViewModel.swift */; };
 		2E8E794227D288DD00A185C9 /* UserDeckFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8E794127D288DD00A185C9 /* UserDeckFilterView.swift */; };
@@ -145,6 +152,13 @@
 		2E642B6027CE835F006A2083 /* SurrenderModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurrenderModalView.swift; sourceTree = "<group>"; };
 		2E642B6727CE8623006A2083 /* LongButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongButtonView.swift; sourceTree = "<group>"; };
 		2E642B6927CE8885006A2083 /* EndingAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndingAnimationView.swift; sourceTree = "<group>"; };
+		2E7BF0E627DCE7E0007D7717 /* MissionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionsView.swift; sourceTree = "<group>"; };
+		2E7BF0E827DCEA42007D7717 /* MissionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionListView.swift; sourceTree = "<group>"; };
+		2E7BF0EA27DCEA94007D7717 /* MissionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionRowView.swift; sourceTree = "<group>"; };
+		2E7BF0EC27DCEBB0007D7717 /* Missions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Missions.swift; sourceTree = "<group>"; };
+		2E7BF0EF27DD0AF8007D7717 /* MissionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionViewModel.swift; sourceTree = "<group>"; };
+		2E7BF0F127DD0D76007D7717 /* missions.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = missions.json; sourceTree = "<group>"; };
+		2E7BF0F327DD2B29007D7717 /* MissionRewardAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionRewardAnimationView.swift; sourceTree = "<group>"; };
 		2E849BC427D653BB001CE665 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		2E849BC727D654C6001CE665 /* AdventureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdventureViewModel.swift; sourceTree = "<group>"; };
 		2E8E794127D288DD00A185C9 /* UserDeckFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDeckFilterView.swift; sourceTree = "<group>"; };
@@ -268,6 +282,7 @@
 				2E3A3BA227CD328F0018DA36 /* Theme.swift */,
 				2E98C0A127D115E700286879 /* Booster.swift */,
 				96C8F15527DA0CC300FA1FF0 /* Powers.swift */,
+				2E7BF0EC27DCEBB0007D7717 /* Missions.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -339,6 +354,7 @@
 				2ED7AA1627D38877008FA2C5 /* CardSummonAnimation.swift */,
 				2E849BC427D653BB001CE665 /* UserViewModel.swift */,
 				2E849BC727D654C6001CE665 /* AdventureViewModel.swift */,
+				2E7BF0EF27DD0AF8007D7717 /* MissionViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -346,6 +362,7 @@
 		2E4E1A1227BEDE6D001C8B67 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2E7BF0E427DCE7A8007D7717 /* Missions */,
 				2E98C09C27D1111900286879 /* Summons */,
 				2E98C09927D110CE00286879 /* Presentation */,
 				2E4A95ED27C7B76100BA498D /* Commons */,
@@ -376,6 +393,17 @@
 				2E3A3BA627CD66A30018DA36 /* GameEndingView.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		2E7BF0E427DCE7A8007D7717 /* Missions */ = {
+			isa = PBXGroup;
+			children = (
+				2E7BF0E627DCE7E0007D7717 /* MissionsView.swift */,
+				2E7BF0E827DCEA42007D7717 /* MissionListView.swift */,
+				2E7BF0EA27DCEA94007D7717 /* MissionRowView.swift */,
+				2E7BF0F327DD2B29007D7717 /* MissionRewardAnimationView.swift */,
+			);
+			path = Missions;
 			sourceTree = "<group>";
 		};
 		2E98C09427D0F53600286879 /* Junk */ = {
@@ -423,6 +451,7 @@
 				2EFCB97027C2C6280044B2E9 /* trainers.json */,
 				2E9676EE27CFC40100DC50C6 /* decks.json */,
 				2E98C09F27D114CF00286879 /* boosters.json */,
+				2E7BF0F127DD0D76007D7717 /* missions.json */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -766,6 +795,7 @@
 				2EFCB94727C24E5C0044B2E9 /* debuffs.json in Resources */,
 				2EFCB94927C250A60044B2E9 /* adventures.json in Resources */,
 				2E98C0A027D114CF00286879 /* boosters.json in Resources */,
+				2E7BF0F227DD0D76007D7717 /* missions.json in Resources */,
 				2EFCB97127C2C6280044B2E9 /* trainers.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -777,6 +807,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E7BF0ED27DCEBB0007D7717 /* Missions.swift in Sources */,
 				2EFCB94B27C27D180044B2E9 /* AdventureListView.swift in Sources */,
 				2E4A95EF27C7B77100BA498D /* NavigationTitleView.swift in Sources */,
 				2ED7AA1B27D3895D008FA2C5 /* UserCardInformationView.swift in Sources */,
@@ -794,6 +825,7 @@
 				2E642B5A27CE569F006A2083 /* VersusAnimationView.swift in Sources */,
 				2ED34E1927CBA3DE00F24251 /* UserDeckSlotView.swift in Sources */,
 				2EFCB96F27C2C5D10044B2E9 /* TrainerRowView.swift in Sources */,
+				2E7BF0EB27DCEA94007D7717 /* MissionRowView.swift in Sources */,
 				2EA07DCA27C23ECC00AB974B /* BundleExtension.swift in Sources */,
 				2ED34E2027CBD73D00F24251 /* ChangeNameOverlayView.swift in Sources */,
 				2E8E794227D288DD00A185C9 /* UserDeckFilterView.swift in Sources */,
@@ -809,6 +841,7 @@
 				2E4E1A0E27BEDE35001C8B67 /* GameViewModel.swift in Sources */,
 				2ED34E1D27CBC27200F24251 /* ViewExtension.swift in Sources */,
 				2EB1662827C6633700BCF2D5 /* UserCardsView.swift in Sources */,
+				2E7BF0F027DD0AF8007D7717 /* MissionViewModel.swift in Sources */,
 				2E99A7B127C7D1060073DE8A /* TrainerView.swift in Sources */,
 				96C8F15627DA0CC300FA1FF0 /* Powers.swift in Sources */,
 				2E4E1A0227BEDD10001C8B67 /* CardType.swift in Sources */,
@@ -832,6 +865,7 @@
 				2EEEA21427BD8605009A1D49 /* Card.swift in Sources */,
 				2E642B5E27CE7650006A2083 /* CommonBackgroundView.swift in Sources */,
 				2EA07DB427C0ED2E00AB974B /* OpponentHandView.swift in Sources */,
+				2E7BF0F427DD2B29007D7717 /* MissionRewardAnimationView.swift in Sources */,
 				2E642B6A27CE8885006A2083 /* EndingAnimationView.swift in Sources */,
 				2E98C0A427D11E2D00286879 /* PointingArrowView.swift in Sources */,
 				2E4A95F227C7B8A600BA498D /* NavigationTitle.swift in Sources */,
@@ -854,6 +888,7 @@
 				2ED7AA1F27D389F3008FA2C5 /* UserPreBattleDeckListView.swift in Sources */,
 				2E849BC827D654C6001CE665 /* AdventureViewModel.swift in Sources */,
 				2E29BA5927D908A100BCE32A /* EndingMenuView.swift in Sources */,
+				2E7BF0E927DCEA42007D7717 /* MissionListView.swift in Sources */,
 				2ED34E2627CBF00100F24251 /* PreBattleView.swift in Sources */,
 				2EA07DC327C23B2500AB974B /* StatSquareView.swift in Sources */,
 				2EFCB95927C29C100044B2E9 /* ProfileView.swift in Sources */,
@@ -874,6 +909,7 @@
 				2E98C09627D0F5F000286879 /* UserDeckBackgroundView.swift in Sources */,
 				2E642B6827CE8623006A2083 /* LongButtonView.swift in Sources */,
 				2ED34E0F27CB71CC00F24251 /* Deck.swift in Sources */,
+				2E7BF0E727DCE7E0007D7717 /* MissionsView.swift in Sources */,
 				2E3A3BA527CD404E0018DA36 /* HomeBackgroundView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

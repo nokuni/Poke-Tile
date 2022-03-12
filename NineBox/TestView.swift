@@ -9,15 +9,18 @@ import SwiftUI
 
 struct TestView: View {
     @State var isAnimating = false
-    
     var body: some View {
-        GeometryReader { geo in
-            ScrollView {
-                ForEach(0..<10) { _ in
-                    RoundedRectangle(cornerRadius: 5)
-                        .frame(width: geo.size.width * 0.5, height: geo.size.height * 0.2)
-                        .frame(width: geo.size.width, height: geo.size.height * 0.2, alignment: .trailing)
+        ZStack {
+            if isAnimating {
+                ZStack {
+                    CardView(card: Card.pokemons[0], size: CGSize.screen, amount: 3, isPossessing: nil)
                 }
+                .transition(AnyTransition.scale)
+            }
+        }
+        .onAppear {
+            withAnimation(.spring()) {
+                isAnimating.toggle()
             }
         }
     }

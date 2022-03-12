@@ -35,7 +35,7 @@ struct TrainerListView: View {
         }
         .background(
             LinearGradient(gradient: Gradient(colors: [.powderBlue, .white, .powderBlue]), startPoint: .top, endPoint: .bottom)
-                .cornerRadius(10)
+                .cornerRadius(5)
                 .opacity(0.5)
         )
     }

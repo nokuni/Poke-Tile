@@ -7,14 +7,15 @@
 
 import Foundation
 
-struct Deck: Codable, Identifiable {
+struct Deck: Codable, Identifiable, Equatable {
     var id = UUID()
     var name: String
+    let associatedType: CardType
     var pokemons: [String]
     var background: String
     
     enum CodingKeys: String, CodingKey {
-        case name, pokemons, background
+        case name, associatedType, pokemons, background
     }
     
     var cards: [Card] {
@@ -32,9 +33,10 @@ struct Deck: Codable, Identifiable {
 }
 
 extension Deck {
-    static let empty = Deck(name: "New Deck", pokemons: Card.placeholders.map { $0.name }, background: "forest")
+    static let empty = Deck(name: "New Deck", associatedType: .empty, pokemons: Card.placeholders.map { $0.name }, background: "forest")
     static let all: [Deck] = try! Bundle.main.decode("decks.json")
-    static let trainerDecks = Trainer.trainers.map { Deck(name: "\($0.name)'s Deck", pokemons: $0.pokemons, background: $0.background) }
+    static let trainerDecks = Trainer.trainers.map { Deck(name: "\($0.name)'s Deck", associatedType: $0.associatedType, pokemons: $0.pokemons, background: $0.background) }
+    static let starters = all.filter({ $0.name.contains("Starter")})
 }
 
 enum DeckFilters: String, CaseIterable {

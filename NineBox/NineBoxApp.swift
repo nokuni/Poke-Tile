@@ -12,13 +12,17 @@ struct NineBoxApp: App {
     @StateObject var gameVM = GameViewModel()
     @StateObject var userVM = UserViewModel()
     @StateObject var adventureVM = AdventureViewModel()
+    @StateObject var missionVM = MissionViewModel()
     var body: some Scene {
         WindowGroup {
-            HomeView()
-                .environmentObject(gameVM)
-                .environmentObject(userVM)
-                .environmentObject(adventureVM)
-                .statusBar(hidden: true)
+            ZStack {
+                HomeView()
+                    .environmentObject(gameVM)
+                    .environmentObject(userVM)
+                    .environmentObject(adventureVM)
+                    .environmentObject(missionVM)
+                    .statusBar(hidden: true)
+            }
         }
     }
 }

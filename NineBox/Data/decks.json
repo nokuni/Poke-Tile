@@ -1,26 +1,31 @@
 [
     {
         "name": "Grass Starter",
+        "associatedType": "grass",
         "pokemons": ["Venusaur", "Ivysaur", "Haunter", "Bulbasaur", "Exeggcute", "Oddish", "Bellsprout", "Gastly"],
         "background": "forest.background"
     },
     {
         "name": "Fire Starter",
+        "associatedType": "fire",
         "pokemons": ["Charizard", "Charmeleon", "Lickitung", "Charmander", "Growlithe", "Vulpix", "Rattata", "Meowth"],
         "background": "volcano.background"
     },
     {
         "name": "Water Starter",
+        "associatedType": "water",
         "pokemons": ["Blastoise", "Wartortle", "Machoke", "Squirtle", "Staryu", "Psyduck", "Mankey", "Machop"],
         "background": "sea.background"
     },
     {
         "name": "Impassive Nature",
+        "associatedType": "grass",
         "pokemons": ["Torterra", "Grotle", "Magneton", "Turtwig", "Sunkern", "Hoppip", "Beldum", "Magnemite"],
         "background": "quarry.background"
     },
     {
         "name": "Peaceful Walk",
+        "associatedType": "grass",
         "pokemons": ["Vileplume", "Bayleef", "Persian", "Aipom", "Lileep", "Shroomish", "Meowth", "Eevee"],
         "background": "castle.background"
     },

@@ -48,7 +48,7 @@ class GameViewModel: ObservableObject {
     }
     func loadBoard(bonus: ((Trainer?) -> Void)) {
         game.board = Array(repeating: Card.empty, count: 16)
-        //bonus(game.trainer)
+        bonus(game.trainer)
     }
     func loadPlayerHand() {
         if let deck = game.deck { game.userCards = deck.cards }
@@ -476,16 +476,9 @@ class GameViewModel: ObservableObject {
     // Futur changes of making it not random
     func addDebuffs(trainer: Trainer?) {
         guard let trainer = trainer else { return }
-        let types = Set(trainer.cards.map { $0.type })
-        let randomIndices = game.boardIndices.differentRandomElements(amount: trainer.bonusAmount)
-        for index in randomIndices {
-            guard let randomType = types.randomElement() else { return }
-            let randomCard = try! Card.getDebuff(type: randomType)
-            game.board[index] = randomCard
-            let randomNumber = Int.random(in: 1...3)
-            for _ in 0..<randomNumber {
-                game.board[index].debuffs.append(randomType.rawValue)
-            }
+        let debuff = try! Card.getDebuff(type: trainer.associatedType)
+        for index in trainer.bonusLocations {
+            game.board[index] = debuff
         }
     }
     
@@ -583,7 +576,8 @@ class GameViewModel: ObservableObject {
     func userMatchingWeaknesses(with card: Card) -> (locations: [Int], index: Int?) {
         var weaknessLocations = [Int]()
         var userCardIndex: Int? = nil
-        for index in game.userCardsIndicesOnBoard {
+        let userCardsSortedByCostIndices = game.userCardsIndicesOnBoard.sorted(by: { game.board[$0].cost > game.board[$1].cost })
+        for index in userCardsSortedByCostIndices {
             let indices = convertingMatches(of: index, with: card).filter { game.board[$0].category != .pokemon }
             if !indices.isEmpty {
                 weaknessLocations = indices
@@ -594,29 +588,45 @@ class GameViewModel: ObservableObject {
         return (weaknessLocations, userCardIndex)
     }
     
+    func getBestLocation(with card: Card) -> Int? {
+        let availableLocations = game.boardIndices.filter { game.board[$0].category != .pokemon }
+        let debuffLocations = availableLocations.filter { game.board[$0].debuffs.contains(card.type.rawValue) }
+        let bestLocationsForCard = debuffLocations.sorted(by: { game.board[$0].debuffs.count > game.board[$1].debuffs.count })
+        if bestLocationsForCard.isEmpty {
+            return availableLocations.randomElement()
+        } else {
+            return bestLocationsForCard.first
+        }
+    }
+    
     // TEMPORARY
     var randomLocation: Int? {
         let debuffLocations = game.boardIndices.filter { game.board[$0].category != .pokemon }
+        
         return debuffLocations.randomElement()
     }
     
     func opponentPlays() {
         let availableCards = game.trainerCards.filter { $0.isActivated }
-        guard let randomCard = availableCards.randomElement() else { return }
-        guard let cardIndex = game.trainerCards.firstIndex(of: randomCard) else { return }
+        let sortedAvailableCards = availableCards.sorted(by: { $0.cost < $1.cost })
+        guard let firstPlayableCard =  sortedAvailableCards.first else { return }
+        guard let firstPlayableCardIndex = game.trainerCards.firstIndex(of: firstPlayableCard) else { return }
         
-        let userMatchingWeaknesses = userMatchingWeaknesses(with: randomCard)
-        
-        if let weaknessIndex = userMatchingWeaknesses.locations.randomElement() {
-            rotatingCardAnimation(index: weaknessIndex)
-            if let targetIndex = userMatchingWeaknesses.index {
-                rotatingCardAnimation(index: targetIndex)
-                opponentCardAction(actionIndex: weaknessIndex, cardIndex: cardIndex, targetIndex: targetIndex)
+        if let chosenCard = sortedAvailableCards.first(where: { userMatchingWeaknesses(with: $0).index != nil && !userMatchingWeaknesses(with: $0).locations.isEmpty }),
+           let cardIndex = game.trainerCards.firstIndex(of: chosenCard) {
+            let matchingWeaknesses = userMatchingWeaknesses(with: chosenCard)
+            if let weaknessIndex = matchingWeaknesses.locations.randomElement() {
+                rotatingCardAnimation(index: weaknessIndex)
+                if let targetIndex = matchingWeaknesses.index {
+                    rotatingCardAnimation(index: targetIndex)
+                    opponentCardAction(actionIndex: weaknessIndex, cardIndex: cardIndex, targetIndex: targetIndex)
+                }
             }
         } else {
-            if let location = randomLocation {
+            print("No target")
+            if let location = getBestLocation(with: firstPlayableCard) {
                 rotatingCardAnimation(index: location)
-                opponentCardAction(actionIndex: location, cardIndex: cardIndex, targetIndex: nil)
+                opponentCardAction(actionIndex: location, cardIndex: firstPlayableCardIndex, targetIndex: nil)
             }
         }
     }

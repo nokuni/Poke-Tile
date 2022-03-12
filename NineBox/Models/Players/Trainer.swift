@@ -12,19 +12,16 @@ struct Trainer: Codable, Identifiable, Equatable {
     let name: String
     let image: String
     let background: String
+    let associatedType: CardType
     var pokemons: [String]
-    let bonusAmount: Int
+    let bonusLocations: [Int]
     let difficulty: GameDifficulty
     let reward: String
     var isUnlocked: Bool = false
     var hasBeenCleared: Bool = false
     
     enum CodingKeys: String, CodingKey {
-        case name, image, background, pokemons, bonusAmount, difficulty, reward
-    }
-    
-    var booster: Booster {
-        return try! Trainer.getBooster(reward)
+        case name, image, background, associatedType, pokemons, bonusLocations, difficulty, reward
     }
     
     var cards: [Card] {
@@ -52,11 +49,11 @@ extension Trainer {
         return trainer
     }
     
-    static func getBooster(_ name: String) throws -> Booster {
-        let boosters: [Booster] = try! Bundle.main.decode("boosters.json")
-        guard let booster = boosters.first(where: { $0.name == name }) else {
-            throw TrainerError.noBooster
-        }
-        return booster
-    }
+//    static func getBooster(_ name: String) throws -> Booster {
+//        let boosters: [Booster] = try! Bundle.main.decode("boosters.json")
+//        guard let booster = boosters.first(where: { $0.name == name }) else {
+//            throw TrainerError.noBooster
+//        }
+//        return booster
+//    }
 }

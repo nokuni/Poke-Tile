@@ -34,8 +34,20 @@ class AdventureViewModel: ObservableObject {
     func unlockNextTrainer(from trainer: Trainer) {
         guard let adventureIndex = adventures.firstIndex(where: { $0.trainers.contains(trainer) }) else { return }
         guard let index = adventures[adventureIndex].trainers.firstIndex(of: trainer) else { return }
-        guard (index + 1) < adventures[adventureIndex].trainers.count else { return }
         adventures[adventureIndex].trainers[index].hasBeenCleared = true
+        guard (index + 1) < adventures[adventureIndex].trainers.count else { return }
         adventures[adventureIndex].trainers[index + 1].isUnlocked = true
+    }
+    
+    func checkAdventureMissions(_ missions: inout [Mission]) {
+        for adventure in adventures {
+            if adventure.trainers.allSatisfy({ $0.hasBeenCleared }) {
+                if let index = missions.firstIndex(where: { $0.name == adventure.title }) {
+                    if !missions[index].isDone {
+                        missions[index].isDone = true
+                    }
+                }
+            }
+        }
     }
 }

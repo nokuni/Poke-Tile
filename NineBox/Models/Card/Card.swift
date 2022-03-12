@@ -82,6 +82,7 @@ extension Card {
     static let invisible = Card(name: "Invisible", image: "invisible", backgroundImage: "invisible", category: .empty, type: .empty, stats: .init(top: 0, trailing: 0, bottom: 0, leading: 0), rarity: .none, cost: 0)
     
     static let placeholders = Array(repeating: Card.empty, count: 8)
+    static let invisiblePlaceholders = Array(repeating: Card.invisible, count: 8)
     static let emptyBoard = Array(repeating: Card.invisible, count: 16)
     
     static let debuffs: [Card] = try! Bundle.main.decode("debuffs.json")

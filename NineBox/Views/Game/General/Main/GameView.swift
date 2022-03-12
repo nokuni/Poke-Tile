@@ -11,6 +11,7 @@ struct GameView: View {
     @EnvironmentObject var userVM: UserViewModel
     @EnvironmentObject var gameVM: GameViewModel
     @EnvironmentObject var adventureVM: AdventureViewModel
+    @EnvironmentObject var missionVM: MissionViewModel
     @State private var isShowingStart = false
     @State private var isShowingSurrenderModal = false
     var body: some View {
@@ -42,7 +43,7 @@ struct GameView: View {
             
             if gameVM.isShowingGameEnding {
                 if let trainer = gameVM.game.trainer {
-                    EndingAnimationView(booster: trainer.booster, isPresented: $gameVM.isShowingGameEnding, isShowingStart: $isShowingStart, userVM: userVM, gameVM: gameVM, adventureVM: adventureVM)
+                    EndingAnimationView(card: try! Card.getPokemon(name: trainer.reward), isPresented: $gameVM.isShowingGameEnding, isShowingStart: $isShowingStart, userVM: userVM, gameVM: gameVM, adventureVM: adventureVM, missionVM: missionVM)
                 }
             }
             

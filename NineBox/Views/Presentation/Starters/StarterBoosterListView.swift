@@ -8,22 +8,22 @@
 import SwiftUI
 
 struct StarterBoosterListView: View {
-    var starters: [Booster]
+    var starters: [Deck]
     var size: CGSize
-    @Binding var selectedBooster: Booster?
+    @Binding var selectedDeck: Deck?
     var body: some View {
         HStack {
             ForEach(starters.indices) { index in
                 VStack {
                     PointingArrowView(size: size)
-                        .opacity(selectedBooster == starters[index] ? 1 : 0)
+                        .opacity(selectedDeck == starters[index] ? 1 : 0)
                         .padding()
                     Button(action: {
-                        selectedBooster = starters[index]
+                        selectedDeck = starters[index]
                     }) {
-                        CardBoosterView(booster: starters[index], size: size)
-                            .shadow(color: selectedBooster == starters[index] ? .white : .clear, radius: 5)
-                            .shadow(color: selectedBooster == starters[index] ? .white : .clear, radius: 5)
+                        CardBoosterView(deck: starters[index], size: size)
+                            .shadow(color: selectedDeck == starters[index] ? .white : .clear, radius: 5)
+                            .shadow(color: selectedDeck == starters[index] ? .white : .clear, radius: 5)
                     }
                 }
             }
@@ -33,40 +33,40 @@ struct StarterBoosterListView: View {
 
 struct StarterBoosterListView_Previews: PreviewProvider {
     static var previews: some View {
-        StarterBoosterListView(starters: [], size: CGSize.screen, selectedBooster: .constant(nil))
+        StarterBoosterListView(starters: [], size: CGSize.screen, selectedDeck: .constant(nil))
     }
 }
 
 struct CardBoosterView: View {
-    var booster: Booster
+    var deck: Deck
     var size: CGSize
     var body: some View {
-        Image(booster.background)
+        Image(deck.background)
             .resizable()
             .centerCropped(radius: 5, alignment: .center)
             .frame(maxWidth: size.width, maxHeight: size.width)
             .overlay(
-                CardBoosterOverlay(booster: booster)
+                CardBoosterOverlay(deck: deck)
             )
     }
 }
 
 struct CardBoosterOverlay: View {
-    var booster: Booster
+    var deck: Deck
     var body: some View {
         VStack {
-            Text(booster.name.uppercased())
+            Text(deck.name.uppercased())
                 .foregroundColor(.white)
                 .fontWeight(.bold)
                 .padding(5)
                 .background(
                     RoundedRectangle(cornerRadius: 5)
                         .stroke(Color.white, lineWidth: 3)
-                        .background(booster.type.color.cornerRadius(5))
+                        .background(deck.associatedType.color.cornerRadius(5))
                 )
                 .multilineTextAlignment(.center)
                 .padding(.top)
-            Image(booster.type.rawValue)
+            Image(deck.background)
                 .resizable()
                 .scaledToFit()
                 .padding(5)

@@ -11,12 +11,13 @@ struct EndingAnimationView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var isAnimating = false
     @State private var isShowingMenu = false
-    var booster: Booster
+    var card: Card
     @Binding var isPresented: Bool
     @Binding var isShowingStart: Bool
     @ObservedObject var userVM: UserViewModel
     @ObservedObject var gameVM: GameViewModel
     @ObservedObject var adventureVM: AdventureViewModel
+    @ObservedObject var missionVM: MissionViewModel
     var body: some View {
         ZStack {
             Rectangle()
@@ -33,7 +34,7 @@ struct EndingAnimationView: View {
                     }
                     .transition(.move(edge: .top))
                 }
-                EndingMenuView(gameVM: gameVM, dismiss: dismiss, booster: booster, isShowingStart: $isShowingStart)
+                EndingMenuView(gameVM: gameVM, dismiss: dismiss, card: card, isShowingStart: $isShowingStart)
             }
         }
         .onAppear {
@@ -42,9 +43,11 @@ struct EndingAnimationView: View {
                     if let trainer = gameVM.game.trainer {
                         adventureVM.unlockNextTrainer(from: trainer)
                         if !trainer.hasBeenCleared {
-                            userVM.addCardsToCollection(trainer.booster.cards)
+                            let reward = try! Card.getPokemon(name: trainer.reward)
+                            userVM.addCardsToCollection([reward])
                         }
                     }
+                    adventureVM.checkAdventureMissions(&missionVM.missions)
                 }
                 isAnimating.toggle()
             }
@@ -54,6 +57,6 @@ struct EndingAnimationView: View {
 
 struct EndingAnimationView_Previews: PreviewProvider {
     static var previews: some View {
-        EndingAnimationView(booster: Booster.all[0], isPresented: .constant(false), isShowingStart: .constant(false), userVM: UserViewModel(), gameVM: GameViewModel(), adventureVM: AdventureViewModel())
+        EndingAnimationView(card: Card.pokemons[0], isPresented: .constant(false), isShowingStart: .constant(false), userVM: UserViewModel(), gameVM: GameViewModel(), adventureVM: AdventureViewModel(), missionVM: MissionViewModel())
     }
 }

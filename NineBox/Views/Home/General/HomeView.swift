@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject var gameVM: GameViewModel
     @EnvironmentObject var userVM: UserViewModel
+    @EnvironmentObject var missionVM: MissionViewModel
     @State var isShowingModalTheme = false
     @State var isShowingStarterModal = true
     var body: some View {
@@ -32,21 +33,21 @@ struct HomeView: View {
                                 AdventureView()
                             }
                             
-                            HomeNavigationLink(size: geo.size, item: HomeItem.achievements, theme: userVM.user.profile.theme) {
-                                EmptyView()
+                            HomeNavigationLink(size: geo.size, item: HomeItem.missions, theme: userVM.user.profile.theme) {
+                                MissionsView(missionVM: missionVM)
                             }
-                            HomeNavigationLink(size: geo.size, item: HomeItem.settings, theme: userVM.user.profile.theme) {
-                                EmptyView()
-                            }
+//                            HomeNavigationLink(size: geo.size, item: HomeItem.settings, theme: userVM.user.profile.theme) {
+//                                EmptyView()
+//                            }
                         }
                     }
                 }
                 if isShowingModalTheme {
                     ThemeModalView(isShowingModalTheme: $isShowingModalTheme, theme: $userVM.user.profile.theme)
                 }
-                if isShowingStarterModal {
-                    StarterDecksModalView(userVM: userVM, isShowingStarterModal: $isShowingStarterModal)
-                }
+//                if isShowingStarterModal {
+//                    StarterDecksModalView(userVM: userVM, isShowingStarterModal: $isShowingStarterModal)
+//                }
                 
             }
             .navigationBarHidden(true)

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct StarterDecksModalView: View {
-    @State var selectedBooster: Booster? = nil
+    @State var selectedDeck: Deck? = nil
     @ObservedObject var userVM: UserViewModel
     @Binding var isShowingStarterModal: Bool
     var body: some View {
@@ -44,20 +44,20 @@ extension StarterDecksModalView {
             .multilineTextAlignment(.center)
     }
     var StarterBoosters: some View {
-        StarterBoosterListView(starters: Booster.starters, size: CGSize.screen, selectedBooster: $selectedBooster)
+        StarterBoosterListView(starters: Deck.starters, size: CGSize.screen, selectedDeck: $selectedDeck)
     }
     
     var ChooseBoosterButton: some View {
         Button(action: {
-            if let selectedBooster = selectedBooster {
+            if let selectedBooster = selectedDeck {
                 userVM.addCardsToCollection(selectedBooster.cards)
             }
             isShowingStarterModal.toggle()
         }) {
-            LongButtonView(text: "I choose this one!", textColor: .white, textSize: 0.08, backgroundColor: selectedBooster == nil ? .gray : selectedBooster?.type.color ?? .gray, borderColor: .white)
+            LongButtonView(text: "I choose this one!", textColor: .white, textSize: 0.08, backgroundColor: selectedDeck == nil ? .gray : selectedDeck?.associatedType.color ?? .gray, borderColor: .white)
                 .shadow(color: .white, radius: 3)
                 .padding(.vertical)
         }
-        .disabled(selectedBooster == nil)
+        .disabled(selectedDeck == nil)
     }
 }

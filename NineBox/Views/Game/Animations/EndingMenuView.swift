@@ -11,7 +11,7 @@ struct EndingMenuView: View {
     @StateObject var cardAnimationVM = CardAnimationViewModel()
     @ObservedObject var gameVM: GameViewModel
     var dismiss: DismissAction?
-    var booster: Booster
+    var card: Card
     @Binding var isShowingStart: Bool
     var body: some View {
         RoundedRectangle(cornerRadius: 5)
@@ -26,8 +26,8 @@ struct EndingMenuView: View {
                     if gameVM.game.isGameWon {
                         if let trainer = gameVM.game.trainer {
                             if !trainer.hasBeenCleared {
-                                CardSummonAnimationView(cardAnimationVM: cardAnimationVM, cards: booster.cards, size: CGSize.screen)
-                                Text("New cards !")
+                                CardSummonAnimationView(cardAnimationVM: cardAnimationVM, card: card, size: CGSize.screen)
+                                Text("New card !")
                                     .foregroundColor(.black)
                                     .font(.system(size: CGSize.screen.width * 0.04, weight: .bold, design: .rounded))
                             } else {
@@ -70,6 +70,6 @@ struct EndingMenuView: View {
 
 struct EndingMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        EndingMenuView(gameVM: GameViewModel(), dismiss: nil, booster: Booster.all[0], isShowingStart: .constant(false))
+        EndingMenuView(gameVM: GameViewModel(), dismiss: nil, card: Card.pokemons[0], isShowingStart: .constant(false))
     }
 }

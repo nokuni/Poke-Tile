@@ -27,5 +27,16 @@ struct Adventure: Codable, Identifiable {
 }
 
 extension Adventure {
+    enum AdventureError: Error {
+        case noAdventureFound
+    }
     static let adventures: [Adventure] = try! Bundle.main.decode("adventures.json")
+    
+    static func getAdventure(title: String) throws -> Adventure {
+        let adventures: [Adventure] = try! Bundle.main.decode("adventures.json")
+        guard let adventure = adventures.first(where: { $0.title == title }) else {
+            throw AdventureError.noAdventureFound
+        }
+        return adventure
+    }
 }

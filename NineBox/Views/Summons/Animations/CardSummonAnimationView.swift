@@ -10,25 +10,22 @@ import SwiftUI
 struct CardSummonAnimationView: View {
     private let grid = [GridItem](repeating: .init(.flexible(), spacing: 0), count: 4)
     @ObservedObject var cardAnimationVM: CardAnimationViewModel
-    var cards: [Card]
+    var card: Card
     var size: CGSize
     var isCardInDeck: ((Card) -> Bool)?
     var body: some View {
-        LazyVGrid(columns: grid, spacing: 0) {
-            ForEach(cardAnimationVM.cardPlaceholders.indices) { index in
-                CardGestureView(isRotating: $cardAnimationVM.rotatingCardPlaceholders[index], size: size, card: cardAnimationVM.cardPlaceholders[index], index: index, amount: 5, isCardInDeck: isCardInDeck)
-                    .allowsHitTesting(false)
+        CardGestureView(isRotating: $cardAnimationVM.rotatingCardPlaceholder, size: size, card: cardAnimationVM.cardPlaceholder, index: 0, amount: 3, isCardInDeck: isCardInDeck)
+            .allowsHitTesting(false)
+        
+            .onAppear {
+                cardAnimationVM.cardSummoned = card
+                cardAnimationVM.startSummonAnimation()
             }
-        }
-        .onAppear {
-            cardAnimationVM.cardsSummoned = cards
-            cardAnimationVM.startSummonAnimation()
-        }
     }
 }
 
 struct CardSummonAnimationView_Previews: PreviewProvider {
     static var previews: some View {
-        CardSummonAnimationView(cardAnimationVM: CardAnimationViewModel(), cards: Card.pokemons, size: CGSize.screen)
+        CardSummonAnimationView(cardAnimationVM: CardAnimationViewModel(), card: Card.pokemons[0], size: CGSize.screen)
     }
 }

@@ -11,41 +11,38 @@ import SwiftUI
 
 class CardAnimationViewModel: ObservableObject {
     
-    @Published var rotatingCardPlaceholders = Array(repeating: true, count: 8)
-    @Published var rotatingBoardCards = Array(repeating: true, count: 16)
+    @Published var rotatingCardPlaceholder = true
+    //@Published var rotatingBoardCards = Array(repeating: true, count: 16)
     
-    @Published var cardPlaceholders = Card.placeholders
-    @Published var boardCardPlaceholders = Card.emptyBoard
+    @Published var cardPlaceholder: Card = Card.empty
+    //@Published var boardCardPlaceholders = Card.emptyBoard
     
-    @Published var cardsSummoned = [Card]()
+    @Published var cardSummoned: Card? = nil
     
     @Published var index = 0
     var timer: Timer?
     
     func startSummonAnimation() {
+        //rotatingCardPlaceholders = Array(repeating: true, count: cardsSummoned.count)
+        //cardPlaceholders = Array(repeating: Card.empty, count: cardsSummoned.count)
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true, block: animateCard)
     }
     
-    func startBoardAnimation() {
+    /*func startBoardAnimation() {
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: animateBoardCard)
-    }
+    }*/
     
     func animateCard(timer: Timer) {
-        if index < cardPlaceholders.count {
-            withAnimation(.linear.repeatCount(1, autoreverses: false)) {
-                cardPlaceholders[index] = cardsSummoned[index]
-                
-                rotatingCardPlaceholders[index].toggle()
-                index += 1
-            }
-        } else {
+        withAnimation(.linear.repeatCount(1, autoreverses: false)) {
+            cardPlaceholder = cardSummoned ?? Card.empty
+            rotatingCardPlaceholder.toggle()
             timer.invalidate()
         }
     }
     
-    func animateBoardCard(timer: Timer) {
+    /*func animateBoardCard(timer: Timer) {
         if index < boardCardPlaceholders.count {
             withAnimation(.linear.repeatCount(1, autoreverses: false)) {
                 boardCardPlaceholders[index] = cardsSummoned[index]
@@ -56,21 +53,17 @@ class CardAnimationViewModel: ObservableObject {
         } else {
             timer.invalidate()
         }
-    }
+    }*/
     
     func stopAnimation() {
         timer?.invalidate()
-        rotatingCardPlaceholders.indices.forEach {
-            rotatingCardPlaceholders[$0] = false
-        }
-        cardPlaceholders = cardsSummoned
+//        rotatingCardPlaceholders.indices.forEach {
+//            rotatingCardPlaceholders[$0] = false
+//        }
+//        cardPlaceholders = cardsSummoned
     }
     
     func isAnimationFinished(isCleared: Bool?) -> Bool {
-        if isCleared ?? false {
-            return true
-        } else {
-            return rotatingCardPlaceholders.allSatisfy({ $0 == false })
-        }
+        return !rotatingCardPlaceholder
     }
 }

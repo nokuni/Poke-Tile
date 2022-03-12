@@ -1,56 +1,52 @@
 [
     {
+        "name": "Youngster",
+        "image": "youngster",
+        "background": "forest.background",
+        "associatedType": "grass",
+        "pokemons": ["Bulbasaur", "Exeggcute", "Oddish", "Bellsprout", "Paras", "Meowth", "Rattata", "Eevee"],
+        "bonusLocations": [],
+        "difficulty": "easy",
+        "reward": "Paras"
+    },
+    {
+        "name": "Pokemaniac",
+        "image": "pokemaniac",
+        "background": "forest.background",
+        "associatedType": "grass",
+        "pokemons": ["Bulbasaur", "Exeggcute", "Oddish", "Bellsprout", "Gloom", "Meowth", "Rattata", "Eevee"],
+        "bonusLocations": [],
+        "difficulty": "easy",
+        "reward": "Gloom"
+    },
+    {
+        "name": "Gentleman",
+        "image": "gentleman",
+        "background": "forest.background",
+        "associatedType": "grass",
+        "pokemons": ["Bulbasaur", "Exeggcute", "Oddish", "Bellsprout", "Weepinbell", "Meowth", "Rattata", "Eevee"],
+        "bonusLocations": [],
+        "difficulty": "easy",
+        "reward": "Weepinbell"
+    },
+    {
+        "name": "Aroma Lady",
+        "image": "aromaLady",
+        "background": "forest.background",
+        "associatedType": "grass",
+        "pokemons": ["Bulbasaur", "Exeggcute", "Oddish", "Bellsprout", "Tangela", "Meowth", "Rattata", "Eevee"],
+        "bonusLocations": [],
+        "difficulty": "easy",
+        "reward": "Tangela"
+    },
+    {
         "name": "Erika",
         "image": "erika",
         "background": "forest.background",
-        "pokemons": ["Vileplume", "Tangela", "Gloom", "Weepinbell", "Bellsprout", "Oddish", "Exeggcute", "Bulbasaur"],
-        "bonusAmount": 3,
+        "associatedType": "grass",
+        "pokemons": ["Vileplume", "Gloom", "Tangela", "Bellsprout", "Oddish", "Meowth", "Rattata", "Eevee"],
+        "bonusLocations": [],
         "difficulty": "easy",
-        "reward": "Little Clearing"
-    },
-    {
-        "name": "Gardenia",
-        "image": "gardenia",
-        "background": "forest.background",
-        "pokemons": ["Torterra", "Carnivine", "Leafeon", "Grotle", "Cherrim", "Cherubi", "Budew", "Turtwig"],
-        "bonusAmount": 3,
-        "difficulty": "easy",
-        "reward": "Little Clearing"
-    },
-    {
-        "name": "Cilan",
-        "image": "cilan",
-        "background": "forest.background",
-        "pokemons": ["Serperior", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
-        "bonusAmount": 3,
-        "difficulty": "normal",
-        "reward": "Little Clearing"
-    },
-    {
-        "name": "Ramos",
-        "image": "ramos",
-        "background": "forest.background",
-        "pokemons": ["Victreebel", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
-        "bonusAmount": 3,
-        "difficulty": "normal",
-        "reward": "Little Clearing"
-    },
-    {
-        "name": "Mallow",
-        "image": "mallow",
-        "background": "forest.background",
-        "pokemons": ["Tsareena", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
-        "bonusAmount": 3,
-        "difficulty": "hard",
-        "reward": "Little Clearing"
-    },
-    {
-        "name": "Milo",
-        "image": "milo",
-        "background": "forest.background",
-        "pokemons": ["Appletun", "Charmander", "Squirtle", "Meowth", "Oddish", "Rattata", "Lickitung", "Eevee"],
-        "bonusAmount": 3,
-        "difficulty": "hard",
-        "reward": "Little Clearing"
+        "reward": "Vileplume"
     },
 ]

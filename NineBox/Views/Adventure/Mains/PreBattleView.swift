@@ -60,6 +60,8 @@ struct PreBattleView: View {
 struct PreBattleView_Previews: PreviewProvider {
     static var previews: some View {
         PreBattleView(adventure: Adventure.adventures[0], trainer: Trainer.trainers[0])
+            .environmentObject(GameViewModel())
+            .environmentObject(UserViewModel())
     }
 }
 

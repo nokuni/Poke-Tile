@@ -12,7 +12,10 @@ import SwiftUI
 class UserViewModel: ObservableObject {
     @Published var user = User(profile: Profile(name: "Nokuni", image: "userboy"))
     
-    init() { }
+    init() {
+        let starterCards = Deck.starters.map { $0.cards }.joined()
+        user.cards.append(contentsOf: starterCards)
+    }
     
     static let shared = UserViewModel()
     
