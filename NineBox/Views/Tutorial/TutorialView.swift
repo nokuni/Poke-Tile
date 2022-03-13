@@ -7,27 +7,64 @@
 
 import SwiftUI
 
+let pages: [TutorialPage] = [
+    TutorialPage(title: "Prof.OAK", image: nil, card: nil, description: "\"Welcome to Pokemon Tiles! \n One the biggest board game in the world of Pokemon!\"", hasAction: false),
+    TutorialPage(title: "Prof.OAK", image: nil, card: nil, description: "\"The annual tournament is about to begin and everyone can participate!\"", hasAction: false),
+    TutorialPage(title: "Prof.OAK", image: nil, card: nil, description: "While you are here, I can register you. \n But first... \n What is your name?", hasAction: true),
+    TutorialPage(title: "Stats", image: "tileTutorial00", card: nil, description: "Like this! And the blue color on the card border means that this card is yours.", hasAction: false),
+    TutorialPage(title: "Conversion", image: "tileTutorial01", card: nil, description: "Your opponent can convert your tile into his own, changing the blue border into red, by playing a card with a higher number on one side.", hasAction: false),
+    TutorialPage(title: "Re-Conversion", image: "tileTutorial02", card: nil, description: "But don't worry, you can convert it back by playing your own cards.", hasAction: false),
+    TutorialPage(title: "Good Luck", image: "025", card: nil, description: "You have now the basis to play. The rest... You need to figure it out yourself, good luck!", hasAction: true),
+]
+
 struct TutorialView: View {
-    var pages: [TutorialPage]
-    var size: CGSize
+    var size: CGSize = .screen
+    @State var selectedPageIndex = 0
     var body: some View {
         ZStack {
             TransparentBackgroundView(color: .black)
-            TabView {
-                ForEach(pages) { page in
-                    TutorialPageView(page: page, size: size)
+            
+            GeometryReader { geo in
+                Image("profOak")
+                    .resizable()
+                    .scaledToFit()
+                    .scaleEffect(0.9)
+                    .frame(width: size.width, height: size.height * 0.5)
+                    .frame(width: size.width, height: size.height, alignment: .top)
+                VStack {
+                    Spacer()
+                    ZStack {
+                        TutorialPageView(page: pages[selectedPageIndex], size: size, selectedPageIndex: $selectedPageIndex)
+                            .frame(width: size.width * 0.9, height: size.height * 0.55, alignment: .center)
+                            .frame(width: size.width, height: size.height * 0.6, alignment: .center)
+                        if selectedPageIndex != 2 {
+                        PointingArrowView(size: geo.size)
+                            .frame(width: size.width * 0.85, height: size.height * 0.5, alignment: .bottomTrailing)
+                            .frame(width: size.width, height: size.height * 0.4)
+                        }
+                    }
+                    .background(
+                        Color
+                            .steelBlue
+                            .cornerRadius(5)
+                            .padding()
+                    )
+                    .onTapGesture {
+                        if selectedPageIndex != 2 {
+                            selectedPageIndex += 1
+                        }
+                    }
+                    Spacer()
                 }
             }
-            .tabViewStyle(.page)
-            .frame(width: size.width * 0.9, height: size.height * 0.6)
-            .background(Color.steelBlue.cornerRadius(5))
         }
+        .ignoresSafeArea(.keyboard)
     }
 }
 
 struct TutorialView_Previews: PreviewProvider {
     static var previews: some View {
-        TutorialView(pages: pages, size: CGSize.screen)
+        TutorialView()
     }
 }
 
@@ -41,12 +78,14 @@ struct TransparentBackgroundView: View {
 }
 
 struct TutorialPageView: View {
+    @State var text = ""
     var page: TutorialPage
     var size: CGSize
+    @Binding var selectedPageIndex: Int
     var body: some View {
-        VStack(spacing: 0) {
+        VStack(spacing: 25) {
             Text(page.title)
-                .font(.system(size: size.width * 0.07, weight: .bold, design: .rounded))
+                .font(.system(size: size.width * 0.08, weight: .bold, design: .rounded))
             //Spacer()
             if let image = page.image {
                 Image(image)
@@ -58,7 +97,30 @@ struct TutorialPageView: View {
             if let card = page.card {
                 CardView(card: card, size: size, amount: 1.5, isPossessing: nil)
             }
+            
             Text(page.description)
+                .font(.system(size: size.width * 0.06, weight: .regular, design: .rounded))
+            
+            if page.hasAction {
+                TextField("Name", text: $text)
+                    .padding()
+                    .background(Color.teal.cornerRadius(5))
+                    .padding()
+                
+                Button(action: {
+                    selectedPageIndex += 1
+                }) {
+                    Text("OK")
+                        .font(.system(size: size.width * 0.07, weight: .bold, design: .rounded))
+                        .padding()
+                        .background(
+                            RoundedRectangle(cornerRadius: 5)
+                                .foregroundColor(text.isEmpty ? .gray : .teal)
+                        )
+                }
+                .disabled(text.isEmpty)
+            }
+            
             Spacer()
         }
         .foregroundColor(.white)
@@ -74,14 +136,5 @@ struct TutorialPage: Identifiable {
     let image: String?
     let card: Card?
     let description: String
+    let hasAction: Bool
 }
-
-let pages: [TutorialPage] = [
-    TutorialPage(title: "Welcome to the WIP tutorial", image: "invisible", card: nil, description: "Let me remind you how to play this game..."),
-    TutorialPage(title: "The Game", image: "forest.background", card: nil, description: "To win, you need to have, on the board, more tiles than your opponent."),
-    TutorialPage(title: "Tiles", image: nil, card: try! Card.getPokemon(name: "Pikachu"), description: "This is a Pokemon tile! \n There are 4 numbers on it. \n They represent his power on each side of the board. \n And each tile has his own type, represented at the bottom right."),
-    TutorialPage(title: "Stats", image: "tileTutorial00", card: nil, description: "Like this! And the blue color on the card border means that this card is yours."),
-    TutorialPage(title: "Conversion", image: "tileTutorial01", card: nil, description: "Your opponent can convert your tile into his own, changing the blue border into red, by playing a card with a higher number on one side."),
-    TutorialPage(title: "Re-Conversion", image: "tileTutorial02", card: nil, description: "But don't worry, you can convert it back by playing your own cards."),
-    TutorialPage(title: "Tile Debuff", image: "tileTutorial01", card: nil, description: "On the board, there are also debuff tiles,"),
-]

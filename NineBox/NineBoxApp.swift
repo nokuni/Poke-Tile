@@ -16,7 +16,7 @@ struct NineBoxApp: App {
     var body: some Scene {
         WindowGroup {
             ZStack {
-                HomeView()
+                TutorialView()
                     .environmentObject(gameVM)
                     .environmentObject(userVM)
                     .environmentObject(adventureVM)

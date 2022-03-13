@@ -1,14 +1,8 @@
 [
     {
-        "name": "Tutorial Deck",
-        "associatedType": "empty",
-        "pokemons": ["Venusaur", "Charizard", "Blastoise", "Bulbasaur", "Charmander", "Squirtle", "Meowth", "Eevee"],
-        "background": "castle.background"
-    },
-    {
         "name": "Grass Starter",
         "associatedType": "grass",
-        "pokemons": ["Pikachu", "Ivysaur", "Haunter", "Bulbasaur", "Exeggcute", "Oddish", "Bellsprout", "Gastly"],
+        "pokemons": ["Venusaur", "Ivysaur", "Haunter", "Bulbasaur", "Exeggcute", "Oddish", "Bellsprout", "Gastly"],
         "background": "forest.background"
     },
     {
