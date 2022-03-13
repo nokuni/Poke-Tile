@@ -43,6 +43,7 @@
 		2E7BF0F027DD0AF8007D7717 /* MissionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7BF0EF27DD0AF8007D7717 /* MissionViewModel.swift */; };
 		2E7BF0F227DD0D76007D7717 /* missions.json in Resources */ = {isa = PBXBuildFile; fileRef = 2E7BF0F127DD0D76007D7717 /* missions.json */; };
 		2E7BF0F427DD2B29007D7717 /* MissionRewardAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7BF0F327DD2B29007D7717 /* MissionRewardAnimationView.swift */; };
+		2E7BF0F627DD2CBE007D7717 /* MissionRowOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E7BF0F527DD2CBE007D7717 /* MissionRowOverlayView.swift */; };
 		2E849BC527D653BB001CE665 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E849BC427D653BB001CE665 /* UserViewModel.swift */; };
 		2E849BC827D654C6001CE665 /* AdventureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E849BC727D654C6001CE665 /* AdventureViewModel.swift */; };
 		2E8E794227D288DD00A185C9 /* UserDeckFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8E794127D288DD00A185C9 /* UserDeckFilterView.swift */; };
@@ -53,8 +54,6 @@
 		2E98C09627D0F5F000286879 /* UserDeckBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E98C09527D0F5F000286879 /* UserDeckBackgroundView.swift */; };
 		2E98C09827D0F64C00286879 /* UserDeckRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E98C09727D0F64C00286879 /* UserDeckRowView.swift */; };
 		2E98C09B27D110E900286879 /* StarterDecksModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E98C09A27D110E900286879 /* StarterDecksModalView.swift */; };
-		2E98C0A027D114CF00286879 /* boosters.json in Resources */ = {isa = PBXBuildFile; fileRef = 2E98C09F27D114CF00286879 /* boosters.json */; };
-		2E98C0A227D115E700286879 /* Booster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E98C0A127D115E700286879 /* Booster.swift */; };
 		2E98C0A427D11E2D00286879 /* PointingArrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E98C0A327D11E2D00286879 /* PointingArrowView.swift */; };
 		2E98C0AA27D12E0F00286879 /* StarterBoosterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E98C0A927D12E0F00286879 /* StarterBoosterListView.swift */; };
 		2E99A7B127C7D1060073DE8A /* TrainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E99A7B027C7D1060073DE8A /* TrainerView.swift */; };
@@ -67,6 +66,7 @@
 		2EA07DC627C23B7400AB974B /* pokemons.json in Resources */ = {isa = PBXBuildFile; fileRef = 2EA07DC527C23B7400AB974B /* pokemons.json */; };
 		2EA07DCA27C23ECC00AB974B /* BundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA07DC927C23ECC00AB974B /* BundleExtension.swift */; };
 		2EA07DCC27C2404C00AB974B /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA07DCB27C2404C00AB974B /* TestView.swift */; };
+		2EA6827127DE2C5100F76306 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA6827027DE2C5100F76306 /* TutorialView.swift */; };
 		2EB1662427C65E3000BCF2D5 /* UserCardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB1662327C65E3000BCF2D5 /* UserCardListView.swift */; };
 		2EB1662827C6633700BCF2D5 /* UserCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB1662727C6633700BCF2D5 /* UserCardsView.swift */; };
 		2EB39B5427D14F7E00C02AB0 /* CardSummonAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB39B5327D14F7E00C02AB0 /* CardSummonAnimationView.swift */; };
@@ -98,15 +98,12 @@
 		2EF5B05727C3CF6500A8930C /* TrainerImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF5B05627C3CF6500A8930C /* TrainerImageView.swift */; };
 		2EF5B05D27C3DA5D00A8930C /* GameDifficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF5B05C27C3DA5D00A8930C /* GameDifficulty.swift */; };
 		2EF5B05F27C3DADB00A8930C /* Trainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF5B05E27C3DADB00A8930C /* Trainer.swift */; };
-		2EF5B06127C3E60500A8930C /* OpponentProfilePictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF5B06027C3E60500A8930C /* OpponentProfilePictureView.swift */; };
 		2EFCB94727C24E5C0044B2E9 /* debuffs.json in Resources */ = {isa = PBXBuildFile; fileRef = 2EFCB94627C24E5C0044B2E9 /* debuffs.json */; };
 		2EFCB94927C250A60044B2E9 /* adventures.json in Resources */ = {isa = PBXBuildFile; fileRef = 2EFCB94827C250A60044B2E9 /* adventures.json */; };
 		2EFCB94B27C27D180044B2E9 /* AdventureListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFCB94A27C27D180044B2E9 /* AdventureListView.swift */; };
 		2EFCB94D27C282110044B2E9 /* Turn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFCB94C27C282110044B2E9 /* Turn.swift */; };
 		2EFCB94F27C2836E0044B2E9 /* TurnAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFCB94E27C2836E0044B2E9 /* TurnAnimationView.swift */; };
 		2EFCB95327C29B840044B2E9 /* OpponentCardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFCB95227C29B840044B2E9 /* OpponentCardListView.swift */; };
-		2EFCB95727C29BF70044B2E9 /* ProfilePictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFCB95627C29BF70044B2E9 /* ProfilePictureView.swift */; };
-		2EFCB95927C29C100044B2E9 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFCB95827C29C100044B2E9 /* ProfileView.swift */; };
 		2EFCB95B27C29E0E0044B2E9 /* GameScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFCB95A27C29E0E0044B2E9 /* GameScoreView.swift */; };
 		2EFCB95D27C2A7330044B2E9 /* SummonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFCB95C27C2A7330044B2E9 /* SummonsView.swift */; };
 		2EFCB96027C2A7C70044B2E9 /* HomeNavigationLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFCB95F27C2A7C70044B2E9 /* HomeNavigationLink.swift */; };
@@ -159,6 +156,7 @@
 		2E7BF0EF27DD0AF8007D7717 /* MissionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionViewModel.swift; sourceTree = "<group>"; };
 		2E7BF0F127DD0D76007D7717 /* missions.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = missions.json; sourceTree = "<group>"; };
 		2E7BF0F327DD2B29007D7717 /* MissionRewardAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionRewardAnimationView.swift; sourceTree = "<group>"; };
+		2E7BF0F527DD2CBE007D7717 /* MissionRowOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionRowOverlayView.swift; sourceTree = "<group>"; };
 		2E849BC427D653BB001CE665 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		2E849BC727D654C6001CE665 /* AdventureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdventureViewModel.swift; sourceTree = "<group>"; };
 		2E8E794127D288DD00A185C9 /* UserDeckFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDeckFilterView.swift; sourceTree = "<group>"; };
@@ -169,8 +167,6 @@
 		2E98C09527D0F5F000286879 /* UserDeckBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDeckBackgroundView.swift; sourceTree = "<group>"; };
 		2E98C09727D0F64C00286879 /* UserDeckRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDeckRowView.swift; sourceTree = "<group>"; };
 		2E98C09A27D110E900286879 /* StarterDecksModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarterDecksModalView.swift; sourceTree = "<group>"; };
-		2E98C09F27D114CF00286879 /* boosters.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = boosters.json; sourceTree = "<group>"; };
-		2E98C0A127D115E700286879 /* Booster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Booster.swift; sourceTree = "<group>"; };
 		2E98C0A327D11E2D00286879 /* PointingArrowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointingArrowView.swift; sourceTree = "<group>"; };
 		2E98C0A927D12E0F00286879 /* StarterBoosterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarterBoosterListView.swift; sourceTree = "<group>"; };
 		2E99A7B027C7D1060073DE8A /* TrainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainerView.swift; sourceTree = "<group>"; };
@@ -183,6 +179,7 @@
 		2EA07DC527C23B7400AB974B /* pokemons.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = pokemons.json; sourceTree = "<group>"; };
 		2EA07DC927C23ECC00AB974B /* BundleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleExtension.swift; sourceTree = "<group>"; };
 		2EA07DCB27C2404C00AB974B /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		2EA6827027DE2C5100F76306 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		2EB1662327C65E3000BCF2D5 /* UserCardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardListView.swift; sourceTree = "<group>"; };
 		2EB1662727C6633700BCF2D5 /* UserCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardsView.swift; sourceTree = "<group>"; };
 		2EB39B5327D14F7E00C02AB0 /* CardSummonAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSummonAnimationView.swift; sourceTree = "<group>"; };
@@ -215,15 +212,12 @@
 		2EF5B05627C3CF6500A8930C /* TrainerImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainerImageView.swift; sourceTree = "<group>"; };
 		2EF5B05C27C3DA5D00A8930C /* GameDifficulty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDifficulty.swift; sourceTree = "<group>"; };
 		2EF5B05E27C3DADB00A8930C /* Trainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trainer.swift; sourceTree = "<group>"; };
-		2EF5B06027C3E60500A8930C /* OpponentProfilePictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpponentProfilePictureView.swift; sourceTree = "<group>"; };
 		2EFCB94627C24E5C0044B2E9 /* debuffs.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = debuffs.json; sourceTree = "<group>"; };
 		2EFCB94827C250A60044B2E9 /* adventures.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = adventures.json; sourceTree = "<group>"; };
 		2EFCB94A27C27D180044B2E9 /* AdventureListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdventureListView.swift; sourceTree = "<group>"; };
 		2EFCB94C27C282110044B2E9 /* Turn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Turn.swift; sourceTree = "<group>"; };
 		2EFCB94E27C2836E0044B2E9 /* TurnAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnAnimationView.swift; sourceTree = "<group>"; };
 		2EFCB95227C29B840044B2E9 /* OpponentCardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpponentCardListView.swift; sourceTree = "<group>"; };
-		2EFCB95627C29BF70044B2E9 /* ProfilePictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePictureView.swift; sourceTree = "<group>"; };
-		2EFCB95827C29C100044B2E9 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		2EFCB95A27C29E0E0044B2E9 /* GameScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScoreView.swift; sourceTree = "<group>"; };
 		2EFCB95C27C2A7330044B2E9 /* SummonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonsView.swift; sourceTree = "<group>"; };
 		2EFCB95F27C2A7C70044B2E9 /* HomeNavigationLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationLink.swift; sourceTree = "<group>"; };
@@ -280,7 +274,6 @@
 				2E4E1A0727BEDD94001C8B67 /* Adventure.swift */,
 				2ED34E0E27CB71CC00F24251 /* Deck.swift */,
 				2E3A3BA227CD328F0018DA36 /* Theme.swift */,
-				2E98C0A127D115E700286879 /* Booster.swift */,
 				96C8F15527DA0CC300FA1FF0 /* Powers.swift */,
 				2E7BF0EC27DCEBB0007D7717 /* Missions.swift */,
 			);
@@ -364,10 +357,9 @@
 			children = (
 				2E7BF0E427DCE7A8007D7717 /* Missions */,
 				2E98C09C27D1111900286879 /* Summons */,
-				2E98C09927D110CE00286879 /* Presentation */,
+				2E98C09927D110CE00286879 /* Tutorial */,
 				2E4A95ED27C7B76100BA498D /* Commons */,
 				2EB1662227C65E2200BCF2D5 /* Collection */,
-				2EFCB95427C29BE50044B2E9 /* Profile */,
 				2EFCB95127C28A070044B2E9 /* Adventure */,
 				2EA07DBD27C2349C00AB974B /* Home */,
 				2E42558627BFEF93009B62EB /* Game */,
@@ -402,6 +394,7 @@
 				2E7BF0E827DCEA42007D7717 /* MissionListView.swift */,
 				2E7BF0EA27DCEA94007D7717 /* MissionRowView.swift */,
 				2E7BF0F327DD2B29007D7717 /* MissionRewardAnimationView.swift */,
+				2E7BF0F527DD2CBE007D7717 /* MissionRowOverlayView.swift */,
 			);
 			path = Missions;
 			sourceTree = "<group>";
@@ -416,13 +409,14 @@
 			path = Junk;
 			sourceTree = "<group>";
 		};
-		2E98C09927D110CE00286879 /* Presentation */ = {
+		2E98C09927D110CE00286879 /* Tutorial */ = {
 			isa = PBXGroup;
 			children = (
 				2ED7AA1527D3880E008FA2C5 /* Animations */,
 				2ED7AA1927D388D9008FA2C5 /* Starters */,
+				2EA6827027DE2C5100F76306 /* TutorialView.swift */,
 			);
-			path = Presentation;
+			path = Tutorial;
 			sourceTree = "<group>";
 		};
 		2E98C09C27D1111900286879 /* Summons */ = {
@@ -450,7 +444,6 @@
 				2EFCB94827C250A60044B2E9 /* adventures.json */,
 				2EFCB97027C2C6280044B2E9 /* trainers.json */,
 				2E9676EE27CFC40100DC50C6 /* decks.json */,
-				2E98C09F27D114CF00286879 /* boosters.json */,
 				2E7BF0F127DD0D76007D7717 /* missions.json */,
 			);
 			path = Data;
@@ -656,16 +649,6 @@
 			path = Adventure;
 			sourceTree = "<group>";
 		};
-		2EFCB95427C29BE50044B2E9 /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-				2EFCB95627C29BF70044B2E9 /* ProfilePictureView.swift */,
-				2EF5B06027C3E60500A8930C /* OpponentProfilePictureView.swift */,
-				2EFCB95827C29C100044B2E9 /* ProfileView.swift */,
-			);
-			path = Profile;
-			sourceTree = "<group>";
-		};
 		2EFCB96327C2AADC0044B2E9 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -794,7 +777,6 @@
 				2E9676EF27CFC40100DC50C6 /* decks.json in Resources */,
 				2EFCB94727C24E5C0044B2E9 /* debuffs.json in Resources */,
 				2EFCB94927C250A60044B2E9 /* adventures.json in Resources */,
-				2E98C0A027D114CF00286879 /* boosters.json in Resources */,
 				2E7BF0F227DD0D76007D7717 /* missions.json in Resources */,
 				2EFCB97127C2C6280044B2E9 /* trainers.json in Resources */,
 			);
@@ -830,11 +812,10 @@
 				2ED34E2027CBD73D00F24251 /* ChangeNameOverlayView.swift in Sources */,
 				2E8E794227D288DD00A185C9 /* UserDeckFilterView.swift in Sources */,
 				2EF5B05F27C3DADB00A8930C /* Trainer.swift in Sources */,
-				2EF5B06127C3E60500A8930C /* OpponentProfilePictureView.swift in Sources */,
 				2ED34E1727CB94AD00F24251 /* UserSetCardView.swift in Sources */,
-				2EFCB95727C29BF70044B2E9 /* ProfilePictureView.swift in Sources */,
 				2EF5B05727C3CF6500A8930C /* TrainerImageView.swift in Sources */,
 				2EEEA20427BD8124009A1D49 /* GameView.swift in Sources */,
+				2EA6827127DE2C5100F76306 /* TutorialView.swift in Sources */,
 				2EB39B5427D14F7E00C02AB0 /* CardSummonAnimationView.swift in Sources */,
 				2EEEA20227BD8124009A1D49 /* NineBoxApp.swift in Sources */,
 				2E98C0AA27D12E0F00286879 /* StarterBoosterListView.swift in Sources */,
@@ -868,11 +849,11 @@
 				2E7BF0F427DD2B29007D7717 /* MissionRewardAnimationView.swift in Sources */,
 				2E642B6A27CE8885006A2083 /* EndingAnimationView.swift in Sources */,
 				2E98C0A427D11E2D00286879 /* PointingArrowView.swift in Sources */,
+				2E7BF0F627DD2CBE007D7717 /* MissionRowOverlayView.swift in Sources */,
 				2E4A95F227C7B8A600BA498D /* NavigationTitle.swift in Sources */,
 				2EA07DBF27C23AE000AB974B /* Stats.swift in Sources */,
 				2EEEA21627BD88A5009A1D49 /* ColorExtension.swift in Sources */,
 				9637BF5F27CE1F8A00A3FC87 /* GameStartAnimationView.swift in Sources */,
-				2E98C0A227D115E700286879 /* Booster.swift in Sources */,
 				2E4E1A0427BEDD2C001C8B67 /* CardCategory.swift in Sources */,
 				2ED34E1127CB747C00F24251 /* UserDeckView.swift in Sources */,
 				2EA07DAE27C0D8C300AB974B /* HomeView.swift in Sources */,
@@ -891,7 +872,6 @@
 				2E7BF0E927DCEA42007D7717 /* MissionListView.swift in Sources */,
 				2ED34E2627CBF00100F24251 /* PreBattleView.swift in Sources */,
 				2EA07DC327C23B2500AB974B /* StatSquareView.swift in Sources */,
-				2EFCB95927C29C100044B2E9 /* ProfileView.swift in Sources */,
 				2EFCB95327C29B840044B2E9 /* OpponentCardListView.swift in Sources */,
 				2ED7AA2327D38A58008FA2C5 /* ActionButtonView.swift in Sources */,
 				2E5B46D627D52E6900A220C9 /* ProgressBarOverlayView.swift in Sources */,

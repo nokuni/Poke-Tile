@@ -599,13 +599,6 @@ class GameViewModel: ObservableObject {
         }
     }
     
-    // TEMPORARY
-    var randomLocation: Int? {
-        let debuffLocations = game.boardIndices.filter { game.board[$0].category != .pokemon }
-        
-        return debuffLocations.randomElement()
-    }
-    
     func opponentPlays() {
         let availableCards = game.trainerCards.filter { $0.isActivated }
         let sortedAvailableCards = availableCards.sorted(by: { $0.cost < $1.cost })
