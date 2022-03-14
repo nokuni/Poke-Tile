@@ -8,11 +8,11 @@
 import Foundation
 
 struct Profile {
-    var name: String
-    var image: String
+    var name: String = ""
+    var image: String = "invisible"
     var theme: Theme = Theme.togepi
 }
 
 extension Profile {
-    static let previewExample = Profile(name: "Username", image: "blaine")
+    static let previewExample = Profile()
 }

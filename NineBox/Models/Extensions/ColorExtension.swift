@@ -46,6 +46,10 @@ extension Color {
     static let waterBorder = Color(red: 77/255, green: 144/255, blue: 213/255)
     //static let waterBackground = Color(red: 0/255, green: 0/255, blue: 0/255)
     
+    // PINK
+    static let hotPink = Color(red: 255/255, green: 105/255, blue: 180/255)
+    static let paleVioletRed = Color(red: 219/255, green: 112/255, blue: 147/255)
+    
     // ORANGE
     static let darkOrange = Color(red: 255/255, green: 140/255, blue: 0/255)
     

@@ -1,0 +1,56 @@
+[
+    {
+        "title": "Prof.OAK",
+        "images": null,
+        "description": "\"Welcome to Pokemon Tiles! \n One the biggest board game in the world of Pokemon!\"",
+        "hasAction": false,
+        "isChoosingGenre": null,
+        "isChoosingName": null,
+        "isQuitting": null
+    },
+    {
+        "title": "Prof.OAK",
+        "images": null,
+        "description": "\"The annual PokeTile Journey is about to begin and everyone can participate!\"",
+        "hasAction": false,
+        "isChoosingGenre": null,
+        "isChoosingName": null,
+        "isQuitting": null
+    },
+    {
+        "title": "Prof.OAK",
+        "images": null,
+        "description": "\"Explore some mysterious places and fight other Poketile Masters. You should try, it will be a good experience!\"",
+        "hasAction": false,
+        "isChoosingGenre": null,
+        "isChoosingName": null,
+        "isQuitting": null
+    },
+    {
+        "title": "Prof.OAK",
+        "images": ["userboy", "usergirl"],
+        "description": "\"But first, are you a boy or a girl?\"",
+        "hasAction": true,
+        "isChoosingGenre": true,
+        "isChoosingName": null,
+        "isQuitting": null
+    },
+    {
+        "title": "Prof.OAK",
+        "images": null,
+        "description": "While you are here, I can register you. \n What is your name?",
+        "hasAction": true,
+        "isChoosingGenre": null,
+        "isChoosingName": true,
+        "isQuitting": null
+    },
+    {
+        "title": "Prof.OAK",
+        "images": null,
+        "description": "Before letting you start your incredible journey, I will help you train a bit. Follow me!",
+        "hasAction": true,
+        "isChoosingGenre": null,
+        "isChoosingName": null,
+        "isQuitting": true
+    },
+]

@@ -113,6 +113,10 @@
 		2EFCB96F27C2C5D10044B2E9 /* TrainerRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFCB96E27C2C5D10044B2E9 /* TrainerRowView.swift */; };
 		2EFCB97127C2C6280044B2E9 /* trainers.json in Resources */ = {isa = PBXBuildFile; fileRef = 2EFCB97027C2C6280044B2E9 /* trainers.json */; };
 		2EFCB97327C2D5BB0044B2E9 /* TrainerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFCB97227C2D5BB0044B2E9 /* TrainerListView.swift */; };
+		960E0AAC27DF47CB00C8D491 /* tutorial.json in Resources */ = {isa = PBXBuildFile; fileRef = 960E0AAB27DF47CB00C8D491 /* tutorial.json */; };
+		960E0AAE27DF48EE00C8D491 /* Tutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960E0AAD27DF48EE00C8D491 /* Tutorial.swift */; };
+		960E0AB027DF4AFE00C8D491 /* TutorialPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960E0AAF27DF4AFE00C8D491 /* TutorialPageView.swift */; };
+		960E0AB227DF526B00C8D491 /* TutorialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960E0AB127DF526B00C8D491 /* TutorialViewModel.swift */; };
 		9637BF5F27CE1F8A00A3FC87 /* GameStartAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637BF5E27CE1F8A00A3FC87 /* GameStartAnimationView.swift */; };
 		9637BF6127CE22FE00A3FC87 /* AnimatedTurnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9637BF6027CE22FE00A3FC87 /* AnimatedTurnView.swift */; };
 		96493DD927D0D4510032FDE8 /* UserDeckPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96493DD827D0D4510032FDE8 /* UserDeckPlaceholderView.swift */; };
@@ -227,6 +231,10 @@
 		2EFCB96E27C2C5D10044B2E9 /* TrainerRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainerRowView.swift; sourceTree = "<group>"; };
 		2EFCB97027C2C6280044B2E9 /* trainers.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = trainers.json; sourceTree = "<group>"; };
 		2EFCB97227C2D5BB0044B2E9 /* TrainerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainerListView.swift; sourceTree = "<group>"; };
+		960E0AAB27DF47CB00C8D491 /* tutorial.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = tutorial.json; sourceTree = "<group>"; };
+		960E0AAD27DF48EE00C8D491 /* Tutorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tutorial.swift; sourceTree = "<group>"; };
+		960E0AAF27DF4AFE00C8D491 /* TutorialPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPageView.swift; sourceTree = "<group>"; };
+		960E0AB127DF526B00C8D491 /* TutorialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewModel.swift; sourceTree = "<group>"; };
 		9637BF5E27CE1F8A00A3FC87 /* GameStartAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStartAnimationView.swift; sourceTree = "<group>"; };
 		9637BF6027CE22FE00A3FC87 /* AnimatedTurnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedTurnView.swift; sourceTree = "<group>"; };
 		96493DD827D0D4510032FDE8 /* UserDeckPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDeckPlaceholderView.swift; sourceTree = "<group>"; };
@@ -276,6 +284,7 @@
 				2E3A3BA227CD328F0018DA36 /* Theme.swift */,
 				96C8F15527DA0CC300FA1FF0 /* Powers.swift */,
 				2E7BF0EC27DCEBB0007D7717 /* Missions.swift */,
+				960E0AAD27DF48EE00C8D491 /* Tutorial.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -348,6 +357,7 @@
 				2E849BC427D653BB001CE665 /* UserViewModel.swift */,
 				2E849BC727D654C6001CE665 /* AdventureViewModel.swift */,
 				2E7BF0EF27DD0AF8007D7717 /* MissionViewModel.swift */,
+				960E0AB127DF526B00C8D491 /* TutorialViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -415,6 +425,7 @@
 				2ED7AA1527D3880E008FA2C5 /* Animations */,
 				2ED7AA1927D388D9008FA2C5 /* Starters */,
 				2EA6827027DE2C5100F76306 /* TutorialView.swift */,
+				960E0AAF27DF4AFE00C8D491 /* TutorialPageView.swift */,
 			);
 			path = Tutorial;
 			sourceTree = "<group>";
@@ -445,6 +456,7 @@
 				2EFCB97027C2C6280044B2E9 /* trainers.json */,
 				2E9676EE27CFC40100DC50C6 /* decks.json */,
 				2E7BF0F127DD0D76007D7717 /* missions.json */,
+				960E0AAB27DF47CB00C8D491 /* tutorial.json */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -771,6 +783,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				960E0AAC27DF47CB00C8D491 /* tutorial.json in Resources */,
 				2EA07DC627C23B7400AB974B /* pokemons.json in Resources */,
 				2EEEA20927BD8126009A1D49 /* Preview Assets.xcassets in Resources */,
 				2EEEA20627BD8126009A1D49 /* Assets.xcassets in Resources */,
@@ -818,6 +831,7 @@
 				2EA6827127DE2C5100F76306 /* TutorialView.swift in Sources */,
 				2EB39B5427D14F7E00C02AB0 /* CardSummonAnimationView.swift in Sources */,
 				2EEEA20227BD8124009A1D49 /* NineBoxApp.swift in Sources */,
+				960E0AB027DF4AFE00C8D491 /* TutorialPageView.swift in Sources */,
 				2E98C0AA27D12E0F00286879 /* StarterBoosterListView.swift in Sources */,
 				2E4E1A0E27BEDE35001C8B67 /* GameViewModel.swift in Sources */,
 				2ED34E1D27CBC27200F24251 /* ViewExtension.swift in Sources */,
@@ -833,6 +847,7 @@
 				2E4E1A0A27BEDDC8001C8B67 /* AdventureRowView.swift in Sources */,
 				2E8E794427D2BBB800A185C9 /* UserDeckDetailView.swift in Sources */,
 				2E4E1A0827BEDD94001C8B67 /* Adventure.swift in Sources */,
+				960E0AAE27DF48EE00C8D491 /* Tutorial.swift in Sources */,
 				2E98C09827D0F64C00286879 /* UserDeckRowView.swift in Sources */,
 				9637BF6127CE22FE00A3FC87 /* AnimatedTurnView.swift in Sources */,
 				2E642B6127CE835F006A2083 /* SurrenderModalView.swift in Sources */,
@@ -878,6 +893,7 @@
 				2ED34E0927CB689500F24251 /* Profile.swift in Sources */,
 				2E4E1A1A27BEF797001C8B67 /* StatsView.swift in Sources */,
 				2E4E19FE27BEDCA4001C8B67 /* ImageExtension.swift in Sources */,
+				960E0AB227DF526B00C8D491 /* TutorialViewModel.swift in Sources */,
 				2EFCB96027C2A7C70044B2E9 /* HomeNavigationLink.swift in Sources */,
 				2E9676ED27CF4CA200DC50C6 /* ModalButtonView.swift in Sources */,
 				2ED34E0D27CB6C4E00F24251 /* UserDeckListView.swift in Sources */,

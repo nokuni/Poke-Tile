@@ -12,43 +12,52 @@ struct HomeView: View {
     @EnvironmentObject var userVM: UserViewModel
     @EnvironmentObject var missionVM: MissionViewModel
     @State var isShowingModalTheme = false
-    @State var isShowingStarterModal = true
+    @State var isShowingTutorial = true
+    @AppStorage("tutorial") var isInTutorial = true
     var body: some View {
         NavigationView {
             ZStack {
-                HomeBackgroundView(theme: userVM.user.profile.theme)
+                if isInTutorial {
+                    Color.red.ignoresSafeArea()
+                    Image("profOak")
+                        .resizable()
+                        .scaledToFit()
+                        .scaleEffect(0.5)
+                } else {
+                    HomeBackgroundView(theme: userVM.user.profile.theme)
+                }
                 GeometryReader { geo in
                     VStack {
                         ThemeButtonView(isShowingModalTheme: $isShowingModalTheme, size: geo.size)
                         Spacer()
                         HStack(spacing: 0) {
-                            HomeNavigationLink(size: geo.size, item: HomeItem.decks, theme: userVM.user.profile.theme) {
+                            HomeNavigationLink(size: geo.size, item: HomeItem.decks, theme: userVM.user.profile.theme, isShowing: false) {
                                 UserDeckView(userVM: userVM)
                             }
-                            HomeNavigationLink(size: geo.size, item: HomeItem.cards, theme: userVM.user.profile.theme) {
+                            HomeNavigationLink(size: geo.size, item: HomeItem.cards, theme: userVM.user.profile.theme, isShowing: false) {
                                 UserCardsView(userVM: userVM)
                             }
+                            //VStack {
+                                /*if isInTutorial && !isShowingTutorial {
+                                    PointingArrowView(size: geo.size)
+                                }*/
+                            HomeNavigationLink(size: geo.size, item: HomeItem.adventures, theme: userVM.user.profile.theme, isShowing: !isShowingTutorial) {
+                                    AdventureView()
+                                }
+                            //}
                             
-                            HomeNavigationLink(size: geo.size, item: HomeItem.adventures, theme: userVM.user.profile.theme) {
-                                AdventureView()
-                            }
-                            
-                            HomeNavigationLink(size: geo.size, item: HomeItem.missions, theme: userVM.user.profile.theme) {
+                            HomeNavigationLink(size: geo.size, item: HomeItem.missions, theme: userVM.user.profile.theme, isShowing: false) {
                                 MissionsView(missionVM: missionVM)
                             }
-//                            HomeNavigationLink(size: geo.size, item: HomeItem.settings, theme: userVM.user.profile.theme) {
-//                                EmptyView()
-//                            }
                         }
                     }
                 }
                 if isShowingModalTheme {
                     ThemeModalView(isShowingModalTheme: $isShowingModalTheme, theme: $userVM.user.profile.theme)
                 }
-//                if isShowingStarterModal {
-//                    StarterDecksModalView(userVM: userVM, isShowingStarterModal: $isShowingStarterModal)
-//                }
-                
+                if isShowingTutorial {
+                    TutorialView(isPresentingTutorial: $isShowingTutorial, userVM: userVM)
+                }
             }
             .navigationBarHidden(true)
         }
