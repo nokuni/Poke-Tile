@@ -1,0 +1,47 @@
+[
+    {
+        "title": "Prof.OAK",
+        "images": null,
+        "description": "\"Welcome to the first part of the Training sessions. \n Here, I will explain you how to win a battle of PokeTile.\"",
+        "hasAction": false,
+        "isChoosingGenre": null,
+        "isChoosingName": null,
+        "isQuitting": null
+    },
+    {
+        "title": "Prof.OAK",
+        "images": ["tileTutorial"],
+        "description": "\"And it’s very simple, all you need is having more tile than your opponent on the board.\"",
+        "hasAction": false,
+        "isChoosingGenre": null,
+        "isChoosingName": null,
+        "isQuitting": null
+    },
+    {
+        "title": "Prof.OAK",
+        "images": ["userCard", "opponentCard"],
+        "description": "\"Your poketiles are bordered with a blue shadow and your opponent with a red one. So you can easily know which are yours.\"",
+        "hasAction": false,
+        "isChoosingGenre": null,
+        "isChoosingName": null,
+        "isQuitting": null
+    },
+    {
+        "title": "Prof.OAK",
+        "images": null,
+        "description": "\"To be more easier, the number of your poketiles, on the board, is represented below your poketiles hand, in your character banner.\"",
+        "hasAction": false,
+        "isChoosingGenre": null,
+        "isChoosingName": null,
+        "isQuitting": null
+    },
+    {
+        "title": "Prof.OAK",
+        "images": null,
+        "description": "\"Enough talking, it’s better for you test it directly on the board. You can now start this session.\"",
+        "hasAction": true,
+        "isChoosingGenre": null,
+        "isChoosingName": null,
+        "isQuitting": null
+    },
+]

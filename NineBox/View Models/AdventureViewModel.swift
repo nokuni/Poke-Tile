@@ -8,39 +8,83 @@
 import SwiftUI
 
 class AdventureViewModel: ObservableObject {
-    @Published var adventures = Adventure.adventures
+    @Published var adventures = AdventureModel.all
+    @Published var lab = LabModel.all
+    @Published var regions = WorldRegion.regions
+    @Published var tutorialTrainers = Trainer.tutorialTrainers
     @Published var selectedTrainer: Trainer? = nil
     
     init() {
-        loadTrainers()
+        unlockAdventure("Lab")
+        unlockLab("Tutorials")
+        loadTutorialTrainers()
+        loadWorldTrainers()
         unlockFirstTrainers()
     }
     
     static let shared = AdventureViewModel()
     
-    func loadTrainers() {
-        for index in adventures.indices {
-            let trainers = adventures[index].trainerNames.map { try! Trainer.getTrainer($0) }
-            adventures[index].trainers = trainers
+    func loadWorldTrainers() {
+        for index in regions.indices {
+            let trainers = regions[index].trainerNames.map { try! Trainer.getWorldTrainer($0) }
+            regions[index].trainers = trainers
         }
+    }
+    func loadTutorialTrainers() {
+        tutorialTrainers = tutorialTrainers.filter { $0.name != "Beginning Prof.Oak" }
+    }
+    func unlockLab(_ title: String) {
+        guard let index = lab.firstIndex(where: { $0.title == title }) else { return }
+        lab[index].isUnlocked = true
+    }
+    func unlockAdventure(_ title: String) {
+        guard let index = adventures.firstIndex(where: { $0.title == title }) else { return }
+        adventures[index].isUnlocked = true
     }
     
     func unlockFirstTrainers() {
-        for index in adventures.indices {
-            adventures[index].trainers[0].isUnlocked = true
+        for index in regions.indices {
+            regions[index].trainers[0].isUnlocked = true
+        }
+        tutorialTrainers[0].isUnlocked = true
+    }
+    
+    func worldTrainerEndBattleActions(_ trainer: Trainer?, addCards: (([Card]) -> Void)) {
+        if let trainer = trainer {
+            unlockNextWorldTrainer(from: trainer)
+            if !trainer.hasBeenCleared {
+                let reward = trainer.reward.map { try! Card.getPokemon(name: $0) }
+                addCards(reward)
+            }
+        }
+    }
+    func trainingTrainerEndBattleActions(_ trainer: Trainer?, addCards: (([Card]) -> Void)) {
+        if let trainer = trainer {
+            unlockNextTrainingTrainer(from: trainer)
+            if !trainer.hasBeenCleared {
+                let reward = trainer.reward.map { try! Card.getPokemon(name: $0) }
+                addCards(reward)
+            }
         }
     }
     
-    func unlockNextTrainer(from trainer: Trainer) {
-        guard let adventureIndex = adventures.firstIndex(where: { $0.trainers.contains(trainer) }) else { return }
-        guard let index = adventures[adventureIndex].trainers.firstIndex(of: trainer) else { return }
-        adventures[adventureIndex].trainers[index].hasBeenCleared = true
-        guard (index + 1) < adventures[adventureIndex].trainers.count else { return }
-        adventures[adventureIndex].trainers[index + 1].isUnlocked = true
+    func unlockNextTrainingTrainer(from trainer: Trainer) {
+        guard let index = tutorialTrainers.firstIndex(of: trainer) else { return }
+        tutorialTrainers[index].hasBeenCleared = true
+        guard (index + 1) < tutorialTrainers.count else { return }
+        tutorialTrainers[index + 1].isUnlocked = true
+    }
+    
+    func unlockNextWorldTrainer(from trainer: Trainer) {
+        guard let adventureIndex = regions.firstIndex(where: { $0.trainers.contains(trainer) }) else { return }
+        guard let index = regions[adventureIndex].trainers.firstIndex(of: trainer) else { return }
+        regions[adventureIndex].trainers[index].hasBeenCleared = true
+        guard (index + 1) < regions[adventureIndex].trainers.count else { return }
+        regions[adventureIndex].trainers[index + 1].isUnlocked = true
     }
     
     func checkAdventureMissions(_ missions: inout [Mission]) {
-        for adventure in adventures {
+        for adventure in regions {
             if adventure.trainers.allSatisfy({ $0.hasBeenCleared }) {
                 if let index = missions.firstIndex(where: { $0.name == adventure.title }) {
                     if !missions[index].isDone {

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TutorialPage: Identifiable, Codable {
+struct TutorialPage: Identifiable, Codable, Equatable {
     var id = UUID()
     let title: String
     let images: [String]?
@@ -24,5 +24,5 @@ struct TutorialPage: Identifiable, Codable {
 }
 
 extension TutorialPage {
-    static let all: [TutorialPage] = try! Bundle.main.decode("tutorial.json")
+    static let example = TutorialPage(title: "Title", images: nil, description: "Description", hasAction: false)
 }

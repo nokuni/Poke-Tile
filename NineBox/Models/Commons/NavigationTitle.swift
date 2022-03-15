@@ -7,20 +7,31 @@
 
 import SwiftUI
 
-struct NavigationTitleModel {
-    var image: String
-    var title: String
-    var color: Color
-}
-
-extension NavigationTitleModel {
-    static let decks = NavigationTitleModel(image: "decks", title: "Decks", color: .orangeDragonite)
-    static let cards = NavigationTitleModel(image: "cards", title: "Cards", color: .fairyBorder)
-    static let world = NavigationTitleModel(image: "world.icon", title: "World", color: .steelBlue)
-    static let lab = NavigationTitleModel(image: "lab.icon", title: "The Lab", color: .steelBlue)
-    static let adventure = NavigationTitleModel(image: "adventure", title: "Adventure", color: .mediumSeaGreen)
-    static let missions = NavigationTitleModel(image: "missions", title: "Missions", color: .flyingBorder)
-    static let trainer = NavigationTitleModel(image: "trainer", title: "Trainers", color: .mediumSeaGreen)
-    static let preBattle = NavigationTitleModel(image: "battle", title: "Battle Preparation", color: .crimson)
-    static let deckCreation = NavigationTitleModel(image: "decks", title: "Deck Creation", color: .limeGreen)
+enum NavigationTitleModel: String {
+    case decks, cards, adventure, missions, world, trainers, lab, training, preBattle, deckCreation
+    
+    var color: Color {
+        switch self {
+        case .decks:
+            return .orangeDragonite
+        case .cards:
+            return .fairyBorder
+        case .adventure:
+            return .steelBlue
+        case .missions:
+            return .flyingBorder
+        case .world:
+            return .grassBorder
+        case .trainers:
+            return .mediumSeaGreen
+        case .lab:
+            return .flyingBorder
+        case .training:
+            return .flyingBorder
+        case .preBattle:
+            return .crimson
+        case .deckCreation:
+            return .limeGreen
+        }
+    }
 }

@@ -17,4 +17,18 @@ extension View {
                 self
             }
         }
+    var spacedScreen: some View {
+        modifier(SpacedScreenModifier())
+    }
+}
+
+// VIEW MODIFIERS
+
+struct SpacedScreenModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .padding()
+            .navigationBarHidden(true)
+            .navigationBarBackButtonHidden(true)
+    }
 }

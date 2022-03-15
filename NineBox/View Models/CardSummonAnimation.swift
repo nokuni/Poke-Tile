@@ -11,20 +11,20 @@ import SwiftUI
 
 class CardAnimationViewModel: ObservableObject {
     
-    @Published var rotatingCardPlaceholder = true
+    @Published var rotatingCardPlaceholders: [Bool] = [Bool]()
     //@Published var rotatingBoardCards = Array(repeating: true, count: 16)
     
-    @Published var cardPlaceholder: Card = Card.empty
+    @Published var cardPlaceholders: [Card] = [Card]()
     //@Published var boardCardPlaceholders = Card.emptyBoard
     
-    @Published var cardSummoned: Card? = nil
+    @Published var cardsSummoned: [Card] = []
     
     @Published var index = 0
     var timer: Timer?
     
     func startSummonAnimation() {
-        //rotatingCardPlaceholders = Array(repeating: true, count: cardsSummoned.count)
-        //cardPlaceholders = Array(repeating: Card.empty, count: cardsSummoned.count)
+        rotatingCardPlaceholders = Array(repeating: true, count: cardsSummoned.count)
+        cardPlaceholders = Array(repeating: Card.empty, count: cardsSummoned.count)
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true, block: animateCard)
     }
@@ -35,9 +35,13 @@ class CardAnimationViewModel: ObservableObject {
     }*/
     
     func animateCard(timer: Timer) {
-        withAnimation(.linear.repeatCount(1, autoreverses: false)) {
-            cardPlaceholder = cardSummoned ?? Card.empty
-            rotatingCardPlaceholder.toggle()
+        if index < cardsSummoned.count {
+            withAnimation(.linear.repeatCount(1, autoreverses: false)) {
+                cardPlaceholders[index] = cardsSummoned[index]
+                rotatingCardPlaceholders[index].toggle()
+            }
+            index += 1
+        } else {
             timer.invalidate()
         }
     }
@@ -64,6 +68,6 @@ class CardAnimationViewModel: ObservableObject {
     }
     
     func isAnimationFinished(isCleared: Bool?) -> Bool {
-        return !rotatingCardPlaceholder
+        rotatingCardPlaceholders.allSatisfy({ $0 == false })
     }
 }

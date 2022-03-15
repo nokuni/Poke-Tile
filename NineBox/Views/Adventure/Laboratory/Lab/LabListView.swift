@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct LabListView: View {
+    @ObservedObject var adventureVM: AdventureViewModel
     var size: CGSize
     var body: some View {
         ScrollView {
             VStack {
-                LabNavigationLink(text: "Training", image: "lab", size: size) {
-                    TrainingView()
+                LabNavigationLink(lab: adventureVM.lab[0], size: size) {
+                    TrainingView(adventureVM: adventureVM)
                 }
-                LabNavigationLink(text: "Puzzles", image: "lab", size: size) {
+                LabNavigationLink(lab: adventureVM.lab[1], size: size) {
                     PuzzleView()
                 }
             }
@@ -25,6 +26,6 @@ struct LabListView: View {
 
 struct LabListView_Previews: PreviewProvider {
     static var previews: some View {
-        LabListView(size: CGSize.screen)
+        LabListView(adventureVM: AdventureViewModel(), size: CGSize.screen)
     }
 }

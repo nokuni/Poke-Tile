@@ -29,6 +29,6 @@ struct AnimatedTurnView: View {
 
 struct AnimatedTurnView_Previews: PreviewProvider {
     static var previews: some View {
-        AnimatedTurnView(user: User.previewExample, trainer: Trainer.trainers[0], turn: .opponent, size: CGSize.screen)
+        AnimatedTurnView(user: User.previewExample, trainer: Trainer.worldTrainers[0], turn: .opponent, size: CGSize.screen)
     }
 }

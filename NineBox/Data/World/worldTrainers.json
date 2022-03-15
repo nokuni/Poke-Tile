@@ -7,7 +7,7 @@
         "pokemons": ["Bulbasaur", "Exeggcute", "Oddish", "Bellsprout", "Paras", "Meowth", "Rattata", "Eevee"],
         "bonusLocations": [],
         "difficulty": "easy",
-        "reward": "Paras"
+        "reward": ["Paras"]
     },
     {
         "name": "Pokemaniac",
@@ -17,7 +17,7 @@
         "pokemons": ["Bulbasaur", "Exeggcute", "Oddish", "Bellsprout", "Gloom", "Meowth", "Rattata", "Eevee"],
         "bonusLocations": [],
         "difficulty": "easy",
-        "reward": "Gloom"
+        "reward": ["Gloom"]
     },
     {
         "name": "Gentleman",
@@ -27,7 +27,7 @@
         "pokemons": ["Bulbasaur", "Exeggcute", "Oddish", "Bellsprout", "Weepinbell", "Meowth", "Rattata", "Eevee"],
         "bonusLocations": [],
         "difficulty": "easy",
-        "reward": "Weepinbell"
+        "reward": ["Weepinbell"]
     },
     {
         "name": "Aroma Lady",
@@ -37,7 +37,7 @@
         "pokemons": ["Bulbasaur", "Exeggcute", "Oddish", "Bellsprout", "Tangela", "Meowth", "Rattata", "Eevee"],
         "bonusLocations": [],
         "difficulty": "easy",
-        "reward": "Tangela"
+        "reward": ["Tangela"]
     },
     {
         "name": "Erika",
@@ -47,6 +47,6 @@
         "pokemons": ["Vileplume", "Gloom", "Tangela", "Bellsprout", "Oddish", "Meowth", "Rattata", "Eevee"],
         "bonusLocations": [],
         "difficulty": "easy",
-        "reward": "Vileplume"
+        "reward": ["Vileplume"]
     },
 ]

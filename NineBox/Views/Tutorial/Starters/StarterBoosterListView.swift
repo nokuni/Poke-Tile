@@ -13,7 +13,7 @@ struct StarterBoosterListView: View {
     @Binding var selectedDeck: Deck?
     var body: some View {
         HStack {
-            ForEach(starters.indices) { index in
+            ForEach(starters.indices, id: \.self) { index in
                 VStack {
                     PointingArrowView(color: .white, size: size)
                         .opacity(selectedDeck == starters[index] ? 1 : 0)

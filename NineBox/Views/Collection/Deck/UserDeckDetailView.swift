@@ -20,7 +20,7 @@ struct UserDeckDetailView: View {
             Color.white.ignoresSafeArea()
             VStack(alignment: .leading) {
                 
-                NavigationTitleView(size: size, navigationTitle: NavigationTitleModel(image: "decks", title: deck.name, color: deck.cards.first?.borderColor ?? .gray))
+                NavigationTitleView(size: size, navigationTitle: .decks)
                 
                 LazyVGrid(columns: grid, spacing: 0) {
                     ForEach(cards) { card in

@@ -43,7 +43,7 @@ struct GameView: View {
             
             if gameVM.isShowingGameEnding {
                 if let trainer = gameVM.game.trainer {
-                    EndingAnimationView(card: try! Card.getPokemon(name: trainer.reward), isPresented: $gameVM.isShowingGameEnding, isShowingStart: $isShowingStart, userVM: userVM, gameVM: gameVM, adventureVM: adventureVM, missionVM: missionVM)
+                    EndingAnimationView(cards: trainer.reward.map { try! Card.getPokemon(name: $0) }, isPresented: $gameVM.isShowingGameEnding, isShowingStart: $isShowingStart, userVM: userVM, gameVM: gameVM, adventureVM: adventureVM, missionVM: missionVM)
                 }
             }
             

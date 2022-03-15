@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct JourneyBackgroundView: View {
+struct RegionBackgroundView: View {
     var size: CGSize
     var title: String
-    var adventure: Adventure
+    var region: WorldRegion
     var body: some View {
         HStack {
             Text(title)
@@ -20,7 +20,7 @@ struct JourneyBackgroundView: View {
             
             Spacer()
             
-            Image(adventure.debuff.backgroundImage)
+            Image(region.debuff.backgroundImage)
                 .resizable()
                 .scaledToFit()
                 .frame(width: size.width * 0.2, height: size.width * 0.2)
@@ -30,8 +30,8 @@ struct JourneyBackgroundView: View {
     }
 }
 
-struct JourneyBackgroundView_Previews: PreviewProvider {
+struct RegionBackgroundView_Previews: PreviewProvider {
     static var previews: some View {
-        JourneyBackgroundView(size: CGSize.screen, title: "Title", adventure: Adventure.adventures[0])
+        RegionBackgroundView(size: CGSize.screen, title: "Title", region: WorldRegion.regions[0])
     }
 }

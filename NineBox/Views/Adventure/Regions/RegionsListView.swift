@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-struct JourneyListView: View {
-    var adventures: [Adventure]
+struct RegionsListView: View {
+    var regions: [WorldRegion]
     var size: CGSize
     var body: some View {
         ScrollView(showsIndicators: false) {
             LazyVStack(alignment: .leading) {
-                ForEach(adventures) { adventure in
-                    NavigationLink(destination: TrainerView(adventure: adventure)) {
-                        JourneyRowView(size: size, adventure: adventure)
+                ForEach(regions) { region in
+                    NavigationLink(destination: TrainerView(region: region)) {
+                        RegionRowView(size: size, region: region)
                     }
                 }
             }
@@ -28,8 +28,8 @@ struct JourneyListView: View {
     }
 }
 
-struct JourneyListView_Previews: PreviewProvider {
+struct RegionsListView_Previews: PreviewProvider {
     static var previews: some View {
-        JourneyListView(adventures: [], size: CGSize.screen)
+        RegionsListView(regions: [], size: CGSize.screen)
     }
 }

@@ -35,7 +35,7 @@ struct Deck: Codable, Identifiable, Equatable {
 extension Deck {
     static let empty = Deck(name: "New Deck", associatedType: .empty, pokemons: Card.placeholders.map { $0.name }, background: "forest")
     static let all: [Deck] = try! Bundle.main.decode("decks.json")
-    static let trainerDecks = Trainer.trainers.map { Deck(name: "\($0.name)'s Deck", associatedType: $0.associatedType, pokemons: $0.pokemons, background: $0.background) }
+    static let trainerDecks = Trainer.worldTrainers.map { Deck(name: "\($0.name)'s Deck", associatedType: $0.associatedType ?? .empty, pokemons: $0.pokemons, background: $0.background) }
     static let starters = all.filter({ $0.name.contains("Starter")})
 }
 

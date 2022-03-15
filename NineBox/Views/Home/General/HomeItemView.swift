@@ -33,6 +33,11 @@ struct HomeItemView: View {
                         .opacity(0.5)
                         .cornerRadius(5)
                         .padding(5)
+                    Image("lock")
+                        .resizable()
+                        .renderingMode(.template)
+                        .foregroundColor(.white)
+                        .frame(width: size.width * 0.05, height: size.width * 0.05)
                 }
             }
         )

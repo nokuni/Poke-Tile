@@ -9,13 +9,14 @@ import SwiftUI
 
 struct AdventureView: View {
     @Environment(\.dismiss) private var dismiss
+    @ObservedObject var adventureVM: AdventureViewModel
     var body: some View {
         ZStack {
             Color.white.ignoresSafeArea()
             GeometryReader { geo in
                 VStack(alignment: .leading) {
-                    NavigationTitleView(size: geo.size, navigationTitle: NavigationTitleModel.world)
-                    AdventureListView(size: geo.size)
+                    NavigationTitleView(size: geo.size, navigationTitle: .adventure)
+                    AdventureListView(size: geo.size, adventureVM: adventureVM)
                     Spacer()
                     BackButtonView(size: geo.size, dismiss: dismiss)
                 }
@@ -27,37 +28,23 @@ struct AdventureView: View {
 
 struct AdventureView_Previews: PreviewProvider {
     static var previews: some View {
-        AdventureView()
+        AdventureView(adventureVM: AdventureViewModel())
     }
 }
 
 struct AdventureListView: View {
     var size: CGSize
+    @ObservedObject var adventureVM: AdventureViewModel
     var body: some View {
         ScrollView {
             VStack {
-                AdventureNavigationLink(text: "World", image: "world.background", colorBorder: .mediumSeaGreen, size: size) {
+                AdventureNavigationLink(adventure: adventureVM.adventures[0], size: size) {
                     JourneyView()
                 }
-                AdventureNavigationLink(text: "The Lab", image: "lab", colorBorder: .flyingBorder, size: size) {
-                    LabView()
+                AdventureNavigationLink(adventure: adventureVM.adventures[1], size: size) {
+                    LabView(adventureVM: adventureVM)
                 }
             }
         }
-    }
-}
-
-struct SpacedScreenModifier: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .padding()
-            .navigationBarHidden(true)
-            .navigationBarBackButtonHidden(true)
-    }
-}
-
-extension View {
-    var spacedScreen: some View {
-        modifier(SpacedScreenModifier())
     }
 }

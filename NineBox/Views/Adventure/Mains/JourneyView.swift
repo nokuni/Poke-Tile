@@ -15,8 +15,8 @@ struct JourneyView: View {
             Color.white.ignoresSafeArea()
             GeometryReader { geo in
                 VStack(alignment: .leading) {
-                    NavigationTitleView(size: geo.size, navigationTitle: .adventure)
-                    JourneyListView(adventures: adventureVM.adventures, size: geo.size)
+                    NavigationTitleView(size: geo.size, navigationTitle: .world)
+                    RegionsListView(regions: adventureVM.regions, size: geo.size)
                     Spacer()
                     BackButtonView(size: geo.size, dismiss: dismiss)
                 }

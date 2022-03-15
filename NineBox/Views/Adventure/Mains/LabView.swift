@@ -9,17 +9,16 @@ import SwiftUI
 
 struct LabView: View {
     @Environment(\.dismiss) private var dismiss
+    @ObservedObject var adventureVM: AdventureViewModel
     var body: some View {
         ZStack {
             Color.white.ignoresSafeArea()
             GeometryReader { geo in
-                ScrollView {
-                    VStack(alignment: .leading) {
-                        NavigationTitleView(size: geo.size, navigationTitle: NavigationTitleModel.lab)
-                        LabListView(size: geo.size)
-                        Spacer()
-                        BackButtonView(size: geo.size, dismiss: dismiss)
-                    }
+                VStack(alignment: .leading) {
+                    NavigationTitleView(size: geo.size, navigationTitle: .lab)
+                    LabListView(adventureVM: adventureVM, size: geo.size)
+                    Spacer()
+                    BackButtonView(size: geo.size, dismiss: dismiss)
                 }
             }
             .spacedScreen
@@ -29,6 +28,6 @@ struct LabView: View {
 
 struct LabView_Previews: PreviewProvider {
     static var previews: some View {
-        LabView()
+        LabView(adventureVM: AdventureViewModel())
     }
 }

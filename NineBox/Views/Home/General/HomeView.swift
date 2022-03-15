@@ -12,6 +12,7 @@ struct HomeView: View {
     @EnvironmentObject var userVM: UserViewModel
     @EnvironmentObject var missionVM: MissionViewModel
     @EnvironmentObject var homeVM: HomeViewModel
+    @EnvironmentObject var adventureVM: AdventureViewModel
     @State var isShowingModalTheme = false
     @State var isShowingTutorial = true
     @AppStorage("tutorial") var isInTutorial = true
@@ -27,6 +28,7 @@ struct HomeView: View {
                 } else {
                     HomeBackgroundView(theme: userVM.user.profile.theme)
                 }
+                
                 GeometryReader { geo in
                     VStack {
                         ThemeButtonView(isShowingModalTheme: $isShowingModalTheme, size: geo.size)
@@ -39,7 +41,7 @@ struct HomeView: View {
                                 UserCardsView(userVM: userVM)
                             }
                             HomeNavigationLink(size: geo.size, item: homeVM.homeItems[2], theme: userVM.user.profile.theme, isShowing: !isShowingTutorial) {
-                                    AdventureView()
+                                AdventureView(adventureVM: adventureVM)
                                 }
                             
                             HomeNavigationLink(size: geo.size, item: homeVM.homeItems[3], theme: userVM.user.profile.theme, isShowing: false) {
@@ -48,11 +50,12 @@ struct HomeView: View {
                         }
                     }
                 }
+                
                 if isShowingModalTheme {
                     ThemeModalView(isShowingModalTheme: $isShowingModalTheme, theme: $userVM.user.profile.theme)
                 }
                 if isShowingTutorial {
-                    TutorialView(isPresentingTutorial: $isShowingTutorial, userVM: userVM)
+                    TutorialView(trainer: try! Trainer.getTutorialTrainer("Beginning Prof.Oak"), isPresentingTutorial: $isShowingTutorial, userVM: userVM)
                 }
             }
             .navigationBarHidden(true)

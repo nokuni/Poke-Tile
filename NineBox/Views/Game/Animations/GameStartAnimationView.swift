@@ -47,6 +47,6 @@ struct GameStartAnimationView: View {
 
 struct GameStartAnimationView_Previews: PreviewProvider {
     static var previews: some View {
-        GameStartAnimationView(isPresented: .constant(false), user: User.previewExample, trainer: Trainer.trainers[0])
+        GameStartAnimationView(isPresented: .constant(false), user: User.previewExample, trainer: Trainer.worldTrainers[0])
     }
 }

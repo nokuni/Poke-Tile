@@ -8,25 +8,24 @@
 import SwiftUI
 
 struct LabNavigationLink<V: View>: View {
-    var text: String
-    var image: String
+    var lab: LabModel
     var size: CGSize
     var view: V
-    init(text: String, image: String, size: CGSize, @ViewBuilder view: @escaping () -> V) {
-        self.text = text
-        self.image = image
+    init(lab: LabModel, size: CGSize, @ViewBuilder view: @escaping () -> V) {
+        self.lab = lab
         self.size = size
         self.view = view()
     }
     var body: some View {
         NavigationLink(destination: view) {
-            LabRowView(text: text, image: image, size: size)
+            LabRowView(lab: lab, size: size)
         }
+        .disabled(!lab.isUnlocked)
     }
 }
 
 struct LabNavigationLink_Previews: PreviewProvider {
     static var previews: some View {
-        LabNavigationLink(text: "", image: "", size: CGSize.screen, view: { })
+        LabNavigationLink(lab: LabModel.all[0], size: CGSize.screen, view: { })
     }
 }

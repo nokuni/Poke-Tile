@@ -46,6 +46,6 @@ struct TurnAnimationView: View {
 
 struct TurnAnimationView_Previews: PreviewProvider {
     static var previews: some View {
-        TurnAnimationView(isPresented: .constant(false), user: User.previewExample, trainer: Trainer.trainers[0], turn: .opponent)
+        TurnAnimationView(isPresented: .constant(false), user: User.previewExample, trainer: Trainer.worldTrainers[0], turn: .opponent)
     }
 }

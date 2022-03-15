@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TutorialView: View {
+    var trainer: Trainer
     var size: CGSize = .screen
     @State var selectedPageIndex = 0
     @Binding var isPresentingTutorial: Bool
@@ -24,27 +25,7 @@ struct TutorialView: View {
                     .frame(width: size.width, height: size.height, alignment: .top)
                 VStack {
                     Spacer()
-                    ZStack {
-                        TutorialPageView(page: TutorialPage.all[selectedPageIndex], size: size, userVM: userVM, selectedPageIndex: $selectedPageIndex, isPresentingTutorial: $isPresentingTutorial)
-                            .frame(width: size.width * 0.9, height: size.height * 0.55, alignment: .center)
-                            .frame(width: size.width, height: size.height * 0.6, alignment: .center)
-                        if !TutorialPage.all[selectedPageIndex].hasAction {
-                            PointingArrowView(color: .white, size: geo.size)
-                                .frame(width: size.width * 0.85, height: size.height * 0.5, alignment: .bottomTrailing)
-                                .frame(width: size.width, height: size.height * 0.4)
-                        }
-                    }
-                    .background(
-                        Color
-                            .steelBlue
-                            .cornerRadius(5)
-                            .padding()
-                    )
-                    .onTapGesture {
-                        if !TutorialPage.all[selectedPageIndex].hasAction {
-                            selectedPageIndex += 1
-                        }
-                    }
+                    TutorialWindowView(trainer: trainer, size: geo.size, selectedPageIndex: $selectedPageIndex, isPresentingTutorial: $isPresentingTutorial, userVM: userVM)
                     Spacer()
                 }
             }
@@ -55,15 +36,43 @@ struct TutorialView: View {
 
 struct TutorialView_Previews: PreviewProvider {
     static var previews: some View {
-        TutorialView(isPresentingTutorial: .constant(false), userVM: UserViewModel())
+        TutorialView(trainer: Trainer.worldTrainers[0], isPresentingTutorial: .constant(false), userVM: UserViewModel())
     }
 }
 
-struct TransparentBackgroundView: View {
-    var color: Color
+struct TutorialWindowView: View {
+    var trainer: Trainer
+    var size: CGSize
+    @Binding var selectedPageIndex: Int
+    @Binding var isPresentingTutorial: Bool
+    @ObservedObject var userVM: UserViewModel
     var body: some View {
-        color
-            .opacity(0.5)
-            .ignoresSafeArea()
+        ZStack {
+            if let pages = trainer.pages {
+                TutorialPageView(page: Trainer.getPages(pages)[selectedPageIndex], size: size, userVM: userVM, selectedPageIndex: $selectedPageIndex, isPresentingTutorial: $isPresentingTutorial)
+                    .frame(width: size.width * 0.9, height: size.height * 0.45, alignment: .center)
+                    .frame(width: size.width, height: size.height * 0.5, alignment: .center)
+                if !Trainer.getPages(pages)[selectedPageIndex].hasAction {
+                    PointingArrowView(color: .white, size: size)
+                        .frame(width: size.width * 0.85, height: size.height * 0.4, alignment: .bottomTrailing)
+                        .frame(width: size.width, height: size.height * 0.4)
+                }
+            }
+        }
+        .background(
+            Color
+                .steelBlue
+                .cornerRadius(5)
+                .padding()
+        )
+        .onTapGesture {
+            if let pages = trainer.pages {
+                if !Trainer.getPages(pages)[selectedPageIndex].hasAction {
+                    if selectedPageIndex < (Trainer.getPages(pages).count - 1) {
+                        selectedPageIndex += 1
+                    }
+                }
+            }
+        }
     }
 }

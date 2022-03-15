@@ -30,10 +30,18 @@ class GameViewModel: ObservableObject {
     func createNewGame(trainer: Trainer, deck: Deck) {
         game.deck = deck
         game.trainer = trainer
-        loadBoard(bonus: addDebuffs)
+        loadBoard(bonus: addDebuffs, setup: setupTutorialBoard)
         loadPlayerHand()
         loadOpponentHand()
         print("Game created")
+    }
+    func createTutorialGame(trainer: Trainer) {
+        guard let prebuildDeck = trainer.prebuildDeck else { return }
+        game.deck = Deck(name: "Tutorial Deck", associatedType: .grass, pokemons: prebuildDeck, background: "lab.background")
+        game.trainer = trainer
+        loadPlayerHand()
+        loadOpponentHand()
+        loadBoard(bonus: addDebuffs, setup: setupTutorialBoard)
     }
     func resetGame() {
         game = Game()
@@ -42,13 +50,18 @@ class GameViewModel: ObservableObject {
     func loadGame() {
         isShowingGameEnding.toggle()
         game.turn = .user
-        loadBoard(bonus: addDebuffs)
+        loadBoard(bonus: addDebuffs, setup: setupTutorialBoard)
         loadPlayerHand()
         loadOpponentHand()
     }
-    func loadBoard(bonus: ((Trainer?) -> Void)) {
+    func loadBoard(bonus: ((Trainer?) -> Void), setup: ((Trainer?) -> Void)) {
+        guard let trainer = game.trainer else { return }
         game.board = Array(repeating: Card.empty, count: 16)
-        bonus(game.trainer)
+        if Trainer.tutorialTrainers.contains(where: { $0.name == trainer.name }) {
+            setup(game.trainer)
+        } else {
+            bonus(game.trainer)
+        }
     }
     func loadPlayerHand() {
         if let deck = game.deck { game.userCards = deck.cards }
@@ -473,10 +486,40 @@ class GameViewModel: ObservableObject {
         game.trainerCards[index].stats.leading += buffAmount
     }
     
+    func setupTutorialBoard(trainer: Trainer?) {
+        guard let trainer = game.trainer else { return }
+        
+        switch true {
+        case trainer.name == "Prof.Oak":
+            guard let prebuildDeck = trainer.prebuildDeck else { return }
+            let decks = prebuildDeck + prebuildDeck
+            let count = prebuildDeck.count * 2
+            for index in  game.trainerCards.indices {
+                if index < 7 { game.trainerCards[index].isActivated = false }
+            }
+            for index in  game.userCards.indices {
+                if index < 7 { game.userCards[index].isActivated = false }
+            }
+            for index in 0..<count {
+                if index < 14 {
+                    game.board[index] = try! Card.getPokemon(name: decks[index])
+                    game.board[index].side = .user
+                }
+            }
+        case trainer.name == "Prof.Elm":
+            ()
+        case trainer.name == "Prof.Birch":
+            ()
+        default: ()
+        }
+    }
+    
+    
     // Futur changes of making it not random
     func addDebuffs(trainer: Trainer?) {
         guard let trainer = trainer else { return }
-        let debuff = try! Card.getDebuff(type: trainer.associatedType)
+        guard let type = trainer.associatedType else { return }
+        let debuff = try! Card.getDebuff(type: type)
         for index in trainer.bonusLocations {
             game.board[index] = debuff
         }

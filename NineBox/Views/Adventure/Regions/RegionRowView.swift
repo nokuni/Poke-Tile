@@ -7,28 +7,28 @@
 
 import SwiftUI
 
-struct JourneyRowView: View {
+struct RegionRowView: View {
     var size: CGSize
-    var adventure: Adventure
+    var region: WorldRegion
     var body: some View {
-        Image(adventure.image)
+        Image(region.image)
             .resizable()
             .centerCropped(radius: 5, alignment: .center)
             .padding(5)
             .frame(width: size.width, height: size.height * 0.2)
             .background(
-                adventure.debuff.borderColor
+                region.debuff.borderColor
                     .cornerRadius(5)
                     .frame(width: size.width, height: size.height * 0.2)
             )
             .overlay(
-                JourneyBackgroundView(size: size, title: adventure.title, adventure: adventure)
+                RegionBackgroundView(size: size, title: region.title, region: region)
             )
     }
 }
 
-struct JourneyRowView_Previews: PreviewProvider {
+struct RegionRowView_Previews: PreviewProvider {
     static var previews: some View {
-        JourneyRowView(size: CGSize.screen, adventure: Adventure.adventures[0])
+        RegionRowView(size: CGSize.screen, region: WorldRegion.regions[0])
     }
 }

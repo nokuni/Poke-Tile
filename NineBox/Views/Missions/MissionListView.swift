@@ -15,7 +15,7 @@ struct MissionListView: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             LazyVStack(alignment: .leading) {
-                ForEach(missionVM.missions.indices) { index in
+                ForEach(missionVM.missions.indices, id: \.self) { index in
                     MissionRowView(mission: $missionVM.missions[index], isShowingReward: $isShowingReward, selectedReward: $selectedReward, size: size)
                 }
             }

@@ -11,10 +11,11 @@ struct PreBattleView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var gameVM: GameViewModel
     @EnvironmentObject var userVM: UserViewModel
-    @State var selectedDeckIndex = 0
-    @State var selectedIndex = 0
+    @State private var selectedDeckIndex = 0
+    @State private var selectedIndex = 0
+    @State private var isPresentingTutorial = false
     @State var decks = [Deck]()
-    var adventure: Adventure
+    var region: WorldRegion?
     var trainer: Trainer
     var body: some View {
         ZStack {
@@ -22,26 +23,14 @@ struct PreBattleView: View {
             GeometryReader { geo in
                 VStack(alignment: .leading) {
                     NavigationTitleView(size: geo.size, navigationTitle: NavigationTitleModel.preBattle)
-                    TrainerRowView(size: geo.size, adventure: adventure, image: trainer.image, isUnlocked: trainer.isUnlocked, hasBeenCleared: false)
-                    if !userVM.filteredDecks(filter: .playable).isEmpty {
-                        UserPreBattleDeckListView(decks: decks, selectedDeckIndex: $selectedDeckIndex, size: geo.size, isPossessing: userVM.isPossessing)
-                        
-                        NavigationLink(destination: GameView()) {
-                            ActionButtonView(text: "START BATTLE", textColor: .white, color: .steelBlue, size: geo.size)
-                        }
-                        .padding(.vertical)
-                        .simultaneousGesture(
-                            TapGesture().onEnded { _ in
-                                gameVM.createNewGame(trainer: trainer, deck: userVM.filteredDecks(filter: .playable)[selectedDeckIndex])
-                            }
-                        )
+                    TrainerRowView(size: geo.size, region: region, background: trainer.background, colorBorder: region?.debuff.borderColor ?? .steelBlue, image: trainer.image, isUnlocked: trainer.isUnlocked, hasBeenCleared: false)
+                    if region == nil {
+                        TutorialWindowView(trainer: trainer, size: geo.size, selectedPageIndex: $selectedIndex, isPresentingTutorial: $isPresentingTutorial, userVM: userVM)
+                    } else {
+                        PreBattleDeckChoiceView(decks: decks, trainer: trainer, size: geo.size, selectedDeckIndex: $selectedDeckIndex, gameVM: gameVM, userVM: userVM)
                     }
-                    else {
-                        Text("You have no playable decks right now")
-                            .foregroundColor(.gray)
-                            .font(.system(size: geo.size.width * 0.08, weight: .bold, design: .rounded))
-                            .frame(width: geo.size.width, height: geo.size.height * 0.2, alignment: .center)
-                    }
+                    
+                    StartBattleButtonView(trainer: trainer, selectedDeckIndex: selectedDeckIndex, selectedIndex: $selectedIndex, size: geo.size, gameVM: gameVM, userVM: userVM)
                     
                     Spacer()
                     
@@ -59,9 +48,60 @@ struct PreBattleView: View {
 
 struct PreBattleView_Previews: PreviewProvider {
     static var previews: some View {
-        PreBattleView(adventure: Adventure.adventures[0], trainer: Trainer.trainers[0])
+        PreBattleView(region: WorldRegion.regions[0], trainer: Trainer.worldTrainers[0])
             .environmentObject(GameViewModel())
             .environmentObject(UserViewModel())
+    }
+}
+
+struct StartBattleButtonView: View {
+    var trainer: Trainer
+    var selectedDeckIndex: Int
+    @Binding var selectedIndex: Int
+    var size: CGSize
+    @ObservedObject var gameVM: GameViewModel
+    @ObservedObject var userVM: UserViewModel
+    
+    var pageCount: Int {
+        guard let pages = trainer.pages else { return 0 }
+        let tutorialPages = Trainer.getPages(pages)
+        return tutorialPages.count
+    }
+    var body: some View {
+        NavigationLink(destination: GameView()) {
+            ActionButtonView(text: "START BATTLE", textColor: .white, color: !(selectedIndex == (pageCount - 1)) ? .gray : .steelBlue, size: size)
+        }
+        .padding(.vertical)
+        .simultaneousGesture(
+            TapGesture().onEnded { _ in
+                if Trainer.tutorialTrainers.contains(where: { $0.name == trainer.name }) {
+                    gameVM.createTutorialGame(trainer: trainer)
+                } else {
+                    gameVM.createNewGame(trainer: trainer, deck: userVM.filteredDecks(filter: .playable)[selectedDeckIndex])
+                }
+            }
+        )
+        .disabled(!(selectedIndex == (pageCount - 1)))
+    }
+}
+
+struct PreBattleDeckChoiceView: View {
+    var decks: [Deck]
+    var trainer: Trainer
+    var size: CGSize
+    @Binding var selectedDeckIndex: Int
+    @ObservedObject var gameVM: GameViewModel
+    @ObservedObject var userVM: UserViewModel
+    var body: some View {
+        if !userVM.filteredDecks(filter: .playable).isEmpty {
+            UserPreBattleDeckListView(decks: decks, selectedDeckIndex: $selectedDeckIndex, size: size, isPossessing: userVM.isPossessing)
+        }
+        else {
+            Text("You have no playable decks right now")
+                .foregroundColor(.gray)
+                .font(.system(size: size.width * 0.08, weight: .bold, design: .rounded))
+                .frame(width: size.width, height: size.height * 0.2, alignment: .center)
+        }
     }
 }
 
