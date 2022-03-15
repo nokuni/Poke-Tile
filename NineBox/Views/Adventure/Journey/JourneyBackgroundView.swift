@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AdventureBackgroundView: View {
+struct JourneyBackgroundView: View {
     var size: CGSize
     var title: String
     var adventure: Adventure
@@ -30,8 +30,8 @@ struct AdventureBackgroundView: View {
     }
 }
 
-struct AdventureBackgroundView_Previews: PreviewProvider {
+struct JourneyBackgroundView_Previews: PreviewProvider {
     static var previews: some View {
-        AdventureBackgroundView(size: CGSize.screen, title: "Title", adventure: Adventure.adventures[0])
+        JourneyBackgroundView(size: CGSize.screen, title: "Title", adventure: Adventure.adventures[0])
     }
 }

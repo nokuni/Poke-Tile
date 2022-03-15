@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct NineBoxApp: App {
+    @StateObject var homeVM = HomeViewModel()
     @StateObject var gameVM = GameViewModel()
     @StateObject var userVM = UserViewModel()
     @StateObject var adventureVM = AdventureViewModel()
@@ -21,6 +22,7 @@ struct NineBoxApp: App {
                     .environmentObject(userVM)
                     .environmentObject(adventureVM)
                     .environmentObject(missionVM)
+                    .environmentObject(homeVM)
                     .statusBar(hidden: true)
             }
         }

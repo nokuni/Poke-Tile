@@ -26,14 +26,24 @@ struct HomeItemView: View {
                 .background(Color.steelBlue.cornerRadius(5))
         }
         .padding(10)
+        .overlay(
+            ZStack {
+                if !item.isUnlocked {
+                    Color.black
+                        .opacity(0.5)
+                        .cornerRadius(5)
+                        .padding(5)
+                }
+            }
+        )
         .frame(width: size.width * 0.2, height: size.width * 0.2)
         .background(
-            RoundedRectangle(cornerRadius: 10)
+            RoundedRectangle(cornerRadius: 5)
                 .stroke(Color.steelBlue, lineWidth: 2)
                 .foregroundColor(.gray)
                 .background(
                     Color.white
-                        .cornerRadius(10)
+                        .cornerRadius(5)
                 )
                 .padding(5)
         )

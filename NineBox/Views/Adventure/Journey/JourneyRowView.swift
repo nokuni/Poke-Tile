@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AdventureRowView: View {
+struct JourneyRowView: View {
     var size: CGSize
     var adventure: Adventure
     var body: some View {
@@ -22,13 +22,13 @@ struct AdventureRowView: View {
                     .frame(width: size.width, height: size.height * 0.2)
             )
             .overlay(
-                AdventureBackgroundView(size: size, title: adventure.title, adventure: adventure)
+                JourneyBackgroundView(size: size, title: adventure.title, adventure: adventure)
             )
     }
 }
 
-struct AdventureRowView_Previews: PreviewProvider {
+struct JourneyRowView_Previews: PreviewProvider {
     static var previews: some View {
-        AdventureRowView(size: CGSize.screen, adventure: Adventure.adventures[0])
+        JourneyRowView(size: CGSize.screen, adventure: Adventure.adventures[0])
     }
 }

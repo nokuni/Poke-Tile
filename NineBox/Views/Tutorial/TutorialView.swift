@@ -14,7 +14,7 @@ struct TutorialView: View {
     @ObservedObject var userVM: UserViewModel
     var body: some View {
         ZStack {
-            TransparentBackgroundView(color: .black)
+            Color.white.ignoresSafeArea()
             GeometryReader { geo in
                 Image("profOak")
                     .resizable()
@@ -29,7 +29,7 @@ struct TutorialView: View {
                             .frame(width: size.width * 0.9, height: size.height * 0.55, alignment: .center)
                             .frame(width: size.width, height: size.height * 0.6, alignment: .center)
                         if !TutorialPage.all[selectedPageIndex].hasAction {
-                            PointingArrowView(size: geo.size)
+                            PointingArrowView(color: .white, size: geo.size)
                                 .frame(width: size.width * 0.85, height: size.height * 0.5, alignment: .bottomTrailing)
                                 .frame(width: size.width, height: size.height * 0.4)
                         }

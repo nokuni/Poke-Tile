@@ -48,12 +48,4 @@ extension Trainer {
         }
         return trainer
     }
-    
-//    static func getBooster(_ name: String) throws -> Booster {
-//        let boosters: [Booster] = try! Bundle.main.decode("boosters.json")
-//        guard let booster = boosters.first(where: { $0.name == name }) else {
-//            throw TrainerError.noBooster
-//        }
-//        return booster
-//    }
 }

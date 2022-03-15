@@ -24,11 +24,19 @@ struct HomeNavigationLink<V: View>: View {
     
     var body: some View {
         VStack {
-            PointingArrowView(size: size)
-                //.opacity(isShowing ? 1 : 0)
+            if isShowing {
+                PointingArrowView(color: .steelBlue, size: size)
+                    .scaleEffect(1.5)
+                    .frame(width: size.width * 0.2, height: size.width * 0.2)
+            } else {
+                RoundedRectangle(cornerRadius: 5)
+                    .foregroundColor(.clear)
+                    .frame(width: size.width * 0.2, height: size.width * 0.2)
+            }
             NavigationLink(destination: view) {
                 HomeItemView(size: size, item: item, theme: theme)
             }
+            .disabled(!item.isUnlocked)
         }
     }
 }

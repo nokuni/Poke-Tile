@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AdventureListView: View {
+struct JourneyListView: View {
     var adventures: [Adventure]
     var size: CGSize
     var body: some View {
@@ -15,7 +15,7 @@ struct AdventureListView: View {
             LazyVStack(alignment: .leading) {
                 ForEach(adventures) { adventure in
                     NavigationLink(destination: TrainerView(adventure: adventure)) {
-                        AdventureRowView(size: size, adventure: adventure)
+                        JourneyRowView(size: size, adventure: adventure)
                     }
                 }
             }
@@ -28,8 +28,8 @@ struct AdventureListView: View {
     }
 }
 
-struct AdventureListView_Previews: PreviewProvider {
+struct JourneyListView_Previews: PreviewProvider {
     static var previews: some View {
-        AdventureListView(adventures: [], size: CGSize.screen)
+        JourneyListView(adventures: [], size: CGSize.screen)
     }
 }

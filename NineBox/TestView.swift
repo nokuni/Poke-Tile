@@ -11,16 +11,31 @@ struct TestView: View {
     @State var isAnimating = false
     var body: some View {
         ZStack {
-            if isAnimating {
-                ZStack {
-                    CardView(card: Card.pokemons[0], size: CGSize.screen, amount: 3, isPossessing: nil)
+            Color.red.ignoresSafeArea()
+            GeometryReader { geo in
+                VStack {
+                    Spacer()
+                    HStack(spacing: 0) {
+                        ForEach(0..<4) { index in
+                            VStack {
+                                if index == 2 {
+                                    PointingArrowView(color: .white, size: geo.size)
+                                        .scaleEffect(2)
+                                        .padding(5)
+                                        .frame(width: geo.size.width * 0.25, height: geo.size.width * 0.25)
+                                } else {
+                                    Rectangle()
+                                        .foregroundColor(.clear)
+                                        .padding(5)
+                                        .frame(width: geo.size.width * 0.25, height: geo.size.width * 0.25)
+                                }
+                                RoundedRectangle(cornerRadius: 5)
+                                    .padding(5)
+                                    .frame(width: geo.size.width * 0.25, height: geo.size.width * 0.25)
+                            }
+                        }
+                    }
                 }
-                .transition(AnyTransition.scale)
-            }
-        }
-        .onAppear {
-            withAnimation(.spring()) {
-                isAnimating.toggle()
             }
         }
     }

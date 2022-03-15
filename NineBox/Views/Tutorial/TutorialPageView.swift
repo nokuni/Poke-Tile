@@ -50,7 +50,7 @@ struct ImagesGenreChoiceView: View {
             HStack {
                 ForEach(images.indices, id: \.self) { index in
                     VStack {
-                        PointingArrowView(size: size)
+                        PointingArrowView(color: .white, size: size)
                             .opacity(selectedGenreIndex == index ? 1 : 0)
                         Button(action: {
                             selectedGenreIndex = index

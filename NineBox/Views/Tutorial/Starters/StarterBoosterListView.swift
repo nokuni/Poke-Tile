@@ -15,7 +15,7 @@ struct StarterBoosterListView: View {
         HStack {
             ForEach(starters.indices) { index in
                 VStack {
-                    PointingArrowView(size: size)
+                    PointingArrowView(color: .white, size: size)
                         .opacity(selectedDeck == starters[index] ? 1 : 0)
                         .padding()
                     Button(action: {

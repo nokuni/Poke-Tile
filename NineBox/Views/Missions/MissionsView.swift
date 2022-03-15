@@ -14,7 +14,9 @@ struct MissionsView: View {
     @State var isShowingReward = false
     var body: some View {
         ZStack {
+            
             Color.white.ignoresSafeArea()
+            
             GeometryReader { geo in
                 VStack(alignment: .leading) {
                     NavigationTitleView(size: geo.size, navigationTitle: NavigationTitleModel.missions)
@@ -22,15 +24,14 @@ struct MissionsView: View {
                     BackButtonView(size: geo.size, dismiss: dismiss)
                 }
             }
-            .padding()
+            .spacedScreen
+            
             if isShowingReward {
                 if let selectedReward = selectedReward {
                     MissionRewardAnimationView(card: selectedReward, size: CGSize.screen, isShowingRewardView: $isShowingReward)
                 }
             }
         }
-        .navigationBarHidden(true)
-        .navigationBarBackButtonHidden(true)
     }
 }
 

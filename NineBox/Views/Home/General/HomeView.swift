@@ -11,6 +11,7 @@ struct HomeView: View {
     @EnvironmentObject var gameVM: GameViewModel
     @EnvironmentObject var userVM: UserViewModel
     @EnvironmentObject var missionVM: MissionViewModel
+    @EnvironmentObject var homeVM: HomeViewModel
     @State var isShowingModalTheme = false
     @State var isShowingTutorial = true
     @AppStorage("tutorial") var isInTutorial = true
@@ -18,7 +19,7 @@ struct HomeView: View {
         NavigationView {
             ZStack {
                 if isInTutorial {
-                    Color.red.ignoresSafeArea()
+                    Color.beigeTogepi.ignoresSafeArea()
                     Image("profOak")
                         .resizable()
                         .scaledToFit()
@@ -31,22 +32,17 @@ struct HomeView: View {
                         ThemeButtonView(isShowingModalTheme: $isShowingModalTheme, size: geo.size)
                         Spacer()
                         HStack(spacing: 0) {
-                            HomeNavigationLink(size: geo.size, item: HomeItem.decks, theme: userVM.user.profile.theme, isShowing: false) {
+                            HomeNavigationLink(size: geo.size, item: homeVM.homeItems[0], theme: userVM.user.profile.theme, isShowing: false) {
                                 UserDeckView(userVM: userVM)
                             }
-                            HomeNavigationLink(size: geo.size, item: HomeItem.cards, theme: userVM.user.profile.theme, isShowing: false) {
+                            HomeNavigationLink(size: geo.size, item: homeVM.homeItems[1], theme: userVM.user.profile.theme, isShowing: false) {
                                 UserCardsView(userVM: userVM)
                             }
-                            //VStack {
-                                /*if isInTutorial && !isShowingTutorial {
-                                    PointingArrowView(size: geo.size)
-                                }*/
-                            HomeNavigationLink(size: geo.size, item: HomeItem.adventures, theme: userVM.user.profile.theme, isShowing: !isShowingTutorial) {
+                            HomeNavigationLink(size: geo.size, item: homeVM.homeItems[2], theme: userVM.user.profile.theme, isShowing: !isShowingTutorial) {
                                     AdventureView()
                                 }
-                            //}
                             
-                            HomeNavigationLink(size: geo.size, item: HomeItem.missions, theme: userVM.user.profile.theme, isShowing: false) {
+                            HomeNavigationLink(size: geo.size, item: homeVM.homeItems[3], theme: userVM.user.profile.theme, isShowing: false) {
                                 MissionsView(missionVM: missionVM)
                             }
                         }
