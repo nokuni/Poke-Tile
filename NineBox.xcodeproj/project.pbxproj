@@ -65,7 +65,7 @@
 		2EA07DC327C23B2500AB974B /* StatSquareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA07DC227C23B2500AB974B /* StatSquareView.swift */; };
 		2EA07DC627C23B7400AB974B /* pokemons.json in Resources */ = {isa = PBXBuildFile; fileRef = 2EA07DC527C23B7400AB974B /* pokemons.json */; };
 		2EA07DCA27C23ECC00AB974B /* BundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA07DC927C23ECC00AB974B /* BundleExtension.swift */; };
-		2EA07DCC27C2404C00AB974B /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA07DCB27C2404C00AB974B /* TestView.swift */; };
+		2EA07DCC27C2404C00AB974B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA07DCB27C2404C00AB974B /* ContentView.swift */; };
 		2EA6827127DE2C5100F76306 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA6827027DE2C5100F76306 /* TutorialView.swift */; };
 		2EB1662427C65E3000BCF2D5 /* UserCardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB1662327C65E3000BCF2D5 /* UserCardListView.swift */; };
 		2EB1662827C6633700BCF2D5 /* UserCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB1662727C6633700BCF2D5 /* UserCardsView.swift */; };
@@ -103,6 +103,9 @@
 		2EDA087727E0F075007D2D09 /* profBirch.json in Resources */ = {isa = PBXBuildFile; fileRef = 2EDA087627E0F075007D2D09 /* profBirch.json */; };
 		2EDA087927E0F291007D2D09 /* PreBattleTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDA087827E0F291007D2D09 /* PreBattleTutorialView.swift */; };
 		2EDA087B27E14D05007D2D09 /* LabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDA087A27E14D05007D2D09 /* LabModel.swift */; };
+		2EDA087D27E1DD1F007D2D09 /* MainMenuButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDA087C27E1DD1F007D2D09 /* MainMenuButtonView.swift */; };
+		2EDA087F27E1DD69007D2D09 /* BottomScreenButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EDA087E27E1DD69007D2D09 /* BottomScreenButtonsView.swift */; };
+		2EDA088127E245A2007D2D09 /* ending.json in Resources */ = {isa = PBXBuildFile; fileRef = 2EDA088027E245A2007D2D09 /* ending.json */; };
 		2EEEA20227BD8124009A1D49 /* NineBoxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEEA20127BD8124009A1D49 /* NineBoxApp.swift */; };
 		2EEEA20427BD8124009A1D49 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EEEA20327BD8124009A1D49 /* GameView.swift */; };
 		2EEEA20627BD8126009A1D49 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EEEA20527BD8126009A1D49 /* Assets.xcassets */; };
@@ -203,7 +206,7 @@
 		2EA07DC227C23B2500AB974B /* StatSquareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatSquareView.swift; sourceTree = "<group>"; };
 		2EA07DC527C23B7400AB974B /* pokemons.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = pokemons.json; sourceTree = "<group>"; };
 		2EA07DC927C23ECC00AB974B /* BundleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleExtension.swift; sourceTree = "<group>"; };
-		2EA07DCB27C2404C00AB974B /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		2EA07DCB27C2404C00AB974B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2EA6827027DE2C5100F76306 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		2EB1662327C65E3000BCF2D5 /* UserCardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardListView.swift; sourceTree = "<group>"; };
 		2EB1662727C6633700BCF2D5 /* UserCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardsView.swift; sourceTree = "<group>"; };
@@ -241,7 +244,10 @@
 		2EDA087627E0F075007D2D09 /* profBirch.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = profBirch.json; sourceTree = "<group>"; };
 		2EDA087827E0F291007D2D09 /* PreBattleTutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreBattleTutorialView.swift; sourceTree = "<group>"; };
 		2EDA087A27E14D05007D2D09 /* LabModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabModel.swift; sourceTree = "<group>"; };
-		2EEEA1FE27BD8124009A1D49 /* NineBox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NineBox.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2EDA087C27E1DD1F007D2D09 /* MainMenuButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuButtonView.swift; sourceTree = "<group>"; };
+		2EDA087E27E1DD69007D2D09 /* BottomScreenButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomScreenButtonsView.swift; sourceTree = "<group>"; };
+		2EDA088027E245A2007D2D09 /* ending.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ending.json; sourceTree = "<group>"; };
+		2EEEA1FE27BD8124009A1D49 /* PokemonTiles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokemonTiles.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EEEA20127BD8124009A1D49 /* NineBoxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NineBoxApp.swift; sourceTree = "<group>"; };
 		2EEEA20327BD8124009A1D49 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		2EEEA20527BD8126009A1D49 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -352,6 +358,8 @@
 				2E9676EC27CF4CA200DC50C6 /* ModalButtonView.swift */,
 				2E642B5D27CE7650006A2083 /* CommonBackgroundView.swift */,
 				2E642B6727CE8623006A2083 /* LongButtonView.swift */,
+				2EDA087C27E1DD1F007D2D09 /* MainMenuButtonView.swift */,
+				2EDA087E27E1DD69007D2D09 /* BottomScreenButtonsView.swift */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -650,6 +658,7 @@
 				2EDA087227E0F059007D2D09 /* profOak.json */,
 				2EDA087427E0F066007D2D09 /* profElm.json */,
 				2EDA087627E0F075007D2D09 /* profBirch.json */,
+				2EDA088027E245A2007D2D09 /* ending.json */,
 			);
 			path = Tutorial;
 			sourceTree = "<group>";
@@ -724,7 +733,7 @@
 		2EEEA1FF27BD8124009A1D49 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2EEEA1FE27BD8124009A1D49 /* NineBox.app */,
+				2EEEA1FE27BD8124009A1D49 /* PokemonTiles.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -733,7 +742,7 @@
 			isa = PBXGroup;
 			children = (
 				2EEEA20127BD8124009A1D49 /* NineBoxApp.swift */,
-				2EA07DCB27C2404C00AB974B /* TestView.swift */,
+				2EA07DCB27C2404C00AB974B /* ContentView.swift */,
 				2E98C09427D0F53600286879 /* Junk */,
 				2EA07DC427C23B6700AB974B /* Data */,
 				2E4E1A1227BEDE6D001C8B67 /* Views */,
@@ -893,7 +902,7 @@
 			);
 			name = NineBox;
 			productName = NineBox;
-			productReference = 2EEEA1FE27BD8124009A1D49 /* NineBox.app */;
+			productReference = 2EEEA1FE27BD8124009A1D49 /* PokemonTiles.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -946,6 +955,7 @@
 				2EFCB94727C24E5C0044B2E9 /* debuffs.json in Resources */,
 				2EDA087727E0F075007D2D09 /* profBirch.json in Resources */,
 				2EFCB94927C250A60044B2E9 /* worldRegions.json in Resources */,
+				2EDA088127E245A2007D2D09 /* ending.json in Resources */,
 				2E7BF0F227DD0D76007D7717 /* missions.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -963,7 +973,7 @@
 				2EDA086B27E0E4B1007D2D09 /* GenreChoiceView.swift in Sources */,
 				2E4A95EF27C7B77100BA498D /* NavigationTitleView.swift in Sources */,
 				2ED7AA1B27D3895D008FA2C5 /* UserCardInformationView.swift in Sources */,
-				2EA07DCC27C2404C00AB974B /* TestView.swift in Sources */,
+				2EA07DCC27C2404C00AB974B /* ContentView.swift in Sources */,
 				2EDA086727E0CB98007D2D09 /* AdventureModel.swift in Sources */,
 				2ED34E1327CB81DA00F24251 /* UserSetCardListView.swift in Sources */,
 				2E42558127BFEC2B009B62EB /* CardGestureView.swift in Sources */,
@@ -980,6 +990,7 @@
 				2E642B5A27CE569F006A2083 /* VersusAnimationView.swift in Sources */,
 				2ED34E1927CBA3DE00F24251 /* UserDeckSlotView.swift in Sources */,
 				2EFCB96F27C2C5D10044B2E9 /* TrainerRowView.swift in Sources */,
+				2EDA087F27E1DD69007D2D09 /* BottomScreenButtonsView.swift in Sources */,
 				2E7BF0EB27DCEA94007D7717 /* MissionRowView.swift in Sources */,
 				2EA07DCA27C23ECC00AB974B /* BundleExtension.swift in Sources */,
 				2ED34E2027CBD73D00F24251 /* ChangeNameOverlayView.swift in Sources */,
@@ -1046,6 +1057,7 @@
 				2EB1662427C65E3000BCF2D5 /* UserCardListView.swift in Sources */,
 				2ED34E1B27CBA41A00F24251 /* ChangeDeckNameButtonView.swift in Sources */,
 				2E849BC527D653BB001CE665 /* UserViewModel.swift in Sources */,
+				2EDA087D27E1DD1F007D2D09 /* MainMenuButtonView.swift in Sources */,
 				2E4A95F427C7B98C00BA498D /* BackButtonView.swift in Sources */,
 				2ED7AA1727D38877008FA2C5 /* CardSummonAnimation.swift in Sources */,
 				2EDA086D27E0E4F3007D2D09 /* NameChoiceView.swift in Sources */,
@@ -1224,7 +1236,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = yann.NineBox;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = PokemonTiles;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1254,7 +1266,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = yann.NineBox;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = PokemonTiles;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

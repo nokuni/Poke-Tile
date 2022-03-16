@@ -11,6 +11,7 @@ struct ActionButtonView: View {
     var text: String
     var textColor: Color
     var color: Color
+    var shadowColor: Color
     var size: CGSize
     var body: some View {
             Text(text)
@@ -22,13 +23,13 @@ struct ActionButtonView: View {
                     RoundedRectangle(cornerRadius: 5)
                         .foregroundColor(color)
                         .cornerRadius(5)
-                        .shadow(color: .black, radius: 0, x: 3, y: 3)
+                        .shadow(color: shadowColor, radius: 0, x: 3, y: 3)
                 )
     }
 }
 
 struct ActionButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        ActionButtonView(text: "START BATTLE", textColor: .white, color: .crimson, size: CGSize.screen)
+        ActionButtonView(text: "START BATTLE", textColor: .white, color: .crimson, shadowColor: .black, size: CGSize.screen)
     }
 }

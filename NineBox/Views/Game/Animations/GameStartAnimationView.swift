@@ -15,14 +15,13 @@ struct GameStartAnimationView: View {
     var trainer: Trainer
     var body: some View {
         ZStack {
-            Color.black.opacity(0.5).ignoresSafeArea()
             GeometryReader { geo in
                 VStack(spacing: 0) {
                     if isAnimatingImages {
                         ImageAnimationView(background: trainer.background, image: trainer.image, size: geo.size, insertionEdge: .top, removalEdge: .top)
                     }
                     if isAnimatingImages {
-                        ImageAnimationView(background: "volcano.background", image: user.profile.image, size: geo.size, insertionEdge: .bottom, removalEdge: .bottom)
+                        ImageAnimationView(background: trainer.background, image: user.profile.image, size: geo.size, insertionEdge: .bottom, removalEdge: .bottom)
                     }
                 }
             }

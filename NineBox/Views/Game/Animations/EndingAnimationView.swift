@@ -20,9 +20,7 @@ struct EndingAnimationView: View {
     @ObservedObject var missionVM: MissionViewModel
     var body: some View {
         ZStack {
-            Rectangle()
-                .foregroundColor(gameVM.game.isGameWon ? .blue : .crimson)
-                .opacity(0.7)
+            Color.white
                 .ignoresSafeArea()
             VStack {
                 if isAnimating {
@@ -41,7 +39,7 @@ struct EndingAnimationView: View {
             withAnimation(.spring()) {
                 if gameVM.game.isGameWon {
                     adventureVM.worldTrainerEndBattleActions(gameVM.game.trainer, addCards: userVM.addCardsToCollection)
-                    adventureVM.trainingTrainerEndBattleActions(gameVM.game.trainer, addCards: userVM.addCardsToCollection)
+                    adventureVM.tutorialTrainerEndBattleActions(gameVM.game.trainer, addCards: userVM.addCardsToCollection)
                     adventureVM.checkAdventureMissions(&missionVM.missions)
                 }
                 isAnimating.toggle()

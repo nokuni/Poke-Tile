@@ -10,7 +10,9 @@ import SwiftUI
 // Card Collection, Boosters, Summons and Decks
 
 class UserViewModel: ObservableObject {
-    @Published var user = User(profile: Profile(name: "Nokuni", image: "userboy"))
+    @Published var isInUserDecks: Bool = false
+    @Published var isInUserCardCollection: Bool = false
+    @Published var user = User(profile: Profile())
     
     init() {
         let starterCards = Deck.starters.map { $0.cards }.joined()

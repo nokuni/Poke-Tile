@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LabView: View {
     @Environment(\.dismiss) private var dismiss
+    @Binding var isActive: Bool
     @ObservedObject var adventureVM: AdventureViewModel
     var body: some View {
         ZStack {
@@ -16,9 +17,9 @@ struct LabView: View {
             GeometryReader { geo in
                 VStack(alignment: .leading) {
                     NavigationTitleView(size: geo.size, navigationTitle: .lab)
-                    LabListView(adventureVM: adventureVM, size: geo.size)
+                    LabListView(adventureVM: adventureVM, size: geo.size, isActive: $isActive)
                     Spacer()
-                    BackButtonView(size: geo.size, dismiss: dismiss)
+                    BottomScreenButtonsView(dismiss: dismiss, size: geo.size, isActive: $isActive)
                 }
             }
             .spacedScreen
@@ -28,6 +29,6 @@ struct LabView: View {
 
 struct LabView_Previews: PreviewProvider {
     static var previews: some View {
-        LabView(adventureVM: AdventureViewModel())
+        LabView(isActive: .constant(false), adventureVM: AdventureViewModel())
     }
 }

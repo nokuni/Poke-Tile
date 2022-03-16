@@ -8,6 +8,7 @@
 import SwiftUI
 
 class AdventureViewModel: ObservableObject {
+    @Published var isInAdventure: Bool = false
     @Published var adventures = AdventureModel.all
     @Published var lab = LabModel.all
     @Published var regions = WorldRegion.regions
@@ -31,8 +32,9 @@ class AdventureViewModel: ObservableObject {
         }
     }
     func loadTutorialTrainers() {
-        tutorialTrainers = tutorialTrainers.filter { $0.name != "Beginning Prof.Oak" }
+        tutorialTrainers = tutorialTrainers.filter { $0.name != "Beginning Prof.Oak" && $0.name != "Ending Prof.Oak" }
     }
+    
     func unlockLab(_ title: String) {
         guard let index = lab.firstIndex(where: { $0.title == title }) else { return }
         lab[index].isUnlocked = true
@@ -51,6 +53,8 @@ class AdventureViewModel: ObservableObject {
     
     func worldTrainerEndBattleActions(_ trainer: Trainer?, addCards: (([Card]) -> Void)) {
         if let trainer = trainer {
+            guard let adventureIndex = regions.firstIndex(where: { $0.trainers.contains(trainer) }) else { return }
+            guard regions[adventureIndex].trainers.contains(where: { $0.name == trainer.name }) else { return }
             unlockNextWorldTrainer(from: trainer)
             if !trainer.hasBeenCleared {
                 let reward = trainer.reward.map { try! Card.getPokemon(name: $0) }
@@ -58,8 +62,9 @@ class AdventureViewModel: ObservableObject {
             }
         }
     }
-    func trainingTrainerEndBattleActions(_ trainer: Trainer?, addCards: (([Card]) -> Void)) {
+    func tutorialTrainerEndBattleActions(_ trainer: Trainer?, addCards: (([Card]) -> Void)) {
         if let trainer = trainer {
+            guard tutorialTrainers.contains(where: { $0.name == trainer.name }) else { return }
             unlockNextTrainingTrainer(from: trainer)
             if !trainer.hasBeenCleared {
                 let reward = trainer.reward.map { try! Card.getPokemon(name: $0) }

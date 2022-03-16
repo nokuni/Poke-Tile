@@ -26,7 +26,7 @@ struct MissionRewardAnimationView: View {
                 Button(action: {
                     isShowingRewardView.toggle()
                 }) {
-                    ActionButtonView(text: "OK", textColor: .white, color: .steelBlue, size: size)
+                    ActionButtonView(text: "OK", textColor: .white, color: .steelBlue, shadowColor: .black, size: size)
                 }
                 .padding()
             }

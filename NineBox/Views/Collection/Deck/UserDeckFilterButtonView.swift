@@ -14,7 +14,7 @@ struct UserDeckFilterButtonView: View {
         Button(action: {
             selectedFilter = filter
         }) {
-            LongButtonView(text: filter.rawValue.capitalized, textColor: .white, textSize: 0.04, backgroundColor: selectedFilter == filter ? .steelBlue : .gray, borderColor: .black)
+            ActionButtonView(text: filter.rawValue.capitalized, textColor: .white, color: selectedFilter == filter ? .steelBlue : .gray, shadowColor: .black, size: CGSize.screen)
         }
     }
 }

@@ -19,9 +19,8 @@ struct SurrenderModalView: View {
                     .ignoresSafeArea()
                 LazyVStack {
                     RoundedRectangle(cornerRadius: 5)
-                        .stroke(Color.steelBlue, lineWidth: 5)
+                        .foregroundColor(.white)
                         .frame(width: geo.size.width * 0.9, height: geo.size.height * 0.4)
-                        .background(Color.white.cornerRadius(5))
                         .overlay(
                             SurrenderModalOverlayView(gameVM: gameVM, isShowingSurrenderModal: $isShowingSurrenderModal, isShowingGameEnding: $isShowingGameEnding)
                         )
@@ -46,7 +45,7 @@ struct SurrenderModalOverlayView: View {
     var body: some View {
         VStack {
             Text("Do you really want to surrender this battle ?")
-                .foregroundColor(.black)
+                .foregroundColor(.steelBlue)
                 .font(.system(size: CGSize.screen.width * 0.07, weight: .semibold, design: .rounded))
                 .multilineTextAlignment(.center)
                 .padding(.vertical)
@@ -54,7 +53,7 @@ struct SurrenderModalOverlayView: View {
                 Button(action: {
                     isShowingSurrenderModal.toggle()
                 }) {
-                    ActionButtonView(text: "NO", textColor: .white, color: .steelBlue, size: CGSize.screen)
+                    ActionButtonView(text: "NO", textColor: .white, color: .steelBlue, shadowColor: .black, size: CGSize.screen)
                 }
                 Button(action: {
                     gameVM.game.boardIndices.forEach {
@@ -63,7 +62,7 @@ struct SurrenderModalOverlayView: View {
                     isShowingSurrenderModal.toggle()
                     isShowingGameEnding.toggle()
                 }) {
-                    ActionButtonView(text: "YES", textColor: .white, color: .crimson, size: CGSize.screen)
+                    ActionButtonView(text: "YES", textColor: .white, color: .crimson, shadowColor: .black, size: CGSize.screen)
                 }
             }
             .padding(.horizontal)

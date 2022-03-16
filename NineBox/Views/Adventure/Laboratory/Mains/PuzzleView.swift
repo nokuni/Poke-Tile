@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct PuzzleView: View {
+    @Binding var isActive: Bool
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("Hello, World!")
     }
 }
 
 struct PuzzleView_Previews: PreviewProvider {
     static var previews: some View {
-        PuzzleView()
+        PuzzleView(isActive: .constant(false))
     }
 }

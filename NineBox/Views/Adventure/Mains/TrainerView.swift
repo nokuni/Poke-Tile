@@ -12,15 +12,16 @@ struct TrainerView: View {
     @EnvironmentObject var gameVM: GameViewModel
     @EnvironmentObject var adventureVM: AdventureViewModel
     var region: WorldRegion
+    @Binding var isActive: Bool
     var body: some View {
         ZStack {
             Color.white.ignoresSafeArea()
             GeometryReader { geo in
                 VStack(alignment: .leading) {
                     NavigationTitleView(size: geo.size, navigationTitle: .trainers, region: region)
-                    TrainerListView(size: geo.size, region: region, trainers: region.trainers)
+                    TrainerListView(size: geo.size, region: region, trainers: region.trainers, isActive: $isActive)
                     Spacer()
-                    BackButtonView(size: geo.size, dismiss: dismiss)
+                    BottomScreenButtonsView(dismiss: dismiss, size: geo.size, isActive: $isActive)
                 }
             }
             .padding()
@@ -34,6 +35,6 @@ struct TrainerView: View {
 
 struct TrainerView_Previews: PreviewProvider {
     static var previews: some View {
-        TrainerView(region: WorldRegion.regions[0])
+        TrainerView(region: WorldRegion.regions[0], isActive: .constant(false))
     }
 }

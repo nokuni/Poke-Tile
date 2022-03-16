@@ -1,11 +1,42 @@
 [
     {
-        "title": "Prof.OAK",
-        "images": null,
-        "description": "\"Welcome to Pokemon Tiles! \n One the biggest board game in the world of Pokemon!\"",
+        "title": "Prof.Birch",
+        "description": "\"Hello, I’m the Prof.Birch ! \n I’m a bit in a hurry so i will be brief about bonus tiles.\"",
         "hasAction": false,
-        "isChoosingGenre": null,
-        "isChoosingName": null,
-        "isQuitting": null
+    },
+    {
+        "title": "Prof.Birch",
+        "images": ["grass", "fire", "water"],
+        "description": "\"Each Poketile has his own type and that type has an important role to play on the board.\"",
+        "hasAction": false,
+    },
+    {
+        "title": "Prof.Birch",
+        "images": ["bonusTile.example"],
+        "description": "\"Sometimes, you will see some tiles, on the board, represented by a specific type. \n These are called bonus tiles.\"",
+        "hasAction": false,
+    },
+    {
+        "title": "Prof.Birch",
+        "images": ["statsBoosted.example"],
+        "description": "\"When you play a Poketile of the same type on one of them, all his stats are boosted and the color of the numbers goes to blue.\"",
+        "hasAction": false,
+    },
+    {
+        "title": "Prof.Birch",
+        "images": ["statsLowered.example"],
+        "description": "\"Conversely, when you play a Poketile of different type on one of them, all his stats are lowered and the color of the numbers goes to red.\"",
+        "hasAction": false,
+    },
+    {
+        "title": "Prof.Birch",
+        "images": ["bonusTile.example"],
+        "description": "\"Each circle in a bonus tile represents +1 or -1 on all values of a Poketile stats.\"",
+        "hasAction": false,
+    },
+    {
+        "title": "Prof.Birch",
+        "description": "\"Now you are ready. \n Do your best to synergize the most possible in this training.\"",
+        "hasAction": true,
     },
 ]

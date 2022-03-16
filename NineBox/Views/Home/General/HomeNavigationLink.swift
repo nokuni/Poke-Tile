@@ -11,28 +11,29 @@ struct HomeNavigationLink<V: View>: View {
     var size: CGSize
     var item: HomeItem
     var theme: Theme
-    var isShowing: Bool
+    @Binding var isActive: Bool
     var view: V
     
-    init(size: CGSize, item: HomeItem, theme: Theme, isShowing: Bool, @ViewBuilder view: @escaping () -> V) {
+    init(size: CGSize, item: HomeItem, theme: Theme, isActive: Binding<Bool>, @ViewBuilder view: @escaping () -> V) {
         self.size = size
         self.item = item
         self.theme = theme
-        self.isShowing = isShowing
+        self._isActive = isActive
         self.view = view()
     }
     
     var body: some View {
         VStack {
-            NavigationLink(destination: view) {
+            NavigationLink(destination: view, isActive: $isActive) {
                 HomeItemView(size: size, item: item, theme: theme)
             }
+            .isDetailLink(false)
             .disabled(!item.isUnlocked)
         }
     }
 }
 struct HomeNavigationLink_Previews: PreviewProvider {
     static var previews: some View {
-        HomeNavigationLink(size: CGSize.screen, item: HomeItem.cards, theme: Theme.pikachu, isShowing: false, view: { EmptyView() })
+        HomeNavigationLink(size: CGSize.screen, item: HomeItem.cards, theme: Theme.pikachu, isActive: .constant(false), view: { EmptyView() })
     }
 }

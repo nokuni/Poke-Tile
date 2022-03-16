@@ -8,6 +8,7 @@
 import SwiftUI
 
 class MissionViewModel: ObservableObject {
+    @Published var isInMissions: Bool = false
     @Published var missions = Mission.all
     
     func completeMission(_ name: String) {

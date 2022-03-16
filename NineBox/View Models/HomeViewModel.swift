@@ -8,6 +8,8 @@
 import SwiftUI
 
 class HomeViewModel: ObservableObject {
+    @Published var isShowingStartingTutorial: Bool = true
+    @Published var isShowingEndingTutorial: Bool = true
     @Published var homeItems = HomeItem.all
     
     init() {

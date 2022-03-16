@@ -15,20 +15,19 @@ struct EndingMenuView: View {
     @Binding var isShowingStart: Bool
     var body: some View {
         RoundedRectangle(cornerRadius: 5)
-            .stroke(Color.black, lineWidth: 3)
-            .background(Color.white)
+            .foregroundColor(.white)
             .overlay(
                 VStack {
-                    Text(gameVM.game.isGameWon ? "Congratulation!" : "Defeat")
-                        .foregroundColor(.black)
+                    Text(gameVM.game.isGameWon ? "Congratulation!" : "Defeat...")
+                        .foregroundColor(.steelBlue)
                         .font(.system(size: gameVM.game.isGameWon ? CGSize.screen.width * 0.1 : CGSize.screen.width * 0.15, weight: .bold, design: .rounded))
                     
                     if gameVM.game.isGameWon {
                         if let trainer = gameVM.game.trainer {
                             if !trainer.hasBeenCleared {
                                 CardSummonAnimationView(cardAnimationVM: cardAnimationVM, cards: cards, size: CGSize.screen)
-                                Text("New card !")
-                                    .foregroundColor(.black)
+                                Text("New cards!")
+                                    .foregroundColor(.steelBlue)
                                     .font(.system(size: CGSize.screen.width * 0.04, weight: .bold, design: .rounded))
                             } else {
                                 Text("You already obtained this reward")
@@ -41,7 +40,7 @@ struct EndingMenuView: View {
                             gameVM.resetGame()
                             dismiss?()
                         }) {
-                            ActionButtonView(text: "OK", textColor: .white, color: cardAnimationVM.isAnimationFinished(isCleared: gameVM.game.trainer?.hasBeenCleared) ? .crimson : .gray, size: CGSize.screen)
+                            ActionButtonView(text: "OK", textColor: .white, color: cardAnimationVM.isAnimationFinished(isCleared: gameVM.game.trainer?.hasBeenCleared) ? .crimson : .gray, shadowColor: .black, size: CGSize.screen)
                         }
                         .disabled(!cardAnimationVM.isAnimationFinished(isCleared: gameVM.game.trainer?.hasBeenCleared))
                     }
@@ -51,14 +50,14 @@ struct EndingMenuView: View {
                             gameVM.loadGame()
                             isShowingStart.toggle()
                         }) {
-                            ActionButtonView(text: "RETRY", textColor: .white, color: .steelBlue, size: CGSize.screen)
+                            ActionButtonView(text: "RETRY", textColor: .white, color: .steelBlue, shadowColor: .black, size: CGSize.screen)
                         }
                         
                         Button(action: {
                             gameVM.resetGame()
                             dismiss?()
                         }) {
-                            ActionButtonView(text: "QUIT", textColor: .white, color: .crimson, size: CGSize.screen)
+                            ActionButtonView(text: "QUIT", textColor: .white, color: .crimson, shadowColor: .black, size: CGSize.screen)
                         }
                     }
                 }

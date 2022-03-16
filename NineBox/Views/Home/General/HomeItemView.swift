@@ -20,7 +20,7 @@ struct HomeItemView: View {
                 .scaledToFit()
             Text(item.title)
                 .foregroundColor(.white)
-                .font(.system(size: size.width * 0.025, weight: .bold, design: .rounded))
+                .font(.system(size: size.width * 0.02, weight: .bold, design: .rounded))
                 .padding(2)
                 .frame(maxWidth: .infinity)
                 .background(Color.steelBlue.cornerRadius(5))

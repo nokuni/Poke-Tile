@@ -13,7 +13,7 @@ enum NavigationTitleModel: String {
     var color: Color {
         switch self {
         case .decks:
-            return .orangeDragonite
+            return .darkOrange
         case .cards:
             return .fairyBorder
         case .adventure:

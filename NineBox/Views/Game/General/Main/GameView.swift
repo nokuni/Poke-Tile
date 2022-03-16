@@ -26,7 +26,7 @@ struct GameView: View {
                     Button(action: {
                         isShowingSurrenderModal.toggle()
                     }) {
-                        ActionButtonView(text: "SURRENDER", textColor: .white, color: gameVM.game.turn == .opponent && !gameVM.isShowingTurnAnimation ? .gray : .crimson, size: geo.size)
+                        ActionButtonView(text: "SURRENDER", textColor: .white, color: gameVM.game.turn == .opponent && !gameVM.isShowingTurnAnimation ? .gray : .crimson, shadowColor: .white, size: geo.size)
                     }
                     .disabled(gameVM.game.turn == .opponent && !gameVM.isShowingTurnAnimation)
                     //ModalButtonView(isPresented: $isShowingSurrenderModal, borderColor: .black, backgroundColor: .crimson, textColor: .white, textContent: "SURRENDER", size: geo.size)

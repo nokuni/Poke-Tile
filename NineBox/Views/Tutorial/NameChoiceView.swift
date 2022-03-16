@@ -17,9 +17,9 @@ struct NameChoiceView: View {
         if let isChoosingName = page.isChoosingName {
             if isChoosingName {
                 TextField("Name", text: $text)
-                    .padding()
-                    .background(Color.teal.cornerRadius(5))
-                    .padding()
+                    .foregroundColor(.steelBlue)
+                    .padding(10)
+                    .background(Color.white.cornerRadius(5))
                     .disableAutocorrection(true)
                 
                 Button(action: {
@@ -29,6 +29,7 @@ struct NameChoiceView: View {
                     Text("OK")
                         .font(.system(size: size.width * 0.07, weight: .bold, design: .rounded))
                         .padding(5)
+                        .frame(width: size.width * 0.82)
                         .background(
                             RoundedRectangle(cornerRadius: 5)
                                 .foregroundColor(text.isEmpty ? .gray : .teal)

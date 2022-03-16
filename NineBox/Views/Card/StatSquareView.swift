@@ -52,11 +52,9 @@ struct StatSquareView: View {
                 .background(
                    RoundedRectangle(cornerRadius: 5)
                     .foregroundColor(.white)
-                        //.foregroundColor(stat == staticStat ? .white : stat > staticStat ? .paleGreen : .lightSalmon)
-                        .opacity(0.9))
+                )
             Text("\(stat)")
-                .foregroundColor(.black)
-                //.foregroundColor(stat == staticStat ? .black : stat > staticStat ? .white : .white)
+                .foregroundColor(stat == staticStat ? .black : stat > staticStat ? .blue : .red)
                 .font(.system(size: size.width * 0.2, weight: .bold, design: .rounded))
         }
         .opacity(!index.isMultiple(of: 2) ? 1 : 0)

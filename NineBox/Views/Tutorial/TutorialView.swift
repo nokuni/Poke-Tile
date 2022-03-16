@@ -13,19 +13,25 @@ struct TutorialView: View {
     @State var selectedPageIndex = 0
     @Binding var isPresentingTutorial: Bool
     @ObservedObject var userVM: UserViewModel
+    @ObservedObject var adventureVM: AdventureViewModel
+    @ObservedObject var homeVM: HomeViewModel
     var body: some View {
         ZStack {
             Color.white.ignoresSafeArea()
             GeometryReader { geo in
-                Image("profOak")
-                    .resizable()
-                    .scaledToFit()
-                    .scaleEffect(0.9)
-                    .frame(width: size.width, height: size.height * 0.5)
-                    .frame(width: size.width, height: size.height, alignment: .top)
+                if let pages = trainer.pages {
+                    if Trainer.getPages(pages)[selectedPageIndex].title != "Important Message" {
+                        Image("profOak")
+                            .resizable()
+                            .scaledToFit()
+                            .scaleEffect(0.9)
+                            .frame(width: size.width, height: size.height * 0.5)
+                            .frame(width: size.width, height: size.height, alignment: .top)
+                    }
+                }
                 VStack {
                     Spacer()
-                    TutorialWindowView(trainer: trainer, size: geo.size, selectedPageIndex: $selectedPageIndex, isPresentingTutorial: $isPresentingTutorial, userVM: userVM)
+                    TutorialWindowView(trainer: trainer, size: geo.size, selectedPageIndex: $selectedPageIndex, isPresentingTutorial: $isPresentingTutorial, userVM: userVM, adventureVM: adventureVM, homeVM: homeVM)
                     Spacer()
                 }
             }
@@ -36,7 +42,7 @@ struct TutorialView: View {
 
 struct TutorialView_Previews: PreviewProvider {
     static var previews: some View {
-        TutorialView(trainer: Trainer.worldTrainers[0], isPresentingTutorial: .constant(false), userVM: UserViewModel())
+        TutorialView(trainer: Trainer.worldTrainers[0], isPresentingTutorial: .constant(false), userVM: UserViewModel(), adventureVM: AdventureViewModel(), homeVM: HomeViewModel())
     }
 }
 
@@ -46,10 +52,12 @@ struct TutorialWindowView: View {
     @Binding var selectedPageIndex: Int
     @Binding var isPresentingTutorial: Bool
     @ObservedObject var userVM: UserViewModel
+    @ObservedObject var adventureVM: AdventureViewModel
+    @ObservedObject var homeVM: HomeViewModel
     var body: some View {
         ZStack {
             if let pages = trainer.pages {
-                TutorialPageView(page: Trainer.getPages(pages)[selectedPageIndex], size: size, userVM: userVM, selectedPageIndex: $selectedPageIndex, isPresentingTutorial: $isPresentingTutorial)
+                TutorialPageView(trainer: trainer, page: Trainer.getPages(pages)[selectedPageIndex], size: size, userVM: userVM, adventureVM: adventureVM, homeVM: homeVM, selectedPageIndex: $selectedPageIndex, isPresentingTutorial: $isPresentingTutorial)
                     .frame(width: size.width * 0.9, height: size.height * 0.45, alignment: .center)
                     .frame(width: size.width, height: size.height * 0.5, alignment: .center)
                 if !Trainer.getPages(pages)[selectedPageIndex].hasAction {

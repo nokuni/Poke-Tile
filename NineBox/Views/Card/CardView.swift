@@ -19,6 +19,7 @@ struct CardView: View {
             .background(
                 CardBackgroundView(card: card, isPossessing: isPossessing)
                     .clipped()
+                    .cornerRadius(5)
             )
             .padding(5)
             .frame(width: size.width * (1/amount), height: size.width * (1/amount))

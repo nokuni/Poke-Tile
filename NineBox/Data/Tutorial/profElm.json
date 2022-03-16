@@ -1,11 +1,30 @@
 [
     {
-        "title": "Prof.OAK",
-        "images": null,
-        "description": "\"Welcome to Pokemon Tiles! \n One the biggest board game in the world of Pokemon!\"",
+        "title": "Prof.Elm",
+        "description": "\"Hello, I’m the Prof.Elm, nice to meet you! \n In this session… I will talk you… about Poketile conversions.\"",
         "hasAction": false,
-        "isChoosingGenre": null,
-        "isChoosingName": null,
-        "isQuitting": null
+    },
+    {
+        "title": "Prof.Elm",
+        "images": ["cardStats.example"],
+        "description": "\"Your Poketiles have 4 stats… Each one represents his power for each side.\"",
+        "hasAction": false,
+    },
+    {
+        "title": "Prof.Elm",
+        "images": ["opponentConversion.example"],
+        "description": "\"When the opponent plays a Poketile with a higher stat on one of your poketile side. \n He converts it into his own.\"",
+        "hasAction": false,
+    },
+    {
+        "title": "Prof.Elm",
+        "images": ["userConversion.example"],
+        "description": "\"But don't worry, you can do the same.\"",
+        "hasAction": false,
+    },
+    {
+        "title": "Prof.Elm",
+        "description": "\"Now, try to convert my poketiles… and win.\"",
+        "hasAction": true,
     },
 ]

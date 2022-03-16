@@ -1,47 +1,36 @@
 [
     {
         "title": "Prof.OAK",
-        "images": null,
         "description": "\"Welcome to the first part of the Training sessions. \n Here, I will explain you how to win a battle of PokeTile.\"",
         "hasAction": false,
-        "isChoosingGenre": null,
-        "isChoosingName": null,
-        "isQuitting": null
     },
     {
         "title": "Prof.OAK",
-        "images": ["tileTutorial"],
+        "images": ["board.example"],
         "description": "\"And it’s very simple, all you need is having more tile than your opponent on the board.\"",
         "hasAction": false,
-        "isChoosingGenre": null,
-        "isChoosingName": null,
-        "isQuitting": null
     },
     {
         "title": "Prof.OAK",
-        "images": ["userCard", "opponentCard"],
+        "images": ["userCard.example", "opponentCard.example"],
         "description": "\"Your poketiles are bordered with a blue shadow and your opponent with a red one. So you can easily know which are yours.\"",
         "hasAction": false,
-        "isChoosingGenre": null,
-        "isChoosingName": null,
-        "isQuitting": null
     },
     {
         "title": "Prof.OAK",
-        "images": null,
+        "images": ["userBanner.example"],
         "description": "\"To be more easier, the number of your poketiles, on the board, is represented below your poketiles hand, in your character banner.\"",
         "hasAction": false,
-        "isChoosingGenre": null,
-        "isChoosingName": null,
-        "isQuitting": null
     },
     {
         "title": "Prof.OAK",
-        "images": null,
-        "description": "\"Enough talking, it’s better for you test it directly on the board. You can now start this session.\"",
+        "images": ["dragCard.example"],
+        "description": "\"To play a poketile, just drag it from your hand and drop it on the board.\"",
+        "hasAction": false,
+    },
+    {
+        "title": "Prof.OAK",
+        "description": "\"That's it! It’s better for you test it directly on the board. You can now start this session.\"",
         "hasAction": true,
-        "isChoosingGenre": null,
-        "isChoosingName": null,
-        "isQuitting": null
     },
 ]

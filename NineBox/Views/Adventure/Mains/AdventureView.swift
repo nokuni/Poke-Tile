@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AdventureView: View {
     @Environment(\.dismiss) private var dismiss
+    @Binding var isActive: Bool
     @ObservedObject var adventureVM: AdventureViewModel
     var body: some View {
         ZStack {
@@ -16,9 +17,9 @@ struct AdventureView: View {
             GeometryReader { geo in
                 VStack(alignment: .leading) {
                     NavigationTitleView(size: geo.size, navigationTitle: .adventure)
-                    AdventureListView(size: geo.size, adventureVM: adventureVM)
+                    AdventureListView(size: geo.size, isActive: $isActive, adventureVM: adventureVM)
                     Spacer()
-                    BackButtonView(size: geo.size, dismiss: dismiss)
+                    BottomScreenButtonsView(dismiss: dismiss, size: geo.size, isActive: $isActive)
                 }
             }
             .spacedScreen
@@ -28,21 +29,22 @@ struct AdventureView: View {
 
 struct AdventureView_Previews: PreviewProvider {
     static var previews: some View {
-        AdventureView(adventureVM: AdventureViewModel())
+        AdventureView(isActive: .constant(false) ,adventureVM: AdventureViewModel())
     }
 }
 
 struct AdventureListView: View {
     var size: CGSize
+    @Binding var isActive: Bool
     @ObservedObject var adventureVM: AdventureViewModel
     var body: some View {
         ScrollView {
             VStack {
                 AdventureNavigationLink(adventure: adventureVM.adventures[0], size: size) {
-                    JourneyView()
+                    JourneyView(isActive: $isActive)
                 }
                 AdventureNavigationLink(adventure: adventureVM.adventures[1], size: size) {
-                    LabView(adventureVM: adventureVM)
+                    LabView(isActive: $isActive, adventureVM: adventureVM)
                 }
             }
         }

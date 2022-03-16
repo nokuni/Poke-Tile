@@ -12,9 +12,8 @@ struct User: Identifiable {
     var profile: Profile
     var cards = [Card]()
     var decks = [Deck]()
-    //var boosters = [Booster]()
 }
 
 extension User {
-    static let previewExample = User(profile: Profile(name: "User", image: "blaine"))
+    static let previewExample = User(profile: Profile())
 }

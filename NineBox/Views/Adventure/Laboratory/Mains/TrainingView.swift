@@ -10,15 +10,16 @@ import SwiftUI
 struct TrainingView: View {
     @Environment(\.dismiss) private var dismiss
     @ObservedObject var adventureVM: AdventureViewModel
+    @Binding var isActive: Bool
     var body: some View {
         ZStack {
             Color.white.ignoresSafeArea()
             GeometryReader { geo in
                 VStack(alignment: .leading) {
                     NavigationTitleView(size: geo.size, navigationTitle: .training)
-                    TrainingTrainersListView(trainers: adventureVM.tutorialTrainers, size: geo.size)
+                    TrainingTrainersListView(trainers: adventureVM.tutorialTrainers, size: geo.size, isActive: $isActive)
                     Spacer()
-                    BackButtonView(size: geo.size, dismiss: dismiss)
+                    BottomScreenButtonsView(dismiss: dismiss, size: geo.size, isActive: $isActive)
                 }
             }
             .spacedScreen
@@ -28,6 +29,6 @@ struct TrainingView: View {
 
 struct TrainingView_Previews: PreviewProvider {
     static var previews: some View {
-        TrainingView(adventureVM: AdventureViewModel())
+        TrainingView(adventureVM: AdventureViewModel(), isActive: .constant(false))
     }
 }

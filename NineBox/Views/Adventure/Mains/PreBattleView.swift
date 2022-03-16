@@ -11,12 +11,15 @@ struct PreBattleView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var gameVM: GameViewModel
     @EnvironmentObject var userVM: UserViewModel
+    @EnvironmentObject var adventureVM: AdventureViewModel
+    @EnvironmentObject var homeVM: HomeViewModel
     @State private var selectedDeckIndex = 0
     @State private var selectedIndex = 0
     @State private var isPresentingTutorial = false
     @State var decks = [Deck]()
     var region: WorldRegion?
     var trainer: Trainer
+    @Binding var isActive: Bool
     var body: some View {
         ZStack {
             Color.white.ignoresSafeArea()
@@ -25,7 +28,7 @@ struct PreBattleView: View {
                     NavigationTitleView(size: geo.size, navigationTitle: NavigationTitleModel.preBattle)
                     TrainerRowView(size: geo.size, region: region, background: trainer.background, colorBorder: region?.debuff.borderColor ?? .steelBlue, image: trainer.image, isUnlocked: trainer.isUnlocked, hasBeenCleared: false)
                     if region == nil {
-                        TutorialWindowView(trainer: trainer, size: geo.size, selectedPageIndex: $selectedIndex, isPresentingTutorial: $isPresentingTutorial, userVM: userVM)
+                        TutorialWindowView(trainer: trainer, size: geo.size, selectedPageIndex: $selectedIndex, isPresentingTutorial: $isPresentingTutorial, userVM: userVM, adventureVM: adventureVM, homeVM: homeVM)
                     } else {
                         PreBattleDeckChoiceView(decks: decks, trainer: trainer, size: geo.size, selectedDeckIndex: $selectedDeckIndex, gameVM: gameVM, userVM: userVM)
                     }
@@ -34,10 +37,13 @@ struct PreBattleView: View {
                     
                     Spacer()
                     
-                    BackButtonView(size: geo.size, dismiss: dismiss)
+                    BottomScreenButtonsView(dismiss: dismiss, size: geo.size, isActive: $isActive)
                 }
             }
             .padding()
+            if adventureVM.tutorialTrainers.allSatisfy({ $0.hasBeenCleared }) && homeVM.isShowingEndingTutorial {
+                TutorialView(trainer: try! Trainer.getTutorialTrainer("Ending Prof.Oak"), isPresentingTutorial: $homeVM.isShowingEndingTutorial, userVM: userVM, adventureVM: adventureVM, homeVM: homeVM)
+            }
         }
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
@@ -48,9 +54,21 @@ struct PreBattleView: View {
 
 struct PreBattleView_Previews: PreviewProvider {
     static var previews: some View {
-        PreBattleView(region: WorldRegion.regions[0], trainer: Trainer.worldTrainers[0])
+        PreBattleView(region: WorldRegion.regions[0], trainer: Trainer.worldTrainers[0], isActive: .constant(false))
             .environmentObject(GameViewModel())
             .environmentObject(UserViewModel())
+    }
+}
+
+struct TutorialEndView: View {
+    var body: some View {
+        ZStack {
+            Color.black.opacity(0.5).ignoresSafeArea()
+            
+            Image("profOak")
+                .resizable()
+                .scaledToFit()
+        }
     }
 }
 
@@ -69,7 +87,7 @@ struct StartBattleButtonView: View {
     }
     var body: some View {
         NavigationLink(destination: GameView()) {
-            ActionButtonView(text: "START BATTLE", textColor: .white, color: !(selectedIndex == (pageCount - 1)) ? .gray : .steelBlue, size: size)
+            ActionButtonView(text: "START BATTLE", textColor: .white, color: selectedIndex < (pageCount - 1) ? .gray : .steelBlue, shadowColor: .black, size: size)
         }
         .padding(.vertical)
         .simultaneousGesture(
@@ -81,7 +99,7 @@ struct StartBattleButtonView: View {
                 }
             }
         )
-        .disabled(!(selectedIndex == (pageCount - 1)))
+        .disabled(selectedIndex < (pageCount - 1))
     }
 }
 

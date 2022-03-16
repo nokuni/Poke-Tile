@@ -68,7 +68,7 @@ struct UserInformations: View {
     @ObservedObject var gameVM: GameViewModel
     var size: CGSize
     var body: some View {
-        ImageCroppedView(image: "volcano.background")
+        ImageCroppedView(image: gameVM.game.trainer?.background ?? "forest.background")
             .frame(width: size.width, height: size.height * 0.1)
             .overlay(
                 TrainerImageView(size: size, height: 0.1, image: userVM.user.profile.image, isUnlocked: true, hasBeenCleared: false)

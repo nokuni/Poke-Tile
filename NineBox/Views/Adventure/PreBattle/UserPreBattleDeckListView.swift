@@ -27,11 +27,11 @@ struct UserPreBattleDeckListView: View {
             .accessibilityLabel("Previous Card Deck")
             
             TabView(selection: $selectedDeckIndex) {
-                ForEach(decks.indices, id: \.self) { index in
+                ForEach(decks) { deck in
                     VStack {
-                        UserDeckRowView(deck: decks[index], size: size)
+                        UserDeckRowView(deck: deck, size: size)
                         LazyVGrid(columns: grid, spacing: 0) {
-                            ForEach(decks[index].cards) { card in
+                            ForEach(deck.cards) { card in
                                 CardView(card: card, size: size, amount: 5, isPossessing: isPossessing)
                             }
                         }

@@ -7,9 +7,14 @@
 
 import Foundation
 
+enum UserGenre: String {
+    case boy, girl
+}
+
 struct Profile {
     var name: String = ""
-    var image: String = "invisible"
+    var image: String = ""
+    var genre: UserGenre?
     var theme: Theme = Theme.togepi
 }
 

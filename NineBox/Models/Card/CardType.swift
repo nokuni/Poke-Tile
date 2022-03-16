@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum CardType: String, Codable, Equatable, Hashable {
+enum CardType: String, Codable, Equatable, Hashable, CaseIterable {
     case empty, bug, dark, dragon, electric, fairy, fighting, fire, flying, ghost, grass, ground, ice, normal, poison, psychic, rock, steel, water
     
     var color: Color {

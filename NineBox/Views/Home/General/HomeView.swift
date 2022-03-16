@@ -14,51 +14,38 @@ struct HomeView: View {
     @EnvironmentObject var homeVM: HomeViewModel
     @EnvironmentObject var adventureVM: AdventureViewModel
     @State var isShowingModalTheme = false
-    @State var isShowingTutorial = true
     @AppStorage("tutorial") var isInTutorial = true
     var body: some View {
         NavigationView {
             ZStack {
-                if isInTutorial {
-                    Color.beigeTogepi.ignoresSafeArea()
-                    Image("profOak")
-                        .resizable()
-                        .scaledToFit()
-                        .scaleEffect(0.5)
-                } else {
-                    HomeBackgroundView(theme: userVM.user.profile.theme)
-                }
-                
+                Color.white.ignoresSafeArea()
                 GeometryReader { geo in
                     VStack {
-                        ThemeButtonView(isShowingModalTheme: $isShowingModalTheme, size: geo.size)
                         Spacer()
                         HStack(spacing: 0) {
-                            HomeNavigationLink(size: geo.size, item: homeVM.homeItems[0], theme: userVM.user.profile.theme, isShowing: false) {
+                            HomeNavigationLink(size: geo.size, item: homeVM.homeItems[0], theme: userVM.user.profile.theme, isActive: $userVM.isInUserDecks) {
                                 UserDeckView(userVM: userVM)
                             }
-                            HomeNavigationLink(size: geo.size, item: homeVM.homeItems[1], theme: userVM.user.profile.theme, isShowing: false) {
+                            HomeNavigationLink(size: geo.size, item: homeVM.homeItems[1], theme: userVM.user.profile.theme, isActive: $userVM.isInUserCardCollection) {
                                 UserCardsView(userVM: userVM)
                             }
-                            HomeNavigationLink(size: geo.size, item: homeVM.homeItems[2], theme: userVM.user.profile.theme, isShowing: !isShowingTutorial) {
-                                AdventureView(adventureVM: adventureVM)
+                            HomeNavigationLink(size: geo.size, item: homeVM.homeItems[2], theme: userVM.user.profile.theme, isActive: $adventureVM.isInAdventure) {
+                                AdventureView(isActive: $adventureVM.isInAdventure, adventureVM: adventureVM)
                                 }
                             
-                            HomeNavigationLink(size: geo.size, item: homeVM.homeItems[3], theme: userVM.user.profile.theme, isShowing: false) {
+                            HomeNavigationLink(size: geo.size, item: homeVM.homeItems[3], theme: userVM.user.profile.theme, isActive: $missionVM.isInMissions) {
                                 MissionsView(missionVM: missionVM)
                             }
                         }
                     }
                 }
                 
-                if isShowingModalTheme {
-                    ThemeModalView(isShowingModalTheme: $isShowingModalTheme, theme: $userVM.user.profile.theme)
-                }
-                if isShowingTutorial {
-                    TutorialView(trainer: try! Trainer.getTutorialTrainer("Beginning Prof.Oak"), isPresentingTutorial: $isShowingTutorial, userVM: userVM)
+                if homeVM.isShowingStartingTutorial {
+                    TutorialView(trainer: try! Trainer.getTutorialTrainer("Beginning Prof.Oak"), isPresentingTutorial: $homeVM.isShowingStartingTutorial, userVM: userVM, adventureVM: adventureVM, homeVM: homeVM)
                 }
             }
             .navigationBarHidden(true)
+            .navigationBarBackButtonHidden(true)
         }
         .navigationViewStyle(.stack)
     }

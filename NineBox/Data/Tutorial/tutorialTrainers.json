@@ -38,4 +38,13 @@
         "pages": "profBirch.json",
         "prebuildDeck": ["Blastoise", "Wartortle", "Machoke", "Squirtle", "Staryu", "Psyduck", "Mankey", "Machop"],
     },
+    {
+        "name": "Ending Prof.Oak",
+        "image": "profOak",
+        "background": "lab.background",
+        "pokemons": [],
+        "bonusLocations": [],
+        "reward": [],
+        "pages": "ending.json",
+    },
 ]

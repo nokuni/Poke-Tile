@@ -1,0 +1,23 @@
+[
+    {
+        "title": "Prof.OAK",
+        "description": "\"Congratulation! You have passed all the tests!\"",
+        "hasAction": false,
+    },
+    {
+        "title": "Prof.OAK",
+        "description": "\"You are ready for the... Oh I forgot! Before participating to the tournament, you need to beat some Poketile Trainers first.\"",
+        "hasAction": false,
+    },
+    {
+        "title": "Prof.OAK",
+        "description": "\"Explore the world and be the best Poketile Master of all! \n Good Luck!\"",
+        "hasAction": false,
+    },
+    {
+        "title": "Important Message",
+        "description": "DECKS have been unlocked! \n CARDS have been unlocked! \n MISSIONS have been unlocked! \n WORLD have been unlocked!",
+        "hasAction": true,
+        "isQuitting": true
+    },
+]

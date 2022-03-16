@@ -16,7 +16,7 @@ struct ImagesGenreChoiceView: View {
             HStack {
                 ForEach(images.indices, id: \.self) { index in
                     VStack {
-                        if images != ["userboy", "usergirl"] {
+                        if images != ["boy", "girl"] {
                             Image(images[index])
                                 .resizable()
                                 .scaledToFit()

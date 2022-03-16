@@ -20,11 +20,8 @@ struct ImageAnimationView: View {
             Image(image)
                 .resizable()
                 .scaledToFit()
-                .scaleEffect(0.9)
-                .frame(width: size.width, height: size.height * 0.5)
         }
         .transition(AnyTransition.asymmetric(insertion: .move(edge: insertionEdge), removal: .move(edge: removalEdge)))
-        .ignoresSafeArea()
     }
 }
 
