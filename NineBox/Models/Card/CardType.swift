@@ -52,4 +52,47 @@ enum CardType: String, Codable, Equatable, Hashable, CaseIterable {
             return .waterBorder
         }
     }
+    
+    var legendaryHexBackground: String {
+        switch self {
+        case .empty:
+            return ""
+        case .bug:
+            return "bug_hex"
+        case .dark:
+            return "dark_hex"
+        case .dragon:
+            return "dragon_hex"
+        case .electric:
+            return "electric_hex"
+        case .fairy:
+            return "fairy_hex"
+        case .fighting:
+            return "fighting_hex"
+        case .fire:
+            return "fire_hex"
+        case .flying:
+            return "flying_hex"
+        case .ghost:
+            return "ghost_hex"
+        case .grass:
+            return "grass_hex"
+        case .ground:
+            return "ground_hex"
+        case .ice:
+            return "ice_hex"
+        case .normal:
+            return "normal_hex"
+        case .poison:
+            return "poison_hex"
+        case .psychic:
+            return "psychic_hex"
+        case .rock:
+            return "rock_hex"
+        case .steel:
+            return "steel_hex"
+        case .water:
+            return "water_hex"
+        }
+    }
 }

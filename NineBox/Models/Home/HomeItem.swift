@@ -15,12 +15,12 @@ struct HomeItem: Identifiable {
 }
 
 extension HomeItem {
-    //static let summons = HomeItem(icon: "pokeball2", title: "Summons")
+    static let summons = HomeItem(icon: "summons", title: "Summons")
     static let decks = HomeItem(icon: "decks", title: "Decks")
     static let cards = HomeItem(icon: "cards", title: "Cards")
     static let adventures = HomeItem(icon: "adventure", title: "Adventures")
     static let missions = HomeItem(icon: "missions", title: "Missions")
     static let settings = HomeItem(icon: "settings", title: "Settings")
     
-    static let all = [decks, cards, adventures, missions]
+    static let all = [summons, decks, cards, adventures, missions]
 }

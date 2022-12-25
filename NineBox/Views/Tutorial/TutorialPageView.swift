@@ -13,21 +13,20 @@ struct TutorialPageView: View {
     var trainer: Trainer
     var page: TutorialPage
     var size: CGSize
-    @ObservedObject var userVM: UserViewModel
-    @ObservedObject var adventureVM: AdventureViewModel
-    @ObservedObject var homeVM: HomeViewModel
     @Binding var selectedPageIndex: Int
     @Binding var isPresentingTutorial: Bool
     var body: some View {
         VStack(spacing: 25) {
             Text(page.title)
-                .font(.system(size: size.width * 0.08, weight: .bold, design: .rounded))
+                .font(.system(size: size.height * 0.04, weight: .black, design: .rounded))
+                .foregroundColor(.white)
             ImagesGenreChoiceView(images: page.images, size: size, selectedGenreIndex: $selectedGenreIndex)
             Text(page.description)
-                .font(.system(size: size.width * 0.045, weight: .regular, design: .rounded))
-            GenreChoiceView(page: page, size: size, selectedGenreIndex: $selectedGenreIndex, selectedPageIndex: $selectedPageIndex, userVM: userVM)
-            NameChoiceView(page: page, size: size, text: $text, selectedPageIndex: $selectedPageIndex, userVM: userVM)
-            QuitTutorialView(page: page, size: size, isPresentingTutorial: $isPresentingTutorial, adventureVM: adventureVM, homeVM: homeVM)
+                .font(.system(size: size.height * 0.025, weight: .bold, design: .rounded))
+                .foregroundColor(.white)
+            GenreChoiceView(page: page, size: size, selectedGenreIndex: $selectedGenreIndex, selectedPageIndex: $selectedPageIndex)
+            NameChoiceView(page: page, size: size, text: $text, selectedPageIndex: $selectedPageIndex)
+            QuitTutorialView(page: page, size: size, isPresentingTutorial: $isPresentingTutorial)
             
             if let pages = trainer.pages {
                 if selectedPageIndex == (Trainer.getPages(pages).count - 1) {
@@ -36,14 +35,15 @@ struct TutorialPageView: View {
                             selectedPageIndex = 0
                         }) {
                             Text("Excuse me, can you repeat please?")
-                                .foregroundColor(.white)
                                 .font(.system(size: size.width * 0.05, weight: .bold, design: .rounded))
+                                .foregroundColor(.white)
+                                .strokeText(color: .maroon)
                                 .padding(5)
                                 .frame(width: size.width * 0.82)
                                 .background(
                                     RoundedRectangle(cornerRadius: 5)
                                         .foregroundColor(.crimson)
-                                        .shadow(color: .white, radius: 0, x: 2, y: 2)
+                                        .strokeText(color: .maroon)
                                 )
                         }
                     }
@@ -61,6 +61,6 @@ struct TutorialPageView: View {
 
 struct TutorialPageView_Previews: PreviewProvider {
     static var previews: some View {
-        TutorialPageView(trainer: Trainer.worldTrainers[0],page: TutorialPage.example, size: CGSize.screen, userVM: UserViewModel(), adventureVM: AdventureViewModel(), homeVM: HomeViewModel(), selectedPageIndex: .constant(0), isPresentingTutorial: .constant(false))
+        TutorialPageView(trainer: Trainer.worldTrainers[0],page: TutorialPage.example, size: CGSize.screen, selectedPageIndex: .constant(0), isPresentingTutorial: .constant(false))
     }
 }

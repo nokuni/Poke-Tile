@@ -19,7 +19,9 @@ struct Deck: Codable, Identifiable, Equatable {
     }
     
     var cards: [Card] {
-        return pokemons.map { try! Card.getPokemon(name: $0) }
+        let filteredPokemons = pokemons.filter { $0 != "Empty" }
+        let result = filteredPokemons.map { try! Card.getPokemon(name: $0) }
+        return result
     }
     
     var types: [String] {

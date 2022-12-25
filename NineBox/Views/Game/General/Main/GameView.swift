@@ -8,10 +8,7 @@
 import SwiftUI
 
 struct GameView: View {
-    @EnvironmentObject var userVM: UserViewModel
     @EnvironmentObject var gameVM: GameViewModel
-    @EnvironmentObject var adventureVM: AdventureViewModel
-    @EnvironmentObject var missionVM: MissionViewModel
     @State private var isShowingStart = false
     @State private var isShowingSurrenderModal = false
     var body: some View {
@@ -19,14 +16,14 @@ struct GameView: View {
             Color.white.ignoresSafeArea()
             GeometryReader { geo in
                 VStack {
-                    OpponentHandView(size: geo.size, gameVM: gameVM)
-                    GameGridView(size: geo.size, gameVM: gameVM, isRotating: $gameVM.isRotatingCard)
-                    UserHandView(size: geo.size, gameVM: gameVM)
-                    UserInformations(userVM: userVM, gameVM: gameVM, size: geo.size)
+                    OpponentHandView(size: geo.size)
+                    GameGridView(size: geo.size, isRotating: $gameVM.isRotatingCard)
+                    UserHandView(size: geo.size)
+                    UserInformationsView(size: geo.size)
                     Button(action: {
                         isShowingSurrenderModal.toggle()
                     }) {
-                        ActionButtonView(text: "SURRENDER", textColor: .white, color: gameVM.game.turn == .opponent && !gameVM.isShowingTurnAnimation ? .gray : .crimson, shadowColor: .white, size: geo.size)
+                        ActionButtonView(text: "SURRENDER", textColor: .white, textSize: 0.025, textStrokeColor: .maroon, buttonColor: gameVM.game.turn == .opponent && !gameVM.isShowingTurnAnimation ? .gray : .crimson, buttonStrokeColor: .maroon)
                     }
                     .disabled(gameVM.game.turn == .opponent && !gameVM.isShowingTurnAnimation)
                     //ModalButtonView(isPresented: $isShowingSurrenderModal, borderColor: .black, backgroundColor: .crimson, textColor: .white, textContent: "SURRENDER", size: geo.size)
@@ -34,27 +31,24 @@ struct GameView: View {
             }
             .padding(30)
             
-            if gameVM.isShowingTurnAnimation {
+            switch true {
+            case gameVM.isShowingTurnAnimation:
                 if let trainer = gameVM.game.trainer {
-                    TurnAnimationView(isPresented: $gameVM.isShowingTurnAnimation, user: userVM.user, trainer: trainer, turn: gameVM.game.turn, opponentPlays: gameVM.opponentPlays)
+                    TurnAnimationView(isPresented: $gameVM.isShowingTurnAnimation, user: gameVM.user.user, trainer: trainer, turn: gameVM.game.turn, opponentPlays: gameVM.gameAI.opponentPlays)
                         .ignoresSafeArea()
                 }
-            }
-            
-            if gameVM.isShowingGameEnding {
+            case gameVM.isShowingGameEnding:
                 if let trainer = gameVM.game.trainer {
-                    EndingAnimationView(cards: trainer.reward.map { try! Card.getPokemon(name: $0) }, isPresented: $gameVM.isShowingGameEnding, isShowingStart: $isShowingStart, userVM: userVM, gameVM: gameVM, adventureVM: adventureVM, missionVM: missionVM)
+                    EndingAnimationView(cards: trainer.reward.map { try! Card.getPokemon(name: $0) }, isPresented: $gameVM.isShowingGameEnding, isShowingStart: $isShowingStart)
                 }
-            }
-            
-            if isShowingStart {
+            case isShowingStart:
                 if let trainer = gameVM.game.trainer {
-                    GameStartAnimationView(isPresented: $isShowingStart, user: userVM.user, trainer: trainer)
+                    GameStartAnimationView(isPresented: $isShowingStart, user: gameVM.user.user, trainer: trainer)
                 }
-            }
-            
-            if isShowingSurrenderModal {
-                SurrenderModalView(gameVM: gameVM, isShowingGameEnding: $gameVM.isShowingGameEnding, isShowingSurrenderModal: $isShowingSurrenderModal)
+            case isShowingSurrenderModal:
+                SurrenderModalView(isShowingGameEnding: $gameVM.isShowingGameEnding, isShowingSurrenderModal: $isShowingSurrenderModal)
+            default:
+                EmptyView()
             }
         }
         .onAppear { isShowingStart.toggle() }

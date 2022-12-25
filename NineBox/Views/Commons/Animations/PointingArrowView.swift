@@ -16,7 +16,7 @@ struct PointingArrowView: View {
             .resizable()
             .renderingMode(.template)
             .foregroundColor(color)
-            .frame(width: size.width * 0.05, height: size.width * 0.05)
+            .frame(width: size.height * 0.03, height: size.height * 0.03)
             .shadow(color: .white, radius: 2)
             .offset(x: 0, y: isAnimating ? 10 : 0)
             .onAppear {

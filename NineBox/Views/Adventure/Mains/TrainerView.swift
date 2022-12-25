@@ -8,25 +8,32 @@
 import SwiftUI
 
 struct TrainerView: View {
-    @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var gameVM: GameViewModel
-    @EnvironmentObject var adventureVM: AdventureViewModel
     var region: WorldRegion
     @Binding var isActive: Bool
     var body: some View {
         ZStack {
             Color.white.ignoresSafeArea()
-            GeometryReader { geo in
-                VStack(alignment: .leading) {
-                    NavigationTitleView(size: geo.size, navigationTitle: .trainers, region: region)
-                    TrainerListView(size: geo.size, region: region, trainers: region.trainers, isActive: $isActive)
-                    Spacer()
-                    BottomScreenButtonsView(dismiss: dismiss, size: geo.size, isActive: $isActive)
+            switch gameVM.adventure.worldTrainerState {
+            case .inSelection:
+                GeometryReader { geo in
+                    VStack(alignment: .leading) {
+                        NavigationTitleView(size: geo.size, navigationTitle: NavigationTitleModel.trainers.rawValue, region: region)
+                        TrainerListView(size: geo.size, region: region, trainers: region.trainers, isActive: $isActive)
+                        Spacer()
+                        BottomScreenButtonsView(size: geo.size, isActive: $isActive)
+                    }
                 }
+                .padding()
+            case .inPreBattle:
+                if let selectedTrainer = gameVM.adventure.selectedTrainer {
+                    PreBattleView(region: region, trainer: selectedTrainer)
+                }
+            case .inBattle:
+                GameView()
             }
-            .padding()
-            .navigationBarHidden(true)
         }
+        .navigationBarHidden(true)
         /*.onAppear {
             adventureVM.showTrainers(from: adventure)
         }*/

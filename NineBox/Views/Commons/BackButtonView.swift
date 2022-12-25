@@ -9,25 +9,25 @@ import SwiftUI
 
 struct BackButtonView: View {
     var size: CGSize
-    var dismiss: DismissAction?
+    @Environment(\.presentationMode) var presentationMode
     var body: some View {
         Button(action: {
-            dismiss?()
+            presentationMode.wrappedValue.dismiss()
         }) {
             Image(systemName: "arrow.uturn.left")
                 .foregroundColor(Color.white)
                 .font(.system(size: size.width * 0.07, weight: .semibold, design: .rounded))
                 .frame(width: size.width * 0.15, height: size.width * 0.15)
                 .background(
-                    Color.steelBlue
+                    Color.mediumBlueApp
                         .cornerRadius(5)
+                        .strokeText(color: .steelBlue)
                 )
         }
     }
 }
 
 struct BackButtonView_Previews: PreviewProvider {
-    var dismiss: DismissAction
     static var previews: some View {
         BackButtonView(size: CGSize.screen)
     }

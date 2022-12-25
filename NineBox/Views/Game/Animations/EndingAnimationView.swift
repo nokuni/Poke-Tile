@@ -8,16 +8,12 @@
 import SwiftUI
 
 struct EndingAnimationView: View {
-    @Environment(\.dismiss) private var dismiss
     @State private var isAnimating = false
     @State private var isShowingMenu = false
     var cards: [Card]
     @Binding var isPresented: Bool
     @Binding var isShowingStart: Bool
-    @ObservedObject var userVM: UserViewModel
-    @ObservedObject var gameVM: GameViewModel
-    @ObservedObject var adventureVM: AdventureViewModel
-    @ObservedObject var missionVM: MissionViewModel
+    @EnvironmentObject var gameVM: GameViewModel
     var body: some View {
         ZStack {
             Color.white
@@ -32,15 +28,15 @@ struct EndingAnimationView: View {
                     }
                     .transition(.move(edge: .top))
                 }
-                EndingMenuView(gameVM: gameVM, dismiss: dismiss, cards: cards, isShowingStart: $isShowingStart)
+                EndingMenuView(cards: cards, isShowingStart: $isShowingStart)
             }
         }
         .onAppear {
             withAnimation(.spring()) {
                 if gameVM.game.isGameWon {
-                    adventureVM.worldTrainerEndBattleActions(gameVM.game.trainer, addCards: userVM.addCardsToCollection)
-                    adventureVM.tutorialTrainerEndBattleActions(gameVM.game.trainer, addCards: userVM.addCardsToCollection)
-                    adventureVM.checkAdventureMissions(&missionVM.missions)
+                    gameVM.adventure.worldTrainerEndBattleActions(gameVM.game.trainer, addCards: gameVM.user.addCardsToCollection)
+                    gameVM.adventure.tutorialTrainerEndBattleActions(gameVM.game.trainer, addCards: gameVM.user.addCardsToCollection)
+                    gameVM.adventure.checkAdventureMissions(&gameVM.mission.missions)
                 }
                 isAnimating.toggle()
             }
@@ -50,6 +46,6 @@ struct EndingAnimationView: View {
 
 struct EndingAnimationView_Previews: PreviewProvider {
     static var previews: some View {
-        EndingAnimationView(cards: Card.pokemons, isPresented: .constant(false), isShowingStart: .constant(false), userVM: UserViewModel(), gameVM: GameViewModel(), adventureVM: AdventureViewModel(), missionVM: MissionViewModel())
+        EndingAnimationView(cards: Card.pokemons, isPresented: .constant(false), isShowingStart: .constant(false))
     }
 }

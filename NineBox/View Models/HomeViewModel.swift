@@ -8,12 +8,17 @@
 import SwiftUI
 
 class HomeViewModel: ObservableObject {
+    
     @Published var isShowingStartingTutorial: Bool = true
     @Published var isShowingEndingTutorial: Bool = true
     @Published var homeItems = HomeItem.all
     
     init() {
+        unlock("Summons")
+        unlock("Decks")
+        unlock("Cards")
         unlock("Adventures")
+        unlock("Missions")
     }
     
     func unlock(_ title: String) {

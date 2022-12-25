@@ -8,27 +8,25 @@
 import SwiftUI
 
 extension View {
-    func placeholder<Content: View>(
-        when shouldShow: Bool,
-        alignment: Alignment = .leading,
-        @ViewBuilder placeholder: () -> Content) -> some View {
-            ZStack(alignment: alignment) {
-                placeholder().opacity(shouldShow ? 1 : 0)
-                self
-            }
+    
+    func placeholder<Content: View>(when shouldShow: Bool, alignment: Alignment = .leading, @ViewBuilder placeholder: () -> Content) -> some View {
+        ZStack(alignment: alignment) {
+            placeholder().opacity(shouldShow ? 1 : 0)
+            self
         }
+    }
+    
     var spacedScreen: some View {
         modifier(SpacedScreenModifier())
     }
-}
-
-// VIEW MODIFIERS
-
-struct SpacedScreenModifier: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .padding()
-            .navigationBarHidden(true)
-            .navigationBarBackButtonHidden(true)
+    
+    func limitText(_ upper: Int, text: inout String) {
+        if text.count > upper {
+            text = String(text.prefix(upper))
+        }
+    }
+    
+    func strokeText(color: Color) -> some View {
+        modifier(TextStrokeModifier(color: color))
     }
 }

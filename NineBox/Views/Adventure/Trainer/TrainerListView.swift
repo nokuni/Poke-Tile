@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TrainerListView: View {
+    @EnvironmentObject var gameVM: GameViewModel
     @State private var selection: UUID?
     var size: CGSize
     var region: WorldRegion
@@ -17,17 +18,23 @@ struct TrainerListView: View {
         ScrollView(showsIndicators: false) {
             LazyVStack(alignment: .leading) {
                 ForEach(trainers) { trainer in
-                    NavigationLink(
-                        destination: PreBattleView(region: region, trainer: trainer, isActive: $isActive),
-                        tag: trainer.id,
-                        selection: $selection,
-                        label: {
-                            TrainerRowView(size: size, region: region, background: trainer.background, colorBorder: region.debuff.borderColor, image: trainer.image, isUnlocked: trainer.isUnlocked, hasBeenCleared: trainer.hasBeenCleared)
-                        })
-                    .disabled(!trainer.isUnlocked)
+                    Button(action: {
+                        withAnimation {
+                            if trainer.isUnlocked {
+                                gameVM.adventure.selectedTrainer = trainer
+                                gameVM.adventure.toggleWorldTrainerState(on: .inPreBattle)
+                                gameVM.game = Game()
+                            }
+                        }
+                    }) {
+                        TrainerRowView(size: size, region: region, background: trainer.background, colorBorder: region.debuff.borderColor, image: trainer.image, isUnlocked: trainer.isUnlocked, hasBeenCleared: trainer.hasBeenCleared)
+                    }
                 }
             }
         }
+        .onChange(of: gameVM.adventure.worldTrainerState, perform: { newValue in
+            gameVM.adventure.worldTrainerState = newValue
+        })
         .background(
             LinearGradient(gradient: Gradient(colors: [.powderBlue, .white, .powderBlue]), startPoint: .top, endPoint: .bottom)
                 .cornerRadius(5)
@@ -39,22 +46,6 @@ struct TrainerListView: View {
 struct TrainerListView_Previews: PreviewProvider {
     static var previews: some View {
         TrainerListView(size: CGSize.screen, region: WorldRegion.regions[0], trainers: [], isActive: .constant(false))
-    }
-}
-
-struct TrainerRowOverlayView: View {
-    var isUnlocked: Bool
-    var size: CGSize
-    var body: some View {
-        ZStack {
-            if !isUnlocked {
-                RoundedRectangle(cornerRadius: 5)
-                    .foregroundColor(.black.opacity(0.5))
-                Image(systemName: "lock.fill")
-                    .foregroundColor(.white)
-                    .font(.system(size: size.width * 0.1, weight: .bold, design: .rounded))
-            }
-        }
     }
 }
 

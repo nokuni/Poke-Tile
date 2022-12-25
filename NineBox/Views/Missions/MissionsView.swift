@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct MissionsView: View {
-    @Environment(\.dismiss) private var dismiss
-    @ObservedObject var missionVM: MissionViewModel
     @State var selectedReward: Card? = nil
     @State var isShowingReward = false
     var body: some View {
@@ -19,9 +17,9 @@ struct MissionsView: View {
             
             GeometryReader { geo in
                 VStack(alignment: .leading) {
-                    NavigationTitleView(size: geo.size, navigationTitle: NavigationTitleModel.missions)
-                    MissionListView(missionVM: missionVM, size: geo.size, selectedReward: $selectedReward, isShowingReward: $isShowingReward)
-                    BackButtonView(size: geo.size, dismiss: dismiss)
+                    NavigationTitleView(size: geo.size, navigationTitle: NavigationTitleModel.missions.rawValue)
+                    MissionListView(size: geo.size, selectedReward: $selectedReward, isShowingReward: $isShowingReward)
+                    BackButtonView(size: geo.size)
                 }
             }
             .spacedScreen
@@ -37,6 +35,6 @@ struct MissionsView: View {
 
 struct MissionsView_Previews: PreviewProvider {
     static var previews: some View {
-        MissionsView(missionVM: MissionViewModel())
+        MissionsView()
     }
 }

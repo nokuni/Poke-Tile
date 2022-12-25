@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct GameStartAnimationView: View {
+    @EnvironmentObject var gameVM: GameViewModel
     @State private var isAnimatingImages = false
     @State private var isAnimatingVersus = false
     @Binding var isPresented: Bool
@@ -30,10 +31,8 @@ struct GameStartAnimationView: View {
         }
         .zIndex(2)
         .onAppear {
-            withAnimation(.spring()) {
-                isAnimatingImages.toggle()
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            withAnimation(.spring()) { isAnimatingImages.toggle() }
+            gameVM.animation.start(duration: 2, startAction: nil, whileAction: nil) {
                 withAnimation {
                     isAnimatingImages.toggle()
                     isAnimatingVersus.toggle()

@@ -13,17 +13,13 @@ struct HomeItemView: View {
     var theme: Theme
     var body: some View {
         VStack {
-            Image(item.icon)
-                .resizable()
-                .renderingMode(.template)
-                .foregroundColor(.steelBlue)
-                .scaledToFit()
             Text(item.title)
                 .foregroundColor(.white)
                 .font(.system(size: size.width * 0.02, weight: .bold, design: .rounded))
                 .padding(2)
                 .frame(maxWidth: .infinity)
                 .background(Color.steelBlue.cornerRadius(5))
+                .frame(width: size.width * 0.15, height: size.width * 0.15, alignment: .bottom)
         }
         .padding(10)
         .overlay(
@@ -38,8 +34,15 @@ struct HomeItemView: View {
                         .renderingMode(.template)
                         .foregroundColor(.white)
                         .frame(width: size.width * 0.05, height: size.width * 0.05)
+                } else {
+                    Image(item.icon)
+                        .resizable()
+                        //.renderingMode(.template)
+                        //.foregroundColor(.steelBlue)
+                        .frame(width: CGSize.screen.height * 0.07, height: CGSize.screen.height * 0.07)
                 }
             }
+                .frame(width: size.width * 0.2, height: size.width * 0.25, alignment: .top)
         )
         .frame(width: size.width * 0.2, height: size.width * 0.2)
         .background(
@@ -47,7 +50,8 @@ struct HomeItemView: View {
                 .stroke(Color.steelBlue, lineWidth: 2)
                 .foregroundColor(.gray)
                 .background(
-                    Color.white
+                    Color(red: 240/255, green: 255/255, blue: 255/255)
+                    //Color.white
                         .cornerRadius(5)
                 )
                 .padding(5)

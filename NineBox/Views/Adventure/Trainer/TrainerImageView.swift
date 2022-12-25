@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TrainerImageView: View {
+    @EnvironmentObject var gameVM: GameViewModel
     var size: CGSize
     var height: CGFloat
     var image: String
@@ -26,7 +27,7 @@ struct TrainerImageView: View {
                     .foregroundColor(.white)
                     .font(.system(size: size.width * 0.1, weight: .bold, design: .rounded))
                     .frame(width: size.width * 0.7, alignment: .trailing)
-                    .shadow(color: .black, radius: 0, x: 2, y: 2)
+                    .strokeText(color: .maroon)
             )
     }
 }

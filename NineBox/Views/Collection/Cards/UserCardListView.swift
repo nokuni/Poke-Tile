@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct UserCardListView: View {
+    @EnvironmentObject var gameVM: GameViewModel
     var size: CGSize
-    @ObservedObject var userVM: UserViewModel
     private let grid = [GridItem](repeating: .init(.flexible(), spacing: 25), count: 4)
     var body: some View {
         ScrollView(showsIndicators: false) {
             LazyVGrid(columns: grid, spacing: 0) {
-                ForEach(userVM.user.cards) { card in
+                ForEach(gameVM.user.user.cards) { card in
                     CardView(card: card, size: size, amount: 4)
                         .accessibilityLabel(card.name)
                 }
@@ -32,7 +32,7 @@ struct UserCardListView: View {
 
 struct UserCardListView_Previews: PreviewProvider {
     static var previews: some View {
-        UserCardListView(size: CGSize.screen, userVM: UserViewModel())
+        UserCardListView(size: CGSize.screen)
     }
 }
 

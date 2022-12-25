@@ -16,13 +16,12 @@ struct MainMenuButtonView: View {
         }) {
             Image("house")
                 .resizable()
-                .renderingMode(.template)
-                .foregroundColor(Color.white)
                 .frame(width: size.width * 0.1, height: size.width * 0.1)
                 .frame(width: size.width * 0.15, height: size.width * 0.15)
                 .background(
-                    Color.steelBlue
+                    Color.mediumBlueApp
                         .cornerRadius(5)
+                        .strokeText(color: .steelBlue)
                 )
         }
     }

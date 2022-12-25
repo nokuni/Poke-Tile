@@ -15,11 +15,15 @@ class UserViewModel: ObservableObject {
     @Published var user = User(profile: Profile())
     
     init() {
+        
+//        let legendaries = Card.pokemons.filter({ $0.rarity == .legendary })
+//        user.cards.append(contentsOf: legendaries)
+        
         let starterCards = Deck.starters.map { $0.cards }.joined()
         user.cards.append(contentsOf: starterCards)
+        
+        user.decks = filteredDecks(filter: .all)
     }
-    
-    static let shared = UserViewModel()
     
     func addCardsToCollection(_ cards: [Card]) {
         user.cards.append(contentsOf: cards)

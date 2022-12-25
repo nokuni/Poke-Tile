@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct MissionListView: View {
-    @ObservedObject var missionVM: MissionViewModel
+    @EnvironmentObject var gameVM: GameViewModel
     var size: CGSize
     @Binding var selectedReward: Card?
     @Binding var isShowingReward: Bool
     var body: some View {
         ScrollView(showsIndicators: false) {
             LazyVStack(alignment: .leading) {
-                ForEach(missionVM.missions.indices, id: \.self) { index in
-                    MissionRowView(mission: $missionVM.missions[index], isShowingReward: $isShowingReward, selectedReward: $selectedReward, size: size)
+                ForEach(gameVM.mission.missions.indices, id: \.self) { index in
+                    MissionRowView(mission: $gameVM.mission.missions[index], isShowingReward: $isShowingReward, selectedReward: $selectedReward, size: size)
                 }
             }
         }
@@ -30,6 +30,6 @@ struct MissionListView: View {
 
 struct MissionListView_Previews: PreviewProvider {
     static var previews: some View {
-        MissionListView(missionVM: MissionViewModel(), size: CGSize.screen, selectedReward: .constant(Card.empty), isShowingReward: .constant(false))
+        MissionListView(size: CGSize.screen, selectedReward: .constant(Card.empty), isShowingReward: .constant(false))
     }
 }

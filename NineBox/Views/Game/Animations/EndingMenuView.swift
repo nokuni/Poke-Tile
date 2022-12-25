@@ -9,8 +9,8 @@ import SwiftUI
 
 struct EndingMenuView: View {
     @StateObject var cardAnimationVM = CardAnimationViewModel()
-    @ObservedObject var gameVM: GameViewModel
-    var dismiss: DismissAction?
+    @EnvironmentObject var gameVM: GameViewModel
+    @Environment(\.presentationMode) var presentationMode
     var cards: [Card]
     @Binding var isShowingStart: Bool
     var body: some View {
@@ -38,9 +38,15 @@ struct EndingMenuView: View {
                         }
                         Button(action: {
                             gameVM.resetGame()
-                            dismiss?()
+                            gameVM.isShowingGameEnding.toggle()
+                            if gameVM.adventure.tutorialTrainers.allSatisfy({ $0.hasBeenCleared }) && gameVM.home.isShowingEndingTutorial {
+                                gameVM.adventure.tutorialTrainerState = .inEndingTutorial
+                            } else {
+                                gameVM.adventure.tutorialTrainerState = .inSelection
+                                gameVM.adventure.worldTrainerState = .inSelection
+                            }
                         }) {
-                            ActionButtonView(text: "OK", textColor: .white, color: cardAnimationVM.isAnimationFinished(isCleared: gameVM.game.trainer?.hasBeenCleared) ? .crimson : .gray, shadowColor: .black, size: CGSize.screen)
+                            ActionButtonView(text: "OK", textColor: .white, textSize: 0.025, textStrokeColor: .brownApp, buttonColor: cardAnimationVM.isAnimationFinished(isCleared: gameVM.game.trainer?.hasBeenCleared) ? .orangeApp : .gray, buttonStrokeColor: .steelBlue)
                         }
                         .disabled(!cardAnimationVM.isAnimationFinished(isCleared: gameVM.game.trainer?.hasBeenCleared))
                     }
@@ -50,14 +56,16 @@ struct EndingMenuView: View {
                             gameVM.loadGame()
                             isShowingStart.toggle()
                         }) {
-                            ActionButtonView(text: "RETRY", textColor: .white, color: .steelBlue, shadowColor: .black, size: CGSize.screen)
+                            ActionButtonView(text: "RETRY", textColor: .white, textSize: 0.025, textStrokeColor: .steelBlue, buttonColor: .lightBlueApp, buttonStrokeColor: .steelBlue)
                         }
                         
                         Button(action: {
+                            gameVM.adventure.tutorialTrainerState = .inSelection
+                            gameVM.adventure.worldTrainerState = .inSelection
                             gameVM.resetGame()
-                            dismiss?()
+                            gameVM.isShowingGameEnding.toggle()
                         }) {
-                            ActionButtonView(text: "QUIT", textColor: .white, color: .crimson, shadowColor: .black, size: CGSize.screen)
+                            ActionButtonView(text: "QUIT", textColor: .white, textSize: 0.025, textStrokeColor: .brownApp, buttonColor: .orangeApp, buttonStrokeColor: .steelBlue)
                         }
                     }
                 }
@@ -69,6 +77,6 @@ struct EndingMenuView: View {
 
 struct EndingMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        EndingMenuView(gameVM: GameViewModel(), dismiss: nil, cards: Card.pokemons, isShowingStart: .constant(false))
+        EndingMenuView(cards: Card.pokemons, isShowingStart: .constant(false))
     }
 }

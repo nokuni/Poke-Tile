@@ -8,22 +8,26 @@
 import SwiftUI
 
 class AdventureViewModel: ObservableObject {
+    
     @Published var isInAdventure: Bool = false
     @Published var adventures = AdventureModel.all
     @Published var lab = LabModel.all
     @Published var regions = WorldRegion.regions
     @Published var tutorialTrainers = Trainer.tutorialTrainers
     @Published var selectedTrainer: Trainer? = nil
+    @Published var tutorialTrainerState: TutorialTrainerState = .inSelection
+    @Published var worldTrainerState: WorldTrainerState = .inSelection
     
     init() {
+        // For test
+        unlockAdventure("World")
         unlockAdventure("Lab")
         unlockLab("Tutorials")
+        
         loadTutorialTrainers()
         loadWorldTrainers()
         unlockFirstTrainers()
     }
-    
-    static let shared = AdventureViewModel()
     
     func loadWorldTrainers() {
         for index in regions.indices {
@@ -42,6 +46,10 @@ class AdventureViewModel: ObservableObject {
     func unlockAdventure(_ title: String) {
         guard let index = adventures.firstIndex(where: { $0.title == title }) else { return }
         adventures[index].isUnlocked = true
+    }
+    
+    func toggleWorldTrainerState(on state: WorldTrainerState) {
+        worldTrainerState = state
     }
     
     func unlockFirstTrainers() {

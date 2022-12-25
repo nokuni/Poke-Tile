@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct UserDeckDetailView: View {
-    @Environment(\.dismiss) private var dismiss
     private let grid = [GridItem](repeating: .init(.flexible(), spacing: 0), count: 4)
     @State var cards = [Card]()
     @State var selectedCard: Card? = nil
@@ -20,7 +19,9 @@ struct UserDeckDetailView: View {
             Color.white.ignoresSafeArea()
             VStack(alignment: .leading) {
                 
-                NavigationTitleView(size: size, navigationTitle: .decks)
+                NavigationTitleView(size: size, navigationTitle: deck.name, specialImage: deck.types.first!, specialColor: deck.associatedType.color)
+                    .padding(.horizontal)
+                    .padding(.top)
                 
                 LazyVGrid(columns: grid, spacing: 0) {
                     ForEach(cards) { card in
@@ -34,14 +35,19 @@ struct UserDeckDetailView: View {
                             )
                     }
                 }
+                .padding(.horizontal)
+                
                 if let selectedCard = selectedCard {
                     UserCardInformationView(card: selectedCard, size: size, isPossessing: isPossessing)
+                        .padding(.horizontal)
                 }
                 
                 Spacer()
-                BackButtonView(size: size, dismiss: dismiss)
+                
+                BackButtonView(size: size)
+                    .padding()
             }
-            .padding()
+            //.padding()
         }
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)

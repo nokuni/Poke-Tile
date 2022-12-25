@@ -8,18 +8,17 @@
 import SwiftUI
 
 struct JourneyView: View {
-    @Environment(\.dismiss) private var dismiss
-    @EnvironmentObject var adventureVM: AdventureViewModel
+    @EnvironmentObject var gameVM: GameViewModel
     @Binding var isActive: Bool
     var body: some View {
         ZStack {
             Color.white.ignoresSafeArea()
             GeometryReader { geo in
                 VStack(alignment: .leading) {
-                    NavigationTitleView(size: geo.size, navigationTitle: .world)
-                    RegionsListView(regions: adventureVM.regions, size: geo.size, isActive: $isActive)
+                    NavigationTitleView(size: geo.size, navigationTitle: NavigationTitleModel.world.rawValue)
+                    RegionsListView(regions: gameVM.adventure.regions, size: geo.size, isActive: $isActive)
                     Spacer()
-                    BottomScreenButtonsView(dismiss: dismiss, size: geo.size, isActive: $isActive)
+                    BottomScreenButtonsView(size: geo.size, isActive: $isActive)
                 }
             }
             .padding()

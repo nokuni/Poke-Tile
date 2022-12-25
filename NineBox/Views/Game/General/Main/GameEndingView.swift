@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct GameEndingView: View {
-    @Environment(\.dismiss) private var dismiss
-    var resetGame: (() -> Void)?
+    @EnvironmentObject var gameVM: GameViewModel
+    @Environment(\.presentationMode) var presentationMode
     var body: some View {
         ZStack {
             Color.white.ignoresSafeArea()
             Button(action: {
-                resetGame?()
-                dismiss()
+                gameVM.resetGame()
+                gameVM.isShowingGameEnding.toggle()
+                presentationMode.wrappedValue.dismiss()
             }) {
                 Text("Quit")
                     .foregroundColor(.white)

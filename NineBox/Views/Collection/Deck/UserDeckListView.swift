@@ -15,17 +15,20 @@ struct UserDeckListView: View {
     var isDeckPlayable: ((Deck) -> Bool)?
     var body: some View {
         ScrollView(showsIndicators: false) {
-            ForEach(decks) { deck in
-                NavigationLink(destination: UserDeckDetailView(deck: deck, size: size, isPossessing: isPossessing)) {
-                    UserDeckRowView(deck: deck, size: size)
-                        .overlay(
-                            ZStack {
-                                if let isDeckPlayable = isDeckPlayable?(deck) {
-                                    RoundedRectangle(cornerRadius: 5)
-                                        .foregroundColor(isDeckPlayable ? .clear : .black.opacity(0.5))
+            VStack(spacing: 30) {
+                ForEach(decks) { deck in
+                    NavigationLink(destination: UserDeckDetailView(deck: deck, size: size, isPossessing: isPossessing)) {
+                        UserDeckRowView(deck: deck, size: size)
+                            .overlay(
+                                ZStack {
+                                    if let isDeckPlayable = isDeckPlayable?(deck) {
+                                        RoundedRectangle(cornerRadius: 5)
+                                            .foregroundColor(isDeckPlayable ? .clear : .black.opacity(0.5))
+                                            .padding(.horizontal)
+                                    }
                                 }
-                            }
-                        )
+                            )
+                    }
                 }
             }
         }

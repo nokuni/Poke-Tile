@@ -27,7 +27,7 @@ struct TrainerRowView: View {
                         .cornerRadius(5)
                 )
                 .overlay(
-                    TrainerImageView(size: size, height: 0.18, image: image, isUnlocked: isUnlocked, hasBeenCleared: hasBeenCleared)
+                    TrainerImageView(size: size, height: 0.167, image: image, isUnlocked: isUnlocked, hasBeenCleared: hasBeenCleared)
                 )
                 .overlay(
                     TrainerRowOverlayView(isUnlocked: isUnlocked, size: size)

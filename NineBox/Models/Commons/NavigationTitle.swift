@@ -7,11 +7,13 @@
 
 import SwiftUI
 
-enum NavigationTitleModel: String {
-    case decks, cards, adventure, missions, world, trainers, lab, training, preBattle, deckCreation
+enum NavigationTitleModel: String, CaseIterable {
+    case summons, decks, cards, adventure, missions, world, trainers, lab, training, preBattle, deckCreation
     
     var color: Color {
         switch self {
+        case .summons:
+            return .steelBlue
         case .decks:
             return .darkOrange
         case .cards:

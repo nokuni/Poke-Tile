@@ -8,27 +8,6 @@
 import Foundation
 import SwiftUI
 
-enum CardRarity: String, Codable, Hashable {
-    case none, common, uncommon, rare, epic, legendary
-    
-    var rate: Int {
-        switch self {
-        case .none:
-            return 0
-        case .common:
-            return 40
-        case .uncommon:
-            return 30
-        case .rare:
-            return 20
-        case .epic:
-            return 10
-        case .legendary:
-            return 5
-        }
-    }
-}
-
 struct Card: Equatable, Codable, Identifiable, Hashable {
     var id = UUID()
     let name: String
@@ -48,7 +27,7 @@ struct Card: Equatable, Codable, Identifiable, Hashable {
     }
     
     var borderColor: Color {
-        if let side = side { return side.color } else { return type.color }
+        if let side = side { return side.color } else { return .clear }
     }
     
     var isPokemon: Bool { category == .pokemon }
@@ -59,6 +38,7 @@ struct Card: Equatable, Codable, Identifiable, Hashable {
     func isDuplicate(from cards: [Card]) -> Bool {
         cards.contains { $0.name == name }
     }
+    
     func buffed(with debuff: Card) -> Card {
         var card = self
         let count = debuff.debuffs.count
@@ -78,7 +58,9 @@ extension Card {
     }
     
     static let slot = Card(name: "Slot", image: "add", backgroundImage: "spiral", category: .empty, type: .empty, stats: .init(top: 0, trailing: 0, bottom: 0, leading: 0), rarity: .common, cost: 0, debuffs: [])
+    
     static let empty = Card(name: "Empty", image: "pokeball", backgroundImage: "spiral", category: .empty, type: .empty, stats: .init(top: 0, trailing: 0, bottom: 0, leading: 0), rarity: .none, cost: 0, debuffs: [])
+    
     static let invisible = Card(name: "Invisible", image: "invisible", backgroundImage: "invisible", category: .empty, type: .empty, stats: .init(top: 0, trailing: 0, bottom: 0, leading: 0), rarity: .none, cost: 0)
     
     static let placeholders = Array(repeating: Card.empty, count: 8)
@@ -110,8 +92,4 @@ extension Card {
         return debuff
     }
 }
-
-//static let dark = Card(image: "dark", backgroundImage: "dark", category: .debuff, type: .dark, stats: nil)
-//static let dragon = Card(image: "dragon", backgroundImage: "dragon", category: .debuff, type: .dragon, stats: nil)
-//static let electric = Card(image: "electric", backgroundImage: "electric", category: .debuff, type: .electric, stats: nil)
 

@@ -10,26 +10,28 @@ import SwiftUI
 struct ActionButtonView: View {
     var text: String
     var textColor: Color
-    var color: Color
-    var shadowColor: Color
-    var size: CGSize
+    var textSize: CGFloat
+    var textStrokeColor: Color
+    var buttonColor: Color
+    var buttonStrokeColor: Color
     var body: some View {
-            Text(text)
-                .foregroundColor(textColor)
-                .font(.system(size: size.width * 0.05, weight: .bold, design: .rounded))
-                .padding(10)
-                .frame(maxWidth: .infinity)
-                .background(
-                    RoundedRectangle(cornerRadius: 5)
-                        .foregroundColor(color)
-                        .cornerRadius(5)
-                        .shadow(color: shadowColor, radius: 0, x: 3, y: 3)
-                )
+        Text(text)
+            .foregroundColor(textColor)
+            .font(.system(size: CGSize.screen.height * textSize, weight: .bold, design: .rounded))
+            .strokeText(color: textStrokeColor)
+            .padding(10)
+            .frame(maxWidth: .infinity)
+            .background(
+                RoundedRectangle(cornerRadius: 5)
+                    .foregroundColor(buttonColor)
+                    .cornerRadius(5)
+                    .strokeText(color: buttonStrokeColor)
+            )
     }
 }
 
 struct ActionButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        ActionButtonView(text: "START BATTLE", textColor: .white, color: .crimson, shadowColor: .black, size: CGSize.screen)
+        ActionButtonView(text: "", textColor: .steelBlue, textSize: 0.05, textStrokeColor: .steelBlue, buttonColor: .steelBlue, buttonStrokeColor: .steelBlue)
     }
 }

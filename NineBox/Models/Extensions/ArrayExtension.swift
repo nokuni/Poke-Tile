@@ -9,12 +9,6 @@ import Foundation
 
 extension Array {
     
-    // return array of unique elements
-    func uniqued() -> [Element] where Element: Hashable {
-        var seen = Set<Element>()
-        return filter { seen.insert($0).inserted }
-    }
-    
     // replace nil values by -1 from an Int array and return it.
     func removedNull(from array: [Int?]) -> [Int] {
         var array = array
@@ -24,13 +18,7 @@ extension Array {
         return array.compactMap { $0 }
     }
     
-    // return the index of the maximum value
-    func maxIndex() -> Int? where Element: Comparable {
-        guard let highest = self.max() else { return nil }
-        guard let index = self.firstIndex(where: { $0 == highest }) else { return nil }
-        return index
-    }
-    
+    // Thanks Paul Hudson
     func chunked(into size: Int) -> [[Element]] {
         stride(from: 0, to: count, by: size).map {
             Array(self[$0 ..< Swift.min($0 + size, count)])
@@ -69,21 +57,6 @@ extension Array {
             return leftEdge
         }
     }
-    
-    // return an array of different random elements.
-    func differentRandomElements(amount: Int) -> [Element] where Element: Equatable {
-        guard !self.isEmpty else { return [] }
-        guard self.count >= amount else { return [] }
-        var array = self
-        var result = [Element]()
-        for _ in 0..<amount {
-            let randomElement = array.randomElement()!
-            let index = array.firstIndex(where: { $0 == randomElement })!
-            result.append(randomElement)
-            array.remove(at: index)
-        }
-        return result
-    }
 }
 
 extension Array where Element == Array<String> {
@@ -114,6 +87,58 @@ extension Array where Element == Int {
     }
 }
 
-enum GridEdge {
-    case top, bottom, trailing, leading
+extension Array where Element: Hashable {
+    // return array of unique elements
+    func uniqued() -> [Element] {
+        var seen = Set<Element>()
+        return filter { seen.insert($0).inserted }
+    }
+}
+
+extension Array where Element: Comparable {
+    // return the index of the maximum value
+    func maxIndex() -> Int? {
+        guard let highest = self.max() else { return nil }
+        guard let index = self.firstIndex(where: { $0 == highest }) else { return nil }
+        return index
+    }
+}
+
+extension Array where Element: Equatable {
+    // return an array of different random elements.
+    func differentRandomElements(amount: Int) -> [Element] {
+        guard !self.isEmpty else { return [] }
+        guard self.count >= amount else { return [] }
+        var array = self
+        var result = [Element]()
+        for _ in 0..<amount {
+            let randomElement = array.randomElement()!
+            let index = array.firstIndex(where: { $0 == randomElement })!
+            result.append(randomElement)
+            array.remove(at: index)
+        }
+        return result
+    }
+    
+    mutating func remove(object: Element) {
+        guard let index = firstIndex(of: object) else {return}
+        remove(at: index)
+    }
+}
+
+extension Array where Element == CardType {
+    
+    func containsAtLeastTypeElements(in requirement: [CardType]) -> Bool {
+        let requirementSet = Set(requirement)
+        for element in requirementSet {
+            guard self.contains(where: { $0 == element }) else { return false }
+            let requirementElementCount = requirement.filter { $0 == element }.count
+            let possessedElementCount = self.filter { $0 == element }.count
+            guard possessedElementCount >= requirementElementCount else { return false }
+        }
+        
+        guard self.count >= requirement.count else { return false }
+        
+        return true
+    }
 }

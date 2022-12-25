@@ -17,12 +17,12 @@ struct CardBackgroundView: View {
                 card.type.color
                     .cornerRadius(5)
                     .brightness(0.4)
-                    //.opacity(0.3)
+                    .opacity(1)
                 Image(card.backgroundImage)
                     .resizable()
                     .scaledToFill()
                     .cornerRadius(5)
-                    .opacity(0.3)
+                    .opacity(0.5)
                 if card.category == .pokemon {
                     Image(card.image)
                         .resizable()
@@ -45,7 +45,7 @@ struct CardBackgroundView: View {
                         Image(card.image)
                             .resizable()
                             .renderingMode(card.image == "pokeball" ? .none : .template)
-                            .foregroundColor(.white)
+                            .foregroundColor(card.image == "pokeball" ? .white : .clear)
                             .scaleEffect(0.4)
                             .opacity(0.8)
                     }

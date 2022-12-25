@@ -6,53 +6,42 @@
 //
 
 import SwiftUI
+import SpriteKit
 
 struct ContentView: View {
-    @State var isActive : Bool = false
-
+    @StateObject var gameVM = GameViewModel()
+    @State var offset: CGSize = .zero
+    var type: CardType
+    @State var opacity: Double = 1
+    @State var scale: Double = 1
     var body: some View {
-        NavigationView {
-            NavigationLink(
-                destination: ContentView2(rootIsActive: self.$isActive),
-                isActive: self.$isActive
-            ) {
-                Text("Hello, World!")
-            }
-            .isDetailLink(false)
-            //.navigationBarTitle("Root")
+        GeometryReader { geo in
+            Image(type.rawValue)
+                .resizable()
+                .frame(width: CGSize.screen.height * 0.1, height: CGSize.screen.height * 0.1)
+                .opacity(opacity)
+                .scaleEffect(scale)
+                .onAppear {
+                    withAnimation(.linear.repeatCount(2, autoreverses: false)) {
+                        scale = 5
+                        opacity = 0
+                    }
+                }
+            .position(x: geo.size.width / 2, y: geo.size.height / 2)
         }
-    }
-}
-
-struct ContentView2: View {
-    @Binding var rootIsActive : Bool
-
-    var body: some View {
-        NavigationLink(destination: ContentView3(shouldPopToRootView: self.$rootIsActive)) {
-            Text("Hello, World #2!")
-        }
-        .isDetailLink(false)
-        //.navigationBarTitle("Two")
-    }
-}
-
-struct ContentView3: View {
-    @Binding var shouldPopToRootView : Bool
-
-    var body: some View {
-        VStack {
-            Text("Hello, World #3!")
-            Button (action: { self.shouldPopToRootView = false } ){
-                Text("Pop to root")
-            }
-        }
-        //.navigationBarTitle("Three")
+        .scaleEffect(0.3)
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(type: .fire)
+    }
+}
+
+extension CGPoint {
+    static var center: CGPoint {
+        CGPoint(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.midY)
     }
 }
 

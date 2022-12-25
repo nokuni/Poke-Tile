@@ -12,7 +12,18 @@ struct UserCardInformationView: View {
     var size: CGSize
     var isPossessing: ((Card) -> Bool)?
     var body: some View {
-        CardView(card: card, size: size, amount: 1, isPossessing: isPossessing)
+        RoundedRectangle(cornerRadius: 5)
+            .stroke(card.borderColor, lineWidth: 3)
+            .shadow(color: card.side == .user ? .blue : card.side == .opponent ? .red : .clear, radius: 3)
+            .background(
+                CardBackgroundView(card: card, isPossessing: isPossessing)
+                    .clipped()
+                    .cornerRadius(5)
+            )
+            .padding(5)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            //.overlay(StatsOverlayView(card: card, amount: amount, size: size, isPossessing: isPossessing))
+            //.overlay(TypeOverlayView(card: card, amount: amount, size: size))
     }
 }
 

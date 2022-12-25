@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct BottomScreenButtonsView: View {
-    var dismiss: DismissAction?
     var size: CGSize
     @Binding var isActive: Bool
     var body: some View {
         HStack {
-            BackButtonView(size: size, dismiss: dismiss)
+            BackButtonView(size: size)
             Spacer()
             MainMenuButtonView(size: size, isActive: $isActive)
         }

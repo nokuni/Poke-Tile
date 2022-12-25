@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct OpponentCardListView: View {
-    private let grid = [GridItem](repeating: .init(.flexible(), spacing: 0), count: 4)
+    private let grid = [GridItem](repeating: .init(UIDevice.isOnPad ? .fixed(UIScreen.main.bounds.width * 0.07) : .flexible(), spacing: 0), count: 4)
     var size: CGSize
-    @ObservedObject var gameVM: GameViewModel
+    @EnvironmentObject var gameVM: GameViewModel
     var body: some View {
         LazyVGrid(columns: grid, alignment: .center, spacing: 0) {
             ForEach(gameVM.game.trainerCards) { card in
-                CardView(card: Card.empty, size: size, amount: 10)
+                CardView(card: Card.empty, size: size, amount: UIDevice.isOnPad ? 15 : 10)
                     .brightness(card.isActivated ? 0 : -0.5)
             }
         }
@@ -23,6 +23,6 @@ struct OpponentCardListView: View {
 
 struct OpponentCardListView_Previews: PreviewProvider {
     static var previews: some View {
-        OpponentCardListView(size: CGSize.screen, gameVM: GameViewModel())
+        OpponentCardListView(size: CGSize.screen)
     }
 }

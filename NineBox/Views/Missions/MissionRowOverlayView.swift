@@ -32,7 +32,7 @@ struct MissionRowOverlayView: View {
                         .foregroundColor(.white)
                         .font(.system(size: size.width * 0.04, weight: .bold, design: .rounded))
                         .padding(10)
-                        .background(Color.teal.cornerRadius(5))
+                        .background(Color.customTeal.cornerRadius(5))
                 } else {
                     Button(action: {
                         selectedReward = card
@@ -43,7 +43,7 @@ struct MissionRowOverlayView: View {
                             .foregroundColor(.white)
                             .font(.system(size: size.width * 0.04, weight: .bold, design: .rounded))
                             .padding(10)
-                            .background(Color.teal.cornerRadius(5))
+                            .background(Color.customTeal.cornerRadius(5))
                     }
                 }
             }

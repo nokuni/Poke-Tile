@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TurnAnimationView: View {
+    let animation = ChainAnimation()
     @State private var isAnimating = false
     @Binding var isPresented: Bool
     var user: User
@@ -26,16 +27,13 @@ struct TurnAnimationView: View {
             }
             .zIndex(2)
             .onAppear {
-                withAnimation {
-                    self.isAnimating.toggle()
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        withAnimation {
-                            self.isAnimating.toggle()
-                            self.isPresented.toggle()
-                            if turn == .opponent {
-                                opponentPlays?()
-                            }
-                        }
+                animation.start(duration: 1, startAction: {
+                    withAnimation { self.isAnimating.toggle() }
+                }, whileAction: nil) {
+                    withAnimation {
+                        self.isAnimating.toggle()
+                        self.isPresented.toggle()
+                        if turn == .opponent { opponentPlays?() }
                     }
                 }
             }

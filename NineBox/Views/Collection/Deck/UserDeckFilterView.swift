@@ -18,7 +18,7 @@ struct UserDeckFilterView: View {
             Button(action: {
                 isShowingAdvancedFilters.toggle()
             }) {
-                ActionButtonView(text: "Filters", textColor: .white, color: .orangeDragonite, shadowColor: .black, size: CGSize.screen)
+                ActionButtonView(text: "FILTERS", textColor: .white, textSize: 0.025, textStrokeColor: .brownApp, buttonColor: .orangeApp, buttonStrokeColor: .steelBlue)
             }
         }
     }
